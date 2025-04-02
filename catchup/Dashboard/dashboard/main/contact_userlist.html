@@ -1,0 +1,916 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../images/favicon.ico">
+
+    <title>EduAdmin - Dashboard  User list</title>
+  
+	<!-- Vendors Style-->
+	<link rel="stylesheet" href="css/vendors_css.css">
+	  
+	<!-- Style-->  
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/skin_color.css">	
+
+</head>
+<body class="hold-transition light-skin sidebar-mini theme-primary fixed">
+	
+<div class="wrapper">
+	<div id="loader"></div>
+
+  <header class="main-header">
+	<div class="d-flex align-items-center logo-box justify-content-start">
+		<a href="#" class="waves-effect waves-light nav-link d-none d-md-inline-block mx-10 push-btn bg-transparent" data-toggle="push-menu" role="button">
+			<i class="fas fa-align-left"></i>
+
+		</a>	
+		<!-- Logo -->
+		<a href="index.html" class="logo">
+		  <!-- logo-->
+		  <div class="logo-lg">
+			  <span class="light-logo"><img src="../images/logo-dark-text.png" alt="logo"></span>
+			  <span class="dark-logo"><img src="../images/logo-light-text.png" alt="logo"></span>
+		  </div>
+		</a>	
+	</div>  
+    <!-- Header Navbar -->
+    <nav class="navbar navbar-static-top">
+      <!-- Sidebar toggle button-->
+	  <div class="app-menu">
+		<ul class="header-megamenu nav">
+			<li class="btn-group nav-item d-md-none">
+				<a href="#" class="waves-effect waves-light nav-link push-btn" data-toggle="push-menu" role="button">
+					<i class="fas fa-align-left"></i>
+
+			    </a>
+			</li>
+		
+		</ul> 
+	  </div>
+		
+      <div class="navbar-custom-menu r-side">
+        <ul class="nav navbar-nav">	
+		
+		  
+	      <!-- User Account-->
+          <li class="dropdown user user-menu">
+            <a href="#" class="waves-effect waves-light dropdown-toggle" data-bs-toggle="dropdown" title="User">
+				<i class="fas fa-user"></i>
+            </a>
+            <ul class="dropdown-menu animated flipInX">
+              <li class="user-body">
+				 <a class="dropdown-item" href="#"><i class="ti-user text-muted me-2"></i> Profile</a>
+				 <a class="dropdown-item" href="#"><i class="ti-wallet text-muted me-2"></i> My Wallet</a>
+				 <a class="dropdown-item" href="#"><i class="ti-settings text-muted me-2"></i> Settings</a>
+				 <div class="dropdown-divider"></div>
+				 <a class="dropdown-item" href="#"><i class="ti-lock text-muted me-2"></i> Logout</a>
+              </li>
+            </ul>
+          </li>	
+		  
+          <!-- Control Sidebar Toggle Button -->
+          <li>
+              <a href="#" data-toggle="control-sidebar" title="Setting" class="waves-effect waves-light">
+			  	<i class="icon-Settings"><span class="path1"></span><span class="path2"></span></i>
+			  </a>
+          </li>
+			
+        </ul>
+      </div>
+    </nav>
+  </header>
+  
+  <!-- Left side column. contains the logo and sidebar -->
+  <aside class="main-sidebar">
+    <!-- sidebar-->
+    <section class="sidebar position-relative">	
+	  	<div class="multinav">
+		  <div class="multinav-scroll" style="height: 100%;">	
+			  <!-- sidebar menu-->
+			  <ul class="sidebar-menu" data-widget="tree">	
+				<li class="header">Dashboard & Apps</li>
+				<li class="treeview">
+				  <a href="#">
+					<i class="icon-Layout-4-blocks"><span class="path1"></span><span class="path2"></span></i>
+					<span>Dashboard</span>
+					<span class="pull-right-container">
+					  <i class="fa fa-angle-right pull-right"></i>
+					</span>
+				  </a>
+				  <ul class="treeview-menu">
+					<li><a href="index.html"><i class="fas fa-code-branch"></i>Dashboard 1</a></li>
+					<li><a href="index2.html"><i class="fas fa-code-branch"></i>Dashboard 2</a></li>
+					<li><a href="index3.html"><i class="fas fa-code-branch"></i>Dashboard 3</a></li>
+					<li><a href="index4.html"><i class="fas fa-code-branch"></i>Dashboard 4</a></li>
+					<li><a href="index5.html"><i class="fas fa-code-branch"></i>Dashboard 5</a></li>
+					<li><a href="index6.html"><i class="fas fa-code-branch"></i>Dashboard 6</a></li>
+					<li><a href="index7.html"><i class="fas fa-code-branch"></i>Dashboard 7</a></li>
+					<li><a href="index8.html"><i class="fas fa-code-branch"></i>Dashboard 8</a></li>
+					<li><a href="index9.html"><i class="fas fa-code-branch"></i>Dashboard 9 <span class="badge text-bg-danger w-auto rounded-2 l-h-14 m-0 p-1 fs-10 top-0 ms-2 pb-0"> New</span></a></li>
+				  </ul>
+				</li>
+				<li class="treeview">
+				  <a href="#">
+					<i span class="icon-Layout-grid"><span class="path1"></span><span class="path2"></span></i>
+					<span>Apps</span>
+					<span class="pull-right-container">
+					  <i class="fa fa-angle-right pull-right"></i>
+					</span>
+				  </a>
+				  <ul class="treeview-menu">
+					<li><a href="extra_calendar.html"><i class="fas fa-code-branch"></i>Calendar</a></li>
+					<li><a href="contact_app.html"><i class="fas fa-code-branch"></i>Contact List</a></li>
+					<li><a href="contact_app_chat.html"><i class="fas fa-code-branch"></i>Chat</a></li>
+					<li><a href="extra_taskboard.html"><i class="fas fa-code-branch"></i>Todo</a></li>
+					<li><a href="mailbox.html"><i class="fas fa-code-branch"></i>Mailbox</a></li>
+				  </ul>
+				</li>
+				<li class="header">Components & UI </li>
+				<li class="treeview">
+				  <a href="#">
+					<i class="icon-Write"><span class="path1"></span><span class="path2"></span></i>
+					<span>UI Elements</span>
+					<span class="pull-right-container">
+					  <i class="fa fa-angle-right pull-right"></i>
+					</span>
+				  </a>
+				  <ul class="treeview-menu">			
+					<li><a href="ui_grid.html"><i class="fas fa-code-branch"></i>Grid System</a></li>								
+					<li class="treeview">
+						<a href="#">
+							<i class="fas fa-code-branch"></i>Card
+							<span class="pull-right-container">
+								<i class="fa fa-angle-right pull-right"></i>
+							</span>
+						</a>
+						<ul class="treeview-menu">
+							<li><a href="box_cards.html"><i class="fas fa-code-branch"></i>User Card</a></li>
+							<li><a href="box_advanced.html"><i class="fas fa-code-branch"></i>Advanced Card</a></li>
+							<li><a href="box_basic.html"><i class="fas fa-code-branch"></i>Basic Card</a></li>
+							<li><a href="box_color.html"><i class="fas fa-code-branch"></i>Card Color</a></li>
+							<li><a href="box_group.html"><i class="fas fa-code-branch"></i>Card Group</a></li>
+						</ul>
+					</li>
+					<li><a href="ui_badges.html"><i class="fas fa-code-branch"></i>Badges</a></li>
+					<li><a href="ui_border_utilities.html"><i class="fas fa-code-branch"></i>Border</a></li>
+					<li><a href="ui_buttons.html"><i class="fas fa-code-branch"></i>Buttons</a></li>	
+					<li><a href="ui_color_utilities.html"><i class="fas fa-code-branch"></i>Color</a></li>
+					<li><a href="ui_dropdown.html"><i class="fas fa-code-branch"></i>Dropdown</a></li>
+					<li><a href="ui_dropdown_grid.html"><i class="fas fa-code-branch"></i>Dropdown Grid</a></li>
+					<li><a href="ui_progress_bars.html"><i class="fas fa-code-branch"></i>Progress Bars</a></li>					
+					<li class="treeview">
+						<a href="#">
+							<i class="fas fa-code-branch"></i>Icons
+							<span class="pull-right-container">
+								<i class="fa fa-angle-right pull-right"></i>
+							</span>
+						</a>
+						<ul class="treeview-menu">
+							<li><a href="icons_fontawesome.html"><i class="fas fa-code-branch"></i>Font Awesome</a></li>
+							<li><a href="icons_glyphicons.html"><i class="fas fa-code-branch"></i>Glyphicons</a></li>
+							<li><a href="icons_material.html"><i class="fas fa-code-branch"></i>Material Icons</a></li>	
+							<li><a href="icons_themify.html"><i class="fas fa-code-branch"></i>Themify Icons</a></li>
+							<li><a href="icons_simpleline.html"><i class="fas fa-code-branch"></i>Simple Line Icons</a></li>
+							<li><a href="icons_cryptocoins.html"><i class="fas fa-code-branch"></i>Cryptocoins Icons</a></li>
+							<li><a href="icons_flag.html"><i class="fas fa-code-branch"></i>Flag Icons</a></li>
+							<li><a href="icons_weather.html"><i class="fas fa-code-branch"></i>Weather Icons</a></li>
+						</ul>
+					</li>
+					<li><a href="ui_ribbons.html"><i class="fas fa-code-branch"></i>Ribbons</a></li>
+					<li><a href="ui_sliders.html"><i class="fas fa-code-branch"></i>Sliders</a></li>
+					<li><a href="ui_typography.html"><i class="fas fa-code-branch"></i>Typography</a></li>
+					<li><a href="ui_tab.html"><i class="fas fa-code-branch"></i>Tabs</a></li>
+					<li><a href="ui_timeline.html"><i class="fas fa-code-branch"></i>Timeline</a></li>
+					<li><a href="ui_timeline_horizontal.html"><i class="fas fa-code-branch"></i>Horizontal Timeline</a></li>
+					<li class="treeview">
+						<a href="#">
+							<i class="fas fa-code-branch"></i>Components
+							<span class="pull-right-container">
+								<i class="fa fa-angle-right pull-right"></i>
+							</span>
+						</a>
+						<ul class="treeview-menu">
+							<li><a href="component_bootstrap_switch.html"><i class="fas fa-code-branch"></i>Bootstrap Switch</a></li>
+							<li><a href="component_date_paginator.html"><i class="fas fa-code-branch"></i>Date Paginator</a></li>
+							<li><a href="component_media_advanced.html"><i class="fas fa-code-branch"></i>Advanced Medias</a></li>
+							<li><a href="component_rangeslider.html"><i class="fas fa-code-branch"></i>Range Slider</a></li>
+							<li><a href="component_rating.html"><i class="fas fa-code-branch"></i>Ratings</a></li>
+							<li><a href="component_animations.html"><i class="fas fa-code-branch"></i>Animations</a></li>
+							<li><a href="extension_fullscreen.html"><i class="fas fa-code-branch"></i>Fullscreen</a></li>
+							<li><a href="extension_pace.html"><i class="fas fa-code-branch"></i>Pace</a></li>
+							<li><a href="component_nestable.html"><i class="fas fa-code-branch"></i>Nestable</a></li>
+							<li><a href="component_portlet_draggable.html"><i class="fas fa-code-branch"></i>Draggable Portlets</a></li>	
+						</ul>
+					</li>  
+				  </ul>
+				</li>			
+				<li class="treeview">
+				  <a href="#">
+					<i class="icon-File"><span class="path1"></span><span class="path2"></span><span class="path3"></span></i>
+					<span>Forms & Tables</span>
+					<span class="pull-right-container">
+					  <i class="fa fa-angle-right pull-right"></i>
+					</span>
+				  </a>					
+				  <ul class="treeview-menu">					
+					<li class="treeview">
+						<a href="#">
+							<i class="fas fa-code-branch"></i>Forms
+							<span class="pull-right-container">
+								<i class="fa fa-angle-right pull-right"></i>
+							</span>
+						</a>
+						<ul class="treeview-menu">
+							<li><a href="forms_advanced.html"><i class="fas fa-code-branch"></i>Form Elements</a></li>
+							<li><a href="forms_general.html"><i class="fas fa-code-branch"></i>Form Layout</a></li>
+							<li><a href="forms_wizard.html"><i class="fas fa-code-branch"></i>Form Wizard</a></li>	
+							<li><a href="forms_validation.html"><i class="fas fa-code-branch"></i>Form Validation</a></li>
+							<li><a href="forms_mask.html"><i class="fas fa-code-branch"></i>Formatter</a></li>
+							<li><a href="forms_xeditable.html"><i class="fas fa-code-branch"></i>Xeditable Editor</a></li>
+							<li><a href="forms_dropzone.html"><i class="fas fa-code-branch"></i>Dropzone</a></li>
+							<li><a href="forms_code_editor.html"><i class="fas fa-code-branch"></i>Code Editor</a></li>
+							<li><a href="forms_editors.html"><i class="fas fa-code-branch"></i>Editor</a></li>
+							<li><a href="forms_editor_markdown.html"><i class="fas fa-code-branch"></i>Markdown</a></li>
+						</ul>
+					</li> 		
+					<li class="treeview">
+						<a href="#">
+							<i class="fas fa-code-branch"></i>Tables
+							<span class="pull-right-container">
+								<i class="fa fa-angle-right pull-right"></i>
+							</span>
+						</a>
+						<ul class="treeview-menu">
+							<li><a href="tables_simple.html"><i class="fas fa-code-branch"></i>Simple tables</a></li>
+							<li><a href="tables_data.html"><i class="fas fa-code-branch"></i>Data tables</a></li>
+							<li><a href="tables_editable.html"><i class="fas fa-code-branch"></i>Editable Tables</a></li>
+							<li><a href="tables_color.html"><i class="fas fa-code-branch"></i>Table Color</a></li>
+						</ul>
+					</li> 					
+				  </ul>
+				</li>
+				<li class="treeview">
+				  <a href="#">
+					<i class="icon-Chart-pie"><span class="path1"></span><span class="path2"></span></i>
+					<span>Charts</span>
+					<span class="pull-right-container">
+					  <i class="fa fa-angle-right pull-right"></i>
+					</span>
+				  </a>
+				  <ul class="treeview-menu">
+					<li><a href="charts_chartjs.html"><i class="fas fa-code-branch"></i>ChartJS</a></li>
+					<li><a href="charts_flot.html"><i class="fas fa-code-branch"></i>Flot</a></li>
+					<li><a href="charts_inline.html"><i class="fas fa-code-branch"></i>Inline charts</a></li>
+					<li><a href="charts_morris.html"><i class="fas fa-code-branch"></i>Morris</a></li>
+					<li><a href="charts_peity.html"><i class="fas fa-code-branch"></i>Peity</a></li>
+					<li><a href="charts_chartist.html"><i class="fas fa-code-branch"></i>Chartist</a></li>
+					<li><a href="charts_c3_axis.html"><i class="fas fa-code-branch"></i>Axis Chart</a></li>
+					<li><a href="charts_c3_bar.html"><i class="fas fa-code-branch"></i>Bar Chart</a></li>
+					<li><a href="charts_c3_data.html"><i class="fas fa-code-branch"></i>Data Chart</a></li>
+					<li><a href="charts_c3_line.html"><i class="fas fa-code-branch"></i>Line Chart</a></li>
+					<li><a href="charts_echarts_basic.html"><i class="fas fa-code-branch"></i>Basic Charts</a></li>
+					<li><a href="charts_echarts_bar.html"><i class="fas fa-code-branch"></i>Bar Chart</a></li>
+					<li><a href="charts_echarts_pie_doughnut.html"><i class="fas fa-code-branch"></i>Pie & Doughnut Chart</a></li>
+				  </ul>
+				</li> 
+				<li class="header">COLLECTIONS</li>
+				<li class="treeview">
+				  <a href="#">
+					<i class="icon-Library"><span class="path1"></span><span class="path2"></span></i>
+					<span>Widgets</span>
+					<span class="pull-right-container">
+					  <i class="fa fa-angle-right pull-right"></i>
+					</span>
+				  </a>
+				  <ul class="treeview-menu">
+					<li><a href="widgets_blog.html"><i class="fas fa-code-branch"></i>Blog</a></li>
+					<li><a href="widgets_chart.html"><i class="fas fa-code-branch"></i>Chart</a></li>
+					<li><a href="widgets_list.html"><i class="fas fa-code-branch"></i>List</a></li>
+					<li><a href="widgets_social.html"><i class="fas fa-code-branch"></i>Social</a></li>
+					<li><a href="widgets_statistic.html"><i class="fas fa-code-branch"></i>Statistic</a></li>
+					<li><a href="widgets_weather.html"><i class="fas fa-code-branch"></i>Weather</a></li>
+					<li><a href="widgets.html"><i class="fas fa-code-branch"></i>Widgets</a></li>
+					<li><a href="email_index.html"><i class="fas fa-code-branch"></i>Emails</a></li>					  	
+					<li class="treeview">
+						<a href="#">
+							<i class="fas fa-code-branch"></i>Maps
+							<span class="pull-right-container">
+								<i class="fa fa-angle-right pull-right"></i>
+							</span>
+						</a>
+						<ul class="treeview-menu">
+							<li><a href="map_google.html"><i class="fas fa-code-branch"></i>Google Map</a></li>
+							<li><a href="map_vector.html"><i class="fas fa-code-branch"></i>Vector Map</a></li>
+						</ul>
+					</li>					  	
+					<li class="treeview">
+						<a href="#">
+							<i class="fas fa-code-branch"></i>Modals
+							<span class="pull-right-container">
+								<i class="fa fa-angle-right pull-right"></i>
+							</span>
+						</a>
+						<ul class="treeview-menu">
+							<li><a href="component_modals.html"><i class="fas fa-code-branch"></i>Modals</a></li>
+							<li><a href="component_sweatalert.html"><i class="fas fa-code-branch"></i>Sweet Alert</a></li>
+							<li><a href="component_notification.html"><i class="fas fa-code-branch"></i>Toastr</a></li>
+						</ul>
+					</li>
+				  </ul>
+				</li> 				 
+				<li class="treeview">
+				  <a href="#">
+					<i class="icon-Cart"><span class="path1"></span><span class="path2"></span></i>
+					<span>Ecommerce</span>
+					<span class="pull-right-container">
+					  <i class="fa fa-angle-right pull-right"></i>
+					</span>
+				  </a>
+				  <ul class="treeview-menu">
+					<li><a href="ecommerce_products.html"><i class="fas fa-code-branch"></i>Products</a></li>
+					<li><a href="ecommerce_cart.html"><i class="fas fa-code-branch"></i>Products Cart</a></li>
+					<li><a href="ecommerce_products_edit.html"><i class="fas fa-code-branch"></i>Products Edit</a></li>
+					<li><a href="ecommerce_details.html"><i class="fas fa-code-branch"></i>Product Details</a></li>
+					<li><a href="ecommerce_orders.html"><i class="fas fa-code-branch"></i>Product Orders</a></li>
+					<li><a href="ecommerce_checkout.html"><i class="fas fa-code-branch"></i>Products Checkout</a></li>
+				  </ul>
+				</li>  		
+				<li class="treeview">
+				  <a href="#">
+					<i class="fas fa-user"></i>
+					<span>Pages</span>
+					<span class="pull-right-container">
+					  <i class="fa fa-angle-right pull-right"></i>
+					</span>
+				  </a>
+				  <ul class="treeview-menu">
+					<li><a href="invoice.html"><i class="fas fa-code-branch"></i>Invoice</a></li>
+					<li><a href="invoicelist.html"><i class="fas fa-code-branch"></i>Invoice List</a></li>	
+					<li><a href="extra_app_ticket.html"><i class="fas fa-code-branch"></i>Support Ticket</a></li>
+					<li><a href="extra_profile.html"><i class="fas fa-code-branch"></i>User Profile</a></li>
+					<li><a href="contact_userlist_grid.html"><i class="fas fa-code-branch"></i>Userlist Grid</a></li>
+					<li><a href="contact_userlist.html"><i class="fas fa-code-branch"></i>Userlist</a></li>	
+					<li><a href="sample_faq.html"><i class="fas fa-code-branch"></i>FAQs</a></li>
+					<li><a href="sample_blank.html"><i class="fas fa-code-branch"></i>Blank</a></li>
+					<li><a href="sample_coming_soon.html"><i class="fas fa-code-branch"></i>Coming Soon</a></li>
+					<li><a href="sample_custom_scroll.html"><i class="fas fa-code-branch"></i>Custom Scrolls</a></li>
+					<li><a href="sample_gallery.html"><i class="fas fa-code-branch"></i>Gallery</a></li>
+					<li><a href="sample_lightbox.html"><i class="fas fa-code-branch"></i>Lightbox Popup</a></li>
+					<li><a href="sample_pricing.html"><i class="fas fa-code-branch"></i>Pricing</a></li>
+				  </ul>
+				</li>
+				<li class="header">LOGIN & ERROR </li>
+				<li class="treeview">
+				  <a href="#">
+					<i class="icon-Chat-locked"><span class="path1"></span><span class="path2"></span></i>
+					<span>Authentication</span>
+					<span class="pull-right-container">
+					  <i class="fa fa-angle-right pull-right"></i>
+					</span>
+				  </a>
+				  <ul class="treeview-menu">
+					<li><a href="auth_login.html"><i class="fas fa-code-branch"></i>Login</a></li>
+					<li><a href="auth_register.html"><i class="fas fa-code-branch"></i>Register</a></li>
+					<li><a href="auth_lockscreen.html"><i class="fas fa-code-branch"></i>Lockscreen</a></li>
+					<li><a href="auth_user_pass.html"><i class="fas fa-code-branch"></i>Recover password</a></li>	
+				  </ul>
+				</li>
+				<li class="treeview">
+				  <a href="#">
+					<i class="icon-Chat-check"><span class="path1"></span><span class="path2"></span></i>
+					<span>Miscellaneous</span>
+					<span class="pull-right-container">
+					  <i class="fa fa-angle-right pull-right"></i>
+					</span>
+				  </a>
+				  <ul class="treeview-menu">
+					<li><a href="error_404.html"><i class="fas fa-code-branch"></i>Error 404</a></li>
+					<li><a href="error_500.html"><i class="fas fa-code-branch"></i>Error 500</a></li>
+					<li><a href="error_maintenance.html"><i class="fas fa-code-branch"></i>Maintenance</a></li>	
+				  </ul>
+				</li>	 	     
+			  </ul>
+		  </div>
+		</div>
+    </section>
+	<div class="sidebar-footer">
+		<a href="javascript:void(0)" class="link" data-bs-toggle="tooltip" title="Settings"><span class="icon-Settings-2"></span></a>
+		<a href="mailbox.html" class="link" data-bs-toggle="tooltip" title="Email"><span class="icon-Mail"></span></a>
+		<a href="javascript:void(0)" class="link" data-bs-toggle="tooltip" title="Logout"><span class="icon-Lock-overturning"><span class="path1"></span><span class="path2"></span></span></a>
+	</div>
+  </aside>
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+	  <div class="container-full">
+		<!-- Content Header (Page header) -->	  
+		<div class="content-header">
+			<div class="d-flex align-items-center">
+				<div class="me-auto">
+					<h3 class="page-title">User list</h3>
+					<div class="d-inline-block align-items-center">
+						<nav>
+							<ol class="breadcrumb">
+								<li class="breadcrumb-item"><a href="#"><i class="fas fa-home"></i></a></li>
+								<li class="breadcrumb-item" aria-current="page">Contact</li>
+								<li class="breadcrumb-item active" aria-current="page">User list</li>
+							</ol>
+						</nav>
+					</div>
+				</div>
+				
+			</div>
+		</div>  
+
+		<!-- Main content -->
+		<section class="content">
+			<div class="row">
+				<div class="col-lg-9 col-md-8">
+					<div class="box">
+					  <div class="media-list media-list-divided media-list-hover">
+						<div id="users-container">
+							<!-- Users will be dynamically added here -->
+						</div>
+						
+						<button id="load-more-users" style="display: none;">Load More</button>
+				
+					  </div>
+					</div>
+				</div>
+				<div class="col-lg-3 col-md-4">
+					<div class="box no-shadow">
+						<div class="box-body">
+						  <a class="btn btn-outline btn-success mb-5 d-flex justify-content-between" href="javascript:void(0)">Online <span class="pull-right">103</span></a>
+						  <a class="btn btn-outline btn-danger mb-5 d-flex justify-content-between" href="javascript:void(0)">Offline <span class="pull-right">19</span></a>
+						  <a class="btn btn-outline btn-info mb-5 d-flex justify-content-between" href="javascript:void(0)">Available <span class="pull-right">623</span></a>
+						  <a class="btn btn-outline btn-primary mb-5 d-flex justify-content-between" href="javascript:void(0)">Private <span class="pull-right">53</span></a>
+						  <a class="btn btn-warning mt-10 d-flex justify-content-between" href="javascript:void(0)">All Contacts <span class="pull-right">123</span></a>
+						  <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#myModal" class="btn btn-success mt-10 d-block text-center">+ Add New Contact</a>
+					  </div>
+					</div>
+				</div>				
+			</div>
+		</section>
+		<!-- /.content -->
+	  </div>	  
+  </div>
+  <!-- /.content-wrapper -->
+	
+  <!-- Popup Model Plase Here -->
+	  <div id="myModal" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h4 class="modal-title" id="myModalLabel">Add Contact</h4>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+				<div class="modal-body">
+					<form class="form-horizontal">
+						<div class="form-group">
+							<label class="col-md-12 form-label">Name</label>
+							<div class="col-md-12">
+								<input type="text" class="form-control" placeholder="Name">
+							</div>
+							<label class="col-md-12 form-label">Email</label>
+							<div class="col-md-12">
+								<input type="email" class="form-control" placeholder="Email">
+							</div>
+							<label class="col-md-12 form-label">Phone</label>
+							<div class="col-md-12">
+								<input type="tel" class="form-control" placeholder="Phone">
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-md-12 form-label">Address</label>
+							<div class="col-md-12">
+								<textarea class="form-control" placeholder=""></textarea>
+							</div>
+						</div>
+					</form>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-success" data-bs-dismiss="modal">Add</button>
+					<button type="button" class="btn btn-danger float-end" data-bs-dismiss="modal">Cancel</button>
+				</div>
+			</div>
+			<!-- /.modal-content -->
+		</div>
+		<!-- /.modal-dialog -->
+	</div>
+
+
+	<!-- /Popup Model Plase Here -->
+ 
+   <footer class="main-footer">
+   
+	  &copy; 2025 All Rights Reserved Catchup.
+  </footer>
+  <!-- Control Sidebar -->
+  <aside class="control-sidebar">
+	  
+	<div class="rpanel-title"><span class="pull-right btn btn-circle btn-danger"><i class="ion ion-close text-white" data-toggle="control-sidebar"></i></span> </div>  <!-- Create the tabs -->
+    <ul class="nav nav-tabs control-sidebar-tabs">
+      <li class="nav-item"><a href="#control-sidebar-home-tab" data-bs-toggle="tab" class="active"><i class="mdi mdi-message-text"></i></a></li>
+      <li class="nav-item"><a href="#control-sidebar-settings-tab" data-bs-toggle="tab"><i class="mdi mdi-playlist-check"></i></a></li>
+    </ul>
+    <!-- Tab panes -->
+    <div class="tab-content">
+      <!-- Home tab content -->
+      <div class="tab-pane active" id="control-sidebar-home-tab">
+          <div class="flexbox">
+			<a href="javascript:void(0)" class="text-grey">
+				<i class="ti-more"></i>
+			</a>	
+			<p>Users</p>
+			<a href="javascript:void(0)" class="text-end text-grey"><i class="ti-plus"></i></a>
+		  </div>
+		  <div class="lookup lookup-sm lookup-right d-none d-lg-block">
+			<input type="text" name="s" placeholder="Search" class="w-p100">
+		  </div>
+          <div class="media-list media-list-hover mt-20">
+			<div class="media py-10 px-0">
+			  <a class="avatar avatar-lg status-success" href="#">
+				<img src="../images/avatar/1.jpg" alt="...">
+			  </a>
+			  <div class="media-body">
+				<p class="fs-16">
+				  <a class="hover-primary" href="#"><strong>Tyler</strong></a>
+				</p>
+				<p>Praesent tristique diam...</p>
+				  <span>Just now</span>
+			  </div>
+			</div>
+
+			<div class="media py-10 px-0">
+			  <a class="avatar avatar-lg status-danger" href="#">
+				<img src="../images/avatar/2.jpg" alt="...">
+			  </a>
+			  <div class="media-body">
+				<p class="fs-16">
+				  <a class="hover-primary" href="#"><strong>Luke</strong></a>
+				</p>
+				<p>Cras tempor diam ...</p>
+				  <span>33 min ago</span>
+			  </div>
+			</div>
+
+			<div class="media py-10 px-0">
+			  <a class="avatar avatar-lg status-warning" href="#">
+				<img src="../images/avatar/3.jpg" alt="...">
+			  </a>
+			  <div class="media-body">
+				<p class="fs-16">
+				  <a class="hover-primary" href="#"><strong>Evan</strong></a>
+				</p>
+				<p>In posuere tortor vel...</p>
+				  <span>42 min ago</span>
+			  </div>
+			</div>
+
+			<div class="media py-10 px-0">
+			  <a class="avatar avatar-lg status-primary" href="#">
+				<img src="../images/avatar/4.jpg" alt="...">
+			  </a>
+			  <div class="media-body">
+				<p class="fs-16">
+				  <a class="hover-primary" href="#"><strong>Evan</strong></a>
+				</p>
+				<p>In posuere tortor vel...</p>
+				  <span>42 min ago</span>
+			  </div>
+			</div>			
+			
+			<div class="media py-10 px-0">
+			  <a class="avatar avatar-lg status-success" href="#">
+				<img src="../images/avatar/1.jpg" alt="...">
+			  </a>
+			  <div class="media-body">
+				<p class="fs-16">
+				  <a class="hover-primary" href="#"><strong>Tyler</strong></a>
+				</p>
+				<p>Praesent tristique diam...</p>
+				  <span>Just now</span>
+			  </div>
+			</div>
+
+			<div class="media py-10 px-0">
+			  <a class="avatar avatar-lg status-danger" href="#">
+				<img src="../images/avatar/2.jpg" alt="...">
+			  </a>
+			  <div class="media-body">
+				<p class="fs-16">
+				  <a class="hover-primary" href="#"><strong>Luke</strong></a>
+				</p>
+				<p>Cras tempor diam ...</p>
+				  <span>33 min ago</span>
+			  </div>
+			</div>
+
+			<div class="media py-10 px-0">
+			  <a class="avatar avatar-lg status-warning" href="#">
+				<img src="../images/avatar/3.jpg" alt="...">
+			  </a>
+			  <div class="media-body">
+				<p class="fs-16">
+				  <a class="hover-primary" href="#"><strong>Evan</strong></a>
+				</p>
+				<p>In posuere tortor vel...</p>
+				  <span>42 min ago</span>
+			  </div>
+			</div>
+
+			<div class="media py-10 px-0">
+			  <a class="avatar avatar-lg status-primary" href="#">
+				<img src="../images/avatar/4.jpg" alt="...">
+			  </a>
+			  <div class="media-body">
+				<p class="fs-16">
+				  <a class="hover-primary" href="#"><strong>Evan</strong></a>
+				</p>
+				<p>In posuere tortor vel...</p>
+				  <span>42 min ago</span>
+			  </div>
+			</div>
+			  
+		  </div>
+
+      </div>
+      <!-- /.tab-pane -->
+      <!-- Settings tab content -->
+      <div class="tab-pane" id="control-sidebar-settings-tab">
+          <div class="flexbox">
+			<a href="javascript:void(0)" class="text-grey">
+				<i class="ti-more"></i>
+			</a>	
+			<p>Todo List</p>
+			<a href="javascript:void(0)" class="text-end text-grey"><i class="ti-plus"></i></a>
+		  </div>
+        <ul class="todo-list mt-20">
+			<li class="py-15 px-5 by-1">
+			  <!-- checkbox -->
+			  <input type="checkbox" id="basic_checkbox_1" class="filled-in">
+			  <label for="basic_checkbox_1" class="mb-0 h-15"></label>
+			  <!-- todo text -->
+			  <span class="text-line">Nulla vitae purus</span>
+			  <!-- Emphasis label -->
+			  <small class="badge bg-danger"><i class="fa fa-clock-o"></i> 2 mins</small>
+			  <!-- General tools such as edit or delete-->
+			  <div class="tools">
+				<i class="fa fa-edit"></i>
+				<i class="fa fa-trash-o"></i>
+			  </div>
+			</li>
+			<li class="py-15 px-5">
+			  <!-- checkbox -->
+			  <input type="checkbox" id="basic_checkbox_2" class="filled-in">
+			  <label for="basic_checkbox_2" class="mb-0 h-15"></label>
+			  <span class="text-line">Phasellus interdum</span>
+			  <small class="badge bg-info"><i class="fa fa-clock-o"></i> 4 hours</small>
+			  <div class="tools">
+				<i class="fa fa-edit"></i>
+				<i class="fa fa-trash-o"></i>
+			  </div>
+			</li>
+			<li class="py-15 px-5 by-1">
+			  <!-- checkbox -->
+			  <input type="checkbox" id="basic_checkbox_3" class="filled-in">
+			  <label for="basic_checkbox_3" class="mb-0 h-15"></label>
+			  <span class="text-line">Quisque sodales</span>
+			  <small class="badge bg-warning"><i class="fa fa-clock-o"></i> 1 day</small>
+			  <div class="tools">
+				<i class="fa fa-edit"></i>
+				<i class="fa fa-trash-o"></i>
+			  </div>
+			</li>
+			<li class="py-15 px-5">
+			  <!-- checkbox -->
+			  <input type="checkbox" id="basic_checkbox_4" class="filled-in">
+			  <label for="basic_checkbox_4" class="mb-0 h-15"></label>
+			  <span class="text-line">Proin nec mi porta</span>
+			  <small class="badge bg-success"><i class="fa fa-clock-o"></i> 3 days</small>
+			  <div class="tools">
+				<i class="fa fa-edit"></i>
+				<i class="fa fa-trash-o"></i>
+			  </div>
+			</li>
+			<li class="py-15 px-5 by-1">
+			  <!-- checkbox -->
+			  <input type="checkbox" id="basic_checkbox_5" class="filled-in">
+			  <label for="basic_checkbox_5" class="mb-0 h-15"></label>
+			  <span class="text-line">Maecenas scelerisque</span>
+			  <small class="badge bg-primary"><i class="fa fa-clock-o"></i> 1 week</small>
+			  <div class="tools">
+				<i class="fa fa-edit"></i>
+				<i class="fa fa-trash-o"></i>
+			  </div>
+			</li>
+			<li class="py-15 px-5">
+			  <!-- checkbox -->
+			  <input type="checkbox" id="basic_checkbox_6" class="filled-in">
+			  <label for="basic_checkbox_6" class="mb-0 h-15"></label>
+			  <span class="text-line">Vivamus nec orci</span>
+			  <small class="badge bg-info"><i class="fa fa-clock-o"></i> 1 month</small>
+			  <div class="tools">
+				<i class="fa fa-edit"></i>
+				<i class="fa fa-trash-o"></i>
+			  </div>
+			</li>
+			<li class="py-15 px-5 by-1">
+			  <!-- checkbox -->
+			  <input type="checkbox" id="basic_checkbox_7" class="filled-in">
+			  <label for="basic_checkbox_7" class="mb-0 h-15"></label>
+			  <!-- todo text -->
+			  <span class="text-line">Nulla vitae purus</span>
+			  <!-- Emphasis label -->
+			  <small class="badge bg-danger"><i class="fa fa-clock-o"></i> 2 mins</small>
+			  <!-- General tools such as edit or delete-->
+			  <div class="tools">
+				<i class="fa fa-edit"></i>
+				<i class="fa fa-trash-o"></i>
+			  </div>
+			</li>
+			<li class="py-15 px-5">
+			  <!-- checkbox -->
+			  <input type="checkbox" id="basic_checkbox_8" class="filled-in">
+			  <label for="basic_checkbox_8" class="mb-0 h-15"></label>
+			  <span class="text-line">Phasellus interdum</span>
+			  <small class="badge bg-info"><i class="fa fa-clock-o"></i> 4 hours</small>
+			  <div class="tools">
+				<i class="fa fa-edit"></i>
+				<i class="fa fa-trash-o"></i>
+			  </div>
+			</li>
+			<li class="py-15 px-5 by-1">
+			  <!-- checkbox -->
+			  <input type="checkbox" id="basic_checkbox_9" class="filled-in">
+			  <label for="basic_checkbox_9" class="mb-0 h-15"></label>
+			  <span class="text-line">Quisque sodales</span>
+			  <small class="badge bg-warning"><i class="fa fa-clock-o"></i> 1 day</small>
+			  <div class="tools">
+				<i class="fa fa-edit"></i>
+				<i class="fa fa-trash-o"></i>
+			  </div>
+			</li>
+			<li class="py-15 px-5">
+			  <!-- checkbox -->
+			  <input type="checkbox" id="basic_checkbox_10" class="filled-in">
+			  <label for="basic_checkbox_10" class="mb-0 h-15"></label>
+			  <span class="text-line">Proin nec mi porta</span>
+			  <small class="badge bg-success"><i class="fa fa-clock-o"></i> 3 days</small>
+			  <div class="tools">
+				<i class="fa fa-edit"></i>
+				<i class="fa fa-trash-o"></i>
+			  </div>
+			</li>
+		  </ul>
+      </div>
+      <!-- /.tab-pane -->
+    </div>
+  </aside>
+  <!-- /.control-sidebar -->
+  
+  <!-- Add the sidebar's background. This div must be placed immediately after the control sidebar -->
+  <div class="control-sidebar-bg"></div>
+</div>
+<!-- ./wrapper -->
+	
+	
+	
+	
+	
+	<!-- Page Content overlay -->
+	
+
+	
+
+
+	<script>
+		document.addEventListener("DOMContentLoaded", async () => {
+    const apiUrl = "http://localhost:3000/api/users";
+    const usersContainer = document.getElementById("users-container"); // Parent container for users
+    const loadMoreUsersBtn = document.getElementById("load-more-users"); // Load More button
+
+    let allUsers = []; // Stores all users from API
+    let offset = 0;
+    const limit = 10; // Number of users to show per batch
+
+    // Fetch all users once
+    async function fetchAllUsers() {
+        try {
+            const response = await fetch(apiUrl);
+            allUsers = await response.json(); // Store the entire users list
+
+            if (allUsers.length > limit) {
+                loadMoreUsersBtn.style.display = "block"; // Show Load More button if there are more users
+            }
+
+            loadUsers(); // Load the first batch
+        } catch (error) {
+            console.error("Error fetching users:", error);
+        }
+    }
+
+    // Load users dynamically
+    function loadUsers() {
+        const usersToShow = allUsers.slice(offset, offset + limit);
+
+        usersToShow.forEach((user) => {
+            const userEntry = document.createElement("div");
+            userEntry.classList.add("media", "align-items-center");
+
+            userEntry.innerHTML = `
+                <span class="badge badge-dot badge-danger"></span>
+                <a class="avatar avatar-lg status-success" href="#">
+                    <img src="${user.image}" alt="${user.name}">
+                </a>
+
+                <div class="media-body">
+                    <p>
+                        <a href="#"><strong>${user.name}</strong></a>
+                        <small class="sidetitle">Online</small>
+                    </p>
+                    <p>${user.role}</p>
+
+                    <nav class="nav mt-2">
+                        <a class="nav-link" href="#"><i class="fa fa-facebook"></i></a>
+                        <a class="nav-link" href="#"><i class="fa fa-twitter"></i></a>
+                        <a class="nav-link" href="#"><i class="fa fa-github"></i></a>
+                        <a class="nav-link" href="#"><i class="fa fa-linkedin"></i></a>
+                    </nav>
+                </div>
+
+                <div class="media-right gap-items">
+                    <a class="media-action lead" href="#" data-bs-toggle="tooltip" title="Orders"><i class="ti-shopping-cart"></i></a>
+                    <a class="media-action lead" href="#" data-bs-toggle="tooltip" title="Receipts"><i class="ti-receipt"></i></a>
+
+                    <div class="btn-group">
+                        <a class="media-action lead" href="#" data-bs-toggle="dropdown"><i class="ion-android-more-vertical"></i></a>
+                        <div class="dropdown-menu dropdown-menu-end">
+                            <a class="dropdown-item" href="#"><i class="fa fa-fw fa-user"></i> Profile</a>
+                            <a class="dropdown-item" href="#"><i class="fa fa-fw fa-comments"></i> Messages</a>
+                            <a class="dropdown-item" href="#"><i class="fa fa-fw fa-phone"></i> Call</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item delete-user" href="#" data-id="${user._id}"><i class="fa fa-fw fa-remove"></i> Remove</a>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            usersContainer.appendChild(userEntry);
+
+            // Attach delete event listener
+            userEntry.querySelector(".delete-user").addEventListener("click", (event) => {
+                event.preventDefault();
+                deleteUser(user._id, userEntry);
+            });
+        });
+
+        offset += limit;
+
+        // Hide the button if no more users are left to load
+        if (offset >= allUsers.length) {
+            loadMoreUsersBtn.style.display = "none";
+        }
+    }
+
+    // Delete user function
+    async function deleteUser(userId, userEntry) {
+        try {
+            const response = await fetch(`${apiUrl}/delete/${userId}`, { method: "DELETE" });
+
+            if (response.ok) {
+                userEntry.remove();
+            } else {
+                console.error("Failed to delete user.");
+            }
+        } catch (error) {
+            console.error("Error deleting user:", error);
+        }
+    }
+
+    loadMoreUsersBtn.addEventListener("click", loadUsers);
+
+    // Fetch all users initially
+    fetchAllUsers();
+});
+
+	</script>
+
+
+	<!-- Vendor JS -->
+	<script src="js/vendors.min.js"></script>
+	<script src="js/pages/chat-popup.js"></script>
+    <script src="../assets/icons/feather-icons/feather.min.js"></script>	<script src="../assets/vendor_components/perfect-scrollbar-master/perfect-scrollbar.jquery.min.js"></script>
+	
+	<!-- EduAdmin App -->
+	<script src="js/template.js"></script>
+	
+	
+
+</body>
+</html>

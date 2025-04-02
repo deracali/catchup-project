@@ -1,0 +1,536 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz</title>
+
+    <!-- fonts -->
+    <link rel="stylesheet" href="assets/fonts/font.css">
+
+    <!-- fontawesome 5 -->
+    <link rel="stylesheet" href="../../../ajax/libs/font-awesome/6.2.1/css/all.min.css">
+
+    <!-- bootstrap 5 -->
+    <link rel="stylesheet" href="assets/css/Bootstrap/bootstrap.min.css">
+
+    <!-- Custom Css Files -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/responsive.css">
+    <link rel="stylesheet" href="assets/css/animation.css">
+    
+    <!--Result Css-->
+    <link rel="stylesheet" href="assets/css/result_style.css">
+</head>
+<body>
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Quiz</title>
+    
+        <!-- fonts -->
+        <link rel="stylesheet" href="assets/fonts/font.css">
+    
+        <!-- fontawesome 5 -->
+        <link rel="stylesheet" href="../../../ajax/libs/font-awesome/6.2.1/css/all.min.css">
+    
+        <!-- bootstrap 5 -->
+        <link rel="stylesheet" href="assets/css/Bootstrap/bootstrap.min.css">
+    
+        <!-- Custom Css Files -->
+        <link rel="stylesheet" href="assets/css/style.css">
+        <link rel="stylesheet" href="assets/css/responsive.css">
+        <link rel="stylesheet" href="assets/css/animation.css">
+        
+        <!--Result Css-->
+        <link rel="stylesheet" href="assets/css/result_style.css">
+    </head>
+    <style>
+      /* Styling the rating popup */
+.rating-popup {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 30px;
+    background: white;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    z-index: 9999;
+    width: 80%;
+    max-width: 400px; /* Make sure the popup doesn't get too wide */
+    text-align: center;
+    font-family: Arial, sans-serif;
+}
+
+/* Heading style for the popup */
+.rating-popup h3 {
+    font-size: 22px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Button for closing the popup */
+.rating-popup button {
+    display: block;
+    width: 100%;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 12px;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 8px;
+    margin-top: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* Button hover effect */
+.rating-popup button:hover {
+    background-color: #45a049;
+}
+
+/* Question feedback area */
+.question-feedback {
+    margin-top: 20px;
+    font-size: 16px;
+    color: #333;
+    line-height: 1.5;
+    text-align: left;
+}
+
+/* Styles for correct and incorrect answers */
+.correct-answer {
+    color: green;
+    font-weight: bold;
+    margin-left: 10px;
+}
+
+.incorrect-answer {
+    color: red;
+    font-weight: bold;
+    margin-left: 10px;
+}
+
+/* Optional: Style for question number and feedback */
+.question-feedback span {
+    display: block;
+    margin-bottom: 10px;
+}
+
+/* Extra style for each question's feedback */
+.question-feedback .correct-answer i {
+    margin-right: 8px;
+}
+
+.question-feedback .incorrect-answer i {
+    margin-right: 8px;
+}
+
+/* Optional: Adding spacing between feedback for each question */
+.question-feedback div {
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+}
+
+/* Styling for the background overlay (if needed for the popup) */
+.rating-popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 9998;
+}
+
+    </style>
+    <body>
+    
+        <main class="overflow-hidden">
+            <div class="row">
+                <div class="col-md-5 tab-100 order-tab tab-none">
+                    <div class="side">
+                        <div class="side_image">
+                            <div class="border-up"></div>
+                            <img src="assets/images/side.jpg" alt="side">
+                            <div class="border-down"></div>
+                        </div>
+                        <div class="step-count">
+                            <div class="step-count-inner">
+                                <div class="step-single">
+                                    <div class="step-line">
+                                        <div class="fill"></div>
+                                    </div>
+                                    <div class="step-number">1</div>
+                                </div>
+                                <div class="step-single">
+                                    <div class="step-line">
+                                        <div class="fill"></div>
+                                    </div>
+                                    <div class="step-number">2</div>
+                                </div>
+                                <div class="step-single">
+                                    <div class="step-line">
+                                        <div class="fill"></div>
+                                    </div>
+                                    <div class="step-number">3</div>
+                                </div>
+                                <div class="step-single">
+                                    <div class="step-line">
+                                        <div class="fill"></div>
+                                    </div>
+                                    <div class="step-number">4</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-7 tab-100">
+                    <form method="post" novalidate="">
+                        <div class="show-section wrapper">
+                            <!-- Question Steps -->
+                            <section class="steps" id="step-section">
+                                <!-- Dynamic content will be loaded here -->
+                            </section>
+        
+                           <!-- HTML for countdown timer -->
+                        <div class="countdown">
+                            <h3><span id="countdown-timer">30:00</span> min</h3>
+                        </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        
+            <div class="footer-line"></div>
+        
+            <!-- result -->
+            <div class="loadingresult">
+                <img src="assets/images/loading.gif" alt="loading">
+            </div>
+            <div class="result_page" style="display:none;" id="resultPage">
+                <div class="result_inner">
+                    <div class="result_inner2">
+                        <h2>Knowledge Check</h2>
+                        <div class="u_result">
+                            <div class="u_score">Your Score: </div>
+                            <div class="u_prcnt" id="scorePercent"></div>
+                            <span id="scorePoints">0 Points</span>
+                        </div>
+                        <div class="p_result">
+                            <div class="p_score">Passing Score: </div>
+                            <div class="p_prcnt">
+                                80%
+                            </div>
+                            <span>80 Points</span>
+                        </div>
+                        <div class="line"></div>
+                        <div class="result_show">
+                            <h2>Result</h2>
+                            <div class="pass_check" id="passCheck">
+                                <i class="fa-solid fa-xmark"></i> You did not Pass
+                            </div>
+                            <div class="result_msg" id="resultMessage">
+                                Better Luck Next Time!
+                            </div>
+                            <div id="questionFeedback"></div>
+                        </div>
+                    </div>
+        
+                    <!-- rectangle -->
+                    <img class="behind_bg" src="assets/images/bh-clip.png" alt="rectangle">
+                </div>
+            </div>
+        
+            <!-- Rating Popup -->
+            <div class="rating-popup" id="ratingPopup">
+                <h3>Rate Your Experience</h3>
+                <div class="rating-stars">
+                    <i class="fa-solid fa-star" data-value="1"></i>
+                    <i class="fa-solid fa-star" data-value="2"></i>
+                    <i class="fa-solid fa-star" data-value="3"></i>
+                    <i class="fa-solid fa-star" data-value="4"></i>
+                    <i class="fa-solid fa-star" data-value="5"></i>
+                </div>
+                <button id="submitRatingBtn">Submit Rating</button>
+            </div>
+        
+        </main>
+    
+    <!-- Error div -->
+    <div id="error"></div>
+    
+    <!-- Bootstrap 5 -->
+    <script src="assets/js/Bootstrap/bootstrap.min.js"></script>
+    
+    <!-- jQuery -->
+    <script src="assets/js/jQuery/jquery-3.6.3.min.js"></script>
+    
+    <script>
+        let currentQuestionIndex = 0;
+        let score = 0;
+        let questions = [];
+        let timeLimit = 0;  // Time limit from the database
+    
+        // Get quizId from URL params
+        const urlParams = new URLSearchParams(window.location.search);
+        const quizId = urlParams.get('id');  // Assuming URL is like /quiz?id=123
+    console.log(quizId)
+        // Fetch the quiz data from the backend
+        fetch(`http://localhost:3000/api/quiz/quiz/${quizId}`)
+            .then(response => response.json())
+            .then(data => {
+                console.log(data)
+                if (data && data.questions) {
+                    questions = data.questions;
+                    timeLimit = data.timeLimit;  // Set the time limit from the database
+                    shuffleQuestions();  // Shuffle questions to start from a random one
+                    loadQuestion();  // Load the first question once the data is fetched
+                    startCountdown(timeLimit);  // Start the countdown timer based on timeLimit
+                }
+            })
+            .catch(error => {
+                console.error('Error loading the quiz data:', error);
+            });
+    
+        // Function to shuffle questions randomly
+        function shuffleQuestions() {
+            for (let i = questions.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [questions[i], questions[j]] = [questions[j], questions[i]];
+            }
+        }
+    
+        // Function to load questions
+        function loadQuestion() {
+            if (questions.length === 0) return; // Check if questions are loaded
+    
+            const question = questions[currentQuestionIndex];
+            const section = document.getElementById('step-section');
+    
+            // Clear previous question
+            section.innerHTML = '';
+    
+            // Add question
+            const questionElement = document.createElement('h1');
+            questionElement.classList.add('quiz-question');
+            questionElement.innerText = question.question;
+            section.appendChild(questionElement);
+    
+            // Add options
+            const form = document.createElement('fieldset');
+            form.id = `step${currentQuestionIndex + 1}`;
+    
+            question.options.forEach((option, index) => {
+                const radioField = document.createElement('div');
+                radioField.classList.add('radio-field', 'bounce-left', `delay-${index * 100}`);
+                const radioInput = document.createElement('input');
+                radioInput.type = 'radio';
+                radioInput.name = `op${currentQuestionIndex + 1}`;
+                radioInput.value = option;
+    
+                const label = document.createElement('label');
+                label.classList.add(`op${index + 1}`);
+                label.innerText = option;
+    
+                radioField.appendChild(radioInput);
+                radioField.appendChild(label);
+                form.appendChild(radioField);
+            });
+    
+            section.appendChild(form);
+    
+            // Add Next/Prev buttons
+            const nextPrevDiv = document.createElement('div');
+            nextPrevDiv.classList.add('next-prev');
+    
+            const prevButton = document.createElement('button');
+            prevButton.classList.add('prev');
+            prevButton.type = 'button';
+            prevButton.innerHTML = `<i class="fa-solid fa-arrow-left"></i> Last Question`;
+            prevButton.addEventListener('click', () => prevQuestion());
+    
+            const nextButton = document.createElement('button');
+            nextButton.classList.add('next');
+            nextButton.type = 'button';
+            nextButton.innerHTML = `<i class="fa-solid fa-arrow-right"></i> Next Question`;
+            nextButton.addEventListener('click', () => nextQuestion());
+    
+            nextPrevDiv.appendChild(prevButton);
+            nextPrevDiv.appendChild(nextButton);
+            section.appendChild(nextPrevDiv);
+        }
+    
+        // Function to check the selected answer
+        function checkAnswer() {
+            if (questions.length === 0) return; // Ensure questions are loaded
+            const question = questions[currentQuestionIndex];
+            const selectedOption = document.querySelector(`input[name="op${currentQuestionIndex + 1}"]:checked`);
+    
+            if (selectedOption) {
+                const isCorrect = question.answer === selectedOption.value;
+                if (isCorrect) {
+                    score++;
+                }
+            }
+        }
+    
+        // Function to go to the next question
+        function nextQuestion() {
+            checkAnswer();
+            currentQuestionIndex++;
+            if (currentQuestionIndex < questions.length) {
+                loadQuestion();
+            } else {
+                showResult();
+            }
+        }
+    
+        // Function to go to the previous question
+        function prevQuestion() {
+            currentQuestionIndex--;
+            loadQuestion();
+        }
+    
+        // Function to show results
+        function showResult() {
+    document.querySelector('.wrapper').style.display = 'none';
+    document.getElementById('resultPage').style.display = 'block';
+    document.getElementById('scorePercent').innerText = `${Math.round((score / questions.length) * 100)}%`;
+    document.getElementById('scorePoints').innerText = `${score} Points`;
+
+    if (score >= (questions.length * 0.8)) {
+        document.getElementById('passCheck').innerHTML = '<i class="fa-solid fa-check"></i> You Passed!';
+        document.getElementById('resultMessage').innerText = 'Congratulations!';
+    } else {
+        document.getElementById('passCheck').innerHTML = '<i class="fa-solid fa-xmark"></i> You did not Pass';
+        document.getElementById('resultMessage').innerText = 'Better Luck Next Time!';
+    }
+
+    // Show feedback for each question
+    const feedbackContainer = document.getElementById('questionFeedback');
+    feedbackContainer.innerHTML = '';
+
+    questions.forEach((question, index) => {
+        const feedback = document.createElement('div');
+        feedback.classList.add('question-feedback');
+
+        const selectedOption = document.querySelector(`input[name="op${index + 1}"]:checked`);
+
+        let feedbackText = '';
+        if (selectedOption) {
+            const selectedAnswer = selectedOption.value;
+            const correctOption = question.answer;
+            const isCorrect = correctOption === selectedAnswer;
+
+            if (isCorrect) {
+                feedbackText = `<span class="correct-answer"><i class="fa-solid fa-check" style="color: green;"></i> Correct: ${selectedAnswer}</span>`;
+            } else {
+                feedbackText = `<span class="incorrect-answer"><i class="fa-solid fa-times" style="color: red;"></i> Incorrect: ${selectedAnswer}</span>`;
+            }
+        } else {
+            feedbackText = `<span class="incorrect-answer"><i class="fa-solid fa-times" style="color: red;"></i> No answer selected</span>`;
+        }
+
+        feedback.innerHTML = `Question ${index + 1}: ${feedbackText}`;
+        feedbackContainer.appendChild(feedback);
+    });
+
+    // Show the score in the rating popup
+    const scorePopup = document.getElementById('ratingPopup');
+scorePopup.innerHTML = `
+    <h3>Your Score</h3>
+    <p>You scored ${score} out of ${questions.length}</p>
+    <button id="closePopupBtn">Submit and Close</button>
+`;
+document.getElementById('ratingPopup').style.display = 'block';
+
+const userId = localStorage.getItem('studentId');
+   // Add event listener for the close button
+document.getElementById('closePopupBtn').addEventListener('click', () => {
+    // Prepare the quizScoreData
+    const quizScoreData = {
+        userId: userId,
+        quizId: quizId,  // Ensure quizId is defined
+        totalScore: score
+    };
+
+    // Send the score to the server
+    fetch('http://localhost:3000/api/quiz-scores', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(quizScoreData)
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log('Score saved to the database:', data);
+        alert("Submitted")
+        // Optionally hide the popup after saving
+        scorePopup.style.display = 'none';
+    })
+    .catch(error => {
+        console.error('Error saving score to the database:', error);
+    });
+
+    // Close the popup
+    scorePopup.style.display = 'none';
+});
+}
+
+    
+      // Countdown timer with a fixed time of 40 minutes
+// Countdown timer with a fixed time of 40 minutes
+// Countdown timer with a fixed time of 40 minutes
+// Countdown timer with a fixed time of 40 minutes
+// Countdown timer with a fixed time of 40 minutes
+function startCountdown() {
+    let timeRemaining = 40 * 60; // Set timeLimit to 40 minutes (converted to seconds)
+    const countdownTimerElement = document.getElementById('countdown-timer');
+
+    // Set the timer display once to 40:00 (no counting down)
+    const minutes = Math.floor(timeRemaining / 60);
+    const seconds = timeRemaining % 60;
+    countdownTimerElement.innerText = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+
+    // Use setTimeout to trigger the result after 40 minutes
+    setTimeout(() => {
+        showResult(); // End the quiz after 40 minutes
+    }, timeRemaining * 1000); // Convert timeRemaining (in seconds) to milliseconds
+}
+
+    
+        // If questions haven't been loaded yet, show a loading message
+        window.addEventListener('load', () => {
+            if (questions.length === 0) {
+                document.getElementById('step-section').innerHTML = 'Loading questions...';
+            }
+        });
+    </script>
+    
+
+    
+ 
+
+    <!-- bootstrap 5 -->
+    <script src="assets/js/Bootstrap/bootstrap.min.js"></script>
+
+    <!-- jQuery -->
+    <script src="assets/js/jQuery/jquery-3.6.3.min.js"></script>
+    
+    <!-- Result JS -->
+    <script src="assets/js/result.js"></script>
+
+    <!-- Custom js -->
+    <script src="assets/js/custom.js"></script>
+    
+</body>
+</html>

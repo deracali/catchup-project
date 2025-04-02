@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Instructor Bot</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f7fc;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 80%;
+            margin: 20px auto;
+        }
+        .chatbox {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .chatbox-header {
+            font-size: 20px;
+            font-weight: bold;
+            color: #333;
+        }
+        .chatbox-content {
+            margin-top: 20px;
+        }
+        .message {
+            padding: 10px;
+            background-color: #e0e0e0;
+            margin-bottom: 10px;
+            border-radius: 8px;
+            width: 100%;
+            max-width: 500px;
+        }
+        .user-message {
+            background-color: #b2d8f7;
+            text-align: right;
+        }
+        .bot-message {
+            background-color: #f0f0f0;
+        }
+        .button {
+            padding: 10px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            margin: 5px;
+            cursor: pointer;
+        }
+        .button:hover {
+            background-color: #2980b9;
+        }
+        .input-box {
+            display: flex;
+            margin-top: 10px;
+        }
+        .input-box input {
+            width: 80%;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        .input-box button {
+            padding: 10px;
+            background-color: #27ae60;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .input-box button:hover {
+            background-color: #2ecc71;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="chatbox">
+        <div class="chatbox-header">AI Instructor Bot</div>
+        <div class="chatbox-content" id="chatbox-content">
+            <div class="message bot-message">Hello, I'm your AI Instructor! What would you like to learn today?</div>
+            <div class="message bot-message" id="courses-list">
+                <button class="button" onclick="startCourse('Mathematics')">Mathematics</button>
+                <button class="button" onclick="startCourse('English Language')">English Language</button>
+                <button class="button" onclick="startCourse('Biology')">Biology</button>
+                <button class="button" onclick="startCourse('Chemistry')">Chemistry</button>
+                <button class="button" onclick="startCourse('Physics')">Physics</button>
+                <button class="button" onclick="startCourse('Economics')">Economics</button>
+                <button class="button" onclick="startCourse('Geography')">Geography</button>
+            </div>
+        </div>
+        <div class="input-box">
+            <input type="text" id="user-input" placeholder="Type your question..." />
+            <button onclick="submitUserInput()">Ask</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    const courses = {
+        "Mathematics": {
+            description: "Mathematics is the study of numbers, shapes, and patterns. It involves understanding concepts like algebra, geometry, calculus, and statistics.",
+            example: "For example, solving an equation like 2x + 3 = 7 to find the value of x.",
+            details: "It includes topics like algebra (solving equations), calculus (study of continuous change), geometry (shapes and sizes), and statistics (data analysis)."
+        },
+        "English Language": {
+            description: "English Language is the study of grammar, vocabulary, reading, writing, and comprehension. It is essential for communication and understanding texts.",
+            example: "An example could be constructing a well-structured essay or identifying literary devices in a poem.",
+            details: "It covers parts of speech (like nouns, verbs, adjectives), sentence structure, and the analysis of texts."
+        },
+        "Biology": {
+            description: "Biology is the science of life and living organisms. It covers topics such as cells, genetics, human anatomy, and ecosystems.",
+            example: "For example, studying how the human circulatory system transports blood throughout the body.",
+            details: "Biology includes the study of cells (the building blocks of life), genetics (inheritance of traits), anatomy (structure of living organisms), and ecology (interaction with the environment)."
+        },
+        "Chemistry": {
+            description: "Chemistry is the study of matter and its interactions. It covers the properties of substances, chemical reactions, and the periodic table.",
+            example: "For instance, understanding how water changes from liquid to gas when heated.",
+            details: "Chemistry deals with atoms, molecules, reactions (like acid-base), and the organization of elements in the periodic table."
+        },
+        "Physics": {
+            description: "Physics is the study of matter, energy, and the forces of nature. It includes topics like motion, electricity, and magnetism.",
+            example: "An example would be understanding how an object accelerates when gravity acts upon it.",
+            details: "Physics explains the principles of force, motion, energy, and the behavior of particles in different states (solid, liquid, gas)."
+        },
+        "Economics": {
+            description: "Economics is the study of production, consumption, and the transfer of wealth. It involves understanding markets, inflation, and economic policies.",
+            example: "For instance, learning how supply and demand determine the prices of goods in the market.",
+            details: "Economics focuses on topics like market economies, supply and demand, inflation, GDP, and economic policy."
+        },
+        "Geography": {
+            description: "Geography is the study of the Earth’s landscapes, environments, and the ways humans interact with them.",
+            example: "For example, understanding the different types of climate zones across the world.",
+            details: "Geography includes the study of physical landscapes, weather patterns, ecosystems, and human geography like urbanization."
+        }
+    };
+
+    let currentCourse = '';
+
+    function startCourse(courseName) {
+        currentCourse = courseName;
+        document.getElementById('chatbox-content').innerHTML = `
+            <div class="message bot-message">
+                Welcome to ${courseName} course! Here's a brief introduction:
+                <br><br>
+                ${courses[courseName].description}
+                <br><br>
+                You can ask questions about topics like:
+                <br>
+                ${courses[courseName].details}
+                <br><br>
+                Feel free to ask!
+            </div>
+        `;
+    }
+
+    function submitUserInput() {
+        const userInput = document.getElementById('user-input').value.toLowerCase();
+        document.getElementById('user-input').value = ''; // Clear input field
+        const chatboxContent = document.getElementById('chatbox-content');
+
+        // Check if the user input matches any of the keywords from the course content
+        if (currentCourse) {
+            const courseDetails = courses[currentCourse].details.toLowerCase();
+
+            // Check for keywords related to the current course
+            if (userInput.includes('algebra') && currentCourse === 'Mathematics') {
+                chatboxContent.innerHTML += `<div class="message user-message">${userInput}</div>
+                                              <div class="message bot-message">Algebra is a branch of mathematics dealing with numbers and the rules for manipulating them. It involves solving equations like 2x + 3 = 7.</div>`;
+            } else if (userInput.includes('calculus') && currentCourse === 'Mathematics') {
+                chatboxContent.innerHTML += `<div class="message user-message">${userInput}</div>
+                                              <div class="message bot-message">Calculus is a branch of mathematics that studies continuous change. It includes concepts like differentiation and integration.</div>`;
+            } else if (userInput.includes('geometry') && currentCourse === 'Mathematics') {
+                chatboxContent.innerHTML += `<div class="message user-message">${userInput}</div>
+                                              <div class="message bot-message">Geometry is a branch of mathematics concerned with the properties and relationships of points, lines, angles, and surfaces.</div>`;
+            } else if (userInput.includes('statistics') && currentCourse === 'Mathematics') {
+                chatboxContent.innerHTML += `<div class="message user-message">${userInput}</div>
+                                              <div class="message bot-message">Statistics is the study of data collection, analysis, interpretation, and presentation.</div>`;
+            } else {
+                chatboxContent.innerHTML += `<div class="message user-message">${userInput}</div>
+                                              <div class="message bot-message">Sorry, I don't have an answer to that. Could you ask something related to ${currentCourse}?</div>`;
+            }
+        }
+    }
+</script>
+
+</body>
+</html>
