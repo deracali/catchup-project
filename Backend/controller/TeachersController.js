@@ -1,5 +1,5 @@
 import Teacher from "../model/TeachersModel.js";
-import bcrypt from "bcrypt";
+import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 
 // ✅ Register a new teacher
