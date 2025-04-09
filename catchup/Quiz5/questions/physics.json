@@ -1,0 +1,452 @@
+[
+    {
+        "question": "What is the unit of force in the SI system?",
+        "options": [
+            { "answer": "Newton", "isCorrect": true },
+            { "answer": "Joule", "isCorrect": false },
+            { "answer": "Pascal", "isCorrect": false },
+            { "answer": "Watt", "isCorrect": false }
+        ]
+    },
+    {
+        "question": "Which of the following is a vector quantity?",
+        "options": [
+            { "answer": "Mass", "isCorrect": false },
+            { "answer": "Speed", "isCorrect": false },
+            { "answer": "Velocity", "isCorrect": true },
+            { "answer": "Energy", "isCorrect": false }
+        ]
+    },
+    {
+        "question": "Which type of energy is stored in a compressed spring?",
+        "options": [
+            { "answer": "Kinetic energy", "isCorrect": false },
+            { "answer": "Elastic potential energy", "isCorrect": true },
+            { "answer": "Gravitational potential energy", "isCorrect": false },
+            { "answer": "Chemical energy", "isCorrect": false }
+        ]
+    },
+    {
+        "question": "What is the speed of light in a vacuum?",
+        "options": [
+            { "answer": "3 × 10^8 m/s", "isCorrect": true },
+            { "answer": "3 × 10^6 m/s", "isCorrect": false },
+            { "answer": "3 × 10^5 m/s", "isCorrect": false },
+            { "answer": "3 × 10^4 m/s", "isCorrect": false }
+        ]
+    },
+    {
+        "question": "The law of conservation of momentum applies to which of the following?",
+        "options": [
+            { "answer": "Only elastic collisions", "isCorrect": false },
+            { "answer": "All collisions", "isCorrect": true },
+            { "answer": "Only in the absence of friction", "isCorrect": false },
+            { "answer": "Only in rigid bodies", "isCorrect": false }
+        ]
+    },
+    {
+        "question": "Which of these particles is found in the nucleus of an atom?",
+        "options": [
+            { "answer": "Electron", "isCorrect": false },
+            { "answer": "Proton", "isCorrect": true },
+            { "answer": "Neutron", "isCorrect": true },
+            { "answer": "Photon", "isCorrect": false }
+        ]
+    },
+    {
+        "question": "Which wave property is directly related to the energy of a wave?",
+        "options": [
+            { "answer": "Amplitude", "isCorrect": false },
+            { "answer": "Frequency", "isCorrect": true },
+            { "answer": "Speed", "isCorrect": false },
+            { "answer": "Wavelength", "isCorrect": false }
+        ]
+    },
+    {
+        "question": "In an electric circuit, the potential difference is measured in:",
+        "options": [
+            { "answer": "Amperes", "isCorrect": false },
+            { "answer": "Ohms", "isCorrect": false },
+            { "answer": "Volts", "isCorrect": true },
+            { "answer": "Watts", "isCorrect": false }
+        ]
+    },
+    {
+        "question": "What is the principle behind a lever?",
+        "options": [
+            { "answer": "The principle of conservation of energy", "isCorrect": false },
+            { "answer": "The principle of equilibrium", "isCorrect": true },
+            { "answer": "The principle of inertia", "isCorrect": false },
+            { "answer": "The principle of action and reaction", "isCorrect": false }
+        ]
+    },
+    {
+        "question": "What is the main difference between AC and DC current?",
+        "options": [
+            { "answer": "AC flows in one direction, DC alternates", "isCorrect": false },
+            { "answer": "AC alternates, DC flows in one direction", "isCorrect": true },
+            { "answer": "AC is used in batteries, DC is used in power plants", "isCorrect": false },
+            { "answer": "AC is always more powerful than DC", "isCorrect": false }
+        ]
+    },
+    {
+        "question": "What is the main source of natural radioactivity?",
+        "options": [
+            { "answer": "The Sun", "isCorrect": false },
+            { "answer": "Uranium", "isCorrect": true },
+            { "answer": "The Moon", "isCorrect": false },
+            { "answer": "Thorium", "isCorrect": false }
+        ]
+    },
+    {
+        "question": "The phenomenon of light bending around an obstacle is called?",
+        "options": [
+            { "answer": "Reflection", "isCorrect": false },
+            { "answer": "Refraction", "isCorrect": false },
+            { "answer": "Diffraction", "isCorrect": true },
+            { "answer": "Dispersion", "isCorrect": false }
+        ]
+    },
+    {
+        "question": "Which of the following is an example of a non-contact force?",
+        "options": [
+            { "answer": "Friction", "isCorrect": false },
+            { "answer": "Tension", "isCorrect": false },
+            { "answer": "Gravitational force", "isCorrect": true },
+            { "answer": "Normal force", "isCorrect": false }
+        ]
+    },
+    {
+        "question": "The frequency of a wave is inversely proportional to:",
+        "options": [
+            { "answer": "Amplitude", "isCorrect": false },
+            { "answer": "Wavelength", "isCorrect": true },
+            { "answer": "Speed", "isCorrect": false },
+            { "answer": "Energy", "isCorrect": false }
+        ]
+    },
+    {
+        "question": "In which medium does sound travel the fastest?",
+        "options": [
+            { "answer": "Air", "isCorrect": false },
+            { "answer": "Water", "isCorrect": false },
+            { "answer": "Steel", "isCorrect": true },
+            { "answer": "Vacuum", "isCorrect": false }
+        ]
+    },
+    {
+        "question": "Which force is responsible for keeping the planets in orbit around the Sun?",
+        "options": [
+            { "answer": "Electromagnetic force", "isCorrect": false },
+            { "answer": "Gravitational force", "isCorrect": true },
+            { "answer": "Frictional force", "isCorrect": false },
+            { "answer": "Nuclear force", "isCorrect": false }
+        ]
+    },
+    {
+        "question": "What is the standard unit of power in the International System of Units (SI)?",
+        "options": [
+            { "answer": "Joule", "isCorrect": false },
+            { "answer": "Watt", "isCorrect": true },
+            { "answer": "Ampere", "isCorrect": false },
+            { "answer": "Volt", "isCorrect": false }
+        ]
+    },
+    {
+        "question": "Which of these processes releases energy in the form of light and heat?",
+        "options": [
+            { "answer": "Fusion", "isCorrect": true },
+            { "answer": "Fission", "isCorrect": false },
+            { "answer": "Condensation", "isCorrect": false },
+            { "answer": "Sublimation", "isCorrect": false }
+        ]
+    },
+    {
+        "question": "What is the energy stored in an object due to its position called?",
+        "options": [
+            { "answer": "Kinetic energy", "isCorrect": false },
+            { "answer": "Potential energy", "isCorrect": true },
+            { "answer": "Thermal energy", "isCorrect": false },
+            { "answer": "Elastic energy", "isCorrect": false }
+        ]
+    },
+    {
+        "question": "The force required to stop an object moving at a certain speed is proportional to:",
+        "options": [
+            { "answer": "Its speed", "isCorrect": false },
+            { "answer": "Its momentum", "isCorrect": true },
+            { "answer": "Its temperature", "isCorrect": false },
+            { "answer": "Its energy", "isCorrect": false }
+        ]
+    },
+    {
+        "question": "What is the main principle of a transformer?",
+        "options": [
+            { "answer": "Conservation of momentum", "isCorrect": false },
+            { "answer": "Electromagnetic induction", "isCorrect": true },
+            { "answer": "Conservation of energy", "isCorrect": false },
+            { "answer": "Electrostatic force", "isCorrect": false }
+        ]
+    },
+    {
+        "question": "What is the unit of electric current in the SI system?",
+        "options": [
+            { "answer": "Volt", "isCorrect": false },
+            { "answer": "Ampere", "isCorrect": true },
+            { "answer": "Ohm", "isCorrect": false },
+            { "answer": "Coulomb", "isCorrect": false }
+        ]
+    },
+    {
+        "question": "Which of these is an example of thermal conduction?",
+        "options": [
+            { "answer": "Warming of a metal spoon in hot water", "isCorrect": true },
+            { "answer": "Wind blowing across a lake", "isCorrect": false },
+            { "answer": "Heat from the sun reaching Earth", "isCorrect": false },
+            { "answer": "Ice melting on a warm day", "isCorrect": false }
+        ]
+    },
+    {
+        "question": "The total resistance in a series circuit is 20 ohms. If one resistor of 10 ohms is removed from the circuit, what will be the new total resistance?",
+        "options": [
+            { "answer": "30 ohms", "isCorrect": true },
+            { "answer": "10 ohms", "isCorrect": false },
+            { "answer": "20 ohms", "isCorrect": false },
+            { "answer": "5 ohms", "isCorrect": false }
+        ]
+    },
+    {
+        "question": "What is the work done when a force of 10 N moves an object 5 meters in the direction of the force?",
+        "options": [
+            { "answer": "50 J", "isCorrect": true },
+            { "answer": "5 J", "isCorrect": false },
+            { "answer": "100 J", "isCorrect": false },
+            { "answer": "10 J", "isCorrect": false }
+        ]
+    },
+    {
+        "question": "The acceleration due to gravity on the surface of the Earth is approximately:",
+        "options": [
+            { "answer": "10 m/s²", "isCorrect": false },
+            { "answer": "9.8 m/s²", "isCorrect": true },
+            { "answer": "8.6 m/s²", "isCorrect": false },
+            { "answer": "5 m/s²", "isCorrect": false }
+        ]
+    },
+    {
+        "question": "The unit of electric charge is the:",
+        "options": [
+            { "answer": "Ampere", "isCorrect": false },
+            { "answer": "Coulomb", "isCorrect": true },
+            { "answer": "Volt", "isCorrect": false },
+            { "answer": "Watt", "isCorrect": false }
+        ]
+    },
+    {
+        "question": "The rate of change of velocity with respect to time is known as:",
+        "options": [
+            { "answer": "Displacement", "isCorrect": false },
+            { "answer": "Acceleration", "isCorrect": true },
+            { "answer": "Force", "isCorrect": false },
+            { "answer": "Velocity", "isCorrect": false }
+        ]
+    },
+    {
+        "question": "A body of mass 2 kg is moving with a velocity of 4 m/s. What is its kinetic energy?",
+        "options": [
+            { "answer": "16 J", "isCorrect": true },
+            { "answer": "32 J", "isCorrect": false },
+            { "answer": "8 J", "isCorrect": false },
+            { "answer": "4 J", "isCorrect": false }
+        ]
+    },
+    {
+        "question": "The force required to change the state of motion of an object is called:",
+        "options": [
+            { "answer": "Gravitational force", "isCorrect": false },
+            { "answer": "Centripetal force", "isCorrect": false },
+            { "answer": "Frictional force", "isCorrect": false },
+            { "answer": "Net force", "isCorrect": true }
+        ]
+    },
+    {
+        "question": "What is the purpose of a transformer?",
+        "options": [
+            { "answer": "To increase or decrease voltage", "isCorrect": true },
+            { "answer": "To store electrical energy", "isCorrect": false },
+            { "answer": "To change the current flow direction", "isCorrect": false },
+            { "answer": "To generate electricity", "isCorrect": false }
+        ]
+    },
+    {
+        "question": "What is the unit of pressure?",
+        "options": [
+            { "answer": "Newton", "isCorrect": false },
+            { "answer": "Pascal", "isCorrect": true },
+            { "answer": "Watt", "isCorrect": false },
+            { "answer": "Joule", "isCorrect": false }
+        ]
+    },
+    {
+        "question": "What is the primary function of the insulation around electrical wires?",
+        "options": [
+            { "answer": "To allow current to flow freely", "isCorrect": false },
+            { "answer": "To protect the wires from rusting", "isCorrect": false },
+            { "answer": "To prevent the flow of electric current to unintended areas", "isCorrect": true },
+            { "answer": "To prevent the wires from getting damaged by heat", "isCorrect": false }
+        ]
+    },
+    {
+        "question": "In an experiment, a light bulb is connected to a battery. If the battery is replaced by another with twice the voltage, what will happen to the brightness of the light bulb?",
+        "options": [
+            { "answer": "It will remain the same", "isCorrect": false },
+            { "answer": "It will double", "isCorrect": true },
+            { "answer": "It will be halved", "isCorrect": false },
+            { "answer": "It will stop glowing", "isCorrect": false }
+        ]
+    },
+    {
+        "question": "A force of 10 N acts on a body of mass 2 kg. What is the acceleration of the body?",
+        "options": [
+            { "answer": "5 m/s²", "isCorrect": true },
+            { "answer": "2 m/s²", "isCorrect": false },
+            { "answer": "10 m/s²", "isCorrect": false },
+            { "answer": "0.5 m/s²", "isCorrect": false }
+        ]
+    },
+    {
+        "question": "The unit of electric current is the:",
+        "options": [
+            { "answer": "Ampere", "isCorrect": true },
+            { "answer": "Volt", "isCorrect": false },
+            { "answer": "Coulomb", "isCorrect": false },
+            { "answer": "Ohm", "isCorrect": false }
+        ]
+    },
+    {
+        "question": "What happens to the resistance of a conductor when its temperature increases?",
+        "options": [
+            { "answer": "It decreases", "isCorrect": false },
+            { "answer": "It increases", "isCorrect": true },
+            { "answer": "It remains constant", "isCorrect": false },
+            { "answer": "It fluctuates", "isCorrect": false }
+        ]
+    },
+    {
+        "question": "What is the primary function of the fuse in an electrical circuit?",
+        "options": [
+            { "answer": "To prevent overloading", "isCorrect": true },
+            { "answer": "To increase current", "isCorrect": false },
+            { "answer": "To decrease current", "isCorrect": false },
+            { "answer": "To regulate voltage", "isCorrect": false }
+        ]
+    },
+    {
+        "question": "What is the SI unit of energy?",
+        "options": [
+            { "answer": "Joule", "isCorrect": true },
+            { "answer": "Watt", "isCorrect": false },
+            { "answer": "Newton", "isCorrect": false },
+            { "answer": "Coulomb", "isCorrect": false }
+        ]
+    },
+    {
+        "question": "In a vacuum, light travels at a speed of approximately:",
+        "options": [
+            { "answer": "3 × 10^8 m/s", "isCorrect": true },
+            { "answer": "3 × 10^6 m/s", "isCorrect": false },
+            { "answer": "3 × 10^4 m/s", "isCorrect": false },
+            { "answer": "3 × 10^9 m/s", "isCorrect": false }
+        ]
+    },
+    {
+        "question": "A body of mass 5 kg is moving with a velocity of 3 m/s. What is its kinetic energy?",
+        "options": [
+            { "answer": "22.5 J", "isCorrect": true },
+            { "answer": "15 J", "isCorrect": false },
+            { "answer": "10 J", "isCorrect": false },
+            { "answer": "30 J", "isCorrect": false }
+        ]
+    },
+    {
+        "question": "Which of the following is an example of a non-contact force?",
+        "options": [
+            { "answer": "Friction", "isCorrect": false },
+            { "answer": "Electromagnetic force", "isCorrect": true },
+            { "answer": "Tension", "isCorrect": false },
+            { "answer": "Normal force", "isCorrect": false }
+        ]
+    },
+    {
+        "question": "What is the main source of energy for the Earth?",
+        "options": [
+            { "answer": "The Moon", "isCorrect": false },
+            { "answer": "The Sun", "isCorrect": true },
+            { "answer": "The Earth itself", "isCorrect": false },
+            { "answer": "Wind", "isCorrect": false }
+        ]
+    },
+    {
+        "question": "Which of the following statements is true about the force of gravity?",
+        "options": [
+            { "answer": "It only affects objects in motion", "isCorrect": false },
+            { "answer": "It acts on all objects with mass", "isCorrect": true },
+            { "answer": "It increases as altitude increases", "isCorrect": false },
+            { "answer": "It is stronger on the Moon than on Earth", "isCorrect": false }
+        ]
+    },
+    {
+        "question": "Which of the following quantities is a scalar?",
+        "options": [
+            { "answer": "Velocity", "isCorrect": false },
+            { "answer": "Force", "isCorrect": false },
+            { "answer": "Speed", "isCorrect": true },
+            { "answer": "Acceleration", "isCorrect": false }
+        ]
+    },
+    {
+        "question": "The phenomenon of bending light when it passes from one medium to another is called:",
+        "options": [
+            { "answer": "Reflection", "isCorrect": false },
+            { "answer": "Refraction", "isCorrect": true },
+            { "answer": "Diffraction", "isCorrect": false },
+            { "answer": "Dispersion", "isCorrect": false }
+        ]
+    },
+    {
+        "question": "Which of the following is the unit of power?",
+        "options": [
+            { "answer": "Joule", "isCorrect": false },
+            { "answer": "Watt", "isCorrect": true },
+            { "answer": "Newton", "isCorrect": false },
+            { "answer": "Volt", "isCorrect": false }
+        ]
+    },
+    {
+        "question": "In which type of collision is total kinetic energy conserved?",
+        "options": [
+            { "answer": "Elastic collision", "isCorrect": true },
+            { "answer": "Inelastic collision", "isCorrect": false },
+            { "answer": "Perfectly inelastic collision", "isCorrect": false },
+            { "answer": "Explosive collision", "isCorrect": false }
+        ]
+    },
+    {
+        "question": "The force that opposes the motion of objects moving through a fluid is called:",
+        "options": [
+            { "answer": "Friction", "isCorrect": false },
+            { "answer": "Air resistance", "isCorrect": true },
+            { "answer": "Magnetic force", "isCorrect": false },
+            { "answer": "Gravitational force", "isCorrect": false }
+        ]
+    },
+    {
+        "question": "The process by which a solid turns directly into a gas is called:",
+        "options": [
+            { "answer": "Melting", "isCorrect": false },
+            { "answer": "Sublimation", "isCorrect": true },
+            { "answer": "Evaporation", "isCorrect": false },
+            { "answer": "Condensation", "isCorrect": false }
+        ]
+    }
+]

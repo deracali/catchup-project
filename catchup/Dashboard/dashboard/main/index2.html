@@ -1,0 +1,1202 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../images/favicon.ico">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/icomoon-free@1.0.0/style.css">
+
+    <title>EduAdmin - Dashboard</title>
+    
+	<!-- Vendors Style-->
+	<link rel="stylesheet" href="css/vendors_css.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+	
+	<!-- Style-->  
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/skin_color.css">
+	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+	<link rel="stylesheet" href="../assets/icons/icomoon/style.css"/>
+  </head>
+  <style>
+	.bg-light-blue { background-color: #d9f1ff; }
+	.bg-light-green { background-color: #d4f5d4; }
+	.countnm { font-size: 50px; font-weight: bold; }
+	.text-info { color: #17a2b8; }
+</style>
+<body class="hold-transition light-skin sidebar-mini theme-primary fixed">
+	
+<div class="wrapper">
+	<div id="loader"></div>
+	
+  <header class="main-header">
+	<div class="d-flex align-items-center logo-box justify-content-start">
+		<a href="#" class="waves-effect waves-light nav-link d-none d-md-inline-block mx-10 push-btn bg-transparent" data-toggle="push-menu" role="button">
+			<i class="fas fa-bars"></i>
+		</a>
+			
+		<!-- Logo -->
+		<a href="index.html" class="logo">
+		  <!-- logo-->
+		  <div class="logo-lg">
+			  <span class="light-logo"><img src="../images/logo-dark-text.png" alt="logo"></span>
+			  <span class="dark-logo"><img src="../images/logo-light-text.png" alt="logo"></span>
+		  </div>
+		</a>	
+	</div>  
+    <!-- Header Navbar -->
+	 
+    <nav class="navbar navbar-static-top">
+      <!-- Sidebar toggle button-->
+	  <div class="app-menu">
+		<ul class="header-megamenu nav">
+			<li class="btn-group nav-item d-md-none">
+				<a href="#" class="waves-effect waves-light nav-link push-btn" data-toggle="push-menu" role="button">
+					<i class="fas fa-bars"></i> <!-- Replaced icon-Align-left -->
+				</a>
+			</li>
+			<li class="btn-group nav-item d-none d-xl-inline-block">
+				<a href="contact_app_chat.html" class="waves-effect waves-light nav-link svg-bt-icon" title="Chat">
+					<i class="fas fa-comments"></i> <!-- Replaced icon-Chat -->
+				</a>
+			</li>
+			<li class="btn-group nav-item d-none d-xl-inline-block">
+				<a href="mailbox.html" class="waves-effect waves-light nav-link svg-bt-icon" title="Mailbox">
+					<i class="fas fa-envelope"></i> <!-- Replaced icon-Mailbox -->
+				</a>
+			</li>
+			<li class="btn-group nav-item d-none d-xl-inline-block">
+				<a href="extra_taskboard.html" class="waves-effect waves-light nav-link svg-bt-icon" title="Taskboard">
+					<i class="fas fa-clipboard-check"></i> <!-- Replaced icon-Clipboard-check -->
+				</a>
+			</li>
+		</ul>
+	  </div>
+		
+      <div class="navbar-custom-menu r-side">
+		<ul class="nav navbar-nav">    
+		
+			
+		
+			
+		  
+	      <!-- User Account-->
+		  <li class="dropdown user user-menu">
+			<a href="#" class="waves-effect waves-light dropdown-toggle" data-bs-toggle="dropdown" title="User">
+				<i class="fas fa-user"></i>
+			</a>
+			<ul class="dropdown-menu animated flipInX">
+				<li class="user-body">
+					<a class="dropdown-item" href="#"><i class="fas fa-user text-muted me-2"></i> Profile</a>
+					<a class="dropdown-item" href="#"><i class="fas fa-wallet text-muted me-2"></i> My Wallet</a>
+					<a class="dropdown-item" href="#"><i class="fas fa-cog text-muted me-2"></i> Settings</a>
+					<div class="dropdown-divider"></div>
+					<a class="dropdown-item" href="#"><i class="fas fa-lock text-muted me-2"></i> Logout</a>
+				</li>
+			</ul>
+		</li>    
+		
+		
+        </ul>
+      </div>
+    </nav>
+  </header>
+  
+  <aside class="main-sidebar">
+    <!-- sidebar-->
+	<section class="sidebar position-relative">    
+		<div class="multinav">
+			<div class="multinav-scroll" style="height: 100%;">    
+				<!-- sidebar menu-->
+				<ul class="sidebar-menu" data-widget="tree">    
+					<li class="header">Dashboard & Apps</li>
+					<li class="treeview">
+						<a href="#">
+							<i class="fas fa-th"></i>
+							<span>Dashboard</span>
+							<span class="pull-right-container">
+								<i class="fa fa-angle-right pull-right"></i>
+							</span>
+						</a>
+						<ul class="treeview-menu">
+							<li><a href="index2.html"><i class="fas fa-chart-line"></i> Dashboard</a></li>
+						</ul>
+					</li>
+	
+					<li class="treeview">
+						<a href="#">
+							<i class="fas fa-file-alt"></i>
+							<span>Forms & Tables</span>
+							<span class="pull-right-container">
+								<i class="fa fa-angle-right pull-right"></i>
+							</span>
+						</a>                    
+						<ul class="treeview-menu">                    
+							<li class="treeview">
+								<a href="#">
+									<i class="fas fa-edit"></i> Forms
+									<span class="pull-right-container">
+										<i class="fa fa-angle-right pull-right"></i>
+									</span>
+								</a>
+								<ul class="treeview-menu">
+									<li><a href="offlinecourseform.html"><i class="fas fa-plus-circle"></i> Create Offline Course</a></li>
+									<li><a href="quizform.html"><i class="fas fa-poll"></i> Create Quiz</a></li>
+								</ul>
+							</li>         
+							<li class="treeview">
+								<a href="#">
+									<i class="fas fa-table"></i> Tables
+									<span class="pull-right-container">
+										<i class="fa fa-angle-right pull-right"></i>
+									</span>
+								</a>
+								<ul class="treeview-menu">
+									<li><a href="quizTables.html"><i class="fas fa-list"></i> Quiz List</a></li>
+									<li><a href="offlinecoursesTable.html"><i class="fas fa-book"></i> Offline Courses List</a></li>
+									<li><a href="teacherReview.html"><i class="fas fa-star"></i> Teachers Review</a></li>
+								</ul>
+							</li>                    
+						</ul>
+					</li>
+					
+					<li class="treeview">
+						<a href="#">
+							<i class="fas fa-user"></i>
+							<span>Pages</span>
+							<span class="pull-right-container">
+								<i class="fa fa-angle-right pull-right"></i>
+							</span>
+						</a>
+						<ul class="treeview-menu">
+							<li><a href="contact_userlist_grid.html"><i class="fas fa-chalkboard-teacher"></i> Teachers</a></li>
+							<li><a href="contact_userlist.html"><i class="fas fa-user-graduate"></i> Students</a></li>    
+						</ul>
+					</li>
+	
+					<li class="header">LOGIN & ERROR </li>
+					<li class="treeview">
+						<a href="#">
+							<i class="fas fa-lock"></i>
+							<span>Authentication</span>
+							<span class="pull-right-container">
+								<i class="fa fa-angle-right pull-right"></i>
+							</span>
+						</a>
+						<ul class="treeview-menu">
+							<li><a href="auth_login.html"><i class="fas fa-sign-in-alt"></i> Login</a></li>
+							<li><a href="auth_register.html"><i class="fas fa-user-plus"></i> Register</a></li>
+							<li><a href="auth_lockscreen.html"><i class="fas fa-lock"></i> Lockscreen</a></li>
+							<li><a href="auth_user_pass.html"><i class="fas fa-key"></i> Recover password</a></li>    
+						</ul>
+					</li>            
+				</ul>
+			</div>
+		</div>
+	</section>
+	<div class="sidebar-footer">
+		<a href="javascript:void(0)" class="link" data-bs-toggle="tooltip" title="Settings"><span class="icon-Settings-2"></span></a>
+		<a href="mailbox.html" class="link" data-bs-toggle="tooltip" title="Email"><span class="icon-Mail"></span></a>
+		<a href="javascript:void(0)" class="link" data-bs-toggle="tooltip" title="Logout"><span class="icon-Lock-overturning"><span class="path1"></span><span class="path2"></span></span></a>
+	</div>
+  </aside>
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+	  <div class="container-full">
+		<!-- Main content -->
+		<section class="content">
+			<div class="row">
+				<div class="col-xl-8">														
+					<div class="box no-shadow mb-0 bg-transparent">
+						<div class="box-header no-border px-0">
+							<h4 class="box-title">Your Courses</h4>							
+							<div class="box-controls pull-right d-md-flex d-none">
+							  <a href="#">View All</a>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-lg-4 col-12">
+							<a href="#" class="box pull-up">
+								<div class="box-body">
+									<div class="d-flex align-items-center">
+										<div class="icon bg-primary-light rounded-circle w-60 h-60 text-center l-h-80">
+											<span class="fs-30 icon-Users"></span>
+										</div>
+										<div class="ms-15">                                             
+											<h5 class="mb-0">Total Students</h5>
+											<p class="text-fade fs-12 mb-0" id="studentCount">Loading...</p>
+										</div>
+									</div>
+								</div>
+							</a>
+						</div>
+						
+						<div class="col-lg-4 col-12">
+							<a href="#" class="box pull-up">
+								<div class="box-body">
+									<div class="d-flex align-items-center">
+										<div class="icon bg-primary-light rounded-circle w-60 h-60 text-center l-h-80">
+											<span class="fs-30 icon-Teacher"></span>
+										</div>
+										<div class="ms-15">                                             
+											<h5 class="mb-0">Total Teachers</h5>
+											<p class="text-fade fs-12 mb-0" id="teacherCount">Loading...</p>
+										</div>
+									</div>
+								</div>
+							</a>
+						</div>
+						
+						<div class="col-lg-4 col-12">
+							<a href="#" class="box pull-up">
+								<div class="box-body">
+									<div class="d-flex align-items-center">
+										<div class="icon bg-primary-light rounded-circle w-60 h-60 text-center l-h-80">
+											<span class="fs-30 icon-Review"></span>
+										</div>
+										<div class="ms-15">                                             
+											<h5 class="mb-0">Teacher Reviews</h5>
+											<p class="text-fade fs-12 mb-0" id="reviewCount">Loading...</p>
+										</div>
+									</div>
+								</div>
+							</a>
+						</div>
+						
+						<div class="col-lg-6 col-12">
+							<div class="box">
+								<div class="box-header">
+									<h4 class="box-title">Updates</h4>
+								</div>
+								<div class="box-body">
+									<h3>Daily Updates</h3>
+									<div class="act-div" id="latest-activity">
+										<p>Loading activity...</p>
+									</div>
+								</div>
+							
+								<div class="box-footer text-center p-0">
+									<a href="#" class="btn d-grid btn-primary-light">View all</a>
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-6">
+							<div class="box">
+								<div class="box-header">
+									<h4 class="box-title">Statisics</h4>
+								</div>
+								<div class="box-body">
+									<h3 class="mt-0">24hr</h3>
+									<p class="text-fade fs-12">Users Signed Up (Last 7 Days)</p>
+									<canvas id="charts_widget_2_chart"></canvas>
+								</div>
+							</div>
+							<div class="row">
+								<!-- Offline Courses Count -->
+								<div class="col-6">
+									<a class="box bg-light-blue" href="javascript:void(0)">
+										<p class="fw-600 text-info">Offline Courses</p>
+										<h1 id="offline-course-count" class="countnm">0</h1>
+									</a>
+								</div>
+						
+								<!-- Quiz Count -->
+								<div class="col-6">
+									<a class="box bg-light-green" href="javascript:void(0)">
+										<p class="fw-600 text-info">Total Quizzes</p>
+										<h1 id="quiz-count" class="countnm">0</h1>
+									</a>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="box">
+						<div class="box-header">
+							<h4 class="box-title">Activity Statistics</h4>
+							<ul class="box-controls pull-right d-md-flex d-none">
+								<li class="dropdown">
+									<button class="dropdown-toggle btn btn-warning-light px-10" data-bs-toggle="dropdown" href="#" aria-expanded="false">Monthly</button>
+									<div class="dropdown-menu dropdown-menu-end">
+										<a class="dropdown-item active" href="#">Today</a>
+										<a class="dropdown-item" href="#">Yesterday</a>
+										<a class="dropdown-item" href="#">Last week</a>
+										<a class="dropdown-item" href="#">Last month</a>
+									</div>
+								</li>
+							</ul>
+						</div>
+						<div class="box-body">
+							<canvas id="charts_widget_1_chart"></canvas>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-lg-6 col-12">
+							<a href="#" class="box bg-danger bg-hover-danger pull-up">
+								<div class="box-body">
+									<div class="d-flex align-items-center">
+										<div class="w-80 h-80 l-h-100 rounded-circle b-1 border-white text-center">
+											<i class="fas fa-shopping-cart text-white fs-40"></i>
+										</div>
+										<div class="ms-10">
+											<h4 class="text-white mb-0">+1 1234 456 789</h4>
+											<h5 class="text-white-50 mb-0">Toll Free</h5>
+										</div>
+									</div>							
+								</div>
+							</a>
+						</div>
+						<div class="col-lg-6 col-12">
+							<a href="#" class="box bg-primary bg-hover-primary pull-up">
+								<div class="box-body">
+									<div class="d-flex align-items-center">
+										<div class="w-80 h-80 l-h-100 rounded-circle b-1 border-white text-center">
+											<i class="fas fa-envelope text-white fs-40"></i>
+										</div>
+										<div class="ms-10">
+											<h4 class="text-white mb-0">info@EduAdmin.com</h4>
+											<h5 class="text-white-50 mb-0">Free to Fill Us</h5>
+										</div>
+									</div>							
+								</div>
+							</a>
+						</div>
+					</div>
+				</div>
+				<div class="col-xl-4 col-12">										
+					<div class="box no-shadow mb-0 bg-transparent">
+						<div class="box-header no-border px-0">
+							<h4 class="box-title">Latest Activity</h4>							
+							<div class="box-controls pull-right d-md-flex d-none">
+							  <a href="#">View All</a>
+							</div>
+						</div>
+					</div>
+					<div>
+						<div class="box bs-5 border-danger rounded mb-10 pull-up">
+						 <!-- Latest Registered User -->
+    <div class="box-body">
+        <div class="flex-grow-1">
+            <div class="d-flex align-items-center pe-2 justify-content-between">
+                <h4 class="fw-500">Latest Registered User</h4>
+            </div>
+            <div id="latest-user" class="d-flex align-items-center mt-10">
+                <p>Loading...</p>
+            </div>
+        </div>
+    </div>
+					</div>
+    <!-- Latest Teacher Review -->
+    <div class="box bs-5 border-primary rounded mb-10 pull-up">
+        <div class="box-body">
+            <div class="flex-grow-1">
+                <div class="d-flex align-items-center pe-2 justify-content-between">
+                    <h4 class="fw-500">Latest Teacher Review</h4>
+                </div>
+                <div id="latest-review" class="d-flex align-items-center mt-10">
+                    <p>Loading...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+										
+					<div class="box no-shadow mb-0 bg-transparent">
+						<div class="box-header no-border px-0">
+							<h4 class="box-title">Lessons</h4>							
+							<div class="box-controls pull-right d-md-flex d-none">
+							  <a href="#">View All</a>
+							</div>
+						</div>
+					</div>
+					<div class="course-container">
+						<h3>Recently Added Courses</h3>
+						<div id="most-added-courses">
+							<p>Loading courses...</p>
+						</div>
+					</div>
+									
+					<div class="box no-shadow mb-0 bg-transparent">
+						<div class="box-header no-border px-0">
+							<h4 class="box-title">Recent Live Course</h4>							
+							<div class="box-controls pull-right d-md-flex d-none">
+							  <a href="#">View All</a>
+							</div>
+						</div>
+					</div>
+					<div id="live-course-container">
+						<div class="card">
+							<div class="min-h-310" style="background-image: url(../images/front-end-img/courses/1.jpg); background-position: center center; background-size: cover;"></div>
+							<div class="card-body">
+								<span class="badge badge-primary">Online</span>	
+								<span class="badge badge-primary-light">English</span>
+								<span class="badge badge-primary-light">Spanish</span>												
+								<div class="cour-stac d-flex align-items-center text-fade mt-20">
+									<p id="course-date">Start Date: TBA</p>
+									<p class="lt-sp">|</p>
+									<p id="course-time">Time: TBA</p>
+								</div>
+								<h4 id="course-title" class="card-title justify-content-between d-flex align-items-center">Loading...</h4>
+								<p id="course-lessons" class="card-text">Lessons: 0</p>
+							</div>
+							<div class="card-footer justify-content-between d-flex align-items-center">
+								<div class="d-flex fs-18 fw-600">
+									<span id="course-price" class="text-dark me-10">$0</span> 
+								</div>
+								<span>
+									<i class="fas fa-star text-warning"></i>
+<i class="fas fa-star text-warning"></i>
+<i class="fas fa-star text-warning"></i>
+<i class="fas fa-star text-warning"></i>
+<i class="fas fa-star-half-alt text-warning"></i>
+
+									<span id="course-students" class="text-muted ms-2">(0 students)</span>
+								</span>
+							</div>
+						</div>
+					</div>
+				
+				</div>
+			</div>
+		</section>
+		<!-- /.content -->
+	  </div>
+  </div>
+  <!-- /.content-wrapper -->
+  <footer class="main-footer">
+   
+	  &copy; 2025 All Rights Reserved Catchup.
+  </footer>
+
+  <!-- Control Sidebar -->
+  <aside class="control-sidebar">
+	  
+	<div class="rpanel-title"><span class="pull-right btn btn-circle btn-danger"><i class="ion ion-close text-white" data-toggle="control-sidebar"></i></span> </div>  <!-- Create the tabs -->
+    <ul class="nav nav-tabs control-sidebar-tabs">
+      <li class="nav-item"><a href="#control-sidebar-home-tab" data-bs-toggle="tab" class="active"><i class="mdi mdi-message-text"></i></a></li>
+      <li class="nav-item"><a href="#control-sidebar-settings-tab" data-bs-toggle="tab"><i class="mdi mdi-playlist-check"></i></a></li>
+    </ul>
+    <!-- Tab panes -->
+    <div class="tab-content">
+      <!-- Home tab content -->
+      <div class="tab-pane active" id="control-sidebar-home-tab">
+          <div class="flexbox">
+			<a href="javascript:void(0)" class="text-grey">
+				<i class="ti-more"></i>
+			</a>	
+			<p>Users</p>
+			<a href="javascript:void(0)" class="text-end text-grey"><i class="ti-plus"></i></a>
+		  </div>
+		  <div class="lookup lookup-sm lookup-right d-none d-lg-block">
+			<input type="text" name="s" placeholder="Search" class="w-p100">
+		  </div>
+          <div class="media-list media-list-hover mt-20">
+			<div class="media py-10 px-0">
+			  <a class="avatar avatar-lg status-success" href="#">
+				<img src="../images/avatar/1.jpg" alt="...">
+			  </a>
+			  <div class="media-body">
+				<p class="fs-16">
+				  <a class="hover-primary" href="#"><strong>Tyler</strong></a>
+				</p>
+				<p>Praesent tristique diam...</p>
+				  <span>Just now</span>
+			  </div>
+			</div>
+
+			<div class="media py-10 px-0">
+			  <a class="avatar avatar-lg status-danger" href="#">
+				<img src="../images/avatar/2.jpg" alt="...">
+			  </a>
+			  <div class="media-body">
+				<p class="fs-16">
+				  <a class="hover-primary" href="#"><strong>Luke</strong></a>
+				</p>
+				<p>Cras tempor diam ...</p>
+				  <span>33 min ago</span>
+			  </div>
+			</div>
+
+			<div class="media py-10 px-0">
+			  <a class="avatar avatar-lg status-warning" href="#">
+				<img src="../images/avatar/3.jpg" alt="...">
+			  </a>
+			  <div class="media-body">
+				<p class="fs-16">
+				  <a class="hover-primary" href="#"><strong>Evan</strong></a>
+				</p>
+				<p>In posuere tortor vel...</p>
+				  <span>42 min ago</span>
+			  </div>
+			</div>
+
+			<div class="media py-10 px-0">
+			  <a class="avatar avatar-lg status-primary" href="#">
+				<img src="../images/avatar/4.jpg" alt="...">
+			  </a>
+			  <div class="media-body">
+				<p class="fs-16">
+				  <a class="hover-primary" href="#"><strong>Evan</strong></a>
+				</p>
+				<p>In posuere tortor vel...</p>
+				  <span>42 min ago</span>
+			  </div>
+			</div>			
+			
+			<div class="media py-10 px-0">
+			  <a class="avatar avatar-lg status-success" href="#">
+				<img src="../images/avatar/1.jpg" alt="...">
+			  </a>
+			  <div class="media-body">
+				<p class="fs-16">
+				  <a class="hover-primary" href="#"><strong>Tyler</strong></a>
+				</p>
+				<p>Praesent tristique diam...</p>
+				  <span>Just now</span>
+			  </div>
+			</div>
+
+			<div class="media py-10 px-0">
+			  <a class="avatar avatar-lg status-danger" href="#">
+				<img src="../images/avatar/2.jpg" alt="...">
+			  </a>
+			  <div class="media-body">
+				<p class="fs-16">
+				  <a class="hover-primary" href="#"><strong>Luke</strong></a>
+				</p>
+				<p>Cras tempor diam ...</p>
+				  <span>33 min ago</span>
+			  </div>
+			</div>
+
+			<div class="media py-10 px-0">
+			  <a class="avatar avatar-lg status-warning" href="#">
+				<img src="../images/avatar/3.jpg" alt="...">
+			  </a>
+			  <div class="media-body">
+				<p class="fs-16">
+				  <a class="hover-primary" href="#"><strong>Evan</strong></a>
+				</p>
+				<p>In posuere tortor vel...</p>
+				  <span>42 min ago</span>
+			  </div>
+			</div>
+
+			<div class="media py-10 px-0">
+			  <a class="avatar avatar-lg status-primary" href="#">
+				<img src="../images/avatar/4.jpg" alt="...">
+			  </a>
+			  <div class="media-body">
+				<p class="fs-16">
+				  <a class="hover-primary" href="#"><strong>Evan</strong></a>
+				</p>
+				<p>In posuere tortor vel...</p>
+				  <span>42 min ago</span>
+			  </div>
+			</div>
+			  
+		  </div>
+
+      </div>
+      <!-- /.tab-pane -->
+      <!-- Settings tab content -->
+      <div class="tab-pane" id="control-sidebar-settings-tab">
+          <div class="flexbox">
+			<a href="javascript:void(0)" class="text-grey">
+				<i class="ti-more"></i>
+			</a>	
+			<p>Todo List</p>
+			<a href="javascript:void(0)" class="text-end text-grey"><i class="ti-plus"></i></a>
+		  </div>
+        <ul class="todo-list mt-20">
+			<li class="py-15 px-5 by-1">
+			  <!-- checkbox -->
+			  <input type="checkbox" id="basic_checkbox_1" class="filled-in">
+			  <label for="basic_checkbox_1" class="mb-0 h-15"></label>
+			  <!-- todo text -->
+			  <span class="text-line">Nulla vitae purus</span>
+			  <!-- Emphasis label -->
+			  <small class="badge bg-danger"><i class="fa fa-clock-o"></i> 2 mins</small>
+			  <!-- General tools such as edit or delete-->
+			  <div class="tools">
+				<i class="fa fa-edit"></i>
+				<i class="fa fa-trash-o"></i>
+			  </div>
+			</li>
+			<li class="py-15 px-5">
+			  <!-- checkbox -->
+			  <input type="checkbox" id="basic_checkbox_2" class="filled-in">
+			  <label for="basic_checkbox_2" class="mb-0 h-15"></label>
+			  <span class="text-line">Phasellus interdum</span>
+			  <small class="badge bg-info"><i class="fa fa-clock-o"></i> 4 hours</small>
+			  <div class="tools">
+				<i class="fa fa-edit"></i>
+				<i class="fa fa-trash-o"></i>
+			  </div>
+			</li>
+			<li class="py-15 px-5 by-1">
+			  <!-- checkbox -->
+			  <input type="checkbox" id="basic_checkbox_3" class="filled-in">
+			  <label for="basic_checkbox_3" class="mb-0 h-15"></label>
+			  <span class="text-line">Quisque sodales</span>
+			  <small class="badge bg-warning"><i class="fa fa-clock-o"></i> 1 day</small>
+			  <div class="tools">
+				<i class="fa fa-edit"></i>
+				<i class="fa fa-trash-o"></i>
+			  </div>
+			</li>
+			<li class="py-15 px-5">
+			  <!-- checkbox -->
+			  <input type="checkbox" id="basic_checkbox_4" class="filled-in">
+			  <label for="basic_checkbox_4" class="mb-0 h-15"></label>
+			  <span class="text-line">Proin nec mi porta</span>
+			  <small class="badge bg-success"><i class="fa fa-clock-o"></i> 3 days</small>
+			  <div class="tools">
+				<i class="fa fa-edit"></i>
+				<i class="fa fa-trash-o"></i>
+			  </div>
+			</li>
+			<li class="py-15 px-5 by-1">
+			  <!-- checkbox -->
+			  <input type="checkbox" id="basic_checkbox_5" class="filled-in">
+			  <label for="basic_checkbox_5" class="mb-0 h-15"></label>
+			  <span class="text-line">Maecenas scelerisque</span>
+			  <small class="badge bg-primary"><i class="fa fa-clock-o"></i> 1 week</small>
+			  <div class="tools">
+				<i class="fa fa-edit"></i>
+				<i class="fa fa-trash-o"></i>
+			  </div>
+			</li>
+			<li class="py-15 px-5">
+			  <!-- checkbox -->
+			  <input type="checkbox" id="basic_checkbox_6" class="filled-in">
+			  <label for="basic_checkbox_6" class="mb-0 h-15"></label>
+			  <span class="text-line">Vivamus nec orci</span>
+			  <small class="badge bg-info"><i class="fa fa-clock-o"></i> 1 month</small>
+			  <div class="tools">
+				<i class="fa fa-edit"></i>
+				<i class="fa fa-trash-o"></i>
+			  </div>
+			</li>
+			<li class="py-15 px-5 by-1">
+			  <!-- checkbox -->
+			  <input type="checkbox" id="basic_checkbox_7" class="filled-in">
+			  <label for="basic_checkbox_7" class="mb-0 h-15"></label>
+			  <!-- todo text -->
+			  <span class="text-line">Nulla vitae purus</span>
+			  <!-- Emphasis label -->
+			  <small class="badge bg-danger"><i class="fa fa-clock-o"></i> 2 mins</small>
+			  <!-- General tools such as edit or delete-->
+			  <div class="tools">
+				<i class="fa fa-edit"></i>
+				<i class="fa fa-trash-o"></i>
+			  </div>
+			</li>
+			<li class="py-15 px-5">
+			  <!-- checkbox -->
+			  <input type="checkbox" id="basic_checkbox_8" class="filled-in">
+			  <label for="basic_checkbox_8" class="mb-0 h-15"></label>
+			  <span class="text-line">Phasellus interdum</span>
+			  <small class="badge bg-info"><i class="fa fa-clock-o"></i> 4 hours</small>
+			  <div class="tools">
+				<i class="fa fa-edit"></i>
+				<i class="fa fa-trash-o"></i>
+			  </div>
+			</li>
+			<li class="py-15 px-5 by-1">
+			  <!-- checkbox -->
+			  <input type="checkbox" id="basic_checkbox_9" class="filled-in">
+			  <label for="basic_checkbox_9" class="mb-0 h-15"></label>
+			  <span class="text-line">Quisque sodales</span>
+			  <small class="badge bg-warning"><i class="fa fa-clock-o"></i> 1 day</small>
+			  <div class="tools">
+				<i class="fa fa-edit"></i>
+				<i class="fa fa-trash-o"></i>
+			  </div>
+			</li>
+			<li class="py-15 px-5">
+			  <!-- checkbox -->
+			  <input type="checkbox" id="basic_checkbox_10" class="filled-in">
+			  <label for="basic_checkbox_10" class="mb-0 h-15"></label>
+			  <span class="text-line">Proin nec mi porta</span>
+			  <small class="badge bg-success"><i class="fa fa-clock-o"></i> 3 days</small>
+			  <div class="tools">
+				<i class="fa fa-edit"></i>
+				<i class="fa fa-trash-o"></i>
+			  </div>
+			</li>
+		  </ul>
+      </div>
+      <!-- /.tab-pane -->
+    </div>
+  </aside>
+  <!-- /.control-sidebar -->
+  
+  <!-- Add the sidebar's background. This div must be placed immediately after the control sidebar -->
+  <div class="control-sidebar-bg"></div>
+  
+</div>
+<!-- ./wrapper -->
+	
+	
+		
+	
+	
+	<!-- Page Content overlay -->
+	<script>
+		document.addEventListener("DOMContentLoaded", async () => {
+			try {
+				const studentsRes = await fetch("http://localhost:3000/api/users");
+				const teachersRes = await fetch("http://localhost:3000/api/teachers");
+				const reviewsRes = await fetch("http://localhost:3000/api/teacher-reviews");
+	
+				const students = await studentsRes.json();
+				const teachers = await teachersRes.json();
+				const reviews = await reviewsRes.json();
+	
+				document.getElementById("studentCount").textContent = students.length;
+				document.getElementById("teacherCount").textContent = teachers.length;
+				document.getElementById("reviewCount").textContent = reviews.length;
+			} catch (error) {
+				console.error("Error fetching data:", error);
+				document.getElementById("studentCount").textContent = "Error";
+				document.getElementById("teacherCount").textContent = "Error";
+				document.getElementById("reviewCount").textContent = "Error";
+			}
+		});
+	</script>
+	
+	
+
+
+
+
+	<script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const defaultUserAvatar = "https://www.w3schools.com/howto/img_avatar.png"; // Default user avatar
+            const defaultTeacherAvatar = "https://cdn-icons-png.flaticon.com/512/201/201634.png"; // Default teacher avatar
+
+            // Fetch latest registered user
+            fetch("http://localhost:3000/api/users")
+                .then(response => response.json())
+                .then(users => {
+                    if (users.length > 0) {
+                        const latestUser = users.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))[0];
+                        const userImage = latestUser.image && latestUser.image.trim() ? latestUser.image : defaultUserAvatar;
+                        document.getElementById("latest-user").innerHTML = `
+                            <img src="${userImage}" alt="User Avatar" class="h-50 w-50 rounded-circle me-10">
+                            <div>
+                                <strong>${latestUser.name}</strong> <br>
+                                <small>Registered: ${new Date(latestUser.createdAt).toLocaleString()}</small>
+                            </div>
+                        `;
+                    } else {
+                        document.getElementById("latest-user").innerText = "No users found.";
+                    }
+                })
+                .catch(error => console.error("Error fetching users:", error));
+
+            // Fetch latest teacher review
+            fetch("http://localhost:3000/api/teacher-reviews")
+                .then(response => response.json())
+                .then(reviews => {
+                    if (reviews.length > 0) {
+                        const latestReview = reviews.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))[0];
+                        const teacherImage = latestReview.profileImage && latestReview.profileImage.trim() ? latestReview.profileImage : defaultTeacherAvatar;
+                        document.getElementById("latest-review").innerHTML = `
+                            <img src="${teacherImage}" alt="Teacher Avatar" class="h-50 w-50 rounded-circle me-10">
+                            <div>
+                                <strong>${latestReview.name} (${latestReview.designation})</strong> <br>
+                                <small>Review Rating: ⭐ ${latestReview.rating} / 5</small> <br>
+                                <small>Registered: ${new Date(latestReview.createdAt).toLocaleString()}</small>
+                            </div>
+                        `;
+                    } else {
+                        document.getElementById("latest-review").innerText = "No reviews found.";
+                    }
+                })
+                .catch(error => console.error("Error fetching reviews:", error));
+        });
+    </script>
+
+
+
+
+
+
+
+
+<script>
+	document.addEventListener("DOMContentLoaded", function () {
+		const courseContainer = document.getElementById("most-added-courses");
+		const defaultCourseIcon = "https://cdn-icons-png.flaticon.com/512/3135/3135715.png"; // Default icon
+
+		// Fetch most added courses from API
+		fetch("http://localhost:3000/api/offlinecourse")
+			.then(response => response.json())
+			.then(courses => {
+				if (courses.length === 0) {
+					courseContainer.innerHTML = "<p>No courses available.</p>";
+					return;
+				}
+
+				// Sort courses by createdAt (newest first)
+				courses.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+
+				// Generate HTML
+				courseContainer.innerHTML = courses.slice(0, 5).map(course => `
+					<div class="box mb-15 pull-up">
+						<div class="box-body">
+							<div class="d-flex align-items-center justify-content-between">
+								<div class="d-flex align-items-center">
+									<div class="me-15 bg-warning-light h-50 w-50 l-h-60 rounded text-center">
+										<img src="${course.courseImage || defaultCourseIcon}" alt="Course Image" class="h-50 w-50 rounded">
+									</div>
+									<div class="d-flex flex-column fw-500">
+										<a href="#" class="text-dark hover-primary mb-1 fs-16">${course.title}</a>
+										<span class="text-fade">${course.instructor.name}, ${new Date(course.createdAt).toLocaleDateString()}</span>
+									</div>
+								</div>
+								<a href="#">
+									<span class="fs-24">
+  <i class="fas fa-arrow-right"></i>
+</span>
+
+								</a>
+							</div>
+						</div>
+					</div>
+				`).join("");
+			})
+			.catch(error => {
+				console.error("Error fetching courses:", error);
+				courseContainer.innerHTML = "<p>Failed to load courses.</p>";
+			});
+	});
+</script>
+
+
+
+
+
+
+
+
+<script>
+	document.addEventListener("DOMContentLoaded", async function () {
+		const activityContainer = document.getElementById("latest-activity");
+		const defaultAvatar = "https://cdn-icons-png.flaticon.com/512/3135/3135715.png"; // Default avatar
+
+		try {
+			const [usersRes, teachersRes, reviewsRes, coursesRes] = await Promise.all([
+				fetch("http://localhost:3000/api/users").then(res => res.json()),
+				fetch("http://localhost:3000/api/teacher-reviews").then(res => res.json()),
+				fetch("http://localhost:3000/api/teachers").then(res => res.json()),
+				fetch("http://localhost:3000/api/offlinecourse").then(res => res.json()),
+			]);
+
+			let activities = [];
+
+			// Users Activity
+			usersRes.forEach(user => {
+				activities.push({
+					type: "User",
+					message: `New user registered: ${user.name}`,
+					date: user.createdAt,
+					user: user.name,
+					avatar: user.profileImage || defaultAvatar
+				});
+			});
+
+			// Teachers Activity (Accepted / Rejected)
+			teachersRes.forEach(teacher => {
+				activities.push({
+					type: "Teacher",
+					message: `Teacher ${teacher.name} was ${teacher.acceptedOrRejected.toLowerCase()}`,
+					date: teacher.createdAt,
+					user: teacher.name,
+					avatar: teacher.profileImage || defaultAvatar
+				});
+			});
+
+			// Teacher Reviews
+			reviewsRes.forEach(review => {
+				activities.push({
+					type: "Review",
+					message: `New review for ${review.name} - Rated ${review.rating}★`,
+					date: review.createdAt,
+					user: review.name,
+					avatar: review.profileImage || defaultAvatar
+				});
+			});
+
+			// Courses Activity
+			coursesRes.forEach(course => {
+				activities.push({
+					type: "Course",
+					message: `New course added: ${course.title}`,
+					date: course.createdAt,
+					user: course.instructor.name,
+					avatar: course.instructor.image || defaultAvatar
+				});
+			});
+
+			// Sort by date (latest first)
+			activities.sort((a, b) => new Date(b.date) - new Date(a.date));
+
+			// Generate HTML
+			activityContainer.innerHTML = activities.map(activity => `
+				<div class="bg-gray-100 p-15 rounded10 mb-20">
+					<div>
+						<span class="badge badge-sm badge-dot ${activity.type === 'Course' ? 'badge-warning' : 'badge-primary'} me-5"></span>
+						${activity.type}
+					</div>
+					<h4 class="my-20">${activity.message}</h4>
+					<div class="d-flex align-items-center justify-content-between">
+						<div class="d-flex align-items-center">
+							<img src="${activity.avatar}" class="avatar avatar-sm me-10 avatar-pill">
+							<p class="text-fade fs-12 mb-0">${activity.user}</p>
+						</div>
+						<p class="text-fade fs-12 mb-0">${new Date(activity.date).toLocaleDateString()}</p>
+					</div>
+				</div>
+			`).join("");
+
+		} catch (error) {
+			console.error("Error fetching activities:", error);
+			activityContainer.innerHTML = "<p>Failed to load activity.</p>";
+		}
+	});
+</script>
+
+
+
+
+
+
+
+
+
+
+<script>
+	document.addEventListener("DOMContentLoaded", async function () {
+		const ctx = document.getElementById("charts_widget_2_chart").getContext("2d");
+
+		try {
+			// Fetch users data
+			const usersRes = await fetch("http://localhost:3000/api/users");
+			const users = await usersRes.json();
+
+			// Process user sign-ups per day
+			const signups = {};
+			const now = new Date();
+
+			// Initialize past 7 days with zero counts
+			for (let i = 6; i >= 0; i--) {
+				const date = new Date(now);
+				date.setDate(now.getDate() - i);
+				const dateString = date.toISOString().split("T")[0]; // YYYY-MM-DD
+				signups[dateString] = 0;
+			}
+
+			// Count sign-ups per day
+			users.forEach(user => {
+				const createdAt = new Date(user.createdAt).toISOString().split("T")[0]; // YYYY-MM-DD
+				if (signups.hasOwnProperty(createdAt)) {
+					signups[createdAt]++;
+				}
+			});
+
+			// Prepare data for Chart.js
+			const labels = Object.keys(signups);
+			const data = Object.values(signups);
+
+			// Generate chart
+			new Chart(ctx, {
+				type: "bar",
+				data: {
+					labels,
+					datasets: [{
+						label: "Users Signed Up",
+						data,
+						backgroundColor: "rgba(75, 192, 192, 0.6)",
+						borderColor: "rgba(75, 192, 192, 1)",
+						borderWidth: 1
+					}]
+				},
+				options: {
+					responsive: true,
+					scales: {
+						y: { beginAtZero: true }
+					}
+				}
+			});
+
+		} catch (error) {
+			console.error("Error fetching sign-up data:", error);
+			document.getElementById("charts_widget_2_chart").innerHTML = "<p>Failed to load chart.</p>";
+		}
+	});
+</script>
+
+
+
+
+
+
+
+<script>
+	document.addEventListener("DOMContentLoaded", async function () {
+		try {
+			// Fetch the total count of offline courses
+			const offlineCourseRes = await fetch("http://localhost:3000/api/offlinecourse");
+			const offlineCourses = await offlineCourseRes.json();
+			const totalOfflineCourses = offlineCourses.length; // Count courses
+			
+			// Fetch the total count of quizzes
+			const quizRes = await fetch("http://localhost:3000/api/quiz");
+			const quizzes = await quizRes.json();
+			const totalQuizzes = quizzes.length; // Count quizzes
+
+			// Update UI
+			document.getElementById("offline-course-count").innerText = totalOfflineCourses;
+			document.getElementById("quiz-count").innerText = totalQuizzes;
+
+		} catch (error) {
+			console.error("Error fetching data:", error);
+			document.getElementById("offline-course-count").innerText = "Error";
+			document.getElementById("quiz-count").innerText = "Error";
+		}
+	});
+</script>
+	<!-- Vendor JS -->
+	<script src="js/vendors.min.js"></script>
+	<script src="js/pages/chat-popup.js"></script>
+    <script src="../assets/icons/feather-icons/feather.min.js"></script>	
+
+	<script src="../assets/vendor_components/apexcharts-bundle/dist/apexcharts.js"></script>
+	
+	<!-- EduAdmin App -->
+	<script src="js/template.js"></script>
+	<script src="js/pages/dashboard2.js"></script>
+	
+
+
+
+
+
+
+
+
+
+
+
+	<script>
+        document.addEventListener("DOMContentLoaded", async function () {
+            try {
+                // Fetch user sign-ups
+                const userRes = await fetch("http://localhost:3000/api/users");
+                const users = await userRes.json();
+                
+                // Fetch teacher applications
+                const teacherRes = await fetch("http://localhost:3000/api/teacher-reviews");
+                const teachers = await teacherRes.json();
+
+                // Function to group data by date
+                function groupByDate(data) {
+                    return data.reduce((acc, item) => {
+                        const date = new Date(item.createdAt).toISOString().split("T")[0]; // Extract YYYY-MM-DD
+                        acc[date] = (acc[date] || 0) + 1;
+                        return acc;
+                    }, {});
+                }
+
+                const userActivity = groupByDate(users);
+                const teacherActivity = groupByDate(teachers);
+
+                // Combine both activities into one timeline
+                const allDates = [...new Set([...Object.keys(userActivity), ...Object.keys(teacherActivity)])].sort();
+                
+                const userCounts = allDates.map(date => userActivity[date] || 0);
+                const teacherCounts = allDates.map(date => teacherActivity[date] || 0);
+
+                // Render Chart.js
+                const ctx = document.getElementById("charts_widget_1_chart").getContext("2d");
+                new Chart(ctx, {
+                    type: "line",
+                    data: {
+                        labels: allDates,
+                        datasets: [
+                            {
+                                label: "User Sign-ups",
+                                data: userCounts,
+                                borderColor: "blue",
+                                backgroundColor: "rgba(0, 0, 255, 0.2)",
+                                fill: true
+                            },
+                            {
+                                label: "Teacher Applications",
+                                data: teacherCounts,
+                                borderColor: "orange",
+                                backgroundColor: "rgba(255, 165, 0, 0.2)",
+                                fill: true
+                            }
+                        ]
+                    },
+                    options: {
+                        responsive: true,
+                        plugins: { legend: { position: "top" } },
+                        scales: {
+                            x: { title: { display: true, text: "Date" } },
+                            y: { title: { display: true, text: "Number of Activities" } }
+                        }
+                    }
+                });
+
+            } catch (error) {
+                console.error("Error fetching activity data:", error);
+                document.getElementById("charts_widget_1_chart").innerHTML = "<p>Error loading chart data</p>";
+            }
+        });
+    </script>
+   
+
+
+
+
+
+<script>
+        document.addEventListener("DOMContentLoaded", async function () {
+            try {
+                // Fetch the latest live course
+                const response = await fetch("http://localhost:3000/api/livecourse/get");
+                const courses = await response.json();
+
+                if (!courses.length) {
+                    document.getElementById("live-course-container").innerHTML = "<p>No live courses available.</p>";
+                    return;
+                }
+
+                // Sort courses by createdAt (latest first)
+                courses.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+                const latestCourse = courses[0]; // Get the most recent course
+
+                // Populate the course card
+                document.getElementById("course-title").innerText = latestCourse.title || "Untitled Course";
+                document.getElementById("course-date").innerText = `Start Date: ${latestCourse.date || "TBA"}`;
+                document.getElementById("course-time").innerText = `Time: ${latestCourse.time || "TBA"}`;
+                document.getElementById("course-lessons").innerText = `Lessons: ${latestCourse.lessonCount || 0}`;
+                document.getElementById("course-price").innerText = `$${latestCourse.totalCost || "0"}`;
+                document.getElementById("course-students").innerText = `(${latestCourse.studentsCount || 0} students)`;
+                
+            } catch (error) {
+                console.error("Error fetching live course:", error);
+                document.getElementById("live-course-container").innerHTML = "<p>Error loading course data.</p>";
+            }
+        });
+    </script>
+</body>
+</html>

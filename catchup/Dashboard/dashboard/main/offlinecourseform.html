@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../images/favicon.ico">
+
+    <title>EduAdmin - Dashboard  Form Wizard </title>
+  
+	<!-- Vendors Style-->
+	<link rel="stylesheet" href="css/vendors_css.css">
+	  
+	<!-- Style-->  
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/skin_color.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+	
+</head>
+<body class="hold-transition light-skin sidebar-mini theme-primary fixed">
+	
+<div class="wrapper">
+	<div id="loader"></div>
+
+	<header class="main-header">
+		<div class="d-flex align-items-center logo-box justify-content-start">
+			<a href="#" class="waves-effect waves-light nav-link d-none d-md-inline-block mx-10 push-btn bg-transparent" data-toggle="push-menu" role="button">
+				<i class="fas fa-bars"></i>
+			</a>
+				
+			<!-- Logo -->
+			<a href="index.html" class="logo">
+			  <!-- logo-->
+			  <div class="logo-lg">
+				  <span class="light-logo"><img src="../images/logo-dark-text.png" alt="logo"></span>
+				  <span class="dark-logo"><img src="../images/logo-light-text.png" alt="logo"></span>
+			  </div>
+			</a>	
+		</div>  
+		<!-- Header Navbar -->
+		 
+		<nav class="navbar navbar-static-top">
+		  <!-- Sidebar toggle button-->
+		  <div class="app-menu">
+			<ul class="header-megamenu nav">
+				<li class="btn-group nav-item d-md-none">
+					<a href="#" class="waves-effect waves-light nav-link push-btn" data-toggle="push-menu" role="button">
+						<i class="fas fa-bars"></i> <!-- Replaced icon-Align-left -->
+					</a>
+				</li>
+				<li class="btn-group nav-item d-none d-xl-inline-block">
+					<a href="contact_app_chat.html" class="waves-effect waves-light nav-link svg-bt-icon" title="Chat">
+						<i class="fas fa-comments"></i> <!-- Replaced icon-Chat -->
+					</a>
+				</li>
+				<li class="btn-group nav-item d-none d-xl-inline-block">
+					<a href="mailbox.html" class="waves-effect waves-light nav-link svg-bt-icon" title="Mailbox">
+						<i class="fas fa-envelope"></i> <!-- Replaced icon-Mailbox -->
+					</a>
+				</li>
+				<li class="btn-group nav-item d-none d-xl-inline-block">
+					<a href="extra_taskboard.html" class="waves-effect waves-light nav-link svg-bt-icon" title="Taskboard">
+						<i class="fas fa-clipboard-check"></i> <!-- Replaced icon-Clipboard-check -->
+					</a>
+				</li>
+			</ul>
+		  </div>
+			
+		  <div class="navbar-custom-menu r-side">
+			<ul class="nav navbar-nav">    
+			
+				
+			
+				
+			  
+			  <!-- User Account-->
+			  <li class="dropdown user user-menu">
+				<a href="#" class="waves-effect waves-light dropdown-toggle" data-bs-toggle="dropdown" title="User">
+					<i class="fas fa-user"></i>
+				</a>
+				<ul class="dropdown-menu animated flipInX">
+					<li class="user-body">
+						<a class="dropdown-item" href="#"><i class="fas fa-user text-muted me-2"></i> Profile</a>
+						<a class="dropdown-item" href="#"><i class="fas fa-wallet text-muted me-2"></i> My Wallet</a>
+						<a class="dropdown-item" href="#"><i class="fas fa-cog text-muted me-2"></i> Settings</a>
+						<div class="dropdown-divider"></div>
+						<a class="dropdown-item" href="#"><i class="fas fa-lock text-muted me-2"></i> Logout</a>
+					</li>
+				</ul>
+			</li>    
+			
+			
+			</ul>
+		  </div>
+		</nav>
+	  </header>
+	  
+	  <aside class="main-sidebar">
+		<!-- sidebar-->
+		<section class="sidebar position-relative">    
+			<div class="multinav">
+				<div class="multinav-scroll" style="height: 100%;">    
+					<!-- sidebar menu-->
+					<ul class="sidebar-menu" data-widget="tree">    
+						<li class="header">Dashboard & Apps</li>
+						<li class="treeview">
+							<a href="#">
+								<i class="fas fa-th"></i>
+								<span>Dashboard</span>
+								<span class="pull-right-container">
+									<i class="fa fa-angle-right pull-right"></i>
+								</span>
+							</a>
+							<ul class="treeview-menu">
+								<li><a href="index2.html"><i class="fas fa-chart-line"></i> Dashboard</a></li>
+							</ul>
+						</li>
+		
+						<li class="treeview">
+							<a href="#">
+								<i class="fas fa-file-alt"></i>
+								<span>Forms & Tables</span>
+								<span class="pull-right-container">
+									<i class="fa fa-angle-right pull-right"></i>
+								</span>
+							</a>                    
+							<ul class="treeview-menu">                    
+								<li class="treeview">
+									<a href="#">
+										<i class="fas fa-edit"></i> Forms
+										<span class="pull-right-container">
+											<i class="fa fa-angle-right pull-right"></i>
+										</span>
+									</a>
+									<ul class="treeview-menu">
+										<li><a href="offlinecourseform.html"><i class="fas fa-plus-circle"></i> Create Offline Course</a></li>
+										<li><a href="quizform.html"><i class="fas fa-poll"></i> Create Quiz</a></li>
+									</ul>
+								</li>         
+								<li class="treeview">
+									<a href="#">
+										<i class="fas fa-table"></i> Tables
+										<span class="pull-right-container">
+											<i class="fa fa-angle-right pull-right"></i>
+										</span>
+									</a>
+									<ul class="treeview-menu">
+										<li><a href="quizTables.html"><i class="fas fa-list"></i> Quiz List</a></li>
+										<li><a href="offlinecoursesTable.html"><i class="fas fa-book"></i> Offline Courses List</a></li>
+										<li><a href="teacherReview.html"><i class="fas fa-star"></i> Teachers Review</a></li>
+									</ul>
+								</li>                    
+							</ul>
+						</li>
+						
+						<li class="treeview">
+							<a href="#">
+								<i class="fas fa-user"></i>
+								<span>Pages</span>
+								<span class="pull-right-container">
+									<i class="fa fa-angle-right pull-right"></i>
+								</span>
+							</a>
+							<ul class="treeview-menu">
+								<li><a href="contact_userlist_grid.html"><i class="fas fa-chalkboard-teacher"></i> Teachers</a></li>
+								<li><a href="contact_userlist.html"><i class="fas fa-user-graduate"></i> Students</a></li>    
+							</ul>
+						</li>
+		
+						<li class="header">LOGIN & ERROR </li>
+						<li class="treeview">
+							<a href="#">
+								<i class="fas fa-lock"></i>
+								<span>Authentication</span>
+								<span class="pull-right-container">
+									<i class="fa fa-angle-right pull-right"></i>
+								</span>
+							</a>
+							<ul class="treeview-menu">
+								<li><a href="auth_login.html"><i class="fas fa-sign-in-alt"></i> Login</a></li>
+								<li><a href="auth_register.html"><i class="fas fa-user-plus"></i> Register</a></li>
+								<li><a href="auth_lockscreen.html"><i class="fas fa-lock"></i> Lockscreen</a></li>
+								<li><a href="auth_user_pass.html"><i class="fas fa-key"></i> Recover password</a></li>    
+							</ul>
+						</li>            
+					</ul>
+				</div>
+			</div>
+		</section>
+		<div class="sidebar-footer">
+			<a href="javascript:void(0)" class="link" data-bs-toggle="tooltip" title="Settings"><span class="icon-Settings-2"></span></a>
+			<a href="mailbox.html" class="link" data-bs-toggle="tooltip" title="Email"><span class="icon-Mail"></span></a>
+			<a href="javascript:void(0)" class="link" data-bs-toggle="tooltip" title="Logout"><span class="icon-Lock-overturning"><span class="path1"></span><span class="path2"></span></span></a>
+		</div>
+	  </aside>
+  
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+	  <div class="container-full">
+		<!-- Content Header (Page header) -->
+		<div class="content-header">
+			<div class="d-flex align-items-center">
+				<div class="me-auto">
+					<h3 class="page-title">Form Wizard</h3>
+					<div class="d-inline-block align-items-center">
+						<nav>
+							<ol class="breadcrumb">
+								<li class="breadcrumb-item"><a href="#"><i class="fas fa-home"></i></a></li>
+								<li class="breadcrumb-item" aria-current="page">Forms</li>
+								<li class="breadcrumb-item active" aria-current="page">Form Wizard</li>
+							</ol>
+						</nav>
+					</div>
+				</div>
+				
+			</div>
+		</div>	  
+
+		<!-- Main content -->
+		<section class="content">
+
+		 <!-- Step wizard -->
+		 <div class="box">
+			<div class="box-header with-border">
+				<h4 class="box-title">Course Registration</h4>
+			</div>
+		
+			<div class="box-body wizard-content">
+				<form action="#" method="POST" class="course-form" enctype="multipart/form-data">
+					<!-- Course Details -->
+					<h6>Course Details</h6>
+					<div class="row">
+						<div class="col-md-6">
+							<div class="form-group">
+								<label for="courseTitle" class="form-label">Course Title:</label>
+								<input type="text" class="form-control" id="courseTitle" name="title" required>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="form-group">
+								<label for="courseCategory" class="form-label">Category:</label>
+								<select class="form-select" id="courseCategory" name="category" required>
+									<option value="">Select Category</option>
+									<option value="Primary">Primary</option>
+									<option value="Secondary">Secondary</option>
+								</select>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-6">
+							<div class="form-group">
+								<label for="courseSubject" class="form-label">Subject:</label>
+								<input type="text" class="form-control" id="courseSubject" name="subject" required>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="form-group">
+								<label for="courseImage" class="form-label">Course Image:</label>
+								<input type="file" class="form-control" id="courseImage" name="courseImage" accept="image/*" required>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="form-group">
+								<label for="readingTime" class="form-label">Reading Time (in minutes):</label>
+								<input type="number" class="form-control" id="readingTime" name="readingTime" required>
+							</div>
+						</div>
+					</div>
+				
+					<!-- Instructor Details -->
+					<h6>Instructor Details</h6>
+					<div class="row">
+						<div class="col-md-6">
+							<div class="form-group">
+								<label for="instructorName" class="form-label">Instructor Name:</label>
+								<input type="text" class="form-control" id="instructorName" name="instructorName" required>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-6">
+							<div class="form-group">
+								<label for="instructorRole" class="form-label">Role:</label>
+								<input type="text" class="form-control" id="instructorRole" name="instructorRole" value="Teacher" readonly>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="form-group">
+								<label for="instructorImage" class="form-label">Instructor Image:</label>
+								<input type="file" class="form-control" id="instructorImage" name="instructorImage" accept="image/*" required>
+							</div>
+						</div>
+					</div>
+				
+					<!-- Course Description and Highlights -->
+					<h6>Course Description</h6>
+					<div class="form-group">
+						<label for="courseDescription" class="form-label">Description:</label>
+						<textarea class="form-control" id="courseDescription" name="description" rows="4" required></textarea>
+					</div>
+					<div class="form-group">
+						<label class="form-label">Highlights:</label>
+						<div id="courseHighlights">
+							<div class="row highlight-item">
+								<div class="col-md-4">
+									<input type="text" class="form-control" name="highlightsHeading[]" placeholder="Heading" required>
+								</div>
+								<div class="col-md-4">
+									<input type="text" class="form-control" name="highlightsText[]" placeholder="Text" required>
+								</div>
+								<div class="col-md-4">
+									<input type="text" class="form-control" name="highlightsExample[]" placeholder="Example (Optional)">
+								</div>
+							</div>
+						</div>
+						<button type="button" class="btn btn-primary mt-2" id="addHighlight">Add More</button>
+					</div>
+				
+					<!-- Confirmation -->
+					<h6>Confirmation</h6>
+					<div class="form-group">
+						<input type="checkbox" id="termsAgreement" name="termsAgreement" required>
+						<label for="termsAgreement">I agree to the Terms and Conditions</label>
+					</div>
+				
+					<!-- Custom Submit Button -->
+					<div class="text-center mt-4">
+						<button type="button" class="btn btn-success" id="customSubmitBtn">Submit</button>
+					</div>
+				</form>
+				
+				
+			</div>
+		
+		  <!-- /.box -->
+
+		
+
+		</section>
+		<!-- /.content -->
+	  </div>
+  </div>
+  <!-- /.content-wrapper -->
+  
+   <footer class="main-footer">
+   
+	  &copy; 2025 All Rights Reserved Catchup.
+  </footer>
+  <!-- Control Sidebar -->
+  <aside class="control-sidebar">
+	  
+	<div class="rpanel-title"><span class="pull-right btn btn-circle btn-danger"><i class="ion ion-close text-white" data-toggle="control-sidebar"></i></span> </div>  <!-- Create the tabs -->
+    <ul class="nav nav-tabs control-sidebar-tabs">
+      <li class="nav-item"><a href="#control-sidebar-home-tab" data-bs-toggle="tab" class="active"><i class="mdi mdi-message-text"></i></a></li>
+      <li class="nav-item"><a href="#control-sidebar-settings-tab" data-bs-toggle="tab"><i class="mdi mdi-playlist-check"></i></a></li>
+    </ul>
+    <!-- Tab panes -->
+    <div class="tab-content">
+      <!-- Home tab content -->
+      <div class="tab-pane active" id="control-sidebar-home-tab">
+          <div class="flexbox">
+			<a href="javascript:void(0)" class="text-grey">
+				<i class="ti-more"></i>
+			</a>	
+			<p>Users</p>
+			<a href="javascript:void(0)" class="text-end text-grey"><i class="ti-plus"></i></a>
+		  </div>
+		  <div class="lookup lookup-sm lookup-right d-none d-lg-block">
+			<input type="text" name="s" placeholder="Search" class="w-p100">
+		  </div>
+          <div class="media-list media-list-hover mt-20">
+			<div class="media py-10 px-0">
+			  <a class="avatar avatar-lg status-success" href="#">
+				<img src="../images/avatar/1.jpg" alt="...">
+			  </a>
+			  <div class="media-body">
+				<p class="fs-16">
+				  <a class="hover-primary" href="#"><strong>Tyler</strong></a>
+				</p>
+				<p>Praesent tristique diam...</p>
+				  <span>Just now</span>
+			  </div>
+			</div>
+
+			<div class="media py-10 px-0">
+			  <a class="avatar avatar-lg status-danger" href="#">
+				<img src="../images/avatar/2.jpg" alt="...">
+			  </a>
+			  <div class="media-body">
+				<p class="fs-16">
+				  <a class="hover-primary" href="#"><strong>Luke</strong></a>
+				</p>
+				<p>Cras tempor diam ...</p>
+				  <span>33 min ago</span>
+			  </div>
+			</div>
+
+			<div class="media py-10 px-0">
+			  <a class="avatar avatar-lg status-warning" href="#">
+				<img src="../images/avatar/3.jpg" alt="...">
+			  </a>
+			  <div class="media-body">
+				<p class="fs-16">
+				  <a class="hover-primary" href="#"><strong>Evan</strong></a>
+				</p>
+				<p>In posuere tortor vel...</p>
+				  <span>42 min ago</span>
+			  </div>
+			</div>
+
+			<div class="media py-10 px-0">
+			  <a class="avatar avatar-lg status-primary" href="#">
+				<img src="../images/avatar/4.jpg" alt="...">
+			  </a>
+			  <div class="media-body">
+				<p class="fs-16">
+				  <a class="hover-primary" href="#"><strong>Evan</strong></a>
+				</p>
+				<p>In posuere tortor vel...</p>
+				  <span>42 min ago</span>
+			  </div>
+			</div>			
+			
+			<div class="media py-10 px-0">
+			  <a class="avatar avatar-lg status-success" href="#">
+				<img src="../images/avatar/1.jpg" alt="...">
+			  </a>
+			  <div class="media-body">
+				<p class="fs-16">
+				  <a class="hover-primary" href="#"><strong>Tyler</strong></a>
+				</p>
+				<p>Praesent tristique diam...</p>
+				  <span>Just now</span>
+			  </div>
+			</div>
+
+			<div class="media py-10 px-0">
+			  <a class="avatar avatar-lg status-danger" href="#">
+				<img src="../images/avatar/2.jpg" alt="...">
+			  </a>
+			  <div class="media-body">
+				<p class="fs-16">
+				  <a class="hover-primary" href="#"><strong>Luke</strong></a>
+				</p>
+				<p>Cras tempor diam ...</p>
+				  <span>33 min ago</span>
+			  </div>
+			</div>
+
+			<div class="media py-10 px-0">
+			  <a class="avatar avatar-lg status-warning" href="#">
+				<img src="../images/avatar/3.jpg" alt="...">
+			  </a>
+			  <div class="media-body">
+				<p class="fs-16">
+				  <a class="hover-primary" href="#"><strong>Evan</strong></a>
+				</p>
+				<p>In posuere tortor vel...</p>
+				  <span>42 min ago</span>
+			  </div>
+			</div>
+
+			<div class="media py-10 px-0">
+			  <a class="avatar avatar-lg status-primary" href="#">
+				<img src="../images/avatar/4.jpg" alt="...">
+			  </a>
+			  <div class="media-body">
+				<p class="fs-16">
+				  <a class="hover-primary" href="#"><strong>Evan</strong></a>
+				</p>
+				<p>In posuere tortor vel...</p>
+				  <span>42 min ago</span>
+			  </div>
+			</div>
+			  
+		  </div>
+
+      </div>
+      <!-- /.tab-pane -->
+      <!-- Settings tab content -->
+      <div class="tab-pane" id="control-sidebar-settings-tab">
+          <div class="flexbox">
+			<a href="javascript:void(0)" class="text-grey">
+				<i class="ti-more"></i>
+			</a>	
+			<p>Todo List</p>
+			<a href="javascript:void(0)" class="text-end text-grey"><i class="ti-plus"></i></a>
+		  </div>
+        <ul class="todo-list mt-20">
+			<li class="py-15 px-5 by-1">
+			  <!-- checkbox -->
+			  <input type="checkbox" id="basic_checkbox_1" class="filled-in">
+			  <label for="basic_checkbox_1" class="mb-0 h-15"></label>
+			  <!-- todo text -->
+			  <span class="text-line">Nulla vitae purus</span>
+			  <!-- Emphasis label -->
+			  <small class="badge bg-danger"><i class="fa fa-clock-o"></i> 2 mins</small>
+			  <!-- General tools such as edit or delete-->
+			  <div class="tools">
+				<i class="fa fa-edit"></i>
+				<i class="fa fa-trash-o"></i>
+			  </div>
+			</li>
+			<li class="py-15 px-5">
+			  <!-- checkbox -->
+			  <input type="checkbox" id="basic_checkbox_2" class="filled-in">
+			  <label for="basic_checkbox_2" class="mb-0 h-15"></label>
+			  <span class="text-line">Phasellus interdum</span>
+			  <small class="badge bg-info"><i class="fa fa-clock-o"></i> 4 hours</small>
+			  <div class="tools">
+				<i class="fa fa-edit"></i>
+				<i class="fa fa-trash-o"></i>
+			  </div>
+			</li>
+			<li class="py-15 px-5 by-1">
+			  <!-- checkbox -->
+			  <input type="checkbox" id="basic_checkbox_3" class="filled-in">
+			  <label for="basic_checkbox_3" class="mb-0 h-15"></label>
+			  <span class="text-line">Quisque sodales</span>
+			  <small class="badge bg-warning"><i class="fa fa-clock-o"></i> 1 day</small>
+			  <div class="tools">
+				<i class="fa fa-edit"></i>
+				<i class="fa fa-trash-o"></i>
+			  </div>
+			</li>
+			<li class="py-15 px-5">
+			  <!-- checkbox -->
+			  <input type="checkbox" id="basic_checkbox_4" class="filled-in">
+			  <label for="basic_checkbox_4" class="mb-0 h-15"></label>
+			  <span class="text-line">Proin nec mi porta</span>
+			  <small class="badge bg-success"><i class="fa fa-clock-o"></i> 3 days</small>
+			  <div class="tools">
+				<i class="fa fa-edit"></i>
+				<i class="fa fa-trash-o"></i>
+			  </div>
+			</li>
+			<li class="py-15 px-5 by-1">
+			  <!-- checkbox -->
+			  <input type="checkbox" id="basic_checkbox_5" class="filled-in">
+			  <label for="basic_checkbox_5" class="mb-0 h-15"></label>
+			  <span class="text-line">Maecenas scelerisque</span>
+			  <small class="badge bg-primary"><i class="fa fa-clock-o"></i> 1 week</small>
+			  <div class="tools">
+				<i class="fa fa-edit"></i>
+				<i class="fa fa-trash-o"></i>
+			  </div>
+			</li>
+			<li class="py-15 px-5">
+			  <!-- checkbox -->
+			  <input type="checkbox" id="basic_checkbox_6" class="filled-in">
+			  <label for="basic_checkbox_6" class="mb-0 h-15"></label>
+			  <span class="text-line">Vivamus nec orci</span>
+			  <small class="badge bg-info"><i class="fa fa-clock-o"></i> 1 month</small>
+			  <div class="tools">
+				<i class="fa fa-edit"></i>
+				<i class="fa fa-trash-o"></i>
+			  </div>
+			</li>
+			<li class="py-15 px-5 by-1">
+			  <!-- checkbox -->
+			  <input type="checkbox" id="basic_checkbox_7" class="filled-in">
+			  <label for="basic_checkbox_7" class="mb-0 h-15"></label>
+			  <!-- todo text -->
+			  <span class="text-line">Nulla vitae purus</span>
+			  <!-- Emphasis label -->
+			  <small class="badge bg-danger"><i class="fa fa-clock-o"></i> 2 mins</small>
+			  <!-- General tools such as edit or delete-->
+			  <div class="tools">
+				<i class="fa fa-edit"></i>
+				<i class="fa fa-trash-o"></i>
+			  </div>
+			</li>
+			<li class="py-15 px-5">
+			  <!-- checkbox -->
+			  <input type="checkbox" id="basic_checkbox_8" class="filled-in">
+			  <label for="basic_checkbox_8" class="mb-0 h-15"></label>
+			  <span class="text-line">Phasellus interdum</span>
+			  <small class="badge bg-info"><i class="fa fa-clock-o"></i> 4 hours</small>
+			  <div class="tools">
+				<i class="fa fa-edit"></i>
+				<i class="fa fa-trash-o"></i>
+			  </div>
+			</li>
+			<li class="py-15 px-5 by-1">
+			  <!-- checkbox -->
+			  <input type="checkbox" id="basic_checkbox_9" class="filled-in">
+			  <label for="basic_checkbox_9" class="mb-0 h-15"></label>
+			  <span class="text-line">Quisque sodales</span>
+			  <small class="badge bg-warning"><i class="fa fa-clock-o"></i> 1 day</small>
+			  <div class="tools">
+				<i class="fa fa-edit"></i>
+				<i class="fa fa-trash-o"></i>
+			  </div>
+			</li>
+			<li class="py-15 px-5">
+			  <!-- checkbox -->
+			  <input type="checkbox" id="basic_checkbox_10" class="filled-in">
+			  <label for="basic_checkbox_10" class="mb-0 h-15"></label>
+			  <span class="text-line">Proin nec mi porta</span>
+			  <small class="badge bg-success"><i class="fa fa-clock-o"></i> 3 days</small>
+			  <div class="tools">
+				<i class="fa fa-edit"></i>
+				<i class="fa fa-trash-o"></i>
+			  </div>
+			</li>
+		  </ul>
+      </div>
+      <!-- /.tab-pane -->
+    </div>
+  </aside>
+  <!-- /.control-sidebar -->
+  
+  <!-- Add the sidebar's background. This div must be placed immediately after the control sidebar -->
+  <div class="control-sidebar-bg"></div>
+</div>
+<!-- ./wrapper -->
+
+<script>
+	document.addEventListener("DOMContentLoaded", function () {
+        console.log("Script Loaded!"); // Check if script runs
+
+        const form = document.querySelector(".course-form");
+        const submitButton = document.getElementById("customSubmitBtn");
+
+        if (!submitButton) {
+            console.error("Submit button not found!");
+            return;
+        }
+
+        // Add Highlight Fields Dynamically
+        document.getElementById("addHighlight").addEventListener("click", function () {
+            const highlightDiv = document.createElement("div");
+            highlightDiv.classList.add("row", "highlight-item");
+            highlightDiv.innerHTML = `
+                <div class="col-md-4">
+                    <input type="text" class="form-control highlight-heading" placeholder="Heading" required>
+                </div>
+                <div class="col-md-4">
+                    <input type="text" class="form-control highlight-text" placeholder="Text" required>
+                </div>
+                <div class="col-md-4">
+                    <input type="text" class="form-control highlight-example" placeholder="Example (Optional)">
+                </div>`;
+            document.getElementById("courseHighlights").appendChild(highlightDiv);
+        });
+
+        // Custom submit button handler
+        submitButton.addEventListener("click", async function (e) {
+            e.preventDefault(); // Prevent default form submission
+            console.log("Custom submit button clicked!");
+
+            // Gather form data
+            const courseTitle = document.getElementById("courseTitle").value;
+            const courseCategory = document.getElementById("courseCategory").value;
+            const courseSubject = document.getElementById("courseSubject").value;
+            const courseImage = document.getElementById("courseImage").files[0];
+            const readingTime = document.getElementById("readingTime").value;
+            const instructorName = document.getElementById("instructorName").value;
+            const instructorRole = document.getElementById("instructorRole").value || "Teacher";
+            const instructorImage = document.getElementById("instructorImage").files[0];
+            const courseDescription = document.getElementById("courseDescription").value;
+
+            // Validate required fields
+            if (!courseTitle || !courseCategory || !courseSubject || !courseDescription || !instructorName) {
+                alert("Please fill in all required fields.");
+                console.log("Missing required fields");
+                return;
+            }
+
+            // Gather highlights
+            const highlights = [];
+            const highlightItems = document.querySelectorAll(".highlight-item"); // Ensure we are selecting the dynamically added highlight rows
+            if (highlightItems.length === 0) {
+                alert("Please add at least one highlight.");
+                return;
+            }
+
+            highlightItems.forEach(item => {
+                const heading = item.querySelector(".highlight-heading") ? item.querySelector(".highlight-heading").value : '';
+                const text = item.querySelector(".highlight-text") ? item.querySelector(".highlight-text").value : '';
+                const example = item.querySelector(".highlight-example") ? item.querySelector(".highlight-example").value : '';
+
+                // if (!heading || !text) {
+                //     console.error("Highlight missing heading or text:", { heading, text });
+                //     alert("Please fill in all highlight fields.");
+                //     return;
+                // }
+
+                highlights.push({ heading, text, example });
+            });
+
+            // Prepare FormData
+            const formData = new FormData();
+            formData.append("title", courseTitle);
+            formData.append("category", courseCategory);
+            formData.append("subject", courseSubject);
+            formData.append("readingTime", readingTime);
+            formData.append("description", courseDescription);
+            formData.append("highlights", JSON.stringify(highlights));
+
+            // Proper instructor object structure
+            formData.append("instructor", JSON.stringify({ name: instructorName, role: instructorRole }));
+
+            if (courseImage) {
+                formData.append("courseImage", courseImage);
+            } else {
+                console.error("Course image is missing.");
+                alert("Please upload a course image.");
+                return;
+            }
+
+            if (instructorImage) {
+                formData.append("instructorImage", instructorImage);
+            } else {
+                console.warn("Instructor image is missing, but proceeding...");
+            }
+
+            // Log FormData contents
+            console.log("FormData to be submitted:");
+            for (let [key, value] of formData.entries()) {
+                console.log(`${key}:`, value);
+            }
+
+            try {
+                const response = await fetch("http://localhost:3000/api/offlinecourse/create", {
+                    method: "POST",
+                    body: formData
+                });
+
+                console.log("Response received:", response);
+
+                const result = await response.json();
+                if (response.ok) {
+                    console.log("Course created successfully!", result);
+                    alert("Course created successfully!");
+                } else {
+                    console.error("Error from API:", result.error);
+                    alert(`Error: ${result.error}`);
+                }
+            } catch (error) {
+                console.error("Error during form submission:", error);
+                alert("There was an error submitting the form. Please try again.");
+            }
+        });
+    });
+</script>
+
+
+	 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+	<!-- Page Content overlay -->
+	
+	
+	<!-- Vendor JS -->
+	<script src="js/vendors.min.js"></script>
+	<script src="js/pages/chat-popup.js"></script>
+    <script src="../assets/icons/feather-icons/feather.min.js"></script>	<script src="../assets/vendor_components/jquery-steps-master/build/jquery.steps.js"></script>
+    <script src="../assets/vendor_components/jquery-validation-1.17.0/dist/jquery.validate.min.js"></script>
+    <!-- <script src="../assets/vendor_components/sweetalert/sweetalert.min.js"></script> -->
+	
+	<!-- EduAdmin App -->
+	<script src="js/template.js"></script>
+	
+    <script src="js/pages/steps.js"></script>
+	
+    
+	
+</body>
+</html>

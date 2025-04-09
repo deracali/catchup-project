@@ -1,0 +1,903 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../images/favicon.ico">
+
+    <title>EduAdmin - Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+	
+	<!-- Vendors Style-->
+	<link rel="stylesheet" href="css/vendors_css.css">
+	  
+	<!-- Style-->  
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/skin_color.css">
+	<link rel="stylesheet" href="css/custom.css">
+     
+  </head>
+<style>
+	.modal {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+.close {
+    float: right;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+</style>
+<body class="hold-transition light-skin sidebar-mini theme-primary fixed">
+	
+<div class="wrapper">
+  <div id="loader"></div>
+	
+  <header class="main-header">
+	<div class="d-flex align-items-center logo-box justify-content-start">
+		<a href="#" class="waves-effect waves-light nav-link d-none d-md-inline-block mx-10 push-btn bg-transparent" data-toggle="push-menu" role="button">
+			<i class="fas fa-align-left"></i>
+
+		</a>	
+		<!-- Logo -->
+		<a href="index.html" class="logo">
+		  <!-- logo-->
+		  <div class="logo-lg">
+			  <span class="light-logo"><img src="../images/logo-dark-text.png" alt="logo"></span>
+			  <span class="dark-logo"><img src="../images/logo-light-text.png" alt="logo"></span>
+		  </div>
+		</a>	
+	</div>  
+    <!-- Header Navbar -->
+    <nav class="navbar navbar-static-top">
+      <!-- Sidebar toggle button-->
+	  <div class="app-menu">
+		<ul class="header-megamenu nav">
+			<li class="btn-group nav-item d-md-none">
+				<a href="#" class="waves-effect waves-light nav-link push-btn" data-toggle="push-menu" role="button">
+					<i class="fas fa-align-left"></i>
+
+			    </a>
+			</li>
+		
+		</ul> 
+	  </div>
+		
+      <div class="navbar-custom-menu r-side">
+        <ul class="nav navbar-nav">	
+		
+		  
+	      <!-- User Account-->
+          <li class="dropdown user user-menu">
+            <a href="#" class="waves-effect waves-light dropdown-toggle" data-bs-toggle="dropdown" title="User">
+				<i class="fas fa-user"></i>
+            </a>
+            <ul class="dropdown-menu animated flipInX">
+              <li class="user-body">
+				 <a class="dropdown-item" href="#"><i class="ti-user text-muted me-2"></i> Profile</a>
+				 <a class="dropdown-item" href="#"><i class="ti-wallet text-muted me-2"></i> My Wallet</a>
+				 <a class="dropdown-item" href="#"><i class="ti-settings text-muted me-2"></i> Settings</a>
+				 <div class="dropdown-divider"></div>
+				 <a class="dropdown-item" href="#"><i class="ti-lock text-muted me-2"></i> Logout</a>
+              </li>
+            </ul>
+          </li>	
+		  
+          <!-- Control Sidebar Toggle Button -->
+          <li>
+              <a href="#" data-toggle="control-sidebar" title="Setting" class="waves-effect waves-light">
+			  	<i class="icon-Settings"><span class="path1"></span><span class="path2"></span></i>
+			  </a>
+          </li>
+			
+        </ul>
+      </div>
+    </nav>
+  </header>
+  
+  <aside class="main-sidebar">
+    <!-- sidebar-->
+    <section class="sidebar position-relative">	
+	  	<div class="multinav">
+		  <div class="multinav-scroll" style="height: 100%;">	
+			  <!-- sidebar menu-->
+			  <ul class="sidebar-menu" data-widget="tree">	
+				<li class="header">Dashboard & Apps</li>
+				
+			<li><a href="index7.html"><i class="fas fa-code-branch"></i>Dashboard 7</a></li>	 	     
+			  </ul>
+		  </div>
+		</div>
+    </section>
+	<div class="sidebar-footer">
+		<a href="javascript:void(0)" class="link" data-bs-toggle="tooltip" title="Settings"><span class="icon-Settings-2"></span></a>
+		<a href="mailbox.html" class="link" data-bs-toggle="tooltip" title="Email"><span class="icon-Mail"></span></a>
+		<a href="javascript:void(0)" class="link" data-bs-toggle="tooltip" title="Logout"><span class="icon-Lock-overturning"><span class="path1"></span><span class="path2"></span></span></a>
+	</div>
+  </aside>
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+	  <div class="container-full">
+		<!-- Main content -->
+		<section class="content">
+			<div class="row">
+				<div class="col-xxl-6 col-xl-8 col-lg-12 col-12">
+					<div class="box bg-transparent no-shadow mb-20">
+						<div class="box-header no-border pb-0 ps-0">
+							<h4 class="box-title">Incoming Live Class</h4>
+							<ul class="box-controls pull-right d-md-flex d-none">
+								<li>
+									<div class="dropdown p-10 px-15  bg-primary-light rounded ms-10">
+									 	<a data-bs-toggle="dropdown" href="#" aria-expanded="false" class=""><i class="ti-more-alt rotate-90 text-muted"></i></a>
+									  	<div class="dropdown-menu dropdown-menu-end">
+											<a class="dropdown-item" href="#"><i class="fa fa-user"></i> Profile</a>
+											<a class="dropdown-item" href="#"><i class="fa fa-picture-o"></i> Shots</a>
+											<a class="dropdown-item" href="#"><i class="ti-check"></i> Follow</a>
+											<div class="dropdown-divider"></div>
+											<a class="dropdown-item" href="#"><i class="fa fa-ban"></i> Block</a>
+									  	</div>
+									</div>
+								</li>
+								<li>
+									<button class="btn btn-primary-light me-10 p-10">Show All</button>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<div id="live-classes-container">
+						<!-- Dynamic live classes will be loaded here -->
+					  </div>
+					  
+
+					<div>
+						<h4 class="box-title">Materials</h4>
+						<div class="row">
+							<div class="col-xl-4 col-lg-4">
+								<div class="box pull-up">
+									<a href="../../../obp.0446.pdf">
+										<div class="card-body d-flex p-0">
+											<div class="flex-grow-1 bg-primary flex-grow-1 bg-img min-h-350" style="background-position: calc(100% + 0.5rem) bottom; background-size: auto 75%; background-image: url(../images/edu-1.png)">
+	
+												<p class="text-white pt-10 mb-0 fw-500 l-h-25">Explore Biology</p>
+												<p class="text-white fw-400 l-h-20">TextBook</p>
+											</div>
+										</div>
+									</a>
+								</div>
+							</div>
+							<div class="col-xl-4 col-lg-4">
+								<a href="../../../obp.0181.pdf">
+									<div class="box pull-up">
+										<div class="card-body d-flex p-0">
+											<div class="flex-grow-1 bg-primary-light flex-grow-1 bg-img min-h-350" style="background-position: calc(100% + 0.5rem) bottom; background-size: auto 75%; background-image: url(../images/edu-2.png)">
+	
+												<p class="text-primary pt-10 mb-0 fw-500 l-h-25">Explore Maths</p>
+												<p class="text-primary fw-400 l-h-20">Student's Book</p>
+											</div>
+										</div>
+									</div>
+								</a>
+							</div>
+							<div class="col-xl-4 col-lg-4">
+								<div class="box pull-up">
+									<div class="card-body d-flex p-0">
+										<div class="flex-grow-1 bg-primary-light flex-grow-1 bg-img min-h-350" style="background-position: calc(100% + 0.5rem) bottom; background-size: auto 75%; background-image: url(../images/edu-3.png)">
+
+											<p class="text-primary pt-10 mb-0 fw-500 l-h-25">Games</p>
+											<p class="text-primary fw-400 l-h-20">Online Activities</p>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-xxl-3 col-xl-4 col-lg-6 col-12">
+					<div class="box bg-primary-light group-section mb-35">
+						<div class="box-body px-0 pb-15">
+							<h4 class="box-title">Groups</h4>
+							<ul class="box-controls pull-right d-md-flex d-none">
+							  <li class="dropdown">
+								<a data-bs-toggle="dropdown" href="#" aria-expanded="false" class=""><i class="ti-more-alt rotate-90 text-muted"></i></a>
+								<div class="dropdown-menu dropdown-menu-right">
+								  <a class="dropdown-item active" href="#">Today</a>
+								  <a class="dropdown-item" href="#">Yesterday</a>
+								  <a class="dropdown-item" href="#">Monthly</a>
+								  <a class="dropdown-item" href="#">Last month</a>
+								</div>
+							  </li>
+							</ul>
+						</div>
+						<div class="accordion" id="teachersList"></div>
+
+<!-- Booking Modal -->
+<div id="bookingModal" class="modal">
+    <div class="modal-content">
+        <span id="closeModal" class="close">&times;</span>
+        <div id="modalContent"></div>
+    </div>
+</div>
+
+						<div class="box-body p-10 ps-15 group-button fw-500">
+							<a href="#"><i class="mdi mdi-widgets mx-25"></i> Create new group</a>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-xxl-3 col-xl-12 col-lg-6 col-12">
+					<div class="row">
+						<div class="col-xxl-12 col-xl-6 col-lg-12">
+							<div class="box bg-primary-light inbox-section-1">
+								<div class="box-body px-0 pb-0">
+									<h4 class="box-title">Semester Progress</h4>
+									<ul class="box-controls pull-right d-md-flex d-none">
+									  <li class="dropdown">
+										<a data-bs-toggle="dropdown" href="#" aria-expanded="false" class=""><i class="ti-more-alt rotate-90 text-muted"></i></a>
+										<div class="dropdown-menu dropdown-menu-right">
+										  <a class="dropdown-item active" href="#">Today</a>
+										  <a class="dropdown-item" href="#">Yesterday</a>
+										  <a class="dropdown-item" href="#">Monthly</a>
+										  <a class="dropdown-item" href="#">Last month</a>
+										</div>
+									  </li>
+									</ul>
+								</div>
+								<div class="info-box">
+									<span class="info-box-icon">
+										<div id="chart" class="progress-circle"></div>
+									</span>
+							
+									<div class="info-box-content">
+										<small class="info-box-number text-light">Lesson Progress</small>
+										<span class="d-block fs-24" id="progress-text">0/100</span>
+									</div>
+								</div>
+								<div class="info-box p-10 pull-up">
+									<a href="extra_calendar.html" id="live-course-link">
+										<span class="info-box-icon mt-10">
+											<i class="si-calendar si fs-50"></i>
+										</span>
+							
+										<div class="info-box-content ms-80">
+											<small class="info-box-number text-light">Live Course Available</small>
+											<span class="d-block fs-24 fw-600 text-dark" id="live-course-text">Loading...</span>
+										</div>
+									</a>
+								</div>
+							</div>
+						</div>
+						<div class="col-xxl-12 col-xl-6 col-lg-12">
+							<div class="box bg-primary-light inbox-section">
+								<div class="box-body px-0 pb-0 pt-20">
+									<h4 class="box-title">Appointments</h4>
+									<ul class="box-controls pull-right d-md-flex d-none">
+									  <li class="dropdown">
+										<a data-bs-toggle="dropdown" href="#" aria-expanded="false" class=""><i class="ti-more-alt rotate-90 text-muted"></i></a>
+										<div class="dropdown-menu dropdown-menu-right">
+										  <a class="dropdown-item active" href="#">Today</a>
+										  <a class="dropdown-item" href="#">Yesterday</a>
+										  <a class="dropdown-item" href="#">Monthly</a>
+										  <a class="dropdown-item" href="#">Last month</a>
+										</div>
+									  </li>
+									</ul>
+								</div>
+								<div id="appointments-container">
+									<!-- Dynamic appointments will be loaded here -->
+								  </div>
+								  
+													
+							</div>
+						</div>
+					</div>
+					
+					
+				</div>
+			</div>			
+		</section>
+		<!-- /.content -->
+	  </div>
+  </div>
+  <!-- /.content-wrapper -->
+  <footer class="main-footer">
+   
+	  &copy; 2025 All Rights Reserved Catchup.
+  </footer>
+
+  <!-- Control Sidebar -->
+  <aside class="control-sidebar">
+	  
+	<div class="rpanel-title"><span class="pull-right btn btn-circle btn-danger"><i class="ion ion-close text-white" data-toggle="control-sidebar"></i></span> </div>  <!-- Create the tabs -->
+    <ul class="nav nav-tabs control-sidebar-tabs">
+      <li class="nav-item"><a href="#control-sidebar-home-tab" data-bs-toggle="tab" class="active"><i class="mdi mdi-message-text"></i></a></li>
+      <li class="nav-item"><a href="#control-sidebar-settings-tab" data-bs-toggle="tab"><i class="mdi mdi-playlist-check"></i></a></li>
+    </ul>
+    <!-- Tab panes -->
+    <div class="tab-content">
+      <!-- Home tab content -->
+      <div class="tab-pane active" id="control-sidebar-home-tab">
+          <div class="flexbox">
+			<a href="javascript:void(0)" class="text-grey">
+				<i class="ti-more"></i>
+			</a>	
+			<p>Users</p>
+			<a href="javascript:void(0)" class="text-end text-grey"><i class="ti-plus"></i></a>
+		  </div>
+		  <div class="lookup lookup-sm lookup-right d-none d-lg-block">
+			<input type="text" name="s" placeholder="Search" class="w-p100">
+		  </div>
+          <div class="media-list media-list-hover mt-20">
+			<div class="media py-10 px-0">
+			  <a class="avatar avatar-lg status-success" href="#">
+				<img src="../images/avatar/1.jpg" alt="...">
+			  </a>
+			  <div class="media-body">
+				<p class="fs-16">
+				  <a class="hover-primary" href="#"><strong>Tyler</strong></a>
+				</p>
+				<p>Praesent tristique diam...</p>
+				  <span>Just now</span>
+			  </div>
+			</div>
+
+			<div class="media py-10 px-0">
+			  <a class="avatar avatar-lg status-danger" href="#">
+				<img src="../images/avatar/2.jpg" alt="...">
+			  </a>
+			  <div class="media-body">
+				<p class="fs-16">
+				  <a class="hover-primary" href="#"><strong>Luke</strong></a>
+				</p>
+				<p>Cras tempor diam ...</p>
+				  <span>33 min ago</span>
+			  </div>
+			</div>
+
+			<div class="media py-10 px-0">
+			  <a class="avatar avatar-lg status-warning" href="#">
+				<img src="../images/avatar/3.jpg" alt="...">
+			  </a>
+			  <div class="media-body">
+				<p class="fs-16">
+				  <a class="hover-primary" href="#"><strong>Evan</strong></a>
+				</p>
+				<p>In posuere tortor vel...</p>
+				  <span>42 min ago</span>
+			  </div>
+			</div>
+
+			<div class="media py-10 px-0">
+			  <a class="avatar avatar-lg status-primary" href="#">
+				<img src="../images/avatar/4.jpg" alt="...">
+			  </a>
+			  <div class="media-body">
+				<p class="fs-16">
+				  <a class="hover-primary" href="#"><strong>Evan</strong></a>
+				</p>
+				<p>In posuere tortor vel...</p>
+				  <span>42 min ago</span>
+			  </div>
+			</div>			
+			
+			<div class="media py-10 px-0">
+			  <a class="avatar avatar-lg status-success" href="#">
+				<img src="../images/avatar/1.jpg" alt="...">
+			  </a>
+			  <div class="media-body">
+				<p class="fs-16">
+				  <a class="hover-primary" href="#"><strong>Tyler</strong></a>
+				</p>
+				<p>Praesent tristique diam...</p>
+				  <span>Just now</span>
+			  </div>
+			</div>
+
+			<div class="media py-10 px-0">
+			  <a class="avatar avatar-lg status-danger" href="#">
+				<img src="../images/avatar/2.jpg" alt="...">
+			  </a>
+			  <div class="media-body">
+				<p class="fs-16">
+				  <a class="hover-primary" href="#"><strong>Luke</strong></a>
+				</p>
+				<p>Cras tempor diam ...</p>
+				  <span>33 min ago</span>
+			  </div>
+			</div>
+
+			<div class="media py-10 px-0">
+			  <a class="avatar avatar-lg status-warning" href="#">
+				<img src="../images/avatar/3.jpg" alt="...">
+			  </a>
+			  <div class="media-body">
+				<p class="fs-16">
+				  <a class="hover-primary" href="#"><strong>Evan</strong></a>
+				</p>
+				<p>In posuere tortor vel...</p>
+				  <span>42 min ago</span>
+			  </div>
+			</div>
+
+			<div class="media py-10 px-0">
+			  <a class="avatar avatar-lg status-primary" href="#">
+				<img src="../images/avatar/4.jpg" alt="...">
+			  </a>
+			  <div class="media-body">
+				<p class="fs-16">
+				  <a class="hover-primary" href="#"><strong>Evan</strong></a>
+				</p>
+				<p>In posuere tortor vel...</p>
+				  <span>42 min ago</span>
+			  </div>
+			</div>
+			  
+		  </div>
+
+      </div>
+      <!-- /.tab-pane -->
+      <!-- Settings tab content -->
+      <div class="tab-pane" id="control-sidebar-settings-tab">
+          <div class="flexbox">
+			<a href="javascript:void(0)" class="text-grey">
+				<i class="ti-more"></i>
+			</a>	
+			<p>Todo List</p>
+			<a href="javascript:void(0)" class="text-end text-grey"><i class="ti-plus"></i></a>
+		  </div>
+        <ul class="todo-list mt-20">
+			<li class="py-15 px-5 by-1">
+			  <!-- checkbox -->
+			  <input type="checkbox" id="basic_checkbox_1" class="filled-in">
+			  <label for="basic_checkbox_1" class="mb-0 h-15"></label>
+			  <!-- todo text -->
+			  <span class="text-line">Nulla vitae purus</span>
+			  <!-- Emphasis label -->
+			  <small class="badge bg-danger"><i class="fa fa-clock-o"></i> 2 mins</small>
+			  <!-- General tools such as edit or delete-->
+			  <div class="tools">
+				<i class="fa fa-edit"></i>
+				<i class="fa fa-trash-o"></i>
+			  </div>
+			</li>
+			<li class="py-15 px-5">
+			  <!-- checkbox -->
+			  <input type="checkbox" id="basic_checkbox_2" class="filled-in">
+			  <label for="basic_checkbox_2" class="mb-0 h-15"></label>
+			  <span class="text-line">Phasellus interdum</span>
+			  <small class="badge bg-info"><i class="fa fa-clock-o"></i> 4 hours</small>
+			  <div class="tools">
+				<i class="fa fa-edit"></i>
+				<i class="fa fa-trash-o"></i>
+			  </div>
+			</li>
+			<li class="py-15 px-5 by-1">
+			  <!-- checkbox -->
+			  <input type="checkbox" id="basic_checkbox_3" class="filled-in">
+			  <label for="basic_checkbox_3" class="mb-0 h-15"></label>
+			  <span class="text-line">Quisque sodales</span>
+			  <small class="badge bg-warning"><i class="fa fa-clock-o"></i> 1 day</small>
+			  <div class="tools">
+				<i class="fa fa-edit"></i>
+				<i class="fa fa-trash-o"></i>
+			  </div>
+			</li>
+			<li class="py-15 px-5">
+			  <!-- checkbox -->
+			  <input type="checkbox" id="basic_checkbox_4" class="filled-in">
+			  <label for="basic_checkbox_4" class="mb-0 h-15"></label>
+			  <span class="text-line">Proin nec mi porta</span>
+			  <small class="badge bg-success"><i class="fa fa-clock-o"></i> 3 days</small>
+			  <div class="tools">
+				<i class="fa fa-edit"></i>
+				<i class="fa fa-trash-o"></i>
+			  </div>
+			</li>
+			<li class="py-15 px-5 by-1">
+			  <!-- checkbox -->
+			  <input type="checkbox" id="basic_checkbox_5" class="filled-in">
+			  <label for="basic_checkbox_5" class="mb-0 h-15"></label>
+			  <span class="text-line">Maecenas scelerisque</span>
+			  <small class="badge bg-primary"><i class="fa fa-clock-o"></i> 1 week</small>
+			  <div class="tools">
+				<i class="fa fa-edit"></i>
+				<i class="fa fa-trash-o"></i>
+			  </div>
+			</li>
+			<li class="py-15 px-5">
+			  <!-- checkbox -->
+			  <input type="checkbox" id="basic_checkbox_6" class="filled-in">
+			  <label for="basic_checkbox_6" class="mb-0 h-15"></label>
+			  <span class="text-line">Vivamus nec orci</span>
+			  <small class="badge bg-info"><i class="fa fa-clock-o"></i> 1 month</small>
+			  <div class="tools">
+				<i class="fa fa-edit"></i>
+				<i class="fa fa-trash-o"></i>
+			  </div>
+			</li>
+			<li class="py-15 px-5 by-1">
+			  <!-- checkbox -->
+			  <input type="checkbox" id="basic_checkbox_7" class="filled-in">
+			  <label for="basic_checkbox_7" class="mb-0 h-15"></label>
+			  <!-- todo text -->
+			  <span class="text-line">Nulla vitae purus</span>
+			  <!-- Emphasis label -->
+			  <small class="badge bg-danger"><i class="fa fa-clock-o"></i> 2 mins</small>
+			  <!-- General tools such as edit or delete-->
+			  <div class="tools">
+				<i class="fa fa-edit"></i>
+				<i class="fa fa-trash-o"></i>
+			  </div>
+			</li>
+			<li class="py-15 px-5">
+			  <!-- checkbox -->
+			  <input type="checkbox" id="basic_checkbox_8" class="filled-in">
+			  <label for="basic_checkbox_8" class="mb-0 h-15"></label>
+			  <span class="text-line">Phasellus interdum</span>
+			  <small class="badge bg-info"><i class="fa fa-clock-o"></i> 4 hours</small>
+			  <div class="tools">
+				<i class="fa fa-edit"></i>
+				<i class="fa fa-trash-o"></i>
+			  </div>
+			</li>
+			<li class="py-15 px-5 by-1">
+			  <!-- checkbox -->
+			  <input type="checkbox" id="basic_checkbox_9" class="filled-in">
+			  <label for="basic_checkbox_9" class="mb-0 h-15"></label>
+			  <span class="text-line">Quisque sodales</span>
+			  <small class="badge bg-warning"><i class="fa fa-clock-o"></i> 1 day</small>
+			  <div class="tools">
+				<i class="fa fa-edit"></i>
+				<i class="fa fa-trash-o"></i>
+			  </div>
+			</li>
+			<li class="py-15 px-5">
+			  <!-- checkbox -->
+			  <input type="checkbox" id="basic_checkbox_10" class="filled-in">
+			  <label for="basic_checkbox_10" class="mb-0 h-15"></label>
+			  <span class="text-line">Proin nec mi porta</span>
+			  <small class="badge bg-success"><i class="fa fa-clock-o"></i> 3 days</small>
+			  <div class="tools">
+				<i class="fa fa-edit"></i>
+				<i class="fa fa-trash-o"></i>
+			  </div>
+			</li>
+		  </ul>
+      </div>
+      <!-- /.tab-pane -->
+    </div>
+  </aside>
+  <!-- /.control-sidebar -->
+  
+  <!-- Add the sidebar's background. This div must be placed immediately after the control sidebar -->
+  <div class="control-sidebar-bg"></div>
+  
+</div>
+<!-- ./wrapper -->
+	
+	
+		
+	
+	
+	<!-- Page Content overlay -->
+	<script>
+		document.addEventListener("DOMContentLoaded", async function () {
+		  const container = document.getElementById("live-classes-container");
+	  
+		  try {
+			const response = await fetch("http://localhost:3000/api/livecourses/get");
+			const data = await response.json();
+	  
+			container.innerHTML = ""; // Clear existing content
+	  
+			// Loop through each day and populate live classes
+			Object.keys(data).forEach((day) => {
+			  let dayHTML = `<p class="mb-5">${day}</p><small class="table-scroll-contant">***Drag a table to scroll***</small>`;
+	  
+			  data[day].forEach((course) => {
+				dayHTML += `
+				  <div class="box mb-15 pull-up">
+					<div>
+					  <div class="table-responsive">
+						<table class="table no-border mb-0">
+						  <tbody>
+							<tr>
+							  <td class="min-w-50">
+								<div class="bg-primary-light h-50 w-50 l-h-50 rounded text-center">
+								  <span class="icon-Book-open fs-24"><i class="fa fa-calendar-minus-o fs-16" aria-hidden="true"></i></span>
+								</div>
+							  </td>
+							  <td class="fw-600 min-w-170">
+								<div class="d-flex flex-column fw-600">
+								  <a href="#" class="text-dark hover-primary mb-1 fs-16">${course.time}</a>
+								  <span class="text-fade">${course.title}</span>
+								</div>
+							  </td>
+							  <td class="fw-600 fs-16 min-w-150 text-center">
+								<i class="fa fa-fw fa-circle text-primary fs-12"></i> Lesson ${course.lessonCount}
+							  </td>
+							  <td class="fw-400 fs-16 min-w-150 text-center">Online Classes</td>
+							  <td class="text-primary fw-600 fs-16 min-w-150 text-end">Zoom <i class="fa fa-fw fa-angle-right fs-24"></i></td>
+							</tr>
+						  </tbody>
+						</table>
+					  </div>
+					</div>
+				  </div>
+				`;
+			  });
+	  
+			  container.innerHTML += dayHTML;
+			});
+		  } catch (error) {
+			console.error("Error fetching live courses:", error);
+			container.innerHTML = `<p class="text-danger">Failed to load live classes.</p>`;
+		  }
+		});
+	  </script>
+	  
+	
+	<!-- Vendor JS -->
+	<script src="js/vendors.min.js"></script>
+	<script src="js/pages/chat-popup.js"></script>
+    <script src="../assets/icons/feather-icons/feather.min.js"></script>	
+	
+	<script src="../assets/vendor_components/apexcharts-bundle/dist/apexcharts.js"></script>
+	
+	<!-- EduAdmin App -->
+	<script src="js/template.js"></script>
+	<script src="js/pages/dashboard7.js"></script>
+	
+
+
+	<script>
+		document.addEventListener("DOMContentLoaded", async function () {
+		  const container = document.getElementById("appointments-container");
+	  
+		  try {
+			const response = await fetch("http://localhost:3000/api/bookings");
+			const data = await response.json();
+	  
+			container.innerHTML = ""; // Clear existing content
+	  
+			data.forEach((booking) => {
+			  const initials = booking.teacherName
+				.split(" ")
+				.map((name) => name[0])
+				.join("")
+				.toUpperCase();
+	  
+			  const statusClass = booking.status === "Confirmed" ? "text-primary" : "text-fade";
+	  
+			  const appointmentHTML = `
+				<div class="box box-body mb-10">
+				  <div class="media p-0">
+					<i class="fa fa-fw fa-circle ${statusClass} fs-12 m-0" style="margin: -12px 5px 0px -15px;"></i>
+					<span class="bg-primary-light my-5 mx-1 h-40 w-40 l-h-40 rounded-circle text-center">
+					  <p class="mb-0 fs-16 fw-600">${initials}</p>
+					</span>
+					<div class="media-body my-5 mx-5">
+					  <p class="mb-0">
+						<a class="hover-primary" href="#">${booking.teacherName}</a>
+						<span class="float-end text-fade">${booking.time}</span>
+					  </p>
+					  <h6 class="${statusClass}">${booking.status}</h6>	
+					</div>
+				  </div>
+				  <div class="ps-20 mt-10">
+					<p class="m-0 text-dark fs-14">${booking.description}</p>
+				  </div>
+				</div>
+			  `;
+	  
+			  container.innerHTML += appointmentHTML;
+			});
+		  } catch (error) {
+			console.error("Error fetching bookings:", error);
+			container.innerHTML = `<p class="text-danger">Failed to load appointments.</p>`;
+		  }
+		});
+	  </script>
+	  
+
+
+
+	  <script>
+		document.addEventListener("DOMContentLoaded", function () {
+			const teachersList = document.getElementById("teachersList");
+			const bookingModal = document.getElementById("bookingModal");
+			const modalContent = document.getElementById("modalContent");
+			const closeModal = document.getElementById("closeModal");
+			let selectedTeacherId = null;
+	
+			// Fetch teachers from the API
+			async function fetchTeachers() {
+				try {
+					const response = await fetch("http://localhost:3000/api/teachers");
+					const teachers = await response.json();
+					renderTeachers(teachers);
+				} catch (error) {
+					console.error("Error fetching teachers:", error);
+				}
+			}
+	
+			// Render teachers inside the accordion
+			function renderTeachers(teachers) {
+				teachersList.innerHTML = ""; // Clear previous content
+				teachers.forEach((teacher, index) => {
+					const teacherItem = document.createElement("div");
+					teacherItem.classList.add("accordion-item");
+	
+					// Format courses into a list or a message if no courses exist
+					let coursesHTML = teacher.courses && teacher.courses.length > 0
+						? `<ul>${teacher.courses.map(course => `<li>${course}</li>`).join("")}</ul>`
+						: `<p>No courses available</p>`;
+	
+					teacherItem.innerHTML = `
+						<h2 class="accordion-header" id="heading${index}">
+							<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse${index}" aria-expanded="false">
+								${teacher.name} - ${teacher.designation}
+							</button>
+						</h2>
+						<div id="collapse${index}" class="accordion-collapse collapse" data-bs-parent="#teachersList">
+							<div class="accordion-body">
+								<p><strong>Email:</strong> ${teacher.email}</p>
+								<p><strong>Phone:</strong> ${teacher.phone}</p>
+								<p><strong>Address:</strong> ${teacher.address}</p>
+								<p><strong>About:</strong> ${teacher.about}</p>
+								<p><strong>Courses:</strong></p>
+								${coursesHTML}
+								<button class="btn btn-primary book-btn" data-id="${teacher._id}" data-name="${teacher.name}">Book Teacher</button>
+							</div>
+						</div>
+					`;
+					teachersList.appendChild(teacherItem);
+				});
+	
+				// Add event listeners to "Book Teacher" buttons
+				document.querySelectorAll(".book-btn").forEach((button) => {
+					button.addEventListener("click", function () {
+						selectedTeacherId = this.getAttribute("data-id");
+						const teacherName = this.getAttribute("data-name");
+						openBookingModal(teacherName);
+					});
+				});
+			}
+	
+			// Open booking modal
+			function openBookingModal(teacherName) {
+				modalContent.innerHTML = `
+					<h4>Book ${teacherName}</h4>
+					<label>Date:</label>
+					<input type="date" id="bookingDate" class="form-control">
+					<label>Time:</label>
+					<input type="time" id="bookingTime" class="form-control">
+					<label>Description:</label>
+					<textarea id="bookingDesc" class="form-control"></textarea>
+					<button id="confirmBooking" class="btn btn-success mt-3">Confirm Booking</button>
+				`;
+				bookingModal.style.display = "block";
+	
+				document.getElementById("confirmBooking").addEventListener("click", submitBooking);
+			}
+	
+			// Close modal
+			closeModal.addEventListener("click", function () {
+				bookingModal.style.display = "none";
+			});
+	
+			// Submit booking
+			async function submitBooking() {
+				const date = document.getElementById("bookingDate").value;
+				const time = document.getElementById("bookingTime").value;
+				const description = document.getElementById("bookingDesc").value;
+	
+				if (!date || !time || !description) {
+					alert("All fields are required!");
+					return;
+				}
+	
+				const bookingData = {
+					teacherId: selectedTeacherId,
+					date,
+					time,
+					description,
+					status: "Pending",
+				};
+	
+				try {
+					const response = await fetch("http://localhost:3000/api/bookings", {
+						method: "POST",
+						headers: { "Content-Type": "application/json" },
+						body: JSON.stringify(bookingData),
+					});
+	
+					if (response.ok) {
+						alert("Booking successful!");
+						bookingModal.style.display = "none";
+					} else {
+						alert("Booking failed!");
+					}
+				} catch (error) {
+					console.error("Error submitting booking:", error);
+				}
+			}
+	
+			// Fetch teachers on page load
+			fetchTeachers();
+		});
+	</script>
+	
+
+
+
+
+
+<script>
+	document.addEventListener("DOMContentLoaded", function () {
+		const chartContainer = document.getElementById("chart");
+		const progressDisplay = document.getElementById("progress-text");
+
+		let totalLessonTime = 60 * 30; // Assume 30-minute lesson (1800 seconds)
+		let storedTime = parseInt(localStorage.getItem("userTime")) || 0;
+
+		function updateProgressUI() {
+			let progress = Math.min(Math.round((storedTime / totalLessonTime) * 100), 100);
+			progressDisplay.innerHTML = `${progress}/100`;
+
+			chartContainer.innerHTML = `<svg width="50" height="50">
+				<circle cx="25" cy="25" r="20" stroke="white" stroke-width="4" fill="transparent"/>
+				<circle cx="25" cy="25" r="20" stroke="yellow" stroke-width="4" fill="transparent" 
+					stroke-dasharray="125" stroke-dashoffset="${125 - (125 * progress) / 100}"/>
+			</svg>`;
+		}
+
+		function trackTime() {
+			storedTime++;
+			localStorage.setItem("userTime", storedTime);
+			updateProgressUI();
+		}
+
+		setInterval(trackTime, 1000); // Update time every second
+		updateProgressUI(); // Initialize UI with saved time
+	});
+</script>
+
+
+
+
+<script>
+	document.addEventListener("DOMContentLoaded", async function () {
+		const courseText = document.getElementById("live-course-text");
+		const courseLink = document.getElementById("live-course-link");
+
+		try {
+			const response = await fetch("http://localhost:3000/api/livecourses");
+			const data = await response.json();
+
+			if (data.length > 0) {
+				courseText.innerText = `${data.length} Courses Available`;
+				courseLink.href = "extra_calendar.html"; // Update link if needed
+			} else {
+				courseText.innerText = "No Live Courses";
+			}
+		} catch (error) {
+			courseText.innerText = "Failed to Load";
+			console.error("Error fetching live courses:", error);
+		}
+	});
+</script>
+
+</body>
+</html>

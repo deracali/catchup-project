@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../images/favicon.ico">
+
+    <title>EduAdmin - Dashboard  Form Wizard </title>
+  
+	<!-- Vendors Style-->
+	<link rel="stylesheet" href="css/vendors_css.css">
+	  
+	<!-- Style-->  
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/skin_color.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+	
+</head>
+<body class="hold-transition light-skin sidebar-mini theme-primary fixed">
+	
+<div class="wrapper">
+	<div id="loader"></div>
+
+	
+	<header class="main-header">
+		<div class="d-flex align-items-center logo-box justify-content-start">
+			<a href="#" class="waves-effect waves-light nav-link d-none d-md-inline-block mx-10 push-btn bg-transparent" data-toggle="push-menu" role="button">
+				<i class="fas fa-bars"></i>
+			</a>
+				
+			<!-- Logo -->
+			<a href="index.html" class="logo">
+			  <!-- logo-->
+			  <div class="logo-lg">
+				  <span class="light-logo"><img src="../images/logo-dark-text.png" alt="logo"></span>
+				  <span class="dark-logo"><img src="../images/logo-light-text.png" alt="logo"></span>
+			  </div>
+			</a>	
+		</div>  
+		<!-- Header Navbar -->
+		 
+		<nav class="navbar navbar-static-top">
+		  <!-- Sidebar toggle button-->
+		  <div class="app-menu">
+			<ul class="header-megamenu nav">
+				<li class="btn-group nav-item d-md-none">
+					<a href="#" class="waves-effect waves-light nav-link push-btn" data-toggle="push-menu" role="button">
+						<i class="fas fa-bars"></i> <!-- Replaced icon-Align-left -->
+					</a>
+				</li>
+				<li class="btn-group nav-item d-none d-xl-inline-block">
+					<a href="contact_app_chat.html" class="waves-effect waves-light nav-link svg-bt-icon" title="Chat">
+						<i class="fas fa-comments"></i> <!-- Replaced icon-Chat -->
+					</a>
+				</li>
+				<li class="btn-group nav-item d-none d-xl-inline-block">
+					<a href="mailbox.html" class="waves-effect waves-light nav-link svg-bt-icon" title="Mailbox">
+						<i class="fas fa-envelope"></i> <!-- Replaced icon-Mailbox -->
+					</a>
+				</li>
+				<li class="btn-group nav-item d-none d-xl-inline-block">
+					<a href="extra_taskboard.html" class="waves-effect waves-light nav-link svg-bt-icon" title="Taskboard">
+						<i class="fas fa-clipboard-check"></i> <!-- Replaced icon-Clipboard-check -->
+					</a>
+				</li>
+			</ul>
+		  </div>
+			
+		  <div class="navbar-custom-menu r-side">
+			<ul class="nav navbar-nav">    
+			
+				
+			
+				
+			  
+			  <!-- User Account-->
+			  <li class="dropdown user user-menu">
+				<a href="#" class="waves-effect waves-light dropdown-toggle" data-bs-toggle="dropdown" title="User">
+					<i class="fas fa-user"></i>
+				</a>
+				<ul class="dropdown-menu animated flipInX">
+					<li class="user-body">
+						<a class="dropdown-item" href="#"><i class="fas fa-user text-muted me-2"></i> Profile</a>
+						<a class="dropdown-item" href="#"><i class="fas fa-wallet text-muted me-2"></i> My Wallet</a>
+						<a class="dropdown-item" href="#"><i class="fas fa-cog text-muted me-2"></i> Settings</a>
+						<div class="dropdown-divider"></div>
+						<a class="dropdown-item" href="#"><i class="fas fa-lock text-muted me-2"></i> Logout</a>
+					</li>
+				</ul>
+			</li>    
+			
+			
+			</ul>
+		  </div>
+		</nav>
+	  </header>
+	  
+	  <aside class="main-sidebar">
+		<!-- sidebar-->
+		<section class="sidebar position-relative">    
+			<div class="multinav">
+				<div class="multinav-scroll" style="height: 100%;">    
+					<!-- sidebar menu-->
+					<ul class="sidebar-menu" data-widget="tree">    
+						<li class="header">Dashboard & Apps</li>
+						<li class="treeview">
+							<a href="#">
+								<i class="fas fa-th"></i>
+								<span>Dashboard</span>
+								<span class="pull-right-container">
+									<i class="fa fa-angle-right pull-right"></i>
+								</span>
+							</a>
+							<ul class="treeview-menu">
+								<li><a href="index2.html"><i class="fas fa-chart-line"></i> Dashboard</a></li>
+							</ul>
+						</li>
+		
+						<li class="treeview">
+							<a href="#">
+								<i class="fas fa-file-alt"></i>
+								<span>Forms & Tables</span>
+								<span class="pull-right-container">
+									<i class="fa fa-angle-right pull-right"></i>
+								</span>
+							</a>                    
+							<ul class="treeview-menu">                    
+								<li class="treeview">
+									<a href="#">
+										<i class="fas fa-edit"></i> Forms
+										<span class="pull-right-container">
+											<i class="fa fa-angle-right pull-right"></i>
+										</span>
+									</a>
+									<ul class="treeview-menu">
+										<li><a href="offlinecourseform.html"><i class="fas fa-plus-circle"></i> Create Offline Course</a></li>
+										<li><a href="quizform.html"><i class="fas fa-poll"></i> Create Quiz</a></li>
+									</ul>
+								</li>         
+								<li class="treeview">
+									<a href="#">
+										<i class="fas fa-table"></i> Tables
+										<span class="pull-right-container">
+											<i class="fa fa-angle-right pull-right"></i>
+										</span>
+									</a>
+									<ul class="treeview-menu">
+										<li><a href="quizTables.html"><i class="fas fa-list"></i> Quiz List</a></li>
+										<li><a href="offlinecoursesTable.html"><i class="fas fa-book"></i> Offline Courses List</a></li>
+										<li><a href="teacherReview.html"><i class="fas fa-star"></i> Teachers Review</a></li>
+									</ul>
+								</li>                    
+							</ul>
+						</li>
+						
+						<li class="treeview">
+							<a href="#">
+								<i class="fas fa-user"></i>
+								<span>Pages</span>
+								<span class="pull-right-container">
+									<i class="fa fa-angle-right pull-right"></i>
+								</span>
+							</a>
+							<ul class="treeview-menu">
+								<li><a href="contact_userlist_grid.html"><i class="fas fa-chalkboard-teacher"></i> Teachers</a></li>
+								<li><a href="contact_userlist.html"><i class="fas fa-user-graduate"></i> Students</a></li>    
+							</ul>
+						</li>
+		
+						<li class="header">LOGIN & ERROR </li>
+						<li class="treeview">
+							<a href="#">
+								<i class="fas fa-lock"></i>
+								<span>Authentication</span>
+								<span class="pull-right-container">
+									<i class="fa fa-angle-right pull-right"></i>
+								</span>
+							</a>
+							<ul class="treeview-menu">
+								<li><a href="auth_login.html"><i class="fas fa-sign-in-alt"></i> Login</a></li>
+								<li><a href="auth_register.html"><i class="fas fa-user-plus"></i> Register</a></li>
+								<li><a href="auth_lockscreen.html"><i class="fas fa-lock"></i> Lockscreen</a></li>
+								<li><a href="auth_user_pass.html"><i class="fas fa-key"></i> Recover password</a></li>    
+							</ul>
+						</li>            
+					</ul>
+				</div>
+			</div>
+		</section>
+		<div class="sidebar-footer">
+			<a href="javascript:void(0)" class="link" data-bs-toggle="tooltip" title="Settings"><span class="icon-Settings-2"></span></a>
+			<a href="mailbox.html" class="link" data-bs-toggle="tooltip" title="Email"><span class="icon-Mail"></span></a>
+			<a href="javascript:void(0)" class="link" data-bs-toggle="tooltip" title="Logout"><span class="icon-Lock-overturning"><span class="path1"></span><span class="path2"></span></span></a>
+		</div>
+	  </aside>
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+	  <div class="container-full">
+		<!-- Content Header (Page header) -->
+		<div class="content-header">
+			<div class="d-flex align-items-center">
+				<div class="me-auto">
+					<h3 class="page-title">Form Wizard</h3>
+					<div class="d-inline-block align-items-center">
+						<nav>
+							<ol class="breadcrumb">
+								<li class="breadcrumb-item"><a href="#"><i class="fas fa-home"></i></a></li>
+								<li class="breadcrumb-item" aria-current="page">Forms</li>
+								<li class="breadcrumb-item active" aria-current="page">Form Wizard</li>
+							</ol>
+						</nav>
+					</div>
+				</div>
+				
+			</div>
+		</div>	  
+
+		<!-- Main content -->
+		<section class="content">
+
+	
+
+		  <!-- Validation wizard -->
+          <div class="box">
+            <div class="box-header with-border">
+                <h4 class="box-title">Step wizard with validation</h4>
+                <h6 class="box-subtitle">You can use validation like what we did</h6>
+            </div>
+            <div class="box-body wizard-content">
+                <form id="quizForm" class="validation-wizard wizard-circle">
+                    <h6>Quiz Creation</h6>
+                    <section>
+                        <div id="quizContainer">
+                            <!-- New quizzes will be added here dynamically -->
+                        </div>
+                        <button type="button" class="btn btn-primary" onclick="addQuiz()">➕ Add Another Quiz</button>
+                        <button type="button" class="btn btn-success" onclick="submitAllQuizzes()">🚀 Submit All</button>
+                    </section>
+                </form>
+            </div>
+        </div>
+		  <!-- /.box -->
+
+		</section>
+		<!-- /.content -->
+	  </div>
+  </div>
+  <!-- /.content-wrapper -->
+  
+   <footer class="main-footer">
+   
+	  &copy; 2025 All Rights Reserved Catchup.
+  </footer>
+ 
+  
+  <!-- Add the sidebar's background. This div must be placed immediately after the control sidebar -->
+  <div class="control-sidebar-bg"></div>
+</div>
+<!-- ./wrapper -->
+	
+	
+	
+	
+	
+	<!-- Page Content overlay -->
+	
+	
+	<!-- Vendor JS -->
+	<script src="js/vendors.min.js"></script>
+	<script src="js/pages/chat-popup.js"></script>
+    <script src="../assets/icons/feather-icons/feather.min.js"></script>	<script src="../assets/vendor_components/jquery-steps-master/build/jquery.steps.js"></script>
+    <script src="../assets/vendor_components/jquery-validation-1.17.0/dist/jquery.validate.min.js"></script>
+    <script src="../assets/vendor_components/sweetalert/sweetalert.min.js"></script>
+	
+	<!-- EduAdmin App -->
+	<script src="js/template.js"></script>
+	
+    <script src="js/pages/steps.js"></script>
+	
+	<script>
+		let quizList = [];
+		let quizTitle = ""; // Variable to hold the title of the quiz
+		let quizCategory = ""; // Variable to hold the category for the quiz
+	  
+		// Add a new question section
+		function addQuiz() {
+		  const quizIndex = quizList.length;
+		  const quizHTML = `
+			<div class="quiz border p-3 mb-3" id="quiz-${quizIndex}">
+			  <h6>Question ${quizIndex + 1}</h6>
+	  
+			  <label>Question:</label>
+			  <input type="text" class="form-control" id="question-${quizIndex}" required>
+	  
+			  <label>Options:</label>
+			  <input type="text" class="form-control" id="option1-${quizIndex}" placeholder="Option 1" required>
+			  <input type="text" class="form-control" id="option2-${quizIndex}" placeholder="Option 2" required>
+			  <input type="text" class="form-control" id="option3-${quizIndex}" placeholder="Option 3" required>
+			  <input type="text" class="form-control" id="option4-${quizIndex}" placeholder="Option 4" required>
+	  
+			  <label>Correct Answer:</label>
+			  <select class="form-control" id="correctAnswer-${quizIndex}" required>
+				<option value="option1">Option 1</option>
+				<option value="option2">Option 2</option>
+				<option value="option3">Option 3</option>
+				<option value="option4">Option 4</option>
+			  </select>
+	  
+			  <label>Subject:</label>
+			  <input type="text" class="form-control" id="subject-${quizIndex}" required>
+	  
+			  <label>Time Limit (seconds):</label>
+			  <input type="number" class="form-control" id="timeLimit-${quizIndex}" required>
+	  
+			  <button type="button" class="btn btn-danger mt-2" onclick="removeQuiz(${quizIndex})">❌ Remove</button>
+			</div>
+		  `;
+		  document.getElementById("quizContainer").insertAdjacentHTML("beforeend", quizHTML);
+		  quizList.push(quizIndex);
+		}
+	  
+		// Remove a question section by index
+		function removeQuiz(index) {
+		  document.getElementById(`quiz-${index}`).remove();
+		  quizList = quizList.filter(i => i !== index);
+		}
+	  
+		// Submit all quizzes
+		function submitAllQuizzes() {
+		  // First, get the title of the quiz and category for the entire quiz
+		  quizTitle = document.getElementById("quizTitle").value; // Title input should be outside the questions loop
+		  quizCategory = document.getElementById("quizCategory").value; // Category input should be outside the questions loop
+	  
+		  if (!quizTitle) {
+			alert("Please provide a title for the quiz.");
+			return;
+		  }
+	  
+		  if (!quizCategory) {
+			alert("Please select a category for the quiz.");
+			return;
+		  }
+	  
+		  let allQuestions = quizList.map(index => {
+			const questionText = document.getElementById(`question-${index}`).value;
+			const options = [
+			  document.getElementById(`option1-${index}`).value,
+			  document.getElementById(`option2-${index}`).value,
+			  document.getElementById(`option3-${index}`).value,
+			  document.getElementById(`option4-${index}`).value
+			];
+			const answerSelection = document.getElementById(`correctAnswer-${index}`).value;
+			const answer = options[parseInt(answerSelection.replace('option', '')) - 1]; // Map selected option to the actual answer value
+			const subject = document.getElementById(`subject-${index}`).value;
+			const timeLimit = parseInt(document.getElementById(`timeLimit-${index}`).value);  // Get time limit value as number
+	  
+			// Ensure that the selected answer is one of the options
+			if (!options.includes(answer)) {
+			  alert(`Answer must be one of the options for question ${index + 1}.`);
+			  return null; // Return null to stop submission if validation fails
+			}
+	  
+			// Ensure timeLimit is provided for each question
+			if (isNaN(timeLimit) || timeLimit <= 0) {
+			  alert(`Please provide a valid time limit for question ${index + 1}.`);
+			  return null;
+			}
+	  
+			return {
+			  question: questionText,
+			  options: options,
+			  answer: answer,
+			  subject: subject,
+			  timeLimit: timeLimit
+			};
+		  }).filter(quiz => quiz !== null); // Remove any null entries from the array
+	  
+		  // Check if all fields are filled
+		  if (allQuestions.length === 0 || allQuestions.some(quiz => !quiz.question || !quiz.options.every(opt => opt) || !quiz.answer || !quiz.subject || !quiz.timeLimit)) {
+			alert("Please fill in all the fields for every question.");
+			return;
+		  }
+	  
+		  const quizData = {
+			title: quizTitle,  // Correctly captured quiz title
+			category: quizCategory,  // Correctly capture category for the entire quiz
+			quizzes: allQuestions  // Correctly capture all questions
+		  };
+	  
+		  // Send the quiz data to the server
+		  fetch("http://localhost:3000/api/quiz", {
+			method: "POST",
+			headers: { "Content-Type": "application/json" },
+			body: JSON.stringify(quizData),  // Send quiz title, category, and questions directly
+		  })
+		  .then(response => response.json())
+		  .then(data => {
+			alert("Quiz submitted successfully!");
+			document.getElementById("quizContainer").innerHTML = "";
+			quizList = [];
+		  })
+		  .catch(error => console.error("Error submitting quiz:", error));
+		}
+	  
+		// Add the first question and title input on page load
+		window.onload = () => {
+		  const quizTitleHTML = `
+			<div class="quiz-title mb-3">
+			  <label>Quiz Title:</label>
+			  <input type="text" class="form-control" id="quizTitle" required>
+			</div>
+			<div class="quiz-category mb-3">
+			  <label>Category:</label>
+			  <select class="form-control" id="quizCategory" required>
+				<option value="Primary">Primary</option>
+				<option value="Secondary">Secondary</option>
+			  </select>
+			</div>
+		  `;
+		  document.getElementById("quizContainer").insertAdjacentHTML("beforebegin", quizTitleHTML);
+		  addQuiz(); // Add the first question
+		};
+	  </script>
+	  
+	
+</body>
+</html>
