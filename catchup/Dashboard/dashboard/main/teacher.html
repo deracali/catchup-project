@@ -371,7 +371,7 @@ document.getElementById('logoutBtn').addEventListener('click', function() {
 <script>
 	document.addEventListener("DOMContentLoaded", async () => {
 		try {
-			const response = await fetch("http://localhost:3000/api/livecourses/get");
+			const response = await fetch("https://catchup-project.onrender.com//api/livecourses/get");
 			const courses = await response.json();
 	
 			if (courses.length === 0) return;
@@ -453,7 +453,7 @@ document.getElementById('logoutBtn').addEventListener('click', function() {
             }
 
             // Fetch live courses for the teacher
-            const coursesRes = await fetch(`http://localhost:3000/api/livecourses/getbyid/${teacherId}`);
+            const coursesRes = await fetch(`https://catchup-project.onrender.com//api/livecourses/getbyid/${teacherId}`);
            
             const response = await coursesRes.json();
             console.log(response); // Check the structure of the response
@@ -463,7 +463,7 @@ document.getElementById('logoutBtn').addEventListener('click', function() {
             console.log('Courses:', courses); // Check the structure of courses
 
             // Fetch bookings for the teacher
-            const bookingsRes = await fetch(`http://localhost:3000/api/bookings/teacher/${teacherId}`);
+            const bookingsRes = await fetch(`https://catchup-project.onrender.com//api/bookings/teacher/${teacherId}`);
             if (!bookingsRes.ok) {
                 throw new Error('Failed to fetch bookings');
             }
@@ -566,7 +566,7 @@ function generateAppointmentHTML(appointments) {
 
 		async function fetchAppointments() {
 			try {
-				const response = await fetch(`http://localhost:3000/api/bookings`);
+				const response = await fetch(`https://catchup-project.onrender.com//api/bookings`);
 				const allBookings = await response.json();
 
 				// Filter bookings for this teacher
@@ -600,7 +600,7 @@ function generateAppointmentHTML(appointments) {
 
 <script>
 	document.addEventListener("DOMContentLoaded", function () {
-		fetch("http://localhost:3000/api/bookings")
+		fetch("https://catchup-project.onrender.com//api/bookings")
 			.then(response => response.json())
 			.then(data => {
 				// Process data: Count bookings per day
@@ -645,7 +645,7 @@ function generateAppointmentHTML(appointments) {
   
 	if (teacherId) {
 	  // Fetch teacher data from the API
-	  fetch(`http://localhost:3000/api/teachers/${teacherId}`)
+	  fetch(`https://catchup-project.onrender.com//api/teachers/${teacherId}`)
 		.then((response) => response.json())
 		.then((data) => {
 		  if (data) {

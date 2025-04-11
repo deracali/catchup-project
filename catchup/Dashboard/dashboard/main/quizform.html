@@ -391,7 +391,7 @@
 		  };
 	  
 		  // Send the quiz data to the server
-		  fetch("http://localhost:3000/api/quiz", {
+		  fetch("https://catchup-project.onrender.com//api/quiz", {
 			method: "POST",
 			headers: { "Content-Type": "application/json" },
 			body: JSON.stringify(quizData),  // Send quiz title, category, and questions directly

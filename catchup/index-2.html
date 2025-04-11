@@ -79,6 +79,11 @@
 
      
      </style>
+      <style>
+        .logo-catch{
+            width: 100px;
+        }
+     </style>
     <body>
        <!-- sidebar-information-area-start -->
         <div class="sidebar-info side-info">
@@ -111,7 +116,7 @@
                         <div class="col-xl-3 col-sm-7 col-6">
                             <div class="h2_header-left">
                                 <div class="h2_header-logo">
-                                    <a href="index.html"><img style="width:100px;  src="assets/img/cat2Logo.png" alt=""></a>
+                                    <a href="index.html"><img src="assets/img/cat2Logo.png" class="logo-catch" alt=""></a>
                                 </div>
                              
                             </div>
@@ -797,23 +802,26 @@
             </div>
         </footer>
         <!-- footer area end -->
-        <script>
-            const userRole = localStorage.getItem('role');
-            const dashboardLink = document.getElementById('dashboard-link');
-          
-            if (userRole === 'secondary') {
-              dashboardLink.innerHTML = '<a href="Dashboard/dashboard/main/secondary.html">Dashboard</a>';
-            } else {
-              dashboardLink.innerHTML = '<a href="Dashboard/dashboard/main/primary.html">Dashboard</a>';
-            }
-          </script>
+     <script>
+  const userRole = localStorage.getItem('role');
+  const dashboardLink = document.getElementById('dashboard-link');
+
+  if (userRole === 'secondary') {
+    dashboardLink.innerHTML = '<a href="Dashboard/dashboard/main/secondary.html">Dashboard</a>';
+  } else if (userRole === 'primary') {
+    dashboardLink.innerHTML = '<a href="Dashboard/dashboard/main/primary.html">Dashboard</a>';
+  } else {
+    // Optionally hide or disable the dashboard link if there's no valid role
+    dashboardLink.innerHTML = ''; // or show a login/signup prompt
+  }
+</script>
 
 
 <script>
     // Function to fetch teacher's data
     async function fetchTeacherData(teacherId) {
         try {
-            const response = await fetch(`http://localhost:3000/api/teachers/${teacherId}`);
+            const response = await fetch(`https://catchup-project.onrender.com/api/teachers/${teacherId}`);
             if (response) {
                 const teacher = await response.json();
                 return teacher;
@@ -831,7 +839,7 @@
     // Function to fetch live courses
     async function fetchLiveCourses() {
         try {
-            const response = await fetch('http://localhost:3000/api/livecourses/get');
+            const response = await fetch('https://catchup-project.onrender.com/api/livecourses/get');
             const courses = await response.json();
     
             if (Array.isArray(courses)) {
@@ -905,7 +913,7 @@
     // Function to fetch teachers from the server
     async function fetchTeachers() {
       try {
-        const response = await fetch('http://localhost:3000/api/teachers');
+        const response = await fetch('https://catchup-project.onrender.com/api/teachers');
         const data = await response.json();
         if (data && Array.isArray(data)) {
           allTeachers = data;

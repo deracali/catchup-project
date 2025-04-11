@@ -260,7 +260,7 @@
     async function fetchBookings() {
   try {
     // Fetch bookings
-    const bookingsResponse = await fetch('http://localhost:3000/api/bookings');
+    const bookingsResponse = await fetch('https://catchup-project.onrender.com//api/bookings');
     const bookings = await bookingsResponse.json();
 
     // Loop through each booking and fetch teacher details using teacherId
@@ -269,7 +269,7 @@
       const teacherId = booking.teacherId._id;  // Getting the teacher's _id
 
       // Fetch teacher details based on teacherId
-      const teacherResponse = await fetch(`http://localhost:3000/api/teachers/${teacherId}`);
+      const teacherResponse = await fetch(`https://catchup-project.onrender.com//api/teachers/${teacherId}`);
       const teacher = await teacherResponse.json();
 
       // Create and display the booking card

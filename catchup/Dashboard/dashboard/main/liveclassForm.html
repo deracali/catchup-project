@@ -317,7 +317,7 @@ document.getElementById('logoutBtn').addEventListener('click', function() {
   };
 
   try {
-    const response = await fetch('http://localhost:3000/api/livecourses/create', {
+    const response = await fetch('https://catchup-project.onrender.com//api/livecourses/create', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

@@ -22,7 +22,11 @@
         <link rel="stylesheet" href="assets/css/swiper-bundle.min.css">
         <link rel="stylesheet" href="assets/css/main.css">
     </head>
-     
+    <style>
+        .logo-catch{
+            width: 100px;
+        }
+     </style>
     <body>
        <!-- sidebar-information-area-start -->
         <div class="sidebar-info side-info">
@@ -55,7 +59,7 @@
                         <div class="col-xl-7 col-lg-6 col-md-6 col-6">
                             <div class="header-left">
                                 <div class="header-logo">
-                                    <a href="index.html"><img style="width:100px;  src="assets/img/cat2Logo.png" alt=""></a>
+                                    <a href="index.html"><img src="assets/img/cat2Logo.png" class="logo-catch" alt=""></a>
                                 </div>
                                 <nav class="main-menu mobile-menu d-none d-xl-block" id="mobile-menu">
                                     <ul>
@@ -167,7 +171,7 @@
                         <div class="col-xl-3 col-lg-7 col-md-7 col-sm-12">
                             <div class="footer-widget mb-40">
                                 <div class="footer-logo">
-                                    <a href="index.html"><img style="width:100px;  src="assets/img/cat2Logo.png" alt=""></a>
+                                    <a href="index.html"><img src="assets/img/cat2Logo.png" class="logo-catch" alt=""></a>
                                 </div>
                                 <p class="footer-widget-text mb-35">
                                     Through a combination of lectures, readings, discussions, students will gain solid foundation in educational.
@@ -228,16 +232,19 @@
             </div>
         </footer>
         <!-- footer area end -->
-        <script>
-            const userRole = localStorage.getItem('role');
-            const dashboardLink = document.getElementById('dashboard-link');
-          
-            if (userRole === 'secondary') {
-              dashboardLink.innerHTML = '<a href="Dashboard/dashboard/main/secondary.html">Dashboard</a>';
-            } else {
-              dashboardLink.innerHTML = '<a href="Dashboard/dashboard/main/primary.html">Dashboard</a>';
-            }
-          </script>
+     <script>
+  const userRole = localStorage.getItem('role');
+  const dashboardLink = document.getElementById('dashboard-link');
+
+  if (userRole === 'secondary') {
+    dashboardLink.innerHTML = '<a href="Dashboard/dashboard/main/secondary.html">Dashboard</a>';
+  } else if (userRole === 'primary') {
+    dashboardLink.innerHTML = '<a href="Dashboard/dashboard/main/primary.html">Dashboard</a>';
+  } else {
+    // Optionally hide or disable the dashboard link if there's no valid role
+    dashboardLink.innerHTML = ''; // or show a login/signup prompt
+  }
+</script>
 
 
 
@@ -246,7 +253,7 @@
       // Get user role from localStorage (case-insensitive handling)
       const userRole = (localStorage.getItem('role') || '').toLowerCase();
     
-      fetch('http://localhost:3000/api/offlinecourse')
+      fetch('https://catchup-project.onrender.com//api/offlinecourse')
         .then(response => response.json())
         .then(courses => {
           const container = document.getElementById('offline-course-container');

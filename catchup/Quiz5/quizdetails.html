@@ -50,6 +50,11 @@
         <link rel="stylesheet" href="assets/css/result_style.css">
     </head>
     <style>
+        .logo-catch{
+            width: 100px;
+        }
+     </style>
+    <style>
       /* Styling the rating popup */
 .rating-popup {
     display: none;
@@ -148,6 +153,37 @@
     height: 100%;
     background: rgba(0, 0, 0, 0.5);
     z-index: 9998;
+}
+.detailed-answers {
+  margin-top: 20px;
+}
+.answer-card {
+  background-color: #f3f3f3;
+  padding: 12px;
+  border-radius: 6px;
+  margin-bottom: 12px;
+}
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+
+.popup-content {
+  background: white;
+  padding: 20px 30px;
+  border-radius: 8px;
+  width: 90%;
+  max-width: 500px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.3);
+  text-align: center;
 }
 
     </style>
@@ -248,6 +284,17 @@
                     <img class="behind_bg" src="assets/images/bh-clip.png" alt="rectangle">
                 </div>
             </div>
+
+            <!-- Explanation Popup -->
+<div id="explanationPopup" class="popup-overlay" style="display: none;">
+    <div class="popup-content">
+      <h3>Explanation</h3>
+      <p id="popupCorrectAnswer"><strong>Correct Answer:</strong> </p>
+      <p id="popupExplanationText"><strong>Explanation:</strong> </p>
+      <button id="closeExplanationPopup">Close</button>
+    </div>
+  </div>
+  
         
             <!-- Rating Popup -->
             <div class="rating-popup" id="ratingPopup">
@@ -284,7 +331,7 @@
         const quizId = urlParams.get('id');  // Assuming URL is like /quiz?id=123
     console.log(quizId)
         // Fetch the quiz data from the backend
-        fetch(`http://localhost:3000/api/quiz/quiz/${quizId}`)
+        fetch(`https://catchup-project.onrender.com/api/quiz/quiz/${quizId}`)
             .then(response => response.json())
             .then(data => {
                 console.log(data)
@@ -370,18 +417,26 @@
     
         // Function to check the selected answer
         function checkAnswer() {
-            if (questions.length === 0) return; // Ensure questions are loaded
-            const question = questions[currentQuestionIndex];
-            const selectedOption = document.querySelector(`input[name="op${currentQuestionIndex + 1}"]:checked`);
-    
-            if (selectedOption) {
-                const isCorrect = question.answer === selectedOption.value;
-                if (isCorrect) {
-                    score++;
-                }
-            }
+    if (questions.length === 0) return;
+
+    const question = questions[currentQuestionIndex];
+    const selectedOption = document.querySelector(`input[name="op${currentQuestionIndex + 1}"]:checked`);
+
+    if (selectedOption) {
+        const selectedAnswer = selectedOption.value;
+        const isCorrect = question.answer === selectedAnswer;
+
+        if (!isCorrect) {
+            // Show explanation popup
+            document.getElementById('popupCorrectAnswer').innerHTML = `<strong>Correct Answer:</strong> ${question.answer}`;
+            document.getElementById('popupExplanationText').innerHTML = `<strong>Explanation:</strong> ${question.explanation || "No explanation provided."}`;
+            document.getElementById('explanationPopup').style.display = 'flex';
+        } else {
+            score++;
         }
-    
+    }
+}
+
         // Function to go to the next question
         function nextQuestion() {
             checkAnswer();
@@ -443,6 +498,30 @@
         feedbackContainer.appendChild(feedback);
     });
 
+
+    // Show all questions with correct answers and explanations
+const detailedAnswers = document.createElement('div');
+detailedAnswers.classList.add('detailed-answers');
+detailedAnswers.innerHTML = `<h3>Correct Answers & Explanations</h3>`;
+
+questions.forEach((question, index) => {
+    const answerCard = document.createElement('div');
+    answerCard.classList.add('answer-card');
+
+    answerCard.innerHTML = `
+        <h4>Q${index + 1}: ${question.question}</h4>
+        <p><strong>Correct Answer:</strong> ${question.answer}</p>
+        <p><strong>Explanation:</strong> ${question.explanation || 'No explanation provided.'}</p>
+        <hr />
+    `;
+
+    detailedAnswers.appendChild(answerCard);
+});
+
+feedbackContainer.appendChild(detailedAnswers); // Append after feedback section
+
+
+
     // Show the score in the rating popup
     const scorePopup = document.getElementById('ratingPopup');
 scorePopup.innerHTML = `
@@ -463,7 +542,7 @@ document.getElementById('closePopupBtn').addEventListener('click', () => {
     };
 
     // Send the score to the server
-    fetch('http://localhost:3000/api/quiz-scores', {
+    fetch('https://catchup-project.onrender.com/api/quiz-scores', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -487,11 +566,7 @@ document.getElementById('closePopupBtn').addEventListener('click', () => {
 }
 
     
-      // Countdown timer with a fixed time of 40 minutes
-// Countdown timer with a fixed time of 40 minutes
-// Countdown timer with a fixed time of 40 minutes
-// Countdown timer with a fixed time of 40 minutes
-// Countdown timer with a fixed time of 40 minutes
+
 function startCountdown() {
     let timeRemaining = 40 * 60; // Set timeLimit to 40 minutes (converted to seconds)
     const countdownTimerElement = document.getElementById('countdown-timer');
@@ -507,7 +582,11 @@ function startCountdown() {
     }, timeRemaining * 1000); // Convert timeRemaining (in seconds) to milliseconds
 }
 
-    
+// Close popup logic
+document.getElementById('closeExplanationPopup').addEventListener('click', () => {
+    document.getElementById('explanationPopup').style.display = 'none';
+});
+
         // If questions haven't been loaded yet, show a loading message
         window.addEventListener('load', () => {
             if (questions.length === 0) {

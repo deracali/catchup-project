@@ -22,7 +22,11 @@
         <link rel="stylesheet" href="assets/css/swiper-bundle.min.css">
         <link rel="stylesheet" href="assets/css/main.css">
     </head>
-     
+    <style>
+        .logo-catch{
+            width: 100px;
+        }
+     </style>  
     <body>
        <!-- sidebar-information-area-start -->
         <div class="sidebar-info side-info">
@@ -656,16 +660,19 @@
             </div>
         </footer>
         <!-- footer area end -->
-        <script>
-            const userRole = localStorage.getItem('role');
-            const dashboardLink = document.getElementById('dashboard-link');
-          
-            if (userRole === 'secondary') {
-              dashboardLink.innerHTML = '<a href="Dashboard/dashboard/main/secondary.html">Dashboard</a>';
-            } else {
-              dashboardLink.innerHTML = '<a href="Dashboard/dashboard/main/primary.html">Dashboard</a>';
-            }
-          </script>
+     <script>
+  const userRole = localStorage.getItem('role');
+  const dashboardLink = document.getElementById('dashboard-link');
+
+  if (userRole === 'secondary') {
+    dashboardLink.innerHTML = '<a href="Dashboard/dashboard/main/secondary.html">Dashboard</a>';
+  } else if (userRole === 'primary') {
+    dashboardLink.innerHTML = '<a href="Dashboard/dashboard/main/primary.html">Dashboard</a>';
+  } else {
+    // Optionally hide or disable the dashboard link if there's no valid role
+    dashboardLink.innerHTML = ''; // or show a login/signup prompt
+  }
+</script>
 
 
 
@@ -679,7 +686,7 @@
 
     // Fetching all courses from the server (no limit) and slicing to only 10 courses
     window.addEventListener('DOMContentLoaded', () => {
-        fetch('http://localhost:3000/api/offlinecourse')  // Fetching all courses
+        fetch('https://catchup-project.onrender.com//api/offlinecourse')  // Fetching all courses
             .then(response => response.json())
             .then(courses => {
                 // Slice the first 10 courses
@@ -749,7 +756,7 @@
 
     // Fetch quizzes and filter by Primary category, limit to 10 items, and display them
     window.addEventListener('DOMContentLoaded', () => {
-        fetch('http://localhost:3000/api/quiz')  // Fetch all quizzes (no filter by category on the backend)
+        fetch('https://catchup-project.onrender.com//api/quiz')  // Fetch all quizzes (no filter by category on the backend)
             .then(response => response.json())
             .then(quizzes => {
                 console.log(quizzes)

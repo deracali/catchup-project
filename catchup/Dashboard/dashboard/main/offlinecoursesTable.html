@@ -294,7 +294,7 @@
 		
 			async function fetchCourses() {
 				try {
-					const response = await fetch("http://localhost:3000/api/offlinecourse");
+					const response = await fetch("https://catchup-project.onrender.com//api/offlinecourse");
 					const data = await response.json();
 					allCourses = data;
 					console.log(allCourses)
@@ -341,7 +341,7 @@
 						if (!confirm("Are you sure you want to delete this course?")) return;
 		
 						try {
-							await fetch(`http://localhost:3000/api/delete/${courseId}`, { method: "DELETE" });
+							await fetch(`https://catchup-project.onrender.com//api/delete/${courseId}`, { method: "DELETE" });
 							allCourses = allCourses.filter(course => course._id !== courseId);
 							renderCourses();
 							alert("Course deleted successfully!");

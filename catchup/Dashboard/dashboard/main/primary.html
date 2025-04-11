@@ -346,7 +346,7 @@
 	<script>
 		async function fetchCourses() {
 			try {
-				const response = await fetch("http://localhost:3000/api/offlinecourse");
+				const response = await fetch("https://catchup-project.onrender.com//api/offlinecourse");
 				const courses = await response.json();
 	
 				// Get role from localStorage (e.g., "Primary")
@@ -417,7 +417,7 @@
 	<script>
 		async function fetchQuizzes() {
 			try {
-				const response = await fetch("http://localhost:3000/api/quiz");
+				const response = await fetch("https://catchup-project.onrender.com//api/quiz");
 				const quizData = await response.json();
 	
 				const role = localStorage.getItem("role"); // Assume this is "Primary"
@@ -584,7 +584,7 @@
         }
 
         // Fetch student details from the backend
-        const response = await fetch(`http://localhost:3000/api/users/profile/${studentId}`);
+        const response = await fetch(`https://catchup-project.onrender.com//api/users/profile/${studentId}`);
         const studentData = await response.json();
 
         if (!studentData) {

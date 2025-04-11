@@ -307,7 +307,7 @@
           // Fetch and Populate Live Courses
           async function fetchLiveCourses() {
             try {
-              const response = await fetch("http://localhost:3000/api/livecourses/get");
+              const response = await fetch("https://catchup-project.onrender.com//api/livecourses/get");
               if (!response.ok) throw new Error("Failed to fetch courses");
       
               const courses = await response.json();
@@ -341,7 +341,7 @@
             if (!confirm("Are you sure you want to delete this course?")) return;
       
             try {
-              const response = await fetch(`http://localhost:3000/api/livecourses/delete/${courseId}`, {
+              const response = await fetch(`https://catchup-project.onrender.com//api/livecourses/delete/${courseId}`, {
                 method: "DELETE"
               });
               if (!response.ok) throw new Error("Failed to delete course");
@@ -358,7 +358,7 @@
             const newTitle = prompt("Enter new course title:");
             if (!newTitle) return;
       
-            fetch(`http://localhost:3000/api/livecourses/update/${courseId}`, {
+            fetch(`https://catchup-project.onrender.com//api/livecourses/update/${courseId}`, {
               method: "PUT",
               headers: { "Content-Type": "application/json" },
               body: JSON.stringify({ title: newTitle })
@@ -415,7 +415,7 @@
           // Fetch and Populate Live Courses
           async function fetchLiveCourses() {
             try {
-              const response = await fetch("http://localhost:3000/api/livecourses/get");
+              const response = await fetch("https://catchup-project.onrender.com//api/livecourses/get");
               if (!response.ok) throw new Error("Failed to fetch courses");
       
               const courses = await response.json();
@@ -449,7 +449,7 @@
             if (!confirm("Are you sure you want to delete this course?")) return;
       
             try {
-              const response = await fetch(`http://localhost:3000/api/livecourses/delete/${courseId}`, {
+              const response = await fetch(`https://catchup-project.onrender.com//api/livecourses/delete/${courseId}`, {
                 method: "DELETE"
               });
               if (!response.ok) throw new Error("Failed to delete course");
@@ -466,7 +466,7 @@
             const newTitle = prompt("Enter new course title:");
             if (!newTitle) return;
       
-            fetch(`http://localhost:3000/api/livecourses/update/${courseId}`, {
+            fetch(`https://catchup-project.onrender.com//api/livecourses/update/${courseId}`, {
               method: "PUT",
               headers: { "Content-Type": "application/json" },
               body: JSON.stringify({ title: newTitle })

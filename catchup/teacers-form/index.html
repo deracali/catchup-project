@@ -77,7 +77,7 @@
 	            <!-- /content-left-wrapper -->
 	        </div>
 	        <!-- /content-left -->
-	        <div class="col-xl-8 col-lg-8 content-right" id="start">
+	        <div style="height: auto;" class="col-xl-8 col-lg-8 content-right" id="start">
 	            <div id="wizard_container">
 	                <div id="top-wizard">
 	                    <span id="location"></span>
@@ -288,7 +288,7 @@
 	
 				try {
 					// Ensure the fetch request is made to the correct endpoint
-					let response = await fetch("http://localhost:3000/api/teacher-reviews/create", {
+					let response = await fetch("https://catchup-project.onrender.com//api/teacher-reviews/create", {
 						method: "POST",
 						body: formData
 					});

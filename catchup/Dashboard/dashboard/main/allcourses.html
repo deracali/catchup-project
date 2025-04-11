@@ -319,7 +319,7 @@
   <script>
     async function fetchLatestCourses() {
         try {
-            const response = await fetch("http://localhost:3000/api/offlinecourse");
+            const response = await fetch("https://catchup-project.onrender.com/api/offlinecourse");
             const courses = await response.json();
 
             const role = localStorage.getItem("role");

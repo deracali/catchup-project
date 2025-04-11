@@ -22,7 +22,11 @@
         <link rel="stylesheet" href="assets/css/swiper-bundle.min.css">
         <link rel="stylesheet" href="assets/css/main.css">
     </head>
-     
+     <style>
+        .logo-catch{
+            width: 100px;
+        }
+     </style>
     <body>
        <!-- sidebar-information-area-start -->
         <div class="sidebar-info side-info">
@@ -55,7 +59,7 @@
                         <div class="col-xl-7 col-lg-6 col-md-6 col-6">
                             <div class="header-left">
                                 <div class="header-logo">
-                                    <a href="index.html"><img style="width:100px;  src="assets/img/cat2Logo.png" alt=""></a>
+                                    <a href="index.html"><img src="assets/img/cat2Logo.png" class="logo-catch" alt=""></a>
                                 </div>
                                 <nav class="main-menu mobile-menu d-none d-xl-block" id="mobile-menu">
                                     <ul>
@@ -2683,16 +2687,19 @@
             </div>
         </footer>
         <!-- footer area end -->
-        <script>
-            const userRole = localStorage.getItem('role');
-            const dashboardLink = document.getElementById('dashboard-link');
-          
-            if (userRole === 'secondary') {
-              dashboardLink.innerHTML = '<a href="Dashboard/dashboard/main/secondary.html">Dashboard</a>';
-            } else {
-              dashboardLink.innerHTML = '<a href="Dashboard/dashboard/main/primary.html">Dashboard</a>';
-            }
-          </script>
+     <script>
+  const userRole = localStorage.getItem('role');
+  const dashboardLink = document.getElementById('dashboard-link');
+
+  if (userRole === 'secondary') {
+    dashboardLink.innerHTML = '<a href="Dashboard/dashboard/main/secondary.html">Dashboard</a>';
+  } else if (userRole === 'primary') {
+    dashboardLink.innerHTML = '<a href="Dashboard/dashboard/main/primary.html">Dashboard</a>';
+  } else {
+    // Optionally hide or disable the dashboard link if there's no valid role
+    dashboardLink.innerHTML = ''; // or show a login/signup prompt
+  }
+</script>
 
 
 
@@ -2701,7 +2708,7 @@
     async function fetchQuizzes() {
       try {
         // Fetch all quizzes from the server
-        const response = await fetch('http://localhost:3000/api/quiz');
+        const response = await fetch('https://catchup-project.onrender.com/api/quiz');
         const quizzes = await response.json();
         console.log(quizzes);
 
@@ -2762,7 +2769,7 @@
 
 <script>
     // Fetch course data from the API
-    fetch('http://localhost:3000/api/offlinecourse')
+    fetch('https://catchup-project.onrender.com/api/offlinecourse')
       .then(response => response.json())
       .then(data => {
         const blogRow = document.getElementById('blog-row');

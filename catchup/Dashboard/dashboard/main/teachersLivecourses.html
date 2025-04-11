@@ -371,7 +371,7 @@ document.getElementById('logoutBtn').addEventListener('click', function() {
         }
     
         // Fetch courses from the API
-        fetch(`http://localhost:3000/api/livecourses/getbyid/${teacherId}`)
+        fetch(`https://catchup-project.onrender.com//api/livecourses/getbyid/${teacherId}`)
             .then(response => response.json())
             .then(courses => {
                 console.log(courses);

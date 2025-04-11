@@ -315,7 +315,7 @@
     }
 
     try {
-        const response = await fetch(`http://localhost:3000/api/teacher-reviews/get/${teacherId}`);
+        const response = await fetch(`https://catchup-project.onrender.com/api/teacher-reviews/get/${teacherId}`);
         if (!response.ok) {
             throw new Error("Teacher not found");
         }
@@ -374,7 +374,7 @@
             document.getElementById("statusText").textContent = "Sending...";
 
             try {
-                const registerResponse = await fetch("http://localhost:3000/api/teachers/register", {
+                const registerResponse = await fetch("https://catchup-project.onrender.com/api/teachers/register", {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify(data),
