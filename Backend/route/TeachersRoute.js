@@ -13,7 +13,7 @@ const TeacherRoute = express.Router();
 TeacherRoute.post("/register", registerTeacher); // Register a teacher
 TeacherRoute.post("/login", loginTeacher); // Login teacher
 TeacherRoute.get("/", getAllTeachers); // Get all teachers
-TeacherRoute.get("/:id", getTeacherById); // Get a single teacher by ID
+TeacherRoute.get("/:teacherId", getTeacherById); // Get a single teacher by ID
 TeacherRoute.put("/:id", updateTeacher); // Update teacher details
 TeacherRoute.delete("/delete/:id", deleteTeacher); // Delete a teacher
 

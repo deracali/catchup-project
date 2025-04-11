@@ -74,7 +74,7 @@ const login = async (req, res) => {
     }
 
     const token = generateToken(user);
-
+console.log(user.role)
     // Ensure role is included in the response
     res.json({
       user: {
@@ -95,7 +95,7 @@ const login = async (req, res) => {
 const updateUser = async (req, res) => {
   try {
     const { userid } = req.params;
-    const { name, about, image, role } = req.body;
+    const { name, about, image, email, role } = req.body;
 
     const user = await User.findById(userid);
     if (!user) {
@@ -104,6 +104,7 @@ const updateUser = async (req, res) => {
 
     // Update user fields if provided
     if (name) user.name = name;
+    if (email) user.email = email;
     if (about) user.about = about;
     if (image) user.image = image;
     if (role) user.role = role;

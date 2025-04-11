@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../images/favicon.ico">
+
+    <title>CatchUp - Dashboard</title>
+    
+	<!-- Vendors Style-->
+	<link rel="stylesheet" href="css/vendors_css.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+	
+	<!-- Style-->  
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/skin_color.css">
+	<link rel="stylesheet" type="text/css" href="css/custom-9.css">
+	<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+  </head>
+  <style>
+	#chart-container {
+		width: 100%;
+		height: 400px;
+	}
+	#reality-chart {
+            width: 100%;
+            height: 400px;
+        }
+</style>
+
+<body class="hold-transition light-skin sidebar-mini theme-violet fixed">
+	
+<div class="wrapper">
+  <div id="loader"></div>
+	
+  <header class="main-header">
+	<div class="d-flex align-items-center logo-box justify-content-start">
+		<a href="#" class="waves-effect waves-light nav-link d-none d-md-inline-block mx-10 push-btn bg-transparent" data-toggle="push-menu" role="button">
+			<i class="fas fa-align-left"></i>
+
+		</a>	
+		<!-- Logo -->
+        <a href="secondary.html" class="logo">
+		  <!-- logo-->
+		  <div class="logo-lg">
+			  <span class="light-logo"><img src="../images/logo-dark-text.png" alt="logo"></span>
+			  <span class="dark-logo"><img src="../images/logo-light-text.png" alt="logo"></span>
+		  </div>
+		</a>	
+	</div>  
+    <!-- Header Navbar -->
+    <nav class="navbar navbar-static-top">
+      <!-- Sidebar toggle button-->
+	  <div class="app-menu">
+		<ul class="header-megamenu nav">
+			<li class="btn-group nav-item d-md-none">
+				<a href="#" class="waves-effect waves-light nav-link push-btn" data-toggle="push-menu" role="button">
+					<i class="fas fa-align-left"></i>
+
+			    </a>
+			</li>
+		
+		</ul> 
+	  </div>
+		
+      <div class="navbar-custom-menu r-side">
+        <ul class="nav navbar-nav">	
+		
+		  
+	      <!-- User Account-->
+          <li class="dropdown user user-menu">
+            <a href="#" class="waves-effect waves-light dropdown-toggle" data-bs-toggle="dropdown" title="User">
+				<i class="fas fa-user"></i>
+            </a>
+            <ul class="dropdown-menu animated flipInX">
+<li class="user-body">
+    <a class="dropdown-item" href="extra_profile.html"><i class="fa fa-user text-muted me-2"></i> Profile</a>
+
+    <div class="dropdown-divider"></div>
+    <a class="dropdown-item" href="#" id="logout-button">
+		<i class="fa fa-lock text-muted me-2"></i> Logout
+	  </a>
+</li>
+
+            </ul>
+          </li>	
+		  
+         
+			
+        </ul>
+      </div>
+    </nav>
+  </header>
+  
+  <aside class="main-sidebar">
+    <!-- sidebar-->
+    <section class="sidebar position-relative">	
+	  	<div class="multinav">
+		  <div class="multinav-scroll" style="height: 100%;">	
+			  <!-- sidebar menu-->
+			  <ul class="sidebar-menu" data-widget="tree">	
+				<li class="header">Dashboard & Apps</li>
+				
+				<li><a href="secondary.html"><i class="fas fa-code-branch"></i>Dashboard</a></li>
+                <li><a href="allcourses.html"><i class="fas fa-book-open"></i> Courses</a></li>
+				<li><a href="quiz.html"><i class="fas fa-question-circle"></i> Quiz</a></li>
+        <li><a href="community.html"><i class="fas fa-users"></i> Community</a></li>
+
+					 	     
+			  </ul>
+		  </div>
+		</div>
+    </section>
+	<div class="sidebar-footer">
+		<a href="javascript:void(0)" class="link" data-bs-toggle="tooltip" title="Settings"><span class="icon-Settings-2"></span></a>
+		<a href="mailbox.html" class="link" data-bs-toggle="tooltip" title="Email"><span class="icon-Mail"></span></a>
+		<a href="javascript:void(0)" class="link" data-bs-toggle="tooltip" title="Logout"><span class="icon-Lock-overturning"><span class="path1"></span><span class="path2"></span></span></a>
+	</div>
+  </aside>
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+	  <div class="container-full">
+		<!-- Main content -->
+		<section class="content">
+			
+
+            <div class="row">
+                <div class="col-xxl-8">
+                    <div class="row fx-element-overlay">
+                        <div class="col-12">                                                        
+                            <div class="box no-shadow mb-0 bg-transparent">
+                                <div class="box-header d-flex justify-content-between align-items-center no-border px-0">
+                                    <h3 class="fw-500 m-0 fs-22">All New Quizzes</h3>    
+                                    
+                                </div>
+                            </div>
+                        </div>
+                        <div class="container">
+                            <div class="row" id="latestQuizzesContainer">
+                                <!-- Latest quizzes will be dynamically loaded here -->
+                            </div>
+                        </div>            
+                    </div>
+                </div>
+            </div>
+            
+		</section>
+		<!-- /.content -->
+	  </div>
+  </div>
+  <!-- /.content-wrapper -->
+  <footer class="main-footer">
+   
+	  &copy; 2025 All Rights Reserved Catchup.
+  </footer>
+
+
+  
+  <!-- Add the sidebar's background. This div must be placed immediately after the control sidebar -->
+  <div class="control-sidebar-bg"></div>
+  
+</div>
+<!-- ./wrapper -->
+	
+	
+<script>
+	// Add event listener to the Logout button
+	document.getElementById('logout-button').addEventListener('click', function() {
+	  // Remove studentId, token, and role from localStorage
+	  localStorage.removeItem('studentId');
+	  localStorage.removeItem('token');
+	  localStorage.removeItem('role');
+  
+	  // Optionally, redirect the user to the login page or homepage after logout
+	  window.location.href = 'sign-in.html'; // or '/home' depending on your application
+	});
+  </script>
+
+	
+	
+	<!-- Page Content overlay -->
+	
+	
+	<!-- Vendor JS -->
+	<script src="js/vendors.min.js"></script>
+	<script src="js/pages/chat-popup.js"></script>
+    <script src="../assets/icons/feather-icons/feather.min.js"></script>	
+	
+	<script src="../assets/vendor_components/apexcharts-bundle/dist/apexcharts.js"></script>
+	<script src="../assets/vendor_components/moment/min/moment.min.js"></script>
+	<script src="../assets/vendor_components/fullcalendar/fullcalendar.js"></script>
+	<script src="../../npm/echarts%405/dist/echarts.min.js"></script>
+	<script src="../assets/vendor_components/jquery.peity/jquery.peity.js"></script>
+	
+	
+	<!-- CatchUp App -->
+	<script src="js/template.js"></script>
+	<script src="js/pages/dashboard9.js"></script>
+	<script src="js/pages/calendar.js"></script>
+	<script src="js/pages/peity.js"></script>
+	
+
+
+
+
+
+
+  <script>
+    async function fetchLatestQuizzes() {
+        try {
+            // Fetch quiz data from the API
+            const response = await fetch("http://localhost:3000/api/quiz");
+            const quizzes = await response.json();
+
+            // Get role from localStorage (e.g., "Primary" or "Secondary")
+            const role = localStorage.getItem("role");
+
+            // Filter quizzes by category matching role
+            const filteredQuizzes = quizzes.filter(quiz =>
+                quiz.category?.toLowerCase() === role?.toLowerCase()
+            );
+
+            // Sort by createdAt in descending order (latest first) and get top 3
+            const latestQuizzes = filteredQuizzes
+                .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
+                .slice(0, 3);
+
+            const container = document.getElementById("latestQuizzesContainer");
+            container.innerHTML = ""; // Clear previous content
+
+            latestQuizzes.forEach(quiz => {
+                const quizElement = document.createElement("div");
+                quizElement.classList.add("col-lg-4", "col-md-6", "col-12");
+
+                const quizLink = document.createElement("a");
+                quizLink.href = `../../../Quiz5/quizdetails.html?id=${quiz._id}`;
+                quizLink.classList.add("text-dark", "hover-primary");
+
+                quizLink.innerHTML = `
+                    <div class="box pull-up">
+                        <div class="box-body">
+                            <div style="gap:10px;" class="d-flex align-items-center">
+                              <div class="d-flex flex-column flex-grow-1">
+                                <img src="../../../assets/img/quizImg.jpeg" alt="${quiz.title}" class="img-fluid mt-3"/>
+                                    <h4 style="margin-top:10px;" class="mb-1">${quiz.title}</h4>
+                                    <p class="m-0 text-fade">Category: ${quiz.category}</p>
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div>
+                                    <p class="m-0 text-fade fw-500">Number of Questions</p>
+                                    <h4 class="m-0">${quiz.questions.length}</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+
+                quizElement.appendChild(quizLink);
+                container.appendChild(quizElement);
+            });
+
+        } catch (error) {
+            console.error("Error fetching latest quizzes:", error);
+        }
+    }
+
+    // Fetch latest quizzes on page load
+    fetchLatestQuizzes();
+</script>
+
+
+
+
+
+
+</body>
+</html>

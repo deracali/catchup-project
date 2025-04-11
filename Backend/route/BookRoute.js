@@ -6,6 +6,7 @@ import {
   getBookingsByTeacher,
   updateBooking,
   deleteBooking,
+  updateBookingStatus,
 } from "../controller/BookController.js";
 
 const BookRoute = express.Router();
@@ -27,5 +28,6 @@ BookRoute.put("/bookings/:id", updateBooking);
 
 // ✅ Route to delete a booking
 BookRoute.delete("/bookings/:id", deleteBooking);
+BookRoute.patch("/bookings/:id/status", updateBookingStatus);
 
 export default BookRoute;

@@ -9,7 +9,8 @@ const LiveCourseSchema = new mongoose.Schema(
     studentsCount: { type: Number, default: 0 },
     lessonCount: { type: Number },
     time: { type: String },
-    teacherId: { type: String} // Reference to the teacher
+    teacherId: { type: String }, // Reference to the teacher
+    googleMeetLink: { type: String }, // New field for Google Meet link
   },
   { timestamps: true }
 );

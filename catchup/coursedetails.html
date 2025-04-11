@@ -49,85 +49,52 @@
 
         <!-- header area start -->
         <header> 
-            <div class="h2_header-area header-sticky">
+            <div class="header-area header-sticky">
                 <div class="container">
                     <div class="row align-items-center">
-                        <div class="col-xl-3 col-sm-7 col-6">
-                            <div class="h2_header-left">
-                                <div class="h2_header-logo">
-                                    <a href="index.html"><img src="assets/img/logo/logo.png" alt=""></a>
+                        <div class="col-xl-7 col-lg-6 col-md-6 col-6">
+                            <div class="header-left">
+                                <div class="header-logo">
+                                    <a href="index.html"><img style="width:100px;  src="assets/img/cat2Logo.png" alt=""></a>
                                 </div>
-                                <div class="h2_header-category d-none d-sm-block">
-                                    <a href="#"><i class="fa-solid fa-grid"></i><span>Category</span></a>
-                                    <ul class="h2_header-category-submenu">
-                                        <li><a href="#">Design</a></li>
-                                        <li><a href="#">Development</a></li>
-                                        <li><a href="#">Architecture</a></li>
-                                        <li><a href="#">Data Science</a></li>
-                                        <li><a href="#">Marketing</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-6 d-none d-xl-block">
-                            <div class="h2_header-middle">
-                                <nav class="h2_main-menu mobile-menu" id="mobile-menu">
+                                <nav class="main-menu mobile-menu d-none d-xl-block" id="mobile-menu">
                                     <ul>
                                         <li class="menu-has-child">
                                             <a href="index.html">Home</a>
                                             <ul class="submenu">
-                                                    <li><a href="index.html">Education Main</a></li>
-                                                    <li><a href="index-2.html">Online Education</a></li>
-                                                    <li><a href="index-3.html">Classic LMS</a></li>
-                                                    <li><a href="index-4.html">Elearning Education</a></li>
-                                                    <li><a href="index-5.html">College Status</a></li>
-                                                    <li><a href="index-6.html">University Campus</a></li>
-                                                    <li><a href="index-7.html">Academic Education</a></li>
-                                                    <li><a href="index-8.html">Online Courses</a></li>
-                                                    <li><a href="index-9.html">Kids Education</a></li>
-                                                    <li><a href="index-10.html">Preschool Program</a></li>
-                                                </ul>
-                                        </li>
-                                        <li class="menu-has-child">
-                                            <a href="course.html">Courses</a>
-                                            <ul class="submenu">
-                                                <li><a href="course.html">Courses 1</a></li>
-                                                <li><a href="course-2.html">Courses 2</a></li>
-                                                <li><a href="course-details.html">Course Details</a></li>
+                                                <li><a href="index.html">Secondary</a></li>
+                                                <li><a href="index-2.html">Adult</a></li>
+                                                <li><a href="index-10.html">Primary</a></li>
                                             </ul>
                                         </li>
+                                    
                                         <li class="menu-has-child">
                                             <a href="#">Pages</a>
                                             <ul class="submenu">
                                                 <li><a href="about.html">About</a></li>
-                                                <li><a href="team.html">Teacher</a></li>
-                                                <li><a href="team-details.html">Teacher Details</a></li>
-                                                <li><a href="event.html">Events</a></li>
-                                                <li><a href="event-details.html">Event Details</a></li>
-                                                <li><a href="price.html">Price</a></li>
-                                                <li><a href="gallery.html">Gallery</a></li>
-                                                <li><a href="sign-up.html">Sign Up</a></li>
-                                                <li><a href="sign-in.html">Sign In</a></li>
-                                                <li><a href="404.html">404</a></li>
+                                                <li><a href="team.html">Teachers</a></li>
                                             </ul>
                                         </li>
-                                        <li class="menu-has-child">
-                                            <a href="blog.html">Blog</a>
-                                            <ul class="submenu">
-                                                <li><a href="blog.html">Blog</a></li>
-                                                <li><a href="blog-details.html">Blog Details</a></li>
-                                            </ul>
-                                        </li>
-                                        <li><a href="contact.html">Contact</a></li>
+                                       
+                                        <li><a href="offlinecourse.html">Offline Course</a></li>
+
+                                         <li id="dashboard-link"></li>
                                     </ul>
                                 </nav>
                             </div>
                         </div>
-                        <div class="col-xl-3 col-sm-5 col-6">
-                            <div class="h2_header-right">
-                                <div class="h2_header-btn d-none d-sm-block">
-                                    <a href="#" class="header-btn theme-btn theme-btn-medium">Sign Up</a>
+                        <div class="col-xl-5 col-lg-6 col-md-6 col-6">
+                            <div class="header-right">
+                                <div class="header-search d-none d-lg-block">
+                                    <form action="#">
+                                        <input type="text" placeholder="Search Item">
+                                        <button type="submit" class="header-search-btn"><i class="fa-thin fa-magnifying-glass"></i></button>
+                                    </form>
                                 </div>
+                              <div class="header-btn d-none d-sm-block">
+    <a id="header-btn" href="sign-up.html" class="header-btn theme-btn theme-btn-medium">Enroll Now</a>
+</div>
+
                                 <div class="header-menu-bar d-xl-none ml-10">
                                     <span class="header-menu-bar-icon side-toggle">
                                         <i class="fa-light fa-bars"></i>
@@ -211,10 +178,8 @@
                                         </div>
                                     </div>
                                 
-                                    <div class="blog_details-inner-text">
-                                        <h4 id="lesson-title" class="mb-20"></h4>
-                                        <p id="lesson-content" class="mb-20"></p>
-                                    </div>
+                                    <div id="highlight-container" class="blog_details-inner-text"></div>
+
                                 </div>
                                 
                                 
@@ -279,7 +244,7 @@
                         <div class="col-xl-3 col-lg-7 col-md-7 col-sm-12">
                             <div class="footer-widget mb-40">
                                 <div class="footer-logo">
-                                    <a href="index.html"><img src="assets/img/logo/logo.png" alt=""></a>
+                                    <a href="index.html"><img style="width:100px;  src="assets/img/cat2Logo.png" alt=""></a>
                                 </div>
                                 <p class="footer-widget-text mb-35">
                                     Through a combination of lectures, readings, discussions, students will gain solid foundation in educational.
@@ -358,18 +323,54 @@
                         if (course) {
                             // Populate course details
                             document.getElementById('course-description').innerText = course.description || 'No description available.';
-                            document.getElementById('course-additional-info').innerText = course.additionalInfo || 'No additional information available.';
+                            // document.getElementById('course-additional-info').innerText = course.additionalInfo || 'No additional information available.';
                             document.getElementById('course-image').src = course.courseImage || 'assets/img/default-course-image.jpg';
                             document.getElementById('courseProfile').src = course.courseImage || 'assets/img/default-course-image.jpg';
                             document.getElementById('course-title').innerText = course.title || 'Course Title';
             
                             // Assuming the lesson content is inside 'highlights' or similar property
                             if (course.highlights && course.highlights.length > 0) {
-                                const firstHighlight = course.highlights[0]; // Example: first lesson in the highlights array
-                                document.getElementById('lesson-title').innerText = firstHighlight.title || 'Lesson Title';
-                                document.getElementById('lesson-content').innerText = firstHighlight.content || 'Lesson content not available.';
-                            }
-            
+    const highlightContainer = document.getElementById('highlight-container');
+    highlightContainer.innerHTML = ''; // Clear old highlights
+
+    course.highlights.forEach((highlight, index) => {
+        const highlightBlock = document.createElement('div');
+        highlightBlock.className = 'single-highlight mb-30 p-3 border rounded';
+
+        // Add label/title
+        const label = document.createElement('h4');
+        label.innerText = `Highlight ${index + 1}`;
+        label.className = 'mb-2 text-primary';
+
+        // Add heading
+        const heading = document.createElement('h5');
+        heading.innerText = highlight.heading || 'No heading provided';
+        heading.className = 'mb-1 fw-bold';
+
+        // Add text
+        const text = document.createElement('p');
+        text.innerText = highlight.text || 'No text content available.';
+        text.className = 'mb-2';
+
+        // Add example (optional)
+        const example = document.createElement('p');
+        if (highlight.example) {
+            example.innerHTML = `<strong>Example:</strong> ${highlight.example}`;
+            example.className = 'text-muted fst-italic';
+        }
+
+        // Append all to the block
+        highlightBlock.appendChild(label);
+        highlightBlock.appendChild(heading);
+        highlightBlock.appendChild(text);
+        if (highlight.example) highlightBlock.appendChild(example);
+
+        // Append the block to the container
+        highlightContainer.appendChild(highlightBlock);
+    });
+}
+
+            console.log(course.highlights)
                             // Populate blog_details-top section
                             document.querySelector('.blog_details-title').innerText = course.title;
             
@@ -406,6 +407,27 @@
             </script>
             
             
+
+
+            <script>
+                // Check if studentId exists in localStorage
+                const studentId = localStorage.getItem('studentId');
+                const headerBtn = document.getElementById('header-btn');  // The button element
+            
+                // If studentId is found, change the button to "Logout"
+                if (studentId) {
+                    headerBtn.innerHTML = 'Logout';
+                    headerBtn.href = '#';  // Make sure the link doesn't navigate anywhere
+                    headerBtn.addEventListener('click', () => {
+                        // Remove studentId and token from localStorage
+                        localStorage.removeItem('studentId');
+                        localStorage.removeItem('token');
+                        
+                        // Optionally, redirect to the login page or homepage after logout
+                        window.location.href = 'login.html'; // Redirect to the login page
+                    });
+                }
+            </script>
 
 
 

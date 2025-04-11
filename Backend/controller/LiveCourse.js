@@ -18,27 +18,48 @@ import Course from "../model/LiveCourse.js";
 };
 
 // Get a single course by ID
+// const getCourseById = async (req, res) => {
+//   try {
+//     // Access teacherId from the request parameters
+//     const { teacherId } = req.params;
+
+//     // Fetch courses for the teacher
+//     const courses = await Course.find({ teacherId });
+
+//     if (!courses.length) {
+//       return res.status(404).json({ message: "No courses found for this teacher." });
+//     }
+
+//     const currentDate = new Date().toISOString().split("T")[0];
+
+//     // Map through courses and update status
+//     const updatedCourses = courses.map(course => ({
+//       ...course._doc,
+//       status: course.date === currentDate ? "Live Class" : "Join Now",
+//     }));
+
+//     res.status(200).json(updatedCourses);
+//   } catch (error) {
+//     console.error("Error fetching courses:", error);
+//     res.status(500).json({ error: "Internal Server Error", details: error.message });
+//   }
+// };
+
 const getCourseById = async (req, res) => {
   try {
-    if (!req.user || !req.user.id) {
-      return res.status(401).json({ error: "Unauthorized. Teacher ID is required." });
-    }
+    // Access teacherId from the request parameters
+    const { teacherId } = req.params;
 
-    const teacherId = req.user.id;
+    // Fetch courses for the teacher
     const courses = await Course.find({ teacherId });
 
-    if (!courses.length) {
+    if (!courses || courses.length === 0) {
       return res.status(404).json({ message: "No courses found for this teacher." });
     }
 
-    const currentDate = new Date().toISOString().split("T")[0];
+    // Return the fetched courses without modification
+    res.status(200).json(courses);
 
-    const updatedCourses = courses.map(course => ({
-      ...course._doc,
-      status: course.date === currentDate ? "Live Class" : "Join Now",
-    }));
-
-    res.status(200).json(updatedCourses);
   } catch (error) {
     console.error("Error fetching courses:", error);
     res.status(500).json({ error: "Internal Server Error", details: error.message });
@@ -51,10 +72,18 @@ const createCourse = async (req, res) => {
   try {
     console.log("Request Body:", req.body); // Log incoming request data
 
-    // Remove the array check since we're expecting a single course object
-    const { title, date, lessons, totalCost, studentsCount, lessonCount, time, teacherId } = req.body;
+    const {
+      title,
+      date,
+      lessons,
+      totalCost,
+      studentsCount,
+      lessonCount,
+      time,
+      teacherId,
+      googleMeetLink // Destructure new field
+    } = req.body;
 
- 
     // Create a new course document
     const newCourse = new Course({
       title,
@@ -64,7 +93,8 @@ const createCourse = async (req, res) => {
       studentsCount: studentsCount || 0, // Default to 0 if not provided
       lessonCount,
       time,
-      teacherId
+      teacherId,
+      googleMeetLink // Add to schema
     });
 
     // Save the new course to the database

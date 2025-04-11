@@ -55,16 +55,16 @@
                         <div class="col-xl-7 col-lg-6 col-md-6 col-6">
                             <div class="header-left">
                                 <div class="header-logo">
-                                    <a href="index.html"><img src="assets/img/logo/logo.png" alt=""></a>
+                                    <a href="index.html"><img style="width:100px;  src="assets/img/cat2Logo.png" alt=""></a>
                                 </div>
                                 <nav class="main-menu mobile-menu d-none d-xl-block" id="mobile-menu">
                                     <ul>
                                         <li class="menu-has-child">
                                             <a href="index.html">Home</a>
                                             <ul class="submenu">
-                                                <li><a href="index.html">Education Main</a></li>
-                                                <li><a href="index-2.html">Online Education</a></li>
-                                                <li><a href="index-10.html">Preschool Program</a></li>
+                                                <li><a href="index.html">Secondary</a></li>
+                                                <li><a href="index-2.html">Adult</a></li>
+                                                <li><a href="index-10.html">Primary</a></li>
                                             </ul>
                                         </li>
                                     
@@ -91,9 +91,10 @@
                                         <button type="submit" class="header-search-btn"><i class="fa-thin fa-magnifying-glass"></i></button>
                                     </form>
                                 </div>
-                                <div class="header-btn d-none d-sm-block">
-                                    <a href="sign-up.html" class="header-btn theme-btn theme-btn-medium">Enroll Now</a>
-                                </div>
+                              <div class="header-btn d-none d-sm-block">
+    <a id="header-btn" href="sign-up.html" class="header-btn theme-btn theme-btn-medium">Enroll Now</a>
+</div>
+
                                 <div class="header-menu-bar d-xl-none ml-10">
                                     <span class="header-menu-bar-icon side-toggle">
                                         <i class="fa-light fa-bars"></i>
@@ -146,7 +147,7 @@
                                     <form id="loginForm" class="account-form">
                                         <div class="account-form-item mb-20">
                                           <div class="account-form-label">
-                                            <label>Your Email</label>
+                                            <label for="email">Your Email</label>
                                           </div>
                                           <div class="account-form-input">
                                             <input type="email" id="email" placeholder="Enter Your Email" required>
@@ -154,22 +155,26 @@
                                         </div>
                                         <div class="account-form-item mb-15">
                                           <div class="account-form-label">
-                                            <label>Your Password</label>
-                                            <a href="#">Forgot Password ?</a>
+                                            <label for="password">Your Password</label>
+                                            <a href="#" class="forgot-password-link">Forgot Password?</a>
                                           </div>
                                           <div class="account-form-input account-form-input-pass">
                                             <input type="password" id="password" placeholder="*********" required>
-                                            <span><i class="fa-thin fa-eye"></i></span>
+      <!-- Icon to toggle password visibility -->
+      <span id="togglePassword" style="cursor: pointer;">
+        <i class="fa fa-eye"></i>
+      </span>
                                           </div>
                                         </div>
                                         <div class="account-form-condition">
-                                          <label class="condition_label">Remember Me
+                                          <label class="condition_label">
+                                            Remember Me
                                             <input type="checkbox">
                                             <span class="check_mark"></span>
                                           </label>
                                         </div>
                                         <div class="account-form-button">
-                                          <button type="submit" class="account-btn">Sign In</button>
+                                          <button type="submit" class="account-btn" id="loginButton">Sign In</button>
                                         </div>
                                       </form>
                                       
@@ -236,7 +241,7 @@
                         <div class="col-xl-3 col-lg-7 col-md-7 col-sm-12">
                             <div class="footer-widget mb-40">
                                 <div class="footer-logo">
-                                    <a href="index.html"><img src="assets/img/logo/logo.png" alt=""></a>
+                                    <a href="index.html"><img style="width:100px;  src="assets/img/cat2Logo.png" alt=""></a>
                                 </div>
                                 <p class="footer-widget-text mb-35">
                                     Through a combination of lectures, readings, discussions, students will gain solid foundation in educational.
@@ -301,18 +306,18 @@
         <script>
             document.getElementById("loginForm").addEventListener("submit", async function (event) {
               event.preventDefault();
-            
+          
               const email = document.getElementById("email").value;
               const password = document.getElementById("password").value;
-            
+          
               const loginData = {
                 email: email,
                 password: password,
               };
-            
+          
               const loginButton = document.getElementById("loginButton");
               loginButton.textContent = "Logging..."; // Change the button text
-            
+          
               try {
                 const response = await fetch("http://localhost:3000/api/teachers/login", {
                   method: "POST",
@@ -321,15 +326,15 @@
                   },
                   body: JSON.stringify(loginData),
                 });
-            
+          
                 const data = await response.json();
-            
+          
                 if (response.ok) {
                   alert("Login successful!");
                   // Save the token and id to localStorage
                   localStorage.setItem("Ttoken", data.token); // Assuming the token is returned in `data.token`
-                  localStorage.setItem("teacherId", data.id); // Assuming the id is returned in `data.id`
-                  window.location.href = "/catchup/index8.";
+                  localStorage.setItem("teacherId", data.teacher._id); // Assuming the id is returned in `data.id`
+                  window.location.href = "./Dashboard/dashboard/main/teacher.html";
                 } else {
                   alert("Login failed: " + data.message);
                   loginButton.textContent = "Login"; // Reset the button text if login fails
@@ -340,8 +345,7 @@
                 loginButton.textContent = "Login"; // Reset the button text on error
               }
             });
-            </script>
-            
+          </script>
 
 
 
@@ -365,13 +369,13 @@ document.getElementById("togglePassword").addEventListener("click", function () 
 
 
 <script>
-    const userRole = localStorage.getItem('userRole');
+    const userRole = localStorage.getItem('role');
     const dashboardLink = document.getElementById('dashboard-link');
   
     if (userRole === 'secondary') {
-      dashboardLink.innerHTML = '<a href="Dashboard/dashboard/main/index9.html">Dashboard</a>';
+      dashboardLink.innerHTML = '<a href="Dashboard/dashboard/main/secondary.html">Dashboard</a>';
     } else {
-      dashboardLink.innerHTML = '<a href="Dashboard/dashboard/main/index.html">Dashboard</a>';
+      dashboardLink.innerHTML = '<a href="Dashboard/dashboard/main/primary.html">Dashboard</a>';
     }
   </script>
   

@@ -1,7 +1,7 @@
 //[Master Javascript]
 
-//Project:	EduAdmin - Responsive Admin Template
-//Primary use:	EduAdmin - Responsive Admin Template
+//Project:	CatchUp - Responsive Admin Template
+//Primary use:	CatchUp - Responsive Admin Template
 
 //should be included in all pages. It controls some layout
 

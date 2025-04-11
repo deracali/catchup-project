@@ -1,7 +1,7 @@
 <!Doctype html>
 <html class="no-js" lang="zxx">
     
-<!-- Mirrored from themephi.net/template/Catchup/Catchup/about.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 27 Mar 2025 22:25:44 GMT -->
+
 <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -22,7 +22,58 @@
         <link rel="stylesheet" href="assets/css/swiper-bundle.min.css">
         <link rel="stylesheet" href="assets/css/main.css">
     </head>
-     
+     <style>
+        /* Styling the select dropdown */
+#subject-filter {
+  padding: 8px;
+  font-size: 16px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  width: 100%;
+  max-width: 250px;
+  background-color: #fff;
+  color: #333;
+  transition: border-color 0.3s ease;
+}
+
+#subject-filter:focus {
+  border-color: #0066cc;
+  outline: none;
+}
+
+/* Styling the options */
+#subject-filter option {
+  padding: 8px;
+  font-size: 16px;
+  background-color: #fff;
+  color: #333;
+}
+
+#subject-filter option:hover {
+  background-color: #f0f0f0;
+}
+
+/* Style for the Load More Button */
+#load-more-btn {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #0066cc;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#load-more-btn:hover {
+  background-color: #005bb5;
+}
+
+#load-more-btn:focus {
+  outline: none;
+}
+
+     </style>
     <body>
        <!-- sidebar-information-area-start -->
         <div class="sidebar-info side-info">
@@ -55,16 +106,16 @@
                         <div class="col-xl-7 col-lg-6 col-md-6 col-6">
                             <div class="header-left">
                                 <div class="header-logo">
-                                    <a href="index.html"><img src="assets/img/logo/logo.png" alt=""></a>
+                                    <a href="index.html"><img style="width:100px;  src="assets/img/cat2Logo.png" alt=""></a>
                                 </div>
                                 <nav class="main-menu mobile-menu d-none d-xl-block" id="mobile-menu">
                                     <ul>
                                         <li class="menu-has-child">
                                             <a href="index.html">Home</a>
                                             <ul class="submenu">
-                                                <li><a href="index.html">Education Main</a></li>
-                                                <li><a href="index-2.html">Online Education</a></li>
-                                                <li><a href="index-10.html">Preschool Program</a></li>
+                                                <li><a href="index.html">Secondary</a></li>
+                                                <li><a href="index-2.html">Adult</a></li>
+                                                <li><a href="index-10.html">Primary</a></li>
                                             </ul>
                                         </li>
                                     
@@ -85,15 +136,11 @@
                         </div>
                         <div class="col-xl-5 col-lg-6 col-md-6 col-6">
                             <div class="header-right">
-                                <div class="header-search d-none d-lg-block">
-                                    <form action="#">
-                                        <input type="text" placeholder="Search Item">
-                                        <button type="submit" class="header-search-btn"><i class="fa-thin fa-magnifying-glass"></i></button>
-                                    </form>
-                                </div>
-                                <div class="header-btn d-none d-sm-block">
-                                    <a href="sign-up.html" class="header-btn theme-btn theme-btn-medium">Enroll Now</a>
-                                </div>
+                           
+                              <div class="header-btn d-none d-sm-block">
+    <a id="header-btn" href="sign-up.html" class="header-btn theme-btn theme-btn-medium">Enroll Now</a>
+</div>
+
                                 <div class="header-menu-bar d-xl-none ml-10">
                                     <span class="header-menu-bar-icon side-toggle">
                                         <i class="fa-light fa-bars"></i>
@@ -167,6 +214,7 @@
             <!-- teacher area start -->
             <section class="h2_teacher-area pb-80">
                 <div class="container">
+                  
                     <div class="row">
                         <div class="col-xl-6 col-lg-8 col-md-12 mb-30">
                             <div class="h2_teacher-section bg-default" data-background="assets/img/teacher/2/bg.jpg">
@@ -179,85 +227,30 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-xl-3 col-lg-4 col-sm-6">
-                            <div class="h2_teacher-item mb-30">
-                                <div class="h2_teacher-img">
-                                    <img src="assets/img/teacher/2/1.jpg" alt="">
-                                </div>
-                                <div class="h2_teacher-content">
-                                    <h5 class="h2_teacher-content-title">
-                                        <a href="#">Parsley Montana</a>
-                                    </h5>
-                                    <span>Lead Teacher</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-3 col-lg-4 col-sm-6">
-                            <div class="h2_teacher-item mb-30">
-                                <div class="h2_teacher-img">
-                                    <img src="assets/img/teacher/2/2.jpg" alt="">
-                                </div>
-                                <div class="h2_teacher-content">
-                                    <h5 class="h2_teacher-content-title">
-                                        <a href="#">Parsley Montana</a>
-                                    </h5>
-                                    <span>Lead Teacher</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-3 col-lg-4 col-sm-6">
-                            <div class="h2_teacher-item mb-30">
-                                <div class="h2_teacher-img">
-                                    <img src="assets/img/teacher/2/3.jpg" alt="">
-                                </div>
-                                <div class="h2_teacher-content">
-                                    <h5 class="h2_teacher-content-title">
-                                        <a href="#">Parsley Montana</a>
-                                    </h5>
-                                    <span>Lead Teacher</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-3 col-lg-4 col-sm-6">
-                            <div class="h2_teacher-item mb-30">
-                                <div class="h2_teacher-img">
-                                    <img src="assets/img/teacher/2/4.jpg" alt="">
-                                </div>
-                                <div class="h2_teacher-content">
-                                    <h5 class="h2_teacher-content-title">
-                                        <a href="#">Parsley Montana</a>
-                                    </h5>
-                                    <span>Lead Teacher</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-3 col-lg-4 col-sm-6">
-                            <div class="h2_teacher-item mb-30">
-                                <div class="h2_teacher-img">
-                                    <img src="assets/img/teacher/2/5.jpg" alt="">
-                                </div>
-                                <div class="h2_teacher-content">
-                                    <h5 class="h2_teacher-content-title">
-                                        <a href="#">Parsley Montana</a>
-                                    </h5>
-                                    <span>Lead Teacher</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-3 col-lg-4 col-sm-6">
-                            <div class="h2_teacher-item mb-30">
-                                <div class="h2_teacher-img">
-                                    <img src="assets/img/teacher/2/6.jpg" alt="">
-                                </div>
-                                <div class="h2_teacher-content">
-                                    <h5 class="h2_teacher-content-title">
-                                        <a href="#">Parsley Montana</a>
-                                    </h5>
-                                    <span>Lead Teacher</span>
-                                </div>
-                            </div>
+                    </div>
+                    
+                    <!-- Subject Filter Dropdown -->
+                    <div class="row" style="margin-bottom: 30px;">
+                        <div class="col-12">
+                            <select id="subject-filter" class="theme-select">
+                                <option value="">Filter by Subject</option>
+                                <!-- Options will be dynamically populated -->
+                            </select>
                         </div>
                     </div>
+                    
+                    <!-- Teacher Cards Container -->
+                    <div class="row" id="teacher-container">
+                        <!-- Teachers will be dynamically inserted here -->
+                    </div>
+                    
+                    <!-- Load More Button -->
+                    <div class="row">
+                        <div class="col-12 text-center">
+                            <button id="load-more-btn" class="theme-btn theme-btn-medium teacher-btn">Load More</button>
+                        </div>
+                    </div>
+                    
                 </div>
             </section>
             <!-- teacher area end -->
@@ -296,7 +289,7 @@
                         <div class="col-xl-3 col-lg-7 col-md-7 col-sm-12">
                             <div class="footer-widget mb-40">
                                 <div class="footer-logo">
-                                    <a href="index.html"><img src="assets/img/logo/logo.png" alt=""></a>
+                                    <a href="index.html"><img style="width:100px;  src="assets/img/cat2Logo.png" alt=""></a>
                                 </div>
                                 <p class="footer-widget-text mb-35">
                                     Through a combination of lectures, readings, discussions, students will gain solid foundation in educational.
@@ -358,16 +351,144 @@
         </footer>
         <!-- footer area end -->
         <script>
-            const userRole = localStorage.getItem('userRole');
+            const userRole = localStorage.getItem('role');
             const dashboardLink = document.getElementById('dashboard-link');
           
             if (userRole === 'secondary') {
-              dashboardLink.innerHTML = '<a href="Dashboard/dashboard/main/index9.html">Dashboard</a>';
+              dashboardLink.innerHTML = '<a href="Dashboard/dashboard/main/secondary.html">Dashboard</a>';
             } else {
-              dashboardLink.innerHTML = '<a href="Dashboard/dashboard/main/index.html">Dashboard</a>';
+              dashboardLink.innerHTML = '<a href="Dashboard/dashboard/main/primary.html">Dashboard</a>';
             }
           </script>
-		<!-- JS here -->
+
+
+
+
+
+<script>
+    // Check if studentId exists in localStorage
+    const studentId = localStorage.getItem('studentId');
+    const headerBtn = document.getElementById('header-btn');  // The button element
+
+    // If studentId is found, change the button to "Logout"
+    if (studentId) {
+        headerBtn.innerHTML = 'Logout';
+        headerBtn.href = '#';  // Make sure the link doesn't navigate anywhere
+        headerBtn.addEventListener('click', () => {
+            // Remove studentId and token from localStorage
+            localStorage.removeItem('studentId');
+            localStorage.removeItem('token');
+            
+            // Optionally, redirect to the login page or homepage after logout
+            window.location.href = 'login.html'; // Redirect to the login page
+        });
+    }
+</script>
+
+
+
+
+
+<script>
+    let allTeachers = [];
+    let filteredTeachers = [];
+    let currentPage = 1;
+    const teachersPerPage = 6;
+    
+    // Function to fetch teachers from the server
+    async function fetchTeachers() {
+      try {
+        const response = await fetch('http://localhost:3000/api/teachers');
+        const data = await response.json();
+        if (data && Array.isArray(data)) {
+          allTeachers = data;
+          filteredTeachers = data;  // Initially, no filter applied
+          loadMoreTeachers();
+          populateSubjectFilter(data);
+        } else {
+          console.error("Teachers data not found:", data);
+        }
+      } catch (error) {
+        console.error('Error fetching teachers:', error);
+      }
+    }
+    
+    // Function to populate the subject filter dropdown dynamically
+    function populateSubjectFilter(teachers) {
+      const subjectSet = new Set();  // Using Set to get unique subjects
+      teachers.forEach((teacher) => {
+        teacher.courses.forEach(course => subjectSet.add(course));
+      });
+    
+      const subjectFilter = document.getElementById("subject-filter");
+      subjectSet.forEach(subject => {
+        const option = document.createElement("option");
+        option.value = subject;
+        option.textContent = subject;
+        subjectFilter.appendChild(option);
+      });
+    }
+    
+    // Function to display teachers in the UI
+    function displayTeachers(teachers) {
+      const container = document.getElementById("teacher-container");
+      container.innerHTML = ""; // Clear previous teachers
+    
+      teachers.forEach((teacher) => {
+        const teacherElement = `
+          <div class="col-xl-3 col-lg-4 col-sm-6">
+            <div class="h2_teacher-item mb-30">
+              <div class="h2_teacher-img">
+                <img src="${teacher.profileImage}" alt="${teacher.name}">
+              </div>
+              <div class="h2_teacher-content">
+                <h5 class="h2_teacher-content-title">
+                  <a href="team-details.html?id=${teacher._id}">${teacher.name}</a>
+                </h5>
+                <span>${teacher.designation}</span>
+              </div>
+            </div>
+          </div>
+        `;
+        container.innerHTML += teacherElement;
+      });
+    }
+    
+    // Function to load more teachers
+    function loadMoreTeachers() {
+      const teachersToDisplay = filteredTeachers.slice((currentPage - 1) * teachersPerPage, currentPage * teachersPerPage);
+      displayTeachers(teachersToDisplay);
+    
+      currentPage++;
+    
+      if (currentPage * teachersPerPage > filteredTeachers.length) {
+        document.getElementById("load-more-btn").style.display = "none";
+      }
+    }
+    
+    // Filter function to update teachers based on selected subject
+    document.getElementById("subject-filter").addEventListener("change", (e) => {
+      const selectedSubject = e.target.value;
+      
+      if (selectedSubject) {
+        filteredTeachers = allTeachers.filter(teacher =>
+          teacher.courses.includes(selectedSubject)
+        );
+      } else {
+        filteredTeachers = allTeachers; // No filter applied, show all teachers
+      }
+    
+      currentPage = 1; // Reset pagination when the filter changes
+      loadMoreTeachers();
+    });
+    
+    // Fetch teachers on page load
+    fetchTeachers();
+    </script>
+
+
+
+<!-- JS here -->
         <script src="assets/js/jquery.min.js"></script>
         <script src="assets/js/bootstrap.bundle.min.js"></script>
         <script src="assets/js/swiper-bundle.min.js"></script>

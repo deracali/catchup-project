@@ -11,7 +11,7 @@ import {
 const courseRoutes = express.Router();
 
 courseRoutes.get("/get", getCourses);
-courseRoutes.get("/getbyid/:id", getCourseById);
+courseRoutes.get("/getbyid/:teacherId", getCourseById);
 courseRoutes.post("/create", createCourse);
 courseRoutes.put("/update/:id", updateCourse);
 courseRoutes.delete("/delete/:id", deleteCourse);

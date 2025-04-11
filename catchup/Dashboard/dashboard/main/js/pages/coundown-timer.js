@@ -1,6 +1,6 @@
 //[timer contact Javascript]
 
-//Project:	EduAdmin - Responsive Admin Template
+//Project:	CatchUp - Responsive Admin Template
 
 $(function () {
     "use strict";

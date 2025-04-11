@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../images/favicon.ico">
+
+    <title>CatchUp - Dashboard</title>
+    
+	<!-- Vendors Style-->
+	<link rel="stylesheet" href="css/vendors_css.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+	
+	<!-- Style-->  
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/skin_color.css">
+	<link rel="stylesheet" type="text/css" href="css/custom-9.css">
+	<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+  </head>
+  <style>
+	#chart-container {
+		width: 100%;
+		height: 400px;
+	}
+	#reality-chart {
+            width: 100%;
+            height: 400px;
+        }
+</style>
+<style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f1f1f1;
+      margin: 0;
+      padding: 20px;
+    }
+    .chat-container {
+      margin: auto;
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      display: flex;
+      flex-direction: column;
+      height: 600px;
+      overflow: hidden;
+    }
+    .messages {
+      padding: 20px;
+      flex: 1;
+      overflow-y: auto;
+    }
+    .message {
+      margin-bottom: 20px;
+      display: flex;
+      align-items: flex-start;
+    }
+    .avatar {
+      width: 40px;
+      height: 40px;
+      background: #007bff;
+      color: #fff;
+      border-radius: 50%;
+      text-align: center;
+      line-height: 40px;
+      font-weight: bold;
+      margin-right: 10px;
+      flex-shrink: 0;
+    }
+    .message-content {
+      max-width: 80%;
+    }
+    .message-header {
+      font-size: 14px;
+      margin-bottom: 5px;
+      color: #555;
+    }
+    .message-text {
+      background: #f1f1f1;
+      padding: 10px;
+      border-radius: 8px;
+      margin-bottom: 5px;
+      position: relative;
+    }
+    .message-text.blue {
+      background: #e0f0ff;
+      border-left: 3px solid #007bff;
+    }
+    .reactions {
+      margin-top: 5px;
+    }
+    .reactions i {
+      margin-right: 5px;
+      color: #ff4d4d;
+    }
+    .input-container {
+      display: flex;
+      align-items: center;
+      padding: 10px;
+      border-top: 1px solid #ccc;
+    }
+    .input-container input {
+      flex: 1;
+      padding: 10px;
+      border: none;
+      border-radius: 20px;
+      background: #f1f1f1;
+      margin-right: 10px;
+    }
+    .input-container button {
+      background: #28a745;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 50%;
+      color: white;
+      cursor: pointer;
+    }
+    .reply-btn {
+    margin-top: 5px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 12px;
+  }
+  .reply-btn:hover {
+    background-color: #0056b3;
+  }
+
+  /* Replying preview box */
+  .reply-preview {
+    background-color: #f1f1f1;
+    padding: 6px 10px;
+    margin-bottom: 8px;
+    border-left: 4px solid #007bff;
+    font-size: 14px;
+    color: #333;
+    position: relative;
+    border-radius: 4px;
+  }
+
+  .reply-preview small {
+    color: #777;
+  }
+
+  .reply-preview .cancel-reply {
+    position: absolute;
+    right: 8px;
+    top: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    color: #999;
+  }
+
+  .reply-preview .cancel-reply:hover {
+    color: #555;
+  }
+  </style>
+<body class="hold-transition light-skin sidebar-mini theme-violet fixed">
+	
+<div class="wrapper">
+  <div id="loader"></div>
+	
+  <header class="main-header">
+	<div class="d-flex align-items-center logo-box justify-content-start">
+		<a href="#" class="waves-effect waves-light nav-link d-none d-md-inline-block mx-10 push-btn bg-transparent" data-toggle="push-menu" role="button">
+			<i class="fas fa-align-left"></i>
+
+		</a>	
+		<!-- Logo -->
+        <a href="secondary.html" class="logo">
+		  <!-- logo-->
+		  <div class="logo-lg">
+			  <span class="light-logo"><img src="../images/logo-dark-text.png" alt="logo"></span>
+			  <span class="dark-logo"><img src="../images/logo-light-text.png" alt="logo"></span>
+		  </div>
+		</a>	
+	</div>  
+    <!-- Header Navbar -->
+    <nav class="navbar navbar-static-top">
+      <!-- Sidebar toggle button-->
+	  <div class="app-menu">
+		<ul class="header-megamenu nav">
+			<li class="btn-group nav-item d-md-none">
+				<a href="#" class="waves-effect waves-light nav-link push-btn" data-toggle="push-menu" role="button">
+					<i class="fas fa-align-left"></i>
+
+			    </a>
+			</li>
+		
+		</ul> 
+	  </div>
+		
+      <div class="navbar-custom-menu r-side">
+        <ul class="nav navbar-nav">	
+		
+		  
+	      <!-- User Account-->
+          <li class="dropdown user user-menu">
+            <a href="#" class="waves-effect waves-light dropdown-toggle" data-bs-toggle="dropdown" title="User">
+				<i class="fas fa-user"></i>
+            </a>
+            <ul class="dropdown-menu animated flipInX">
+<li class="user-body">
+    <a class="dropdown-item" href="extra_profile.html"><i class="fa fa-user text-muted me-2"></i> Profile</a>
+
+    <div class="dropdown-divider"></div>
+    <a class="dropdown-item" href="#" id="logout-button">
+		<i class="fa fa-lock text-muted me-2"></i> Logout
+	  </a>
+</li>
+
+            </ul>
+          </li>	
+		  
+         
+			
+        </ul>
+      </div>
+    </nav>
+  </header>
+  
+  <aside class="main-sidebar">
+    <!-- sidebar-->
+    <section class="sidebar position-relative">	
+	  	<div class="multinav">
+		  <div class="multinav-scroll" style="height: 100%;">	
+			  <!-- sidebar menu-->
+			  <ul class="sidebar-menu" data-widget="tree">	
+				<li class="header">Dashboard & Apps</li>
+				
+				<!-- <li><a href="secondary.html"><i class="fas fa-code-branch"></i>Dashboard</a></li> -->
+                <li><a href="allcourses.html"><i class="fas fa-book-open"></i> Courses</a></li>
+				<li><a href="quiz.html"><i class="fas fa-question-circle"></i> Quiz</a></li>
+
+					 	     
+			  </ul>
+		  </div>
+		</div>
+    </section>
+	<div class="sidebar-footer">
+		<a href="javascript:void(0)" class="link" data-bs-toggle="tooltip" title="Settings"><span class="icon-Settings-2"></span></a>
+		<a href="mailbox.html" class="link" data-bs-toggle="tooltip" title="Email"><span class="icon-Mail"></span></a>
+		<a href="javascript:void(0)" class="link" data-bs-toggle="tooltip" title="Logout"><span class="icon-Lock-overturning"><span class="path1"></span><span class="path2"></span></span></a>
+	</div>
+  </aside>
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+	  <div class="container-full">
+		<!-- Main content -->
+		<section class="content">
+			
+
+            <div class="chat-container">
+                <div id="messages" class="messages"></div>
+              
+                <!-- Reply Preview will be injected here dynamically -->
+                <div id="replyPreview"></div>
+              
+                <div class="input-container">
+                  <input type="text" id="messageInput" placeholder="Type a message...">
+                  <button id="sendBtn"><i class="fas fa-paper-plane"></i></button>
+                </div>
+              </div>
+              
+              
+		</section>
+		<!-- /.content -->
+	  </div>
+  </div>
+  <!-- /.content-wrapper -->
+  <footer class="main-footer">
+   
+	  &copy; 2025 All Rights Reserved Catchup.
+  </footer>
+
+
+  
+  <!-- Add the sidebar's background. This div must be placed immediately after the control sidebar -->
+  <div class="control-sidebar-bg"></div>
+  
+</div>
+<!-- ./wrapper -->
+	
+	
+		
+<script>
+	// Add event listener to the Logout button
+	document.getElementById('logout-button').addEventListener('click', function() {
+	  // Remove studentId, token, and role from localStorage
+	  localStorage.removeItem('studentId');
+	  localStorage.removeItem('token');
+	  localStorage.removeItem('role');
+  
+	  // Optionally, redirect the user to the login page or homepage after logout
+	  window.location.href = 'sign-in.html'; // or '/home' depending on your application
+	});
+  </script>
+
+	
+	<!-- Page Content overlay -->
+    <script>
+        let replyToMessageId = null; // Keeps track of reply
+      
+        async function loadMessages() {
+          try {
+            const res = await fetch('http://localhost:3000/api/messages');
+            const data = await res.json();
+            console.log(data.data);
+            const messages = Array.isArray(data) ? data.data : (data.data || []);
+      
+            const messagesContainer = document.getElementById('messages');
+            messagesContainer.innerHTML = '';
+      
+            messages.forEach(msg => {
+  const messageDiv = document.createElement('div');
+  messageDiv.className = 'message';
+
+  const senderName = msg.sender || msg._id || 'Unknown Sender';
+  const replySender = msg.replyTo?.sender || msg.replyTo?._id || 'Unknown Sender';
+  const replyText = msg.replyTo?.text || '(No text)';
+
+  messageDiv.innerHTML = `
+    <div class="avatar">${senderName.charAt(0)}</div>
+    <div class="message-content">
+      <div class="message-header">
+        ${senderName}
+        <span style="color: gray; font-size: 12px;">
+          ${new Date(msg.timestamp).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}
+        </span>
+      </div>
+      ${msg.replyTo ? `
+        <div class="message-text blue">
+          Replying to <strong>${replySender}</strong><br>
+          ${replyText}
+        </div>
+      ` : ''}
+      <div class="message-text">
+        ${msg.text}
+      </div>
+      <button class="reply-btn" data-id="${msg._id}">Reply</button>
+    </div>
+  `;
+
+  messagesContainer.appendChild(messageDiv);
+});
+
+            // Attach event listeners to reply buttons
+            document.querySelectorAll('.reply-btn').forEach(button => {
+              button.addEventListener('click', (e) => {
+                replyToMessageId = e.target.dataset.id;
+                const messageInput = document.getElementById('messageInput');
+                messageInput.placeholder = "Replying to message ID: " + replyToMessageId;
+                showReplyPreview(replyToMessageId);
+                messageInput.focus();
+              });
+            });
+      
+          } catch (err) {
+            console.error('Error loading messages:', err);
+          }
+        }
+      
+        function showReplyPreview(messageId) {
+          const replyPreview = document.getElementById('replyPreview');
+          replyPreview.innerHTML = `
+            <div class="reply-preview">
+              <small>Replying to Message ID:</small> <br><strong>${messageId}</strong>
+              <span class="cancel-reply" onclick="cancelReply()">×</span>
+            </div>
+          `;
+        }
+      
+        function cancelReply() {
+          replyToMessageId = null;
+          document.getElementById('replyPreview').innerHTML = '';
+          document.getElementById('messageInput').placeholder = 'Type a message...';
+        }
+      
+        async function sendMessage() {
+          const messageInput = document.getElementById('messageInput');
+          const text = messageInput.value.trim();
+          if (!text) return; // prevent sending empty
+      
+          try {
+            await fetch('http://localhost:3000/api/messages', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({
+                text: text,
+                replyTo: replyToMessageId || null
+              })
+            });
+      
+            messageInput.value = '';
+            messageInput.placeholder = 'Type a message...';
+            replyToMessageId = null;
+            document.getElementById('replyPreview').innerHTML = '';
+            loadMessages(); // reload after sending
+      
+          } catch (err) {
+            console.error('Error sending message:', err);
+          }
+        }
+      
+        document.getElementById('sendBtn').addEventListener('click', sendMessage);
+      
+        document.getElementById('messageInput').addEventListener('keydown', (e) => {
+          if (e.key === 'Enter') {
+            e.preventDefault();
+            sendMessage();
+          }
+        });
+      
+        loadMessages(); // initial
+      </script>
+      
+	
+	<!-- Vendor JS -->
+	<script src="js/vendors.min.js"></script>
+	<script src="js/pages/chat-popup.js"></script>
+    <script src="../assets/icons/feather-icons/feather.min.js"></script>	
+	
+	<script src="../assets/vendor_components/apexcharts-bundle/dist/apexcharts.js"></script>
+	<script src="../assets/vendor_components/moment/min/moment.min.js"></script>
+	<script src="../assets/vendor_components/fullcalendar/fullcalendar.js"></script>
+	<script src="../../npm/echarts%405/dist/echarts.min.js"></script>
+	<script src="../assets/vendor_components/jquery.peity/jquery.peity.js"></script>
+	
+	
+	<!-- CatchUp App -->
+	<script src="js/template.js"></script>
+	<script src="js/pages/dashboard9.js"></script>
+	<script src="js/pages/calendar.js"></script>
+	<script src="js/pages/peity.js"></script>
+	
+
+
+
+
+
+
+   
+
+
+
+
+
+</body>
+</html>

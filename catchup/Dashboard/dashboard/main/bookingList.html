@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../images/favicon.ico">
+
+    <title>CatchUp - Dashboard</title>
+    
+	<!-- Vendors Style-->
+	<link rel="stylesheet" href="css/vendors_css.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+	<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+	<!-- Style-->  
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/skin_color.css">
+	<link rel="stylesheet" type="text/css" href="css/custom-9.css">
+	<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+  </head>
+  <style>
+	#chart-container {
+		width: 100%;
+		height: 400px;
+	}
+	#reality-chart {
+            width: 100%;
+            height: 400px;
+        }
+    
+*{
+    font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.booking-list {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr); /* 4 columns */
+      gap: 20px;
+      padding: 20px;
+    }
+    .card {
+      background: #f4f4f4;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+    .top {
+      display: flex;
+      padding: 20px;
+      border-bottom: 1px solid #ddd;
+    }
+    .teacher-image {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      margin-right: 20px;
+    }
+    .text {
+      flex-grow: 1;
+    }
+    .name-wrapper {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+      flex-direction: column;
+    }
+    .name {
+      font-weight: bold;
+      margin-right: 10px;
+    }
+    .title {
+      font-size: 14px;
+      color: #888;
+    }
+    .bottom {
+      padding: 20px;
+    }
+    .desc {
+      margin-bottom: 15px;
+      font-size: 14px;
+      color: #555;
+    }
+    .buttons {
+      display: flex;
+      justify-content: flex-end;
+    }
+    .join-button {
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    .join-button:hover {
+      background-color: #0056b3;
+    }
+
+    /* Responsive Design for Smaller Screens */
+    @media (max-width: 1200px) {
+      .booking-list {
+        grid-template-columns: repeat(3, 1fr); /* 3 columns for medium screens */
+      }
+    }
+    @media (max-width: 800px) {
+      .booking-list {
+        grid-template-columns: repeat(2, 1fr); /* 2 columns for small screens */
+      }
+    }
+    @media (max-width: 500px) {
+      .booking-list {
+        grid-template-columns: 1fr; /* 1 column for extra small screens */
+      }
+    }
+</style>
+
+<body class="hold-transition light-skin sidebar-mini theme-violet fixed">
+	
+<div class="wrapper">
+  <div id="loader"></div>
+	
+  <header class="main-header">
+	<div class="d-flex align-items-center logo-box justify-content-start">
+		<a href="#" class="waves-effect waves-light nav-link d-none d-md-inline-block mx-10 push-btn bg-transparent" data-toggle="push-menu" role="button">
+			<i class="fas fa-align-left"></i>
+
+		</a>	
+		<!-- Logo -->
+        <a href="secondary.html" class="logo">
+		  <!-- logo-->
+		  <div class="logo-lg">
+			  <span class="light-logo"><img src="../images/logo-dark-text.png" alt="logo"></span>
+			  <span class="dark-logo"><img src="../images/logo-light-text.png" alt="logo"></span>
+		  </div>
+		</a>	
+	</div>  
+    <!-- Header Navbar -->
+    <nav class="navbar navbar-static-top">
+      <!-- Sidebar toggle button-->
+	  <div class="app-menu">
+		<ul class="header-megamenu nav">
+			<li class="btn-group nav-item d-md-none">
+				<a href="#" class="waves-effect waves-light nav-link push-btn" data-toggle="push-menu" role="button">
+					<i class="fas fa-align-left"></i>
+
+			    </a>
+			</li>
+		
+		</ul> 
+	  </div>
+		
+      <div class="navbar-custom-menu r-side">
+        <ul class="nav navbar-nav">	
+		
+		  
+	      <!-- User Account-->
+          <li class="dropdown user user-menu">
+            <a href="#" class="waves-effect waves-light dropdown-toggle" data-bs-toggle="dropdown" title="User">
+				<i class="fas fa-user"></i>
+            </a>
+            <ul class="dropdown-menu animated flipInX">
+<li class="user-body">
+    <a class="dropdown-item" href="extra_profile.html"><i class="fa fa-user text-muted me-2"></i> Profile</a>
+
+    <div class="dropdown-divider"></div>
+    <a class="dropdown-item" href="#" id="logout-button">
+		<i class="fa fa-lock text-muted me-2"></i> Logout
+	  </a>
+</li>
+
+            </ul>
+          </li>	
+		  
+         
+			
+        </ul>
+      </div>
+    </nav>
+  </header>
+  
+  <aside class="main-sidebar">
+    <!-- sidebar-->
+    <section class="sidebar position-relative">	
+	  	<div class="multinav">
+		  <div class="multinav-scroll" style="height: 100%;">	
+			  <!-- sidebar menu-->
+			  <ul class="sidebar-menu" data-widget="tree">	
+				<li class="header">Dashboard & Apps</li>
+				
+				<li><a href="adult.html"><i class="fas fa-code-branch"></i>Dashboard</a></li>
+                <li><a href="bookingList.html"><i class="fas fa-users"></i> Bookings</a></li>
+        <li><a href="community.html"><i class="fas fa-users"></i> Community</a></li>
+
+					 	     
+			  </ul>
+		  </div>
+		</div>
+    </section>
+	<div class="sidebar-footer">
+		<a href="javascript:void(0)" class="link" data-bs-toggle="tooltip" title="Settings"><span class="icon-Settings-2"></span></a>
+		<a href="mailbox.html" class="link" data-bs-toggle="tooltip" title="Email"><span class="icon-Mail"></span></a>
+		<a href="javascript:void(0)" class="link" data-bs-toggle="tooltip" title="Logout"><span class="icon-Lock-overturning"><span class="path1"></span><span class="path2"></span></span></a>
+	</div>
+  </aside>
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+	  <div class="container-full">
+		<!-- Main content -->
+        
+		<section class="content">
+			<p style="font-size: 18px;">Bookings</p>
+            <div class="booking-list">
+                <!-- Bookings will be dynamically inserted here -->
+              </div>
+		</section>
+		<!-- /.content -->
+	  </div>
+  </div>
+  <!-- /.content-wrapper -->
+  <footer class="main-footer">
+   
+	  &copy; 2025 All Rights Reserved Catchup.
+  </footer>
+
+
+  
+  <!-- Add the sidebar's background. This div must be placed immediately after the control sidebar -->
+  <div class="control-sidebar-bg"></div>
+  
+</div>
+<!-- ./wrapper -->
+	
+	
+		
+<script>
+	// Add event listener to the Logout button
+	document.getElementById('logout-button').addEventListener('click', function() {
+	  // Remove studentId, token, and role from localStorage
+	  localStorage.removeItem('studentId');
+	  localStorage.removeItem('token');
+	  localStorage.removeItem('role');
+  
+	  // Optionally, redirect the user to the login page or homepage after logout
+	  window.location.href = '../../../sign-in.html'; // or '/home' depending on your application
+	});
+  </script>
+
+	
+	<!-- Page Content overlay -->
+	
+
+ <script>
+    async function fetchBookings() {
+  try {
+    // Fetch bookings
+    const bookingsResponse = await fetch('http://localhost:3000/api/bookings');
+    const bookings = await bookingsResponse.json();
+
+    // Loop through each booking and fetch teacher details using teacherId
+    for (let booking of bookings) {
+      // Extract teacherId from booking
+      const teacherId = booking.teacherId._id;  // Getting the teacher's _id
+
+      // Fetch teacher details based on teacherId
+      const teacherResponse = await fetch(`http://localhost:3000/api/teachers/${teacherId}`);
+      const teacher = await teacherResponse.json();
+
+      // Create and display the booking card
+      displayBookingCard(booking, teacher);
+    }
+  } catch (error) {
+    console.error('Error fetching data:', error);
+  }
+}
+
+// Function to display the booking card
+function displayBookingCard(booking, teacher) {
+  const bookingList = document.querySelector('.booking-list');
+  console.log(booking)
+  const bookingCard = document.createElement('div');
+  bookingCard.classList.add('card');
+  bookingCard.innerHTML = `
+    <div class="top">
+      <img src="${teacher.profileImage}" alt="${teacher.name}" class="teacher-image">
+      <div class="text">
+        <div class="name-wrapper">
+          <span class="name">${teacher.name}</span>
+          <span class="title">${teacher.designation}</span>
+        </div>
+      </div>
+    </div>
+    <div class="bottom">
+      <div class="desc">
+        ${booking.time}
+      </div>
+      <div class="desc">
+        ${booking.description}
+      </div>
+      <div class="desc">
+        ${booking.status}
+      </div>
+      <div class="buttons">
+        <button class="join-button" onclick="window.location.href='${booking.googleMeetLink}'">
+          Join Google Meet
+        </button>
+      </div>
+    </div>
+  `;
+  bookingList.appendChild(bookingCard);
+}
+
+// Call the function to fetch bookings and teacher details on page load
+fetchBookings();
+
+ </script>
+
+	
+	<!-- Vendor JS -->
+	<script src="js/vendors.min.js"></script>
+	<script src="js/pages/chat-popup.js"></script>
+    <script src="../assets/icons/feather-icons/feather.min.js"></script>	
+	
+	<script src="../assets/vendor_components/apexcharts-bundle/dist/apexcharts.js"></script>
+	<script src="../assets/vendor_components/moment/min/moment.min.js"></script>
+	<script src="../assets/vendor_components/fullcalendar/fullcalendar.js"></script>
+	<script src="../../npm/echarts%405/dist/echarts.min.js"></script>
+	<script src="../assets/vendor_components/jquery.peity/jquery.peity.js"></script>
+	
+	
+	<!-- CatchUp App -->
+	<script src="js/template.js"></script>
+	<script src="js/pages/dashboard9.js"></script>
+	<script src="js/pages/calendar.js"></script>
+	<script src="js/pages/peity.js"></script>
+	
+
+
+</body>
+</html>

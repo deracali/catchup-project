@@ -22,7 +22,43 @@
         <link rel="stylesheet" href="assets/css/swiper-bundle.min.css">
         <link rel="stylesheet" href="assets/css/main.css">
     </head>
-     
+     <style>
+        .popup-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 1000;
+}
+
+.popup-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    width: 80%;
+    max-width: 500px;
+}
+
+.close-popup {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+button {
+    cursor: pointer;
+}
+
+     </style>
     <body>
        <!-- sidebar-information-area-start -->
         <div class="sidebar-info side-info">
@@ -55,16 +91,16 @@
                         <div class="col-xl-7 col-lg-6 col-md-6 col-6">
                             <div class="header-left">
                                 <div class="header-logo">
-                                    <a href="index.html"><img src="assets/img/logo/logo.png" alt=""></a>
+                                    <a href="index.html"><img style="width:100px;  src="assets/img/cat2Logo.png" alt=""></a>
                                 </div>
                                 <nav class="main-menu mobile-menu d-none d-xl-block" id="mobile-menu">
                                     <ul>
                                         <li class="menu-has-child">
                                             <a href="index.html">Home</a>
                                             <ul class="submenu">
-                                                <li><a href="index.html">Education Main</a></li>
-                                                <li><a href="index-2.html">Online Education</a></li>
-                                                <li><a href="index-10.html">Preschool Program</a></li>
+                                                <li><a href="index.html">Secondary</a></li>
+                                                <li><a href="index-2.html">Adult</a></li>
+                                                <li><a href="index-10.html">Primary</a></li>
                                             </ul>
                                         </li>
                                     
@@ -85,15 +121,11 @@
                         </div>
                         <div class="col-xl-5 col-lg-6 col-md-6 col-6">
                             <div class="header-right">
-                                <div class="header-search d-none d-lg-block">
-                                    <form action="#">
-                                        <input type="text" placeholder="Search Item">
-                                        <button type="submit" class="header-search-btn"><i class="fa-thin fa-magnifying-glass"></i></button>
-                                    </form>
-                                </div>
-                                <div class="header-btn d-none d-sm-block">
-                                    <a href="sign-up.html" class="header-btn theme-btn theme-btn-medium">Enroll Now</a>
-                                </div>
+                              
+                              <div class="header-btn d-none d-sm-block">
+    <a id="header-btn" href="sign-up.html" class="header-btn theme-btn theme-btn-medium">Enroll Now</a>
+</div>
+
                                 <div class="header-menu-bar d-xl-none ml-10">
                                     <span class="header-menu-bar-icon side-toggle">
                                         <i class="fa-light fa-bars"></i>
@@ -133,210 +165,69 @@
                     <div class="row">
                         <div class="col-lg-4 col-md-5">
                             <div class="teacher_details-img w_img mb-50">
-                                <img src="assets/img/teacher/2/1.jpg" alt="">
+                                <img id="teacherImage" src="" alt="Teacher Image">
                             </div>
                         </div>
                         <div class="col-lg-8 col-md-7">
                             <div class="teacher_details-content mb-50">
                                 <div class="teacher_details-admin">
-                                    <h4 class="teacher_details-title">Marvin McKinney</h4>
-                                    <span>Web Designer, Researcher</span>
-                                </div>
-                                <div class="teacher_details-rating">
-                                    <ul>
-                                        <li><i class="fa-solid fa-star"></i></li>
-                                        <li><i class="fa-solid fa-star"></i></li>
-                                        <li><i class="fa-solid fa-star"></i></li>
-                                        <li><i class="fa-solid fa-star"></i></li>
-                                        <li><i class="fa-solid fa-star"></i></li>
-                                    </ul>
-                                    <span>(03 Reviews)</span>
+                                    <h4 id="teacherName" class="teacher_details-title">Teacher Name</h4>
+                                    <span id="teacherDesignation">Designation</span>
                                 </div>
                                 <h5 class="teacher_details-title2">About Me</h5>
-                                <p class="mb-20">Lorem ipsum dolor sit amet, consectetur elit sed do eius mod tempor incidid labore dolore magna aliqua. enim ad minim eniam quis nostrud exercitation ullamco laboris nisi aliquip ex commodo consequat. duis aute irure dolor in repreed ut perspiciatis unde omnis iste natus error sit voluptat em acus antium.</p>
-                                <p class="mb-30">doloremque laudantium totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi arch itecto beatae vitae dicta sunt explicabo.</p>
+                                <p id="teacherAbout" class="mb-20"></p>
                                 <h5 class="teacher_details-title2">Contact Me</h5>
                                 <div class="teacher_details-info">
                                     <ul>
-                                        <li><span>Address:</span>Hilton Conference Centre</li>
-                                        <li><span>Email:</span><a href="mailto:Example@gmail.com">Example@gmail.com</a></li>
-                                        <li><span>Phone:</span><a href="tel:+123548645850">+123 548 6458 50</a></li>
+                                        <li><span>Address:</span><span id="teacherAddress"></span></li>
+                                        <li><span>Email:</span><a id="teacherEmail" href="#">Email</a></li>
+                                        <li><span>Phone:</span><a id="teacherPhone" href="#">Phone</a></li>
                                     </ul>
-                                    <div class="teacher_details-social">
-                                        <a href="#"><i class="fa-brands fa-twitter"></i></a>
-                                        <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
-                                        <a href="#"><i class="fa-brands fa-instagram"></i></a>
-                                        <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
-                                    </div>
                                 </div>
+            
+                                <h5 class="teacher_details-title2">Courses</h5>
+                                <ul id="teacherCourses">
+                                    <!-- Courses will be dynamically populated here -->
+                                </ul>
+                                
+                                <button style="margin-top: 20px;" id="popupBtn" class="btn btn-primary">Book Teacher</button>
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
+            
+            <!-- Popup Overlay -->
+            <div id="popupOverlay" class="popup-overlay" style="display: none;">
+                <div class="popup-content">
+                  <span id="closePopup" class="close-popup">&times;</span>
+                  <h4>Book a Session with <span id="popupTeacherName"></span></h4>
+                  <form id="bookingForm">
+                    <div class="form-group mb-3">
+                      <label for="bookingDate">Date:</label>
+                      <input type="date" id="bookingDate" class="form-control" required />
+                    </div>
+                    <div class="form-group mb-3">
+                      <label for="bookingTime">Time:</label>
+                      <input type="time" id="bookingTime" class="form-control" required />
+                    </div>
+                    <div class="form-group mb-3">
+                      <label for="bookingDesc">Description:</label>
+                      <textarea
+                        id="bookingDesc"
+                        class="form-control"
+                        rows="3"
+                        placeholder="Briefly describe your session needs..."
+                        required
+                      ></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-success">Confirm Booking</button>
+                  </form>
+                </div>
+              </div>
             <!-- teacher details area end -->
 
-            <!-- course area start -->
-            <section class="course-area pb-90">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-xl-12">
-                            <div class="course-section-area">
-                                <div class="section-area section-area-top">
-                                    <h2 class="section-title mb-50">Our Featured Courses</h2>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-xl-4 col-lg-6 col-md-6">
-                            <div class="h2_course-item mb-30">
-                                <div class="h2_course-item-img">
-                                    <a href="course-details.html"><img src="assets/img/course/2/1.jpg" alt=""></a>
-                                </div>
-                                <div class="h2_course-content">
-                                    <div class="h2_course-content-top">
-                                        <div class="h2_course-rating">
-                                            <ul>
-                                                <li><i class="fa-solid fa-star"></i></li>
-                                                <li><i class="fa-solid fa-star"></i></li>
-                                                <li><i class="fa-solid fa-star"></i></li>
-                                                <li><i class="fa-solid fa-star"></i></li>
-                                                <li><i class="fa-solid fa-star"></i></li>
-                                            </ul>
-                                            <span>(03 Reviews)</span>
-                                        </div>
-                                        <div class="h2_course-save">
-                                            <a href="#"><i class="fa-thin fa-bookmark"></i></a>
-                                        </div>
-                                    </div>
-                                    <h5 class="h2_course-content-title"><a href="course-details.html">Introduction to Psychology Subject</a></h5>
-                                    <div class="h2_course-content-info">
-                                        <span><i class="fa-thin fa-book-blank"></i>23 Lessons</span>
-                                        <span><i class="fa-thin fa-user-group"></i>45 Students</span>
-                                    </div>
-                                    <p class="h2_course-content-text">
-                                        Through a combination of lectures, readings and discussions students.
-                                    </p>
-                                    <div class="h2_course-content-author">
-                                        <div class="h2_course-author-img">
-                                            <img src="assets/img/course/2/author-1.jpg" alt="">
-                                        </div>
-                                        <div class="h2_course-author-info">
-                                            <span>By <a href="#">Eric Wid get</a></span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="h2_course-content-bottom">
-                                    <div class="h2_course-bottom-price">
-                                        <span><del>$140</del>$96.00</span>
-                                    </div>
-                                    <div class="h2_course-bottom-btn">
-                                        <a href="course-details.html">More Details<i class="fa-light fa-arrow-right"></i><i class="fa-light fa-arrow-right"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-4 col-lg-6 col-md-6">
-                            <div class="h2_course-item mb-30">
-                                <div class="h2_course-item-img">
-                                    <a href="course-details.html"><img src="assets/img/course/2/2.jpg" alt=""></a>
-                                </div>
-                                <div class="h2_course-content">
-                                    <div class="h2_course-content-top">
-                                        <div class="h2_course-rating">
-                                            <ul>
-                                                <li><i class="fa-solid fa-star"></i></li>
-                                                <li><i class="fa-solid fa-star"></i></li>
-                                                <li><i class="fa-solid fa-star"></i></li>
-                                                <li><i class="fa-solid fa-star"></i></li>
-                                                <li><i class="fa-solid fa-star"></i></li>
-                                            </ul>
-                                            <span>(03 Reviews)</span>
-                                        </div>
-                                        <div class="h2_course-save">
-                                            <a href="#"><i class="fa-thin fa-bookmark"></i></a>
-                                        </div>
-                                    </div>
-                                    <h5 class="h2_course-content-title"><a href="course-details.html">Complete Angular Developer in 2025</a></h5>
-                                    <div class="h2_course-content-info">
-                                        <span><i class="fa-thin fa-book-blank"></i>54 Lessons</span>
-                                        <span><i class="fa-thin fa-user-group"></i>72 Students</span>
-                                    </div>
-                                    <p class="h2_course-content-text">
-                                        Through a combination of lectures, readings and discussions students.
-                                    </p>
-                                    <div class="h2_course-content-author">
-                                        <div class="h2_course-author-img">
-                                            <img src="assets/img/course/2/author-2.jpg" alt="">
-                                        </div>
-                                        <div class="h2_course-author-info">
-                                            <span>By <a href="#">Hanson Deck</a></span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="h2_course-content-bottom">
-                                    <div class="h2_course-bottom-price">
-                                        <span><del>$120</del>$70.00</span>
-                                    </div>
-                                    <div class="h2_course-bottom-btn">
-                                        <a href="course-details.html">More Details<i class="fa-light fa-arrow-right"></i><i class="fa-light fa-arrow-right"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-4 col-lg-6 col-md-6">
-                            <div class="h2_course-item mb-30">
-                                <div class="h2_course-item-img">
-                                    <a href="course-details.html"><img src="assets/img/course/2/3.jpg" alt=""></a>
-                                </div>
-                                <div class="h2_course-content">
-                                    <div class="h2_course-content-top">
-                                        <div class="h2_course-rating">
-                                            <ul>
-                                                <li><i class="fa-solid fa-star"></i></li>
-                                                <li><i class="fa-solid fa-star"></i></li>
-                                                <li><i class="fa-solid fa-star"></i></li>
-                                                <li><i class="fa-solid fa-star"></i></li>
-                                                <li><i class="fa-solid fa-star"></i></li>
-                                            </ul>
-                                            <span>(03 Reviews)</span>
-                                        </div>
-                                        <div class="h2_course-save">
-                                            <a href="#"><i class="fa-thin fa-bookmark"></i></a>
-                                        </div>
-                                    </div>
-                                    <h5 class="h2_course-content-title"><a href="course-details.html">The Science of Well-being for Teens</a></h5>
-                                    <div class="h2_course-content-info">
-                                        <span><i class="fa-thin fa-book-blank"></i>67 Lessons</span>
-                                        <span><i class="fa-thin fa-user-group"></i>24 Students</span>
-                                    </div>
-                                    <p class="h2_course-content-text">
-                                        Through a combination of lectures, readings and discussions students.
-                                    </p>
-                                    <div class="h2_course-content-author">
-                                        <div class="h2_course-author-img">
-                                            <img src="assets/img/course/2/author-3.jpg" alt="">
-                                        </div>
-                                        <div class="h2_course-author-info">
-                                            <span>By <a href="#">Max Conversion</a></span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="h2_course-content-bottom">
-                                    <div class="h2_course-bottom-price">
-                                        <span><del>$150</del>$99.00</span>
-                                    </div>
-                                    <div class="h2_course-bottom-btn">
-                                        <a href="course-details.html">More Details<i class="fa-light fa-arrow-right"></i><i class="fa-light fa-arrow-right"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            <!-- course area end -->
+          
 
             <!-- cta area start -->
             <div class="cta-area">
@@ -371,7 +262,7 @@
                         <div class="col-xl-3 col-lg-7 col-md-7 col-sm-12">
                             <div class="footer-widget mb-40">
                                 <div class="footer-logo">
-                                    <a href="index.html"><img src="assets/img/logo/logo.png" alt=""></a>
+                                    <a href="index.html"><img style="width:100px;  src="assets/img/cat2Logo.png" alt=""></a>
                                 </div>
                                 <p class="footer-widget-text mb-35">
                                     Through a combination of lectures, readings, discussions, students will gain solid foundation in educational.
@@ -433,16 +324,127 @@
         </footer>
         <!-- footer area end -->
         <script>
-            const userRole = localStorage.getItem('userRole');
+            const userRole = localStorage.getItem('role');
             const dashboardLink = document.getElementById('dashboard-link');
           
             if (userRole === 'secondary') {
-              dashboardLink.innerHTML = '<a href="Dashboard/dashboard/main/index9.html">Dashboard</a>';
+              dashboardLink.innerHTML = '<a href="Dashboard/dashboard/main/secondary.html">Dashboard</a>';
             } else {
-              dashboardLink.innerHTML = '<a href="Dashboard/dashboard/main/index.html">Dashboard</a>';
+              dashboardLink.innerHTML = '<a href="Dashboard/dashboard/main/primary.html">Dashboard</a>';
             }
           </script>
-		<!-- JS here -->
+		
+        
+        
+        <script>
+            // Check if studentId exists in localStorage
+            const studentId = localStorage.getItem('studentId');
+            const headerBtn = document.getElementById('header-btn');  // The button element
+        
+            // If studentId is found, change the button to "Logout"
+            if (studentId) {
+                headerBtn.innerHTML = 'Logout';
+                headerBtn.href = '#';  // Make sure the link doesn't navigate anywhere
+                headerBtn.addEventListener('click', () => {
+                    // Remove studentId and token from localStorage
+                    localStorage.removeItem('studentId');
+                    localStorage.removeItem('token');
+                    
+                    // Optionally, redirect to the login page or homepage after logout
+                    window.location.href = 'login.html'; // Redirect to the login page
+                });
+            }
+        </script>
+
+
+
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", async function () {
+      const teacherId = new URLSearchParams(window.location.search).get("id");
+      const studentId = localStorage.getItem("studentId");
+  
+      if (!teacherId || !studentId) {
+        alert("Missing teacher ID or student ID");
+        return;
+      }
+  
+      try {
+        const res = await fetch(`http://localhost:3000/api/teachers/${teacherId}`);
+        const teacher = await res.json();
+  
+        // Populate teacher details
+        document.getElementById("teacherName").textContent = teacher.name;
+        document.getElementById("teacherDesignation").textContent = teacher.designation;
+        document.getElementById("teacherImage").src = teacher.profileImage;
+        document.getElementById("teacherAbout").textContent = teacher.about;
+        document.getElementById("teacherAddress").textContent = teacher.address;
+        document.getElementById("teacherEmail").href = `mailto:${teacher.email}`;
+        document.getElementById("teacherEmail").textContent = teacher.email;
+        document.getElementById("teacherPhone").href = `tel:${teacher.phone}`;
+        document.getElementById("teacherPhone").textContent = teacher.phone;
+  
+        // Courses
+        const coursesContainer = document.getElementById("teacherCourses");
+        coursesContainer.innerHTML = "";
+        teacher.courses.forEach((course) => {
+          const li = document.createElement("li");
+          li.textContent = course;
+          coursesContainer.appendChild(li);
+        });
+  
+        // Open popup
+        document.getElementById("popupBtn").addEventListener("click", () => {
+          document.getElementById("popupOverlay").style.display = "flex";
+          document.getElementById("popupTeacherName").textContent = teacher.name;
+        });
+  
+        // Close popup
+        document.getElementById("closePopup").addEventListener("click", () => {
+          document.getElementById("popupOverlay").style.display = "none";
+        });
+  
+        // Handle booking form
+        document.getElementById("bookingForm").addEventListener("submit", async function (e) {
+          e.preventDefault();
+  
+          const bookingData = {
+            teacherId,
+            teacherName: teacher.name,
+            userId: studentId,
+            date: document.getElementById("bookingDate").value,
+            time: document.getElementById("bookingTime").value,
+            description: document.getElementById("bookingDesc").value,
+          };
+  
+          const res = await fetch("http://localhost:3000/api/book", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(bookingData),
+          });
+  
+          if (res.ok) {
+            alert("Booking submitted!");
+            document.getElementById("popupOverlay").style.display = "none";
+            document.getElementById("bookingForm").reset();
+          } else {
+            const err = await res.json();
+            alert("Error: " + err.message);
+          }
+        });
+      } catch (err) {
+        console.error("Failed to fetch teacher:", err);
+        alert("Something went wrong.");
+      }
+    });
+  </script>
+  
+
+
+        <!-- JS here -->
         <script src="assets/js/jquery.min.js"></script>
         <script src="assets/js/bootstrap.bundle.min.js"></script>
         <script src="assets/js/swiper-bundle.min.js"></script>

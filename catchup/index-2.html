@@ -22,7 +22,63 @@
         <link rel="stylesheet" href="assets/css/swiper-bundle.min.css">
         <link rel="stylesheet" href="assets/css/main.css">
     </head>
+     <style>
+        .h2_course-author-img img{
+            border-radius: 50%;
+        }
+    
+        /* Styling the select dropdown */
+#subject-filter {
+  padding: 8px;
+  font-size: 16px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  width: 100%;
+  max-width: 250px;
+  background-color: #fff;
+  color: #333;
+  transition: border-color 0.3s ease;
+}
+
+#subject-filter:focus {
+  border-color: #0066cc;
+  outline: none;
+}
+
+/* Styling the options */
+#subject-filter option {
+  padding: 8px;
+  font-size: 16px;
+  background-color: #fff;
+  color: #333;
+}
+
+#subject-filter option:hover {
+  background-color: #f0f0f0;
+}
+
+/* Style for the Load More Button */
+#load-more-btn {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #0066cc;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#load-more-btn:hover {
+  background-color: #005bb5;
+}
+
+#load-more-btn:focus {
+  outline: none;
+}
+
      
+     </style>
     <body>
        <!-- sidebar-information-area-start -->
         <div class="sidebar-info side-info">
@@ -55,7 +111,7 @@
                         <div class="col-xl-3 col-sm-7 col-6">
                             <div class="h2_header-left">
                                 <div class="h2_header-logo">
-                                    <a href="index.html"><img src="assets/img/logo/logo.png" alt=""></a>
+                                    <a href="index.html"><img style="width:100px;  src="assets/img/cat2Logo.png" alt=""></a>
                                 </div>
                              
                             </div>
@@ -81,7 +137,7 @@
                                             </ul>
                                         </li>
                                       
-                                        <li><a href="./Dashboard/dashboard/main/index7.html">Dashboard</a></li>
+                                        <li><a href="./Dashboard/dashboard/main/adult.html">Dashboard</a></li>
                                       
                                         <li><a href="contact.html">Contact</a></li>
                                     </ul>
@@ -90,9 +146,9 @@
                         </div>
                         <div class="col-xl-3 col-sm-5 col-6">
                             <div class="h2_header-right">
-                                <div class="h2_header-btn d-none d-sm-block">
-                                    <a href="#" class="header-btn theme-btn theme-btn-medium">Sign Up</a>
-                                </div>
+                               <div class="h2_header-btn d-none d-sm-block">
+    <a id="header-btn" href="#" class="header-btn theme-btn theme-btn-medium">Sign Up</a>
+</div>
                                 <div class="header-menu-bar d-xl-none ml-10">
                                     <span class="header-menu-bar-icon side-toggle">
                                         <i class="fa-light fa-bars"></i>
@@ -355,28 +411,17 @@
                     <div class="row align-items-end">
                         <div class="col-xl-5 col-lg-6">
                             <div class="section-area-2">
-                                <h2 class="section-title mb-50">Browse Our <br> Live  <span>Courses <img src="assets/img/banner/2/line.png" alt=""></span></h2>
+                                <h2 class="section-title mb-50">Browse Our <br> Live <span>Courses <img src="assets/img/banner/2/line.png" alt=""></span></h2>
                             </div>
                         </div>
                         <div class="col-xl-7 col-lg-6">
                             <div class="h2_course-tab mb-40">
                                 <ul class="nav nav-pills" id="pills-tab" role="tablist">
                                     <li class="nav-item" role="presentation">
-                                      <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">See All
-                                        <span>New</span></button>
+                                        <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">See All
+                                            <span>New</span></button>
                                     </li>
-                                    <li class="nav-item" role="presentation">
-                                      <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Web Design</button>
-                                    </li>
-                                    <li class="nav-item" role="presentation">
-                                      <button class="nav-link" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#pills-contact" type="button" role="tab" aria-controls="pills-contact" aria-selected="false">Marketing</button>
-                                    </li>
-                                    <li class="nav-item" role="presentation">
-                                      <button class="nav-link" id="pills-four-tab" data-bs-toggle="pill" data-bs-target="#pills-four" type="button" role="tab" aria-controls="pills-four" aria-selected="false">Lifestyle</button>
-                                    </li>
-                                    <li class="nav-item" role="presentation">
-                                      <button class="nav-link" id="pills-five-tab" data-bs-toggle="pill" data-bs-target="#pills-five" type="button" role="tab" aria-controls="pills-five" aria-selected="false">Graphic Design</button>
-                                    </li>
+                                    <!-- Add more categories if needed -->
                                 </ul>
                             </div>
                         </div>
@@ -384,158 +429,14 @@
                     <div class="h2_course-wrap">
                         <div class="tab-content" id="pills-tabContent">
                             <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab" tabindex="0">
-                                <div class="row">
-                                    <div class="col-xl-4 col-lg-6 col-md-6">
-                                        <div class="h2_course-item mb-30">
-                                            <div class="h2_course-item-img">
-                                                <a href="live-class.html"><img src="assets/img/course/2/1.jpg" alt=""></a>
-                                            </div>
-                                            <div class="h2_course-content">
-                                                <div class="h2_course-content-top">
-                                                    <div class="h2_course-rating">
-                                                        <ul>
-                                                            <li><i class="fa-solid fa-star"></i></li>
-                                                            <li><i class="fa-solid fa-star"></i></li>
-                                                            <li><i class="fa-solid fa-star"></i></li>
-                                                            <li><i class="fa-solid fa-star"></i></li>
-                                                            <li><i class="fa-solid fa-star"></i></li>
-                                                        </ul>
-                                                        <span>(03 Reviews)</span>
-                                                    </div>
-                                                    <div class="h2_course-save">
-                                                        <a href="#"><i class="fa-thin fa-bookmark"></i></a>
-                                                    </div>
-                                                </div>
-                                                <h5 class="h2_course-content-title"><a href="live-class.html">Introduction to Psychology for Adults</a></h5>
-                                                <div class="h2_course-content-info">
-                                                    <span><i class="fa-thin fa-book-blank"></i>23 Lessons</span>
-                                                    <span><i class="fa-thin fa-user-group"></i>45 Students</span>
-                                                </div>
-                                                <p class="h2_course-content-text">
-                                                    Engage in discussions and interactive live sessions that cover the basics of psychology.
-                                                </p>
-                                                <div class="h2_course-content-author">
-                                                    <div class="h2_course-author-img">
-                                                        <img src="assets/img/course/2/author-1.jpg" alt="">
-                                                    </div>
-                                                    <div class="h2_course-author-info">
-                                                        <span>By <a href="#">Eric Wid get</a></span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="h2_course-content-bottom">
-                                                <div class="h2_course-bottom-price">
-                                                    <span><del>$140</del>$96.00</span>
-                                                </div>
-                                                <div class="h2_course-bottom-btn">
-                                                    <a href="live-class.html" class="btn-join-live">Join Live Class<i class="fa-light fa-arrow-right"></i><i class="fa-light fa-arrow-right"></i></a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-4 col-lg-6 col-md-6">
-                                        <div class="h2_course-item mb-30">
-                                            <div class="h2_course-item-img">
-                                                <a href="live-class.html"><img src="assets/img/course/2/2.jpg" alt=""></a>
-                                            </div>
-                                            <div class="h2_course-content">
-                                                <div class="h2_course-content-top">
-                                                    <div class="h2_course-rating">
-                                                        <ul>
-                                                            <li><i class="fa-solid fa-star"></i></li>
-                                                            <li><i class="fa-solid fa-star"></i></li>
-                                                            <li><i class="fa-solid fa-star"></i></li>
-                                                            <li><i class="fa-solid fa-star"></i></li>
-                                                            <li><i class="fa-solid fa-star"></i></li>
-                                                        </ul>
-                                                        <span>(03 Reviews)</span>
-                                                    </div>
-                                                    <div class="h2_course-save">
-                                                        <a href="#"><i class="fa-thin fa-bookmark"></i></a>
-                                                    </div>
-                                                </div>
-                                                <h5 class="h2_course-content-title"><a href="live-class.html">Complete Angular Development for Adults</a></h5>
-                                                <div class="h2_course-content-info">
-                                                    <span><i class="fa-thin fa-book-blank"></i>54 Lessons</span>
-                                                    <span><i class="fa-thin fa-user-group"></i>72 Students</span>
-                                                </div>
-                                                <p class="h2_course-content-text">
-                                                    Live sessions that teach adult learners the fundamentals of Angular Development.
-                                                </p>
-                                                <div class="h2_course-content-author">
-                                                    <div class="h2_course-author-img">
-                                                        <img src="assets/img/course/2/author-2.jpg" alt="">
-                                                    </div>
-                                                    <div class="h2_course-author-info">
-                                                        <span>By <a href="#">Hanson Deck</a></span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="h2_course-content-bottom">
-                                                <div class="h2_course-bottom-price">
-                                                    <span><del>$120</del>$70.00</span>
-                                                </div>
-                                                <div class="h2_course-bottom-btn">
-                                                    <a href="live-class.html" class="btn-join-live">Join Live Class<i class="fa-light fa-arrow-right"></i><i class="fa-light fa-arrow-right"></i></a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-4 col-lg-6 col-md-6">
-                                        <div class="h2_course-item mb-30">
-                                            <div class="h2_course-item-img">
-                                                <a href="live-class.html"><img src="assets/img/course/2/3.jpg" alt=""></a>
-                                            </div>
-                                            <div class="h2_course-content">
-                                                <div class="h2_course-content-top">
-                                                    <div class="h2_course-rating">
-                                                        <ul>
-                                                            <li><i class="fa-solid fa-star"></i></li>
-                                                            <li><i class="fa-solid fa-star"></i></li>
-                                                            <li><i class="fa-solid fa-star"></i></li>
-                                                            <li><i class="fa-solid fa-star"></i></li>
-                                                            <li><i class="fa-solid fa-star"></i></li>
-                                                        </ul>
-                                                        <span>(03 Reviews)</span>
-                                                    </div>
-                                                    <div class="h2_course-save">
-                                                        <a href="#"><i class="fa-thin fa-bookmark"></i></a>
-                                                    </div>
-                                                </div>
-                                                <h5 class="h2_course-content-title"><a href="live-class.html">The Science of Well-being for Adults</a></h5>
-                                                <div class="h2_course-content-info">
-                                                    <span><i class="fa-thin fa-book-blank"></i>67 Lessons</span>
-                                                    <span><i class="fa-thin fa-user-group"></i>24 Students</span>
-                                                </div>
-                                                <p class="h2_course-content-text">
-                                                    Discover the science of well-being in live sessions with adult learners.
-                                                </p>
-                                                <div class="h2_course-content-author">
-                                                    <div class="h2_course-author-img">
-                                                        <img src="assets/img/course/2/author-3.jpg" alt="">
-                                                    </div>
-                                                    <div class="h2_course-author-info">
-                                                        <span>By <a href="#">Max Conversion</a></span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="h2_course-content-bottom">
-                                                <div class="h2_course-bottom-price">
-                                                    <span><del>$150</del>$99.00</span>
-                                                </div>
-                                                <div class="h2_course-bottom-btn">
-                                                    <a href="live-class.html" class="btn-join-live">Join Live Class<i class="fa-light fa-arrow-right"></i><i class="fa-light fa-arrow-right"></i></a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                <div class="row" id="live-course-container">
+                                    <!-- Live courses will be dynamically inserted here -->
                                 </div>
                             </div>
-                            
-                          
                         </div>
                     </div>
                 </div>
+                
             </section>
             <!-- course area end -->
 
@@ -741,7 +642,7 @@
                                 <div class="h10_class-content mb-40 mb-md-0">
                                     <h2 class="h10_class-content-title">Join Our <span>Live</span> <br> Adult Live Class</h2>
                                     <p>Through a combination of lectures, readings, and discussions, students will gain a solid in educational psychology.</p>
-                                    <a href="./Dashboard/dashboard/main/index7.html" class="theme-btn theme-btn-10 theme-btn-10-transparent">Visit Online Class<i class="fa-light fa-arrow-right"></i></a>
+                                    <a href="./Dashboard/dashboard/main/adult.html" class="theme-btn theme-btn-10 theme-btn-10-transparent">Visit Online Class<i class="fa-light fa-arrow-right"></i></a>
                                 </div>
                             </div>
                             <div class="col-xl-5 col-md-6">
@@ -759,6 +660,7 @@
             <!-- teacher area start -->
             <section class="h2_teacher-area pb-80">
                 <div class="container">
+                  
                     <div class="row">
                         <div class="col-xl-6 col-lg-8 col-md-12 mb-30">
                             <div class="h2_teacher-section bg-default" data-background="assets/img/teacher/2/bg.jpg">
@@ -771,85 +673,30 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-xl-3 col-lg-4 col-sm-6">
-                            <div class="h2_teacher-item mb-30">
-                                <div class="h2_teacher-img">
-                                    <img src="assets/img/teacher/2/1.jpg" alt="">
-                                </div>
-                                <div class="h2_teacher-content">
-                                    <h5 class="h2_teacher-content-title">
-                                        <a href="#">Parsley Montana</a>
-                                    </h5>
-                                    <span>Lead Teacher</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-3 col-lg-4 col-sm-6">
-                            <div class="h2_teacher-item mb-30">
-                                <div class="h2_teacher-img">
-                                    <img src="assets/img/teacher/2/2.jpg" alt="">
-                                </div>
-                                <div class="h2_teacher-content">
-                                    <h5 class="h2_teacher-content-title">
-                                        <a href="#">Parsley Montana</a>
-                                    </h5>
-                                    <span>Lead Teacher</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-3 col-lg-4 col-sm-6">
-                            <div class="h2_teacher-item mb-30">
-                                <div class="h2_teacher-img">
-                                    <img src="assets/img/teacher/2/3.jpg" alt="">
-                                </div>
-                                <div class="h2_teacher-content">
-                                    <h5 class="h2_teacher-content-title">
-                                        <a href="#">Parsley Montana</a>
-                                    </h5>
-                                    <span>Lead Teacher</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-3 col-lg-4 col-sm-6">
-                            <div class="h2_teacher-item mb-30">
-                                <div class="h2_teacher-img">
-                                    <img src="assets/img/teacher/2/4.jpg" alt="">
-                                </div>
-                                <div class="h2_teacher-content">
-                                    <h5 class="h2_teacher-content-title">
-                                        <a href="#">Parsley Montana</a>
-                                    </h5>
-                                    <span>Lead Teacher</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-3 col-lg-4 col-sm-6">
-                            <div class="h2_teacher-item mb-30">
-                                <div class="h2_teacher-img">
-                                    <img src="assets/img/teacher/2/5.jpg" alt="">
-                                </div>
-                                <div class="h2_teacher-content">
-                                    <h5 class="h2_teacher-content-title">
-                                        <a href="#">Parsley Montana</a>
-                                    </h5>
-                                    <span>Lead Teacher</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-3 col-lg-4 col-sm-6">
-                            <div class="h2_teacher-item mb-30">
-                                <div class="h2_teacher-img">
-                                    <img src="assets/img/teacher/2/6.jpg" alt="">
-                                </div>
-                                <div class="h2_teacher-content">
-                                    <h5 class="h2_teacher-content-title">
-                                        <a href="#">Parsley Montana</a>
-                                    </h5>
-                                    <span>Lead Teacher</span>
-                                </div>
-                            </div>
+                    </div>
+                    
+                    <!-- Subject Filter Dropdown -->
+                    <div class="row" style="margin-bottom: 30px;">
+                        <div class="col-12">
+                            <select id="subject-filter" class="theme-select">
+                                <option value="">Filter by Subject</option>
+                                <!-- Options will be dynamically populated -->
+                            </select>
                         </div>
                     </div>
+                    
+                    <!-- Teacher Cards Container -->
+                    <div class="row" id="teacher-container">
+                        <!-- Teachers will be dynamically inserted here -->
+                    </div>
+                    
+                    <!-- Load More Button -->
+                    <div class="row">
+                        <div class="col-12 text-center">
+                            <button id="load-more-btn" class="theme-btn theme-btn-medium teacher-btn">Load More</button>
+                        </div>
+                    </div>
+                    
                 </div>
             </section>
             <!-- teacher area end -->
@@ -951,15 +798,227 @@
         </footer>
         <!-- footer area end -->
         <script>
-            const userRole = localStorage.getItem('userRole');
+            const userRole = localStorage.getItem('role');
             const dashboardLink = document.getElementById('dashboard-link');
           
             if (userRole === 'secondary') {
-              dashboardLink.innerHTML = '<a href="Dashboard/dashboard/main/index9.html">Dashboard</a>';
+              dashboardLink.innerHTML = '<a href="Dashboard/dashboard/main/secondary.html">Dashboard</a>';
             } else {
-              dashboardLink.innerHTML = '<a href="Dashboard/dashboard/main/index.html">Dashboard</a>';
+              dashboardLink.innerHTML = '<a href="Dashboard/dashboard/main/primary.html">Dashboard</a>';
             }
           </script>
+
+
+<script>
+    // Function to fetch teacher's data
+    async function fetchTeacherData(teacherId) {
+        try {
+            const response = await fetch(`http://localhost:3000/api/teachers/${teacherId}`);
+            if (response) {
+                const teacher = await response.json();
+                return teacher;
+                console.log(teacher)
+            } else {
+                console.error('Failed to fetch teacher data');
+                return null;
+            }
+        } catch (error) {
+            console.error('Error fetching teacher data:', error);
+            return null;
+        }
+    }
+    
+    // Function to fetch live courses
+    async function fetchLiveCourses() {
+        try {
+            const response = await fetch('http://localhost:3000/api/livecourses/get');
+            const courses = await response.json();
+    
+            if (Array.isArray(courses)) {
+                const container = document.getElementById("live-course-container");
+                container.innerHTML = ''; // Clear the container before adding new courses
+    
+                for (let course of courses) {
+                    // Fetch teacher data using teacherId for each course
+                    const teacher = await fetchTeacherData(course.teacherId);
+                    const teacherName = teacher ? teacher.name : 'Unknown Teacher';
+                    const teacherImage = teacher ? teacher.profileImage : 'assets/img/course/2/author-1.jpg'; // Default image if no teacher found
+    
+                    // Create the HTML for each course dynamically
+                    const courseElement = `
+                        <div class="col-xl-4 col-lg-6 col-md-6">
+                            <div class="h2_course-item mb-30">
+                                <div class="h2_course-item-img">
+                                    <a href="live-class.html"><img src="${course.image || 'assets/img/online-class.jpeg'}" alt=""></a>
+                                </div>
+                                <div class="h2_course-content">
+                                    <div class="h2_course-content-top">
+                             
+                                    </div>
+                                    <h5 class="h2_course-content-title"><a href="${course.googleMeetLink || '#'}"> ${course.title}</a></h5>
+                                    <div class="h2_course-content-info">
+                                        <span><i class="fa-thin fa-book-blank"></i>${course.lessonCount} Lessons</span>
+                                        <span><i class="fa-thin fa-user-group"></i>${course.studentsCount} Students</span>
+                                    </div>
+                                    <p class="h2_course-content-text">
+                                        ${course.description || 'Engage in discussions and interactive live sessions.'}
+                                    </p>
+                                    <div class="h2_course-content-author">
+                                        <div class="h2_course-author-img">
+                                            <img src="${teacherImage}" alt="${teacherName}">
+                                        </div>
+                                        <div class="h2_course-author-info">
+                                            <span>By <a href="#">${teacherName}</a></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="h2_course-content-bottom">
+                              
+                                    <div class="h2_course-bottom-btn">
+                                          <a href="${course.googleMeetLink || '#'}" class="btn-join-live">Join Live Class<i class="fa-light fa-arrow-right"></i><i class="fa-light fa-arrow-right"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                    container.innerHTML += courseElement;
+                }
+            }
+        } catch (error) {
+            console.error('Error fetching live courses:', error);
+        }
+    }
+    
+    // Fetch live courses on page load
+    document.addEventListener('DOMContentLoaded', fetchLiveCourses);
+    </script>
+
+
+
+
+<script>
+    let allTeachers = [];
+    let filteredTeachers = [];
+    let currentPage = 1;
+    const teachersPerPage = 6;
+    
+    // Function to fetch teachers from the server
+    async function fetchTeachers() {
+      try {
+        const response = await fetch('http://localhost:3000/api/teachers');
+        const data = await response.json();
+        if (data && Array.isArray(data)) {
+          allTeachers = data;
+          filteredTeachers = data;  // Initially, no filter applied
+          loadMoreTeachers();
+          populateSubjectFilter(data);
+        } else {
+          console.error("Teachers data not found:", data);
+        }
+      } catch (error) {
+        console.error('Error fetching teachers:', error);
+      }
+    }
+    
+    // Function to populate the subject filter dropdown dynamically
+    function populateSubjectFilter(teachers) {
+      const subjectSet = new Set();  // Using Set to get unique subjects
+      teachers.forEach((teacher) => {
+        teacher.courses.forEach(course => subjectSet.add(course));
+      });
+    
+      const subjectFilter = document.getElementById("subject-filter");
+      subjectSet.forEach(subject => {
+        const option = document.createElement("option");
+        option.value = subject;
+        option.textContent = subject;
+        subjectFilter.appendChild(option);
+      });
+    }
+    
+    // Function to display teachers in the UI
+    function displayTeachers(teachers) {
+      const container = document.getElementById("teacher-container");
+      container.innerHTML = ""; // Clear previous teachers
+    
+      teachers.forEach((teacher) => {
+        const teacherElement = `
+          <div class="col-xl-3 col-lg-4 col-sm-6">
+            <div class="h2_teacher-item mb-30">
+              <div class="h2_teacher-img">
+                <img src="${teacher.profileImage}" alt="${teacher.name}">
+              </div>
+              <div class="h2_teacher-content">
+                <h5 class="h2_teacher-content-title">
+                  <a href="team-details.html?id=${teacher._id}">${teacher.name}</a>
+                </h5>
+                <span>${teacher.designation}</span>
+              </div>
+            </div>
+          </div>
+        `;
+        container.innerHTML += teacherElement;
+      });
+    }
+    
+    // Function to load more teachers
+    function loadMoreTeachers() {
+      const teachersToDisplay = filteredTeachers.slice((currentPage - 1) * teachersPerPage, currentPage * teachersPerPage);
+      displayTeachers(teachersToDisplay);
+    
+      currentPage++;
+    
+      if (currentPage * teachersPerPage > filteredTeachers.length) {
+        document.getElementById("load-more-btn").style.display = "none";
+      }
+    }
+    
+    // Filter function to update teachers based on selected subject
+    document.getElementById("subject-filter").addEventListener("change", (e) => {
+      const selectedSubject = e.target.value;
+      
+      if (selectedSubject) {
+        filteredTeachers = allTeachers.filter(teacher =>
+          teacher.courses.includes(selectedSubject)
+        );
+      } else {
+        filteredTeachers = allTeachers; // No filter applied, show all teachers
+      }
+    
+      currentPage = 1; // Reset pagination when the filter changes
+      loadMoreTeachers();
+    });
+    
+    // Fetch teachers on page load
+    fetchTeachers();
+    </script>
+
+
+
+
+<script>
+    // Check if studentId exists in localStorage
+    const studentId = localStorage.getItem('studentId');
+    const headerBtn = document.getElementById('header-btn');  // The button element
+
+    // If studentId is found, change the button to "Logout"
+    if (studentId) {
+        headerBtn.innerHTML = 'Logout';
+        headerBtn.href = '#';  // Make sure the link doesn't navigate anywhere
+        headerBtn.addEventListener('click', () => {
+            // Remove studentId and token from localStorage
+            localStorage.removeItem('studentId');
+            localStorage.removeItem('token');
+            
+            // Optionally, redirect to the login page or homepage after logout
+            window.location.href = 'login.html'; // Redirect to the login page
+        });
+    }
+</script>
+
+
+
+
 		<!-- JS here -->
         <script src="assets/js/jquery.min.js"></script>
         <script src="assets/js/bootstrap.bundle.min.js"></script>

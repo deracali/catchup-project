@@ -1,0 +1,741 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../images/favicon.ico">
+
+    <title>CatchUp - Dashboard</title>
+    
+	<!-- Vendors Style-->
+	<link rel="stylesheet" href="css/vendors_css.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+	
+	<!-- Style-->  
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/skin_color.css">
+	<link rel="stylesheet" type="text/css" href="css/custom-9.css">
+	<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+  </head>
+  <style>
+	#chart-container {
+		width: 100%;
+		height: 400px;
+	}
+	#reality-chart {
+            width: 100%;
+            height: 400px;
+        }
+		
+        .progress-container {
+            width: 100%;
+            background-color: #f3f5f6;
+            height: 30px;
+            border-radius: 15px;
+            margin-top: 20px;
+        }
+
+        .progress-bar {
+            height: 100%;
+            width: 0%;
+            background-color: #17b3a3;
+            border-radius: 15px;
+            text-align: center;
+            color: white;
+            line-height: 30px;
+        }
+
+        .time-spent {
+            font-size: 18px;
+            margin-top: 10px;
+        }
+    
+</style>
+<body class="hold-transition light-skin sidebar-mini theme-violet fixed">
+	
+<div class="wrapper">
+  <div id="loader"></div>
+	
+  <header class="main-header">
+	<div class="d-flex align-items-center logo-box justify-content-start">
+		<a href="#" class="waves-effect waves-light nav-link d-none d-md-inline-block mx-10 push-btn bg-transparent" data-toggle="push-menu" role="button">
+			<i class="fas fa-align-left"></i>
+
+		</a>	
+		<!-- Logo -->
+		<a href="secondary.html" class="logo">
+		  <!-- logo-->
+		  <div class="logo-lg">
+			  <span class="light-logo"><img src="../images/logo-dark-text.png" alt="logo"></span>
+			  <span class="dark-logo"><img src="../images/logo-light-text.png" alt="logo"></span>
+		  </div>
+		</a>	
+	</div>  
+    <!-- Header Navbar -->
+    <nav class="navbar navbar-static-top">
+      <!-- Sidebar toggle button-->
+	  <div class="app-menu">
+		<ul class="header-megamenu nav">
+			<li class="btn-group nav-item d-md-none">
+				<a href="#" class="waves-effect waves-light nav-link push-btn" data-toggle="push-menu" role="button">
+					<i class="fas fa-align-left"></i>
+
+			    </a>
+			</li>
+		
+		</ul> 
+	  </div>
+		
+      <div class="navbar-custom-menu r-side">
+        <ul class="nav navbar-nav">	
+		
+		  
+	      <!-- User Account-->
+          <li class="dropdown user user-menu">
+            <a href="#" class="waves-effect waves-light dropdown-toggle" data-bs-toggle="dropdown" title="User">
+				<i class="fas fa-user"></i>
+            </a>
+            <ul class="dropdown-menu animated flipInX">
+<li class="user-body">
+    <a class="dropdown-item" href="extra_profile.html"><i class="fa fa-user text-muted me-2"></i> Profile</a>
+
+    <div class="dropdown-divider"></div>
+	<a class="dropdown-item" href="#" id="logout-button">
+		<i class="fa fa-lock text-muted me-2"></i> Logout
+	  </a>
+</li>
+
+            </ul>
+          </li>	
+		  
+         
+			
+        </ul>
+      </div>
+    </nav>
+  </header>
+  
+  <aside class="main-sidebar">
+    <!-- sidebar-->
+    <section class="sidebar position-relative">	
+	  	<div class="multinav">
+		  <div class="multinav-scroll" style="height: 100%;">	
+			  <!-- sidebar menu-->
+			  <ul class="sidebar-menu" data-widget="tree">	
+				<li class="header">Dashboard & Apps</li>
+				
+				<li><a href="secondary.html"><i class="fas fa-code-branch"></i>Dashboard</a></li>
+				<li><a href="allcourses.html"><i class="fas fa-book-open"></i> Courses</a></li>
+				<li><a href="quiz.html"><i class="fas fa-question-circle"></i> Quiz</a></li>
+				<li><a href="community.html"><i class="fas fa-users"></i> Community</a></li>
+
+
+					 	     
+			  </ul>
+		  </div>
+		</div>
+    </section>
+	<div class="sidebar-footer">
+		<a href="javascript:void(0)" class="link" data-bs-toggle="tooltip" title="Settings"><span class="icon-Settings-2"></span></a>
+		<a href="mailbox.html" class="link" data-bs-toggle="tooltip" title="Email"><span class="icon-Mail"></span></a>
+		<a href="javascript:void(0)" class="link" data-bs-toggle="tooltip" title="Logout"><span class="icon-Lock-overturning"><span class="path1"></span><span class="path2"></span></span></a>
+	</div>
+  </aside>
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+	  <div class="container-full">
+		<!-- Main content -->
+		<section class="content">
+			<div class="row align-items-center">
+				<div class="col-xxl-4">
+					<div class="box-body px-5">
+						<div class="d-flex align-items-center">
+							<h1 class="fw-600 mb-5 mt-0">Hi, <span id="user-name-placeholder"></span>!</h1>
+							<div><span class="avatar l-h-30 w-30 h-30 bg-primary-light rounded-circle ms-5 mt-n1 border-primary b-1 mb-5"><i class="fa fa-user"></i></span></div>
+							<div style="margin-left: -8px;"><span class="avatar l-h-30 w-30 h-30 bg-secondary-light rounded-circle border-secondary b-1 mb-5"><i class="fa fa-graduation-cap"></i></span></div>
+						</div>
+						<h1 class="fw-600 m-0 l-h-48">What do you want to <span class="text-primary">Learn</span> Today ?</h1>
+						<p class="text-fade fs-16">Discover courses, track progress, and achieve your learning goals searmiessly.</p>
+					</div>
+				</div>
+				<div class="col-xxl-8">
+					<div class="box-body px-5">
+						<div class="d-flex align-items-center overflow-auto" id="coursesContainer">
+							<!-- Dynamic Courses Will Load Here -->
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-xxl-8">
+					<div class="row fx-element-overlay">
+						<div class="col-12">														
+							<div class="box no-shadow mb-0 bg-transparent">
+								<div class="box-header d-flex justify-content-between align-items-center no-border px-0">
+									<h3 class="fw-500 m-0 fs-22">All New Courses</h3>	
+									
+								</div>
+							</div>
+						</div>
+						<div class="container">
+							<div class="row" id="latestCoursesContainer">
+								<!-- Latest courses will be dynamically loaded here -->
+							</div>
+						</div>			
+					</div>
+				</div>
+				<div class="col-xxl-4">
+					<div class="box bg-black">
+						<div class="box-body">
+							<div class="row">
+								<div class="col-8">
+									<img src="../images/logo-light-text.png" alt="logo">
+									<h3 class="mt-25 fw-500">Educational Live Course</h3>
+<p class="text-fade">Join now to access interactive sessions and enhance your learning.</p>
+
+								</div>
+								<div class="col-4 book-image align-content-center text-center">
+									<img src="../images/front-end-img/courses/book-3.png" alt="">
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				<div class="col-lg-4">
+					<div class="box">
+						<div class="box-body">							
+							<div id="calendar" class="dask evt-cal min-h-400"></div>
+						</div>
+					</div>
+				</div>
+				<div style="max-width: 50%;">
+					<h1>Progress Tracker</h1>
+				
+					<div class="progress-container">
+						<div class="progress-bar" id="progress-bar">0%</div>
+					</div>
+				
+					
+				</div>
+				<div class="col-xl-4 col-lg-5 col-12">
+					<div class="box">
+						<div class="box-header no-border">
+							<h3 class="fw-500 m-0 fs-22">Upcoming Quiz</h3>		
+						</div>
+						<div class="quiz-container"></div>
+
+						<!-- Load More Button -->
+						<div class="text-center pull-up">
+							<button id="loadMore" class="btn d-grid btn-primary-light waves-effect">Load More</button>
+						</div>
+					</div>
+				</div>
+				<div class="col-xl-8 col-lg-7 col-12">
+					<div class="box bg-transparent no-shadow mb-20">
+						<div class="box-header no-border d-flex justify-content-between align-items-center pb-0 px-0">
+							<h3 class="fw-500 m-0 fs-22">Your Course</h3>
+							<div class="dropdown">
+								<button class="btn btn-light py-5 dropdown-toggle text-fade sem-drop" type="button" data-bs-toggle="dropdown" aria-expanded="false">Active </button>
+								<div class="dropdown-menu dropdown-menu-end" style="">
+									<a class="dropdown-item" href="#">Close</a>
+									<a class="dropdown-item" href="#">Progress</a>
+									<a class="dropdown-item" href="#">Panding</a>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="course-container"></div>
+				</div>
+			
+			</div>
+		</section>
+		<!-- /.content -->
+	  </div>
+  </div>
+  <!-- /.content-wrapper -->
+  <footer class="main-footer">
+   
+	  &copy; 2025 All Rights Reserved Catchup.
+  </footer>
+
+
+  
+  <!-- Add the sidebar's background. This div must be placed immediately after the control sidebar -->
+  <div class="control-sidebar-bg"></div>
+  
+</div>
+<!-- ./wrapper -->
+	
+	
+		
+	
+	
+	<!-- Page Content overlay -->
+	
+	
+	<!-- Vendor JS -->
+	<script src="js/vendors.min.js"></script>
+	<script src="js/pages/chat-popup.js"></script>
+    <script src="../assets/icons/feather-icons/feather.min.js"></script>	
+	
+	<script src="../assets/vendor_components/apexcharts-bundle/dist/apexcharts.js"></script>
+	<script src="../assets/vendor_components/moment/min/moment.min.js"></script>
+	<script src="../assets/vendor_components/fullcalendar/fullcalendar.js"></script>
+	<script src="../../npm/echarts%405/dist/echarts.min.js"></script>
+	<script src="../assets/vendor_components/jquery.peity/jquery.peity.js"></script>
+	
+	
+	<!-- CatchUp App -->
+	<script src="js/template.js"></script>
+	<script src="js/pages/dashboard9.js"></script>
+	<script src="js/pages/calendar.js"></script>
+	<script src="js/pages/peity.js"></script>
+	
+
+
+
+	<script>
+		// Add event listener to the Logout button
+		document.getElementById('logout-button').addEventListener('click', function() {
+		  // Remove studentId, token, and role from localStorage
+		  localStorage.removeItem('studentId');
+		  localStorage.removeItem('token');
+		  localStorage.removeItem('role');
+	  
+		  // Optionally, redirect the user to the login page or homepage after logout
+		  window.location.href = 'sign-in.html'; // or '/home' depending on your application
+		});
+	  </script>
+	
+
+
+	<script>
+		// Function to fetch user data and update the name in the <h1> tag
+		async function fetchUserName() {
+		  // Get the studentId from localStorage
+		  const studentId = localStorage.getItem('studentId');
+		  if (!studentId) {
+			console.error('Student ID not found in localStorage.');
+			return;
+		  }
+	  
+		  // Fetch user data from the API
+		  try {
+			const response = await fetch(`http://localhost:3000/api/users/${studentId}`);
+			if (!response.ok) {
+			  throw new Error('Failed to fetch user data');
+			}
+	  
+			const user = await response.json();
+	  
+			// Update the name in the <h1> tag
+			const userName = user.name.split(' ')[0]; // Get the first name
+			document.getElementById('user-name-placeholder').innerText = userName;
+	  
+		  } catch (error) {
+			console.error(error);
+		  }
+		}
+	  
+		// Call the function to fetch and update the name
+		fetchUserName();
+	  </script>
+
+
+
+	<script>
+        async function fetchCourses() {
+            try {
+                const response = await fetch("http://localhost:3000/api/offlinecourse");
+                const courses = await response.json();
+
+                // Filter only "Secondary" category and limit to 4 courses
+                const secondaryCourses = courses
+                    .filter(course => course.category === "Secondary")
+                    .slice(0, 4);
+
+                const container = document.getElementById("coursesContainer");
+                // Inject courses dynamically
+                secondaryCourses.forEach(course => {
+					const courseElement = document.createElement("div");
+                    courseElement.classList.add("me-15", "mb-15", "mb-md-0");
+					console.log(course)
+
+                    courseElement.innerHTML = `
+                        <div class="box m-0 no-shadow">
+                            <div class="box-body">
+                                <div class="text-center mb-10">
+                                    <img src="${course.courseImage}" class="max-w-150" width="150" alt="${course.title}">
+                                </div>
+                                <h4 class="m-0 fw-500 text-truncate">${course.title}</h4>
+                                <p class="text-fade">Posted By: ${course.meta.postedBy}</p>
+                            </div>
+                        </div>
+                    `;
+
+                    container.appendChild(courseElement);
+                });
+
+            } catch (error) {
+                console.error("Error fetching courses:", error);
+            }
+        }
+
+        // Fetch courses on page load
+        fetchCourses();
+    </script>
+
+
+
+
+<script>
+    async function fetchLatestCourses() {
+        try {
+            const response = await fetch("http://localhost:3000/api/offlinecourse");
+            const courses = await response.json();
+
+            const secondaryCourses = courses.filter(course => course.category === "Secondary");
+
+            const latestCourses = secondaryCourses
+                .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
+                .slice(0, 4);
+
+            const container = document.getElementById("latestCoursesContainer");
+            container.innerHTML = ""; // Clear old content
+
+            latestCourses.forEach(course => {
+                const courseElement = document.createElement("div");
+                courseElement.classList.add("col-lg-4", "col-md-6", "col-12");
+
+                const courseLink = document.createElement("a");
+                courseLink.href = `../../../coursedetails.html?id=${course._id}`;
+                courseLink.classList.add("text-dark", "hover-primary");
+
+                courseLink.innerHTML = `
+                    <div class="card">
+                        <div class="strip__band">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="102" height="94" viewBox="0 0 102 94" fill="none">
+                                <path fill-rule="evenodd" clip-rule="evenodd" d="M60.5365 3.55089C59.0034 1.86163 55.7743 0 52.7935 0H0C3.12231 0.201923 5.016 1.86655 7.09131 3.69371C37.3796 31.6206 67.7854 59.614 97.9936 87.4597C99.9808 89.373 101.784 91.1214 102 94V45.3268C102 42.5786 99.9808 39.599 98.1485 38.1905C85.5738 26.5972 73.1193 15.1565 60.5365 3.55089Z" fill="#3E9ADC"/>
+                            </svg>
+                            <span>Beta</span>
+                        </div>
+                        <div class="box-body p-3">
+                            <div class="d-flex align-items-center gap-3">
+                                <img src="${course.courseImage}" alt="course" style="width: 70px; height: 70px; border-radius: 10px;">
+                                <div>
+                                    <h4 class="mb-1">${course.title}</h4>
+                                </div>
+                            </div>
+                            <div class="mt-3">
+                                <p class="m-0 text-fade fw-500">Type</p>
+                                <h4 class="m-0">${course.category}</h4>
+                            </div>
+                        </div>
+                    </div>
+                `;
+
+                courseElement.appendChild(courseLink);
+                container.appendChild(courseElement);
+            });
+
+        } catch (error) {
+            console.error("Error fetching latest courses:", error);
+        }
+    }
+
+    fetchLatestCourses();
+</script>
+
+
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+	document.addEventListener("DOMContentLoaded", async function () {
+		async function fetchCourses() {
+			try {
+				const response = await fetch("http://localhost:3000/api/offlinecourse");
+				const courses = await response.json();
+				displayCourses(courses);
+				
+			} catch (error) {
+				console.error("Error fetching courses:", error);
+			}
+		}
+
+		function displayCourses(courses) {
+			const courseContainer = document.querySelector(".course-container");
+			courseContainer.innerHTML = "";
+
+			courses.forEach((course) => {
+				const courseElement = `
+					<div class="box mb-15 pull-up">
+						<div class="box-body">
+							<div class="d-flex align-items-center justify-content-between">
+								<div class="d-flex align-items-center">
+									<div class="me-15 bg-primary-light h-50 w-50 l-h-40 rounded text-center">
+										<img src="${course.courseImage}" alt="" class="align-self-end h-50 w-50">
+									</div>
+									<div class="d-flex flex-column fw-500">
+										<a href="#" class="text-dark hover-primary mb-1 fs-16">${course.title}</a>
+										<span class="text-fade">${course.meta.postedBy}</span>
+									</div>
+								</div>
+								<div>
+									<h5 class="m-0">${course.description}</h5>
+								</div>
+							</div>
+						</div>
+					</div>
+				`;
+
+				courseContainer.innerHTML += courseElement;
+			});
+		}
+
+		fetchCourses();
+	});
+</script>
+
+
+
+
+
+
+
+<script>
+	document.addEventListener("DOMContentLoaded", async function () {
+		let quizzes = [];
+		let displayedCount = 0;
+		let limit = 4;
+
+		const role = localStorage.getItem("role"); // 👈 Get role from localStorage
+
+		async function fetchQuizzes() {
+			try {
+				const response = await fetch(`http://localhost:3000/api/quiz`);
+				const allQuizzes = await response.json();
+
+				// 👇 Filter quizzes based on role
+				quizzes = allQuizzes.filter(q => !q.role || q.role === role);
+				console.log(allQuizzes);
+
+				if (quizzes.length === 0) {
+					document.getElementById("loadMore").style.display = "none";
+					return;
+				}
+
+				displayQuizzes(); // Initial display
+			} catch (error) {
+				console.error("Error fetching quizzes:", error);
+			}
+		}
+
+		function displayQuizzes() {
+			const quizContainer = document.querySelector(".quiz-container");
+			const nextQuizzes = quizzes.slice(displayedCount, displayedCount + limit);
+
+			nextQuizzes.forEach(quiz => {
+				const quizElement = `
+					<div class="d-flex align-items-center justify-content-between mb-15">
+						<div class="d-flex align-items-center">
+							<div class="me-15">
+								<img src="../images/front-end-img/courses/web.png" alt="" class="align-self-end h-50 w-50">
+							</div>
+							<div class="d-flex flex-column fw-500">
+								<a href="Quiz5/quizdetails?id=${quiz._id}" class="text-dark hover-primary mb-1 fs-16">
+									${quiz.questions[0].subject || "Untitled"}
+								</a>
+								<span class="text-fade">${new Date(quiz.createdAt).toLocaleDateString()}</span>
+							</div>
+						</div>
+						<a href="../../../Quiz5/quizdetails.html?id=${quiz._id}">
+							 <i class="fa fa-arrow-right fs-24"></i>
+						</a>
+					</div>
+				`;
+				quizContainer.innerHTML += quizElement;
+			});
+
+			displayedCount += limit;
+
+			if (displayedCount >= quizzes.length) {
+				document.getElementById("loadMore").style.display = "none";
+			}
+		}
+
+		document.getElementById("loadMore").addEventListener("click", displayQuizzes);
+
+		fetchQuizzes();
+	});
+</script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+	let timeSpent = localStorage.getItem("timeSpent") ? parseInt(localStorage.getItem("timeSpent")) : 0;
+
+function updateTimeSpent() {
+    timeSpent++;
+    localStorage.setItem("timeSpent", timeSpent);
+    updateCoursesProgress();
+}
+
+// Simulate updating time every second
+setInterval(updateTimeSpent, 1000);
+
+async function fetchCourses() {
+    try {
+        const response = await fetch("http://localhost:3000/api/offlinecourse");
+        const courses = await response.json();
+        displayCourses(courses);
+    } catch (error) {
+        console.error("Error fetching courses:", error);
+    }
+}
+
+function displayCourses(courses) {
+    const courseContainer = document.querySelector(".course-container");
+    courseContainer.innerHTML = "";
+
+    courses.forEach((course, index) => {
+        const progress = calculateProgress(timeSpent, index);
+        let statusText = "Pending";
+        if (progress > 0 && progress < 100) {
+            statusText = "In Progress";
+        } else if (progress >= 100) {
+            statusText = "Completed";
+        }
+
+        const courseElement = `
+            <div class="box mb-15 pull-up">
+                <div class="box-body">
+                    <div class="d-flex align-items-center justify-content-between">
+                        <div class="d-flex align-items-center">
+                            <div class="me-15 bg-primary-light h-50 w-50 l-h-40 rounded text-center">
+                                <img src="${course.courseImage}" alt="" class="align-self-end h-50 w-50">
+                            </div>
+                            <div class="d-flex flex-column fw-500">
+                                <a href="../../../coursedetails.html?id=${course._id}" class="text-dark hover-primary mb-1 fs-16">${course.title}</a>
+                                <span class="text-fade">${course.meta.postedBy}</span>
+                            </div>
+                        </div>
+                        <div>
+                            <p class="m-0 course-status text-fade">${statusText}</p>
+                            <h5 class="m-0">${course.duration}</h5>
+                        </div>
+                        <div class="progress-container" id="progress-chart-${index}"></div>
+                    </div>
+                </div>
+            </div>
+        `;
+
+        courseContainer.innerHTML += courseElement;
+
+        // Initialize the progress chart for each course
+        initializeProgressChart(progress, index);
+    });
+}
+
+function calculateProgress(timeSpent, index) {
+    const maxTime = 3600; // Example: 1 hour of total time
+    return Math.min(100, Math.floor((timeSpent / (maxTime * (index + 1))) * 100));
+}
+
+function initializeProgressChart(progress, index) {
+    var options = {
+        chart: {
+            height: 100,
+            type: 'radialBar',
+        },
+        plotOptions: {
+            radialBar: {
+                hollow: {
+                    size: '50%',
+                },
+                dataLabels: {
+                    show: true,
+                    name: {
+                        fontSize: '20px',
+                    },
+                    value: {
+                        fontSize: '16px',
+                        formatter: function (val) {
+                            return val + '%';
+                        },
+                    },
+                },
+            },
+        },
+        series: [progress], // Progress as the percentage value
+        colors: ['#17b3a3'], // Color for the chart
+        labels: ['Course Progress'], // Label for the chart
+    };
+
+    var chart = new ApexCharts(document.querySelector(`#progress-chart-${index}`), options);
+    chart.render();
+}
+
+function updateCoursesProgress() {
+    const boxes = document.querySelectorAll(".course-container .box");
+
+    boxes.forEach((box, index) => {
+        const progress = calculateProgress(timeSpent, index);
+        initializeProgressChart(progress, index);
+        
+        const statusText = box.querySelector("p.text-fade");
+        if (statusText) {
+            statusText.textContent = progress >= 100 ? "Completed" : "In Progress"; // Update status text
+        }
+    });
+}
+
+fetchCourses(); // Initial fetch of courses when the page loads
+
+</script>
+
+
+<script>
+    let totalTime = 3600; // 1 hour = 3600 seconds
+    let elapsedTime = localStorage.getItem("elapsedTime") ? parseInt(localStorage.getItem("elapsedTime")) : 0;
+
+    function updateElapsedTime() {
+        elapsedTime++;
+        localStorage.setItem("elapsedTime", elapsedTime);
+
+        // Update progress bar and time spent text
+        updateProgressBar();
+    }
+
+    function updateProgressBar() {
+        const progress = (elapsedTime / totalTime) * 100;
+        const progressBar = document.getElementById("progress-bar");
+        const timeSpentText = document.getElementById("time-spent");
+
+        // Update progress bar width and percentage
+        progressBar.style.width = progress + "%";
+        progressBar.textContent = Math.floor(progress) + "%";
+
+        // Update time spent text
+        timeSpentText.textContent = "Time Spent: " + elapsedTime + "s";
+    }
+
+    // Simulate updating time every second
+    setInterval(updateElapsedTime, 1000);
+
+    // Initialize progress bar on page load
+    window.addEventListener("DOMContentLoaded", () => {
+        updateProgressBar();
+    });
+</script>
+
+
+</body>
+</html>

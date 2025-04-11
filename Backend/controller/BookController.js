@@ -4,7 +4,7 @@ import Teacher from "../model/TeachersModel.js";
 // ✅ Book a Teacher
 export const bookTeacher = async (req, res) => {
   try {
-    const { teacherId, userId, date, time, description } = req.body;
+    const { teacherId, userId, date, time, description, googleMeetLink, status } = req.body;
 
     const teacher = await Teacher.findById(teacherId);
     if (!teacher) return res.status(404).json({ message: "Teacher not found" });
@@ -16,14 +16,21 @@ export const bookTeacher = async (req, res) => {
       date,
       time,
       description,
+      googleMeetLink: googleMeetLink || "", // Optional
+      status: status || "Pending" // Defaults to Pending if not passed
     });
 
     await newBooking.save();
-    res.status(201).json({ message: "Booking created successfully", booking: newBooking });
+
+    res.status(201).json({
+      message: "Booking created successfully",
+      booking: newBooking
+    });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
 };
+
 
 // ✅ Get All Bookings
 export const getAllBookings = async (req, res) => {
@@ -84,6 +91,34 @@ export const deleteBooking = async (req, res) => {
 
     await booking.deleteOne();
     res.status(200).json({ message: "Booking deleted successfully" });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
+
+
+
+// ✅ Accept or Reject Booking
+export const updateBookingStatus = async (req, res) => {
+  try {
+    const { status } = req.body; // status should be "Accepted" or "Rejected"
+
+    if (!["Accepted", "Rejected"].includes(status)) {
+      return res.status(400).json({ message: "Status must be 'Accepted' or 'Rejected'" });
+    }
+
+    const booking = await Booking.findById(req.params.id);
+    if (!booking) {
+      return res.status(404).json({ message: "Booking not found" });
+    }
+
+    booking.status = status;
+    await booking.save();
+
+    res.status(200).json({
+      message: `Booking ${status.toLowerCase()} successfully`,
+      booking,
+    });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }

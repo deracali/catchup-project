@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../images/favicon.ico">
+
+    <title>CatchUp - Dashboard</title>
+    
+	<!-- Vendors Style-->
+	<link rel="stylesheet" href="css/vendors_css.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+	<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+	<!-- Style-->  
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/skin_color.css">
+	<link rel="stylesheet" type="text/css" href="css/custom-9.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  </head>
+<style>
+        
+*{
+    font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+    .card {
+  width: 100%;
+  height: 400px;
+  border-radius: 10px;
+  border: 1px solid #eee;
+  position: relative;
+  overflow: hidden;
+}
+
+.strip__band {
+  position: relative;
+  margin-inline-start: auto;
+  width: 150px;
+  height: 86px;
+}
+
+.strip__band svg {
+  position: absolute;
+  inset-block-start: -7px;
+  inset-inline-start: 57px;
+}
+
+.strip__band span {
+  position: absolute;
+  color: #fff;
+  background-color: blue;
+  font-size: 19px;
+  inset-inline-end: 0px;
+  text-align: center;
+  height: 100%;
+  inset-block-start: 0px;
+  text-transform: uppercase;
+  writing-mode: vertical-rl;
+  rotate: -45deg;
+  transform: translateY(-28%);
+}
+
+.strip__band:before {
+  content: "";
+  position: absolute;
+  width: 20px;
+  height: 7px;
+  background: #1169A8;
+  inset-inline-start: 53px;
+  inset-block-start: -7px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.strip__band:after {
+  content: "";
+  position: absolute;
+  width: 8.5px;
+  height: 20px;
+  background: #1169A8;
+  inset-inline-end: -9px;
+  inset-block-end: -6px;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  z-index: -1;
+}
+
+.item_box {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  justify-items: center;
+  margin-top: 20px;
+}
+
+.item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 340px;
+  height: 400px;
+  padding: 10px;
+  box-shadow: 1px 1px 15px 10px #ccc;
+  border-radius: 1rem;
+  position: relative;
+  background-color: #fff;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.item:hover {
+  transform: translateY(-10px);
+}
+
+.card-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 50%; /* Adjusting image to take up half the card's height */
+  overflow: hidden;
+}
+
+.card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.card-content {
+  position: absolute;
+  bottom: 20px;
+  left: 0;
+  right: 0;
+  padding: 20px;
+  text-align: center;
+}
+
+.card-content .title {
+  font-weight: 800;
+  color: rgb(21 98 237);
+  text-transform: uppercase;
+  font-size: 1.2rem;
+}
+
+.card-content .text {
+  font-size: 0.9rem;
+  color: #333;
+}
+
+.card-content .link {
+  display: inline-block;
+  padding: 6px 15px;
+  background-color: rgb(21 98 237);
+  color: white;
+  text-decoration: none;
+  text-transform: uppercase;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+
+.card-content .link:hover {
+  background-color: rgb(21 98 237);
+}
+
+.card-title {
+  position: absolute;
+  top: 10px;
+  left: 20px;
+  font-weight: bold;
+  color: #fff;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 1200px) {
+  .item_box {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .item_box {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .item_box {
+    grid-template-columns: 1fr;
+  }
+  .item{
+    height: 100%;
+  }
+  .card {
+    height: auto; /* Adjust height based on content */
+  }
+  .card-image {
+    height: 100%; /* Image takes up half the card height on mobile */
+  }
+  .card-content {
+    position: relative;
+    text-align: center;
+    padding: 15px; /* Adjust padding for smaller screen */
+
+  }
+  .card-title {
+    top: 10px;
+    left: 10px; /* Position title more comfortably on mobile */
+  }
+  .strip__band span{
+    display: none;
+  }
+}
+
+#googleMeetPopup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.popup-content {
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  width: 300px;
+}
+
+#googleMeetLink {
+  width: 80%;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+button {
+  padding: 10px 15px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+</style>
+
+<body class="hold-transition light-skin sidebar-mini theme-violet fixed">
+	
+<div class="wrapper">
+  <div id="loader"></div>
+	
+  <header class="main-header">
+	<div class="d-flex align-items-center logo-box justify-content-start">
+		<a href="#" class="waves-effect waves-light nav-link d-none d-md-inline-block mx-10 push-btn bg-transparent" data-toggle="push-menu" role="button">
+			<i class="fas fa-align-left"></i>
+
+		</a>	
+		<!-- Logo -->
+        <a href="adult.html" class="logo">
+		  <!-- logo-->
+		  <div class="logo-lg">
+			  <span class="light-logo"><img src="../images/logo-dark-text.png" alt="logo"></span>
+			  <span class="dark-logo"><img src="../images/logo-light-text.png" alt="logo"></span>
+		  </div>
+		</a>	
+	</div>  
+    <!-- Header Navbar -->
+    <nav class="navbar navbar-static-top">
+      <!-- Sidebar toggle button-->
+	  <div class="app-menu">
+		<ul class="header-megamenu nav">
+			<li class="btn-group nav-item d-md-none">
+				<a href="#" class="waves-effect waves-light nav-link push-btn" data-toggle="push-menu" role="button">
+					<i class="fas fa-align-left"></i>
+
+			    </a>
+			</li>
+		
+		</ul> 
+	  </div>
+		
+      <div class="navbar-custom-menu r-side">
+        <ul class="nav navbar-nav">	
+		
+		  
+	      <!-- User Account-->
+          <li class="dropdown user user-menu">
+            <a href="#" class="waves-effect waves-light dropdown-toggle" data-bs-toggle="dropdown" title="User">
+				<i class="fas fa-user"></i>
+            </a>
+            <ul class="dropdown-menu animated flipInX">
+<li class="user-body">
+    <!-- <a class="dropdown-item" href="extra_profile.html"><i class="fa fa-user text-muted me-2"></i> Profile</a> -->
+
+    <div class="dropdown-divider"></div>
+    <a class="dropdown-item" href="#" id="logoutBtn"><i class="fas fa-lock text-muted me-2"></i> Logout</a>
+
+</li>
+
+            </ul>
+          </li>	
+		  
+         
+			
+        </ul>
+      </div>
+    </nav>
+  </header>
+  
+  <aside class="main-sidebar">
+    <!-- sidebar-->
+    <section class="sidebar position-relative">	
+	  	<div class="multinav">
+		  <div class="multinav-scroll" style="height: 100%;">	
+			  <!-- sidebar menu-->
+			  <ul class="sidebar-menu" data-widget="tree">	
+				<li class="header">Dashboard & Apps</li>
+				
+                <li><a href="adult.html"><i class="fas fa-code-branch"></i>Dashboard</a></li>	 	     
+                <li><a href="bookingList.html"><i class="fas fa-users"></i> Bookings</a></li>
+                <li><a href="community.html"><i class="fas fa-users"></i> Community</a></li>
+                <li>
+                    <a href="liveclassForm.html">
+                      <i class="fas fa-video"></i> Create Live Class
+                    </a>
+                  </li>
+                  
+					 	     
+			  </ul>
+		  </div>
+		</div>
+    </section>
+	<div class="sidebar-footer">
+		<a href="javascript:void(0)" class="link" data-bs-toggle="tooltip" title="Settings"><span class="icon-Settings-2"></span></a>
+		<a href="mailbox.html" class="link" data-bs-toggle="tooltip" title="Email"><span class="icon-Mail"></span></a>
+		<a href="javascript:void(0)" class="link" data-bs-toggle="tooltip" title="Logout"><span class="icon-Lock-overturning"><span class="path1"></span><span class="path2"></span></span></a>
+	</div>
+  </aside>
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <div class="container-full">
+      <!-- Main content -->
+      <section class="content">
+        <div class="item_box" id="course-container">
+          <!-- Dynamic content will be inserted here -->
+        </div>
+      </section>
+      <!-- /.content -->
+    </div>
+  </div>
+  
+  <!-- Popup for Google Meet Link -->
+  <div id="googleMeetPopup" style="display: none;">
+    <div class="popup-content">
+      <input type="text" id="googleMeetLink" placeholder="Enter Google Meet Link" />
+      <button id="submitLink">Submit</button>
+      <button id="closePopup">Close</button>
+    </div>
+  </div>
+  
+  <!-- /.content-wrapper -->
+  <footer class="main-footer">
+   
+	  &copy; 2025 All Rights Reserved Catchup.
+  </footer>
+
+
+  
+  <!-- Add the sidebar's background. This div must be placed immediately after the control sidebar -->
+  <div class="control-sidebar-bg"></div>
+  
+</div>
+<!-- ./wrapper -->
+	
+	
+		
+<script>
+	// Add event listener to the logout button
+document.getElementById('logoutBtn').addEventListener('click', function() {
+    // Remove teacherId and token from localStorage
+    localStorage.removeItem('teacherId');
+    localStorage.removeItem('token');
+    
+    // Optionally, redirect the user to the login page or home page after logout
+    window.location.href = '../../../sign-in.html'; // Change '/login' to your desired redirect URL
+});
+
+</script>
+		
+
+	
+
+
+
+
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+  $(".detail:before").click(function () {
+    $(this).toggleClass("active");
+  });
+  $(".size em, .color-detail em").click(function () {
+    $(this).addClass("active").siblings().removeClass("active");
+  });
+  $(".like").click(function () {
+    $(this).toggleClass("active");
+  });
+</script>
+	<!-- Page Content overlay -->
+	
+
+
+
+
+
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", async () => {
+  // Retrieve teacherId from localStorage
+  const teacherId = localStorage.getItem("teacherId");
+
+  if (!teacherId) {
+    alert("Teacher ID not found. Please log in first.");
+    return;
+  }
+
+  // Fetch the bookings from backend
+  const response = await fetch(`http://localhost:3000/api/bookings/teacher/${teacherId}`);
+  const bookings = await response.json();
+
+  const courseContainer = document.getElementById("course-container");
+
+  bookings.forEach(booking => {
+    // Format createdAt to real-time format
+    const formattedDate = formatDate(booking.createdAt);
+
+    // Create each booking element
+    const item = document.createElement("div");
+    item.classList.add("item");
+
+    item.innerHTML = `
+      <div class="card">
+        <div class="card-content">
+          <h3 class="title">${booking.teacherName}</h3>
+          <p class="text">Booked on: ${formattedDate}</p>
+          <p class="text">${booking.date} at ${booking.time}</p>
+          <p class="text">${booking.description}</p>
+          <p class="status">Status: ${booking.status}</p>
+          <button class="accept-button" data-id="${booking._id}">Accept</button>
+          <button class="reject-button" data-id="${booking._id}">Reject</button>
+        </div>
+      </div>
+    `;
+
+    // Add buttons event listeners
+    item.querySelector(".accept-button").addEventListener("click", () => openGoogleMeetPopup(booking._id));
+    item.querySelector(".reject-button").addEventListener("click", () => updateBookingStatus(booking._id, "Rejected"));
+
+    // Append the item to the container
+    courseContainer.appendChild(item);
+  });
+});
+
+// Function to format date to a more readable format
+function formatDate(date) {
+  const d = new Date(date);
+  return d.toLocaleString('en-US', {  // Format it according to your locale
+    weekday: 'long', // 'Monday'
+    year: 'numeric', // '2025'
+    month: 'long', // 'April'
+    day: 'numeric', // '10'
+    hour: 'numeric', // '10'
+    minute: 'numeric', // '30'
+    second: 'numeric', // '30'
+    hour12: true // 12-hour format
+  });
+}
+
+// Open popup to add Google Meet Link
+function openGoogleMeetPopup(bookingId) {
+  const popup = document.getElementById("googleMeetPopup");
+  const submitButton = document.getElementById("submitLink");
+  const closeButton = document.getElementById("closePopup");
+  
+  popup.style.display = 'flex';
+
+  submitButton.onclick = () => {
+    const googleMeetLink = document.getElementById("googleMeetLink").value;
+    if (googleMeetLink) {
+      updateBookingStatus(bookingId, "Accepted", googleMeetLink);
+      popup.style.display = 'none'; // Close the popup
+    }
+  };
+
+  closeButton.onclick = () => {
+    popup.style.display = 'none'; // Close the popup
+  };
+}
+
+// Update Booking Status (Accept/Reject)
+async function updateBookingStatus(bookingId, status, googleMeetLink = "") {
+  const payload = { status };
+  if (status === "Accepted") {
+    payload.googleMeetLink = googleMeetLink;
+  }
+
+  const response = await fetch(`http://localhost:3000/api/bookings/${bookingId}/status`, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(payload)
+  });
+
+  const result = await response.json();
+  if (result.status === 200) {
+    alert(result.message); // Success message
+    location.reload(); // Reload page to reflect changes
+  } else {
+    alert(result.message); // Error message
+  }
+}
+
+</script>
+	
+	<!-- Vendor JS -->
+	<script src="js/vendors.min.js"></script>
+	<script src="js/pages/chat-popup.js"></script>
+    <script src="../assets/icons/feather-icons/feather.min.js"></script>	
+	
+	<script src="../assets/vendor_components/apexcharts-bundle/dist/apexcharts.js"></script>
+	<script src="../assets/vendor_components/moment/min/moment.min.js"></script>
+	<script src="../assets/vendor_components/fullcalendar/fullcalendar.js"></script>
+	<script src="../../npm/echarts%405/dist/echarts.min.js"></script>
+	<script src="../assets/vendor_components/jquery.peity/jquery.peity.js"></script>
+	
+	
+	<!-- CatchUp App -->
+	<script src="js/template.js"></script>
+	<script src="js/pages/dashboard9.js"></script>
+	<script src="js/pages/calendar.js"></script>
+	<script src="js/pages/peity.js"></script>
+	
+
+
+</body>
+</html>

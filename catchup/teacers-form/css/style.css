@@ -91,7 +91,7 @@ ul, ol {
 
 /*General links color*/
 a {
-  color: #1dbe72;
+  color: #1d84ef;
   text-decoration: none;
   -moz-transition: all 0.3s ease-in-out;
   -o-transition: all 0.3s ease-in-out;
@@ -123,7 +123,7 @@ a.animated_link:before {
   bottom: -5px;
   opacity: 1;
   left: 0;
-  background-color: #1dbe72;
+  background-color: #1d84ef;
   visibility: hidden;
   -webkit-transform: scaleX(0);
   transform: scaleX(0);
@@ -142,7 +142,7 @@ a.animated_link:hover:before {
 a.animated_link.active {
   position: relative;
   text-decoration: none;
-  color: #1dbe72;
+  color: #1d84ef;
 }
 a.animated_link.active:before {
   content: "";
@@ -152,7 +152,7 @@ a.animated_link.active:before {
   bottom: -5px;
   opacity: 1;
   left: 0;
-  background-color: #1dbe72;
+  background-color: #1d84ef;
   visibility: visible;
   -webkit-transform: scaleX(1);
   transform: scaleX(1);
@@ -163,7 +163,7 @@ a.btn_1,
 .btn_1 {
   border: none;
   color: #fff;
-  background: #1dbe72;
+  background: #1d84ef;
   outline: none;
   cursor: pointer;
   display: inline-block;
@@ -361,7 +361,7 @@ a.btn_1.yellow:hover,
 }
 
 .content-left {
-  background-color: #1dbe72;
+  background-color: #1d84ef;
   padding: 0;
 }
 
@@ -582,7 +582,7 @@ button.submit {
   cursor: pointer;
   outline: none;
   text-align: center;
-  background: #1dbe72;
+  background: #1d84ef;
   position: relative;
   font-size: 14px;
   font-size: 0.875rem;
@@ -851,7 +851,7 @@ footer ul li a:hover {
   padding: 0;
   font-size: 42px;
   font-size: 2.625rem;
-  color: #1dbe72;
+  color: #1d84ef;
   text-transform: uppercase;
 }
 @media (max-width: 767px) {
@@ -888,7 +888,7 @@ footer ul li a:hover {
 
 .owl-theme .owl-dots .owl-dot.active span,
 .owl-theme .owl-dots .owl-dot:hover span {
-  background: #1dbe72 !important;
+  background: #1d84ef !important;
 }
 
 main#general_page {
@@ -1169,7 +1169,7 @@ span.error:after {
 }
 .form-control:focus {
   box-shadow: none;
-  border-color: #1dbe72;
+  border-color: #1d84ef;
 }
 
 /* Checkbox style */
@@ -1194,7 +1194,7 @@ span.error:after {
   cursor: pointer;
 }
 .container_check input:checked ~ .checkmark {
-  background-color: #1dbe72;
+  background-color: #1d84ef;
   border: 1px solid transparent;
 }
 .container_check .checkmark {
@@ -1304,7 +1304,7 @@ span.error:after {
   width: 12px;
   height: 12px;
   border-radius: 50%;
-  background: #1dbe72;
+  background: #1d84ef;
   -moz-transition: all 0.3s ease-in-out;
   -o-transition: all 0.3s ease-in-out;
   -webkit-transition: all 0.3s ease-in-out;
@@ -1366,7 +1366,7 @@ span.error:after {
 }
 
 .container_radio.version_2.active, .container_radio.version_2:hover, .container_check.version_2.active, .container_check.version_2:hover {
-  border: 1px solid #1dbe72;
+  border: 1px solid #1d84ef;
 }
 
 .radio_input .container_radio {
@@ -1411,7 +1411,7 @@ input[type=file]::-webkit-file-upload-button, input[type=file].invalid::-webkit-
   border-radius: 3px;
   padding: 8px 10px 8px 38px;
   font-weight: 600;
-  background: #1dbe72 url(../img/upload_icon.svg) 8px center no-repeat;
+  background: #1d84ef url(../img/upload_icon.svg) 8px center no-repeat;
   outline: none;
 }
 input[type=file]::-webkit-file-upload-button:focus, input[type=file].invalid::-webkit-file-upload-button:focus, input[type=file].valid::-webkit-file-upload-button:focus {

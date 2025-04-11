@@ -1,6 +1,6 @@
 //[widget morris charts Javascript]
 
-//Project:	EduAdmin - Responsive Admin Template
+//Project:	CatchUp - Responsive Admin Template
 //Primary use:   Used only for the morris charts
 
 

@@ -1,6 +1,6 @@
 //[app contact Javascript]
 
-//Project:	EduAdmin - Responsive Admin Template
+//Project:	CatchUp - Responsive Admin Template
 //Primary use:   Used only for the Data Table
 
 $(function () {

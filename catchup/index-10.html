@@ -78,7 +78,7 @@
                                             </li>
                                            
                                             <li><a href="offlinecourse.html">Offline Courses</a></li>
-                                            <li><a href="Dashboard/dashboard/main/index.html">Dashboard</a></li>
+                                            <li id="dashboard-link"><a href="Dashboard/dashboard/main/index.html">Dashboard</a></li>
                                            
                                         </ul>
                                     </nav>
@@ -94,12 +94,12 @@
                                     </form>
                                 </div>
                                 <div class="h7_header-btn2 d-none d-sm-block">
-                                    <a href="sign-in.html" class="h7_header-btn theme-btn theme-btn-medium theme-btn-10">
+                                    <a id="header-btn2" href="sign-in.html" class="h7_header-btn theme-btn theme-btn-medium theme-btn-10">
                                         <svg width="14" height="16" viewBox="0 0 14 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                                             <path d="M7.01367 8C8.94667 8 10.5137 6.433 10.5137 4.5C10.5137 2.567 8.94667 1 7.01367 1C5.08068 1 3.51367 2.567 3.51367 4.5C3.51367 6.433 5.08068 8 7.01367 8Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                                             <path d="M13.026 14.9996C13.026 12.2906 10.331 10.0996 7.013 10.0996C3.695 10.0996 1 12.2906 1 14.9996" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                                         </svg> 
-                                        Login                                           
+                                        Login
                                     </a>
                                 </div>
                                 <div class="header-menu-bar h7_menu-bar d-xl-none ml-10">
@@ -283,256 +283,30 @@
                         </div>
                         <div class="col-xl-7 col-lg-6">
                             <div class="h10_course-tab mb-30">
-                                <ul class="nav nav-pills" id="pills-tab" role="tablist">
-                                    <li class="nav-item" role="presentation">
-                                      <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">
-                                        See All
-                                        <span>New</span>
-                                      </button>
-                                    </li>
-                                    <li class="nav-item" role="presentation">
-                                      <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Web Design</button>
-                                    </li>
-                                    <li class="nav-item" role="presentation">
-                                      <button class="nav-link" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#pills-contact" type="button" role="tab" aria-controls="pills-contact" aria-selected="false">Marketing</button>
-                                    </li>
-                                    <li class="nav-item" role="presentation">
-                                      <button class="nav-link" id="pills-four-tab" data-bs-toggle="pill" data-bs-target="#pills-four" type="button" role="tab" aria-controls="pills-four" aria-selected="false">Lifestyle</button>
-                                    </li>
-                                    <li class="nav-item" role="presentation">
-                                      <button class="nav-link" id="pills-five-tab" data-bs-toggle="pill" data-bs-target="#pills-five" type="button" role="tab" aria-controls="pills-five" aria-selected="false">Graphic Design</button>
-                                    </li>
-                                </ul>   
+                              <ul class="nav nav-pills" id="pills-tab" role="tablist">
+                                <li class="nav-item" role="presentation">
+                                  <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">
+                                    See All
+                                    <span>New</span>
+                                  </button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                  <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Primary</button>
+                                </li>
+                                <!-- Add more categories like Web Design, Marketing etc. -->
+                              </ul>
                             </div>
-                        </div>
-                    </div>
-                    <div class="h10_course-wrap">
-                        <div class="tab-content" id="pills-tabContent">
-                            <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab" tabindex="0">
-                                <div class="row">
-                                    <div class="col-xl-4 col-lg-6 col-md-6">
-                                        <div class="h10_course-item mb-30">
-                                            <div class="h10_course-item-top">
-                                                <div class="h10_course-item-img">
-                                                    <a href="course-details.html"><img src="assets/img/course/10/1.jpg" alt=""></a>
-                                                </div>
-                                                <div class="h10_course-content">
-                                                    <div class="d-flex flex-wrap align-items-center gap-25 mb-3">
-                                                        <div class="h10_course-content-tag">
-                                                            <a href="#">English Language</a>
-                                                        </div>
-                                                        <div class="h10_course-content-rating">
-                                                            <ul>
-                                                                <li><i class="fa-solid fa-star"></i></li>
-                                                                <li><i class="fa-solid fa-star"></i></li>
-                                                                <li><i class="fa-solid fa-star"></i></li>
-                                                                <li><i class="fa-solid fa-star"></i></li>
-                                                                <li><i class="fa-solid fa-star"></i></li>
-                                                            </ul>
-                                                            <span>(4.8 Rating)</span>
-                                                        </div>
-                                                    </div>
-                                                    <div class="h10_course-content-info">
-                                                        <ul>
-                                                            <li><i class="fa-light fa-book-blank"></i>6 Lessons</li>
-                                                            <li><i class="fa-light fa-user-group"></i>32 Students</li>
-                                                        </ul>
-                                                    </div>
-                                                    <h5 class="h10_course-content-title"><a href="course-details.html">Teaching English Language Through Creative Approaches</a></h5>
-                                                    <div class="h10_course-content-btn">
-                                                        <a href="#">View Course<i class="fa-light fa-arrow-right"></i></a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-4 col-lg-6 col-md-6">
-                                        <div class="h10_course-item mb-30">
-                                            <div class="h10_course-item-top">
-                                                <div class="h10_course-item-img">
-                                                    <a href="course-details.html"><img src="assets/img/course/10/2.jpg" alt=""></a>
-                                                </div>
-                                                <div class="h10_course-content">
-                                                    <div class="d-flex flex-wrap align-items-center gap-25 mb-3">
-                                                        <div class="h10_course-content-tag">
-                                                            <a href="#">Science</a>
-                                                        </div>
-                                                        <div class="h10_course-content-rating">
-                                                            <ul>
-                                                                <li><i class="fa-solid fa-star"></i></li>
-                                                                <li><i class="fa-solid fa-star"></i></li>
-                                                                <li><i class="fa-solid fa-star"></i></li>
-                                                                <li><i class="fa-solid fa-star"></i></li>
-                                                                <li><i class="fa-solid fa-star"></i></li>
-                                                            </ul>
-                                                            <span>(4.8 Rating)</span>
-                                                        </div>
-                                                    </div>
-                                                    <div class="h10_course-content-info">
-                                                        <ul>
-                                                            <li><i class="fa-light fa-book-blank"></i>6 Lessons</li>
-                                                            <li><i class="fa-light fa-user-group"></i>32 Students</li>
-                                                        </ul>
-                                                    </div>
-                                                    <h5 class="h10_course-content-title"><a href="course-details.html">Basic Science and Technology for Primary Schools</a></h5>
-                                                    <div class="h10_course-content-btn">
-                                                        <a href="#">View Course<i class="fa-light fa-arrow-right"></i></a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-4 col-lg-6 col-md-6">
-                                        <div class="h10_course-item mb-30">
-                                            <div class="h10_course-item-top">
-                                                <div class="h10_course-item-img">
-                                                    <a href="course-details.html"><img src="assets/img/course/10/3.jpg" alt=""></a>
-                                                </div>
-                                                <div class="h10_course-content">
-                                                    <div class="d-flex flex-wrap align-items-center gap-25 mb-3">
-                                                        <div class="h10_course-content-tag">
-                                                            <a href="#">Social Studies</a>
-                                                        </div>
-                                                        <div class="h10_course-content-rating">
-                                                            <ul>
-                                                                <li><i class="fa-solid fa-star"></i></li>
-                                                                <li><i class="fa-solid fa-star"></i></li>
-                                                                <li><i class="fa-solid fa-star"></i></li>
-                                                                <li><i class="fa-solid fa-star"></i></li>
-                                                                <li><i class="fa-solid fa-star"></i></li>
-                                                            </ul>
-                                                            <span>(4.8 Rating)</span>
-                                                        </div>
-                                                    </div>
-                                                    <div class="h10_course-content-info">
-                                                        <ul>
-                                                            <li><i class="fa-light fa-book-blank"></i>6 Lessons</li>
-                                                            <li><i class="fa-light fa-user-group"></i>32 Students</li>
-                                                        </ul>
-                                                    </div>
-                                                    <h5 class="h10_course-content-title"><a href="course-details.html">Understanding Social Studies for Nigerian Primary Schools</a></h5>
-                                                    <div class="h10_course-content-btn">
-                                                        <a href="#">View Course<i class="fa-light fa-arrow-right"></i></a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-4 col-lg-6 col-md-6">
-                                        <div class="h10_course-item mb-30">
-                                            <div class="h10_course-item-top">
-                                                <div class="h10_course-item-img">
-                                                    <a href="course-details.html"><img src="assets/img/course/10/4.jpg" alt=""></a>
-                                                </div>
-                                                <div class="h10_course-content">
-                                                    <div class="d-flex flex-wrap align-items-center gap-25 mb-3">
-                                                        <div class="h10_course-content-tag">
-                                                            <a href="#">Civic Education</a>
-                                                        </div>
-                                                        <div class="h10_course-content-rating">
-                                                            <ul>
-                                                                <li><i class="fa-solid fa-star"></i></li>
-                                                                <li><i class="fa-solid fa-star"></i></li>
-                                                                <li><i class="fa-solid fa-star"></i></li>
-                                                                <li><i class="fa-solid fa-star"></i></li>
-                                                                <li><i class="fa-solid fa-star"></i></li>
-                                                            </ul>
-                                                            <span>(4.8 Rating)</span>
-                                                        </div>
-                                                    </div>
-                                                    <div class="h10_course-content-info">
-                                                        <ul>
-                                                            <li><i class="fa-light fa-book-blank"></i>6 Lessons</li>
-                                                            <li><i class="fa-light fa-user-group"></i>32 Students</li>
-                                                        </ul>
-                                                    </div>
-                                                    <h5 class="h10_course-content-title"><a href="course-details.html">Civic Education and Citizenship for Primary Schools</a></h5>
-                                                    <div class="h10_course-content-btn">
-                                                        <a href="#">View Course<i class="fa-light fa-arrow-right"></i></a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-4 col-lg-6 col-md-6">
-                                        <div class="h10_course-item mb-30">
-                                            <div class="h10_course-item-top">
-                                                <div class="h10_course-item-img">
-                                                    <a href="course-details.html"><img src="assets/img/course/10/5.jpg" alt=""></a>
-                                                </div>
-                                                <div class="h10_course-content">
-                                                    <div class="d-flex flex-wrap align-items-center gap-25 mb-3">
-                                                        <div class="h10_course-content-tag">
-                                                            <a href="#">Physical Education</a>
-                                                        </div>
-                                                        <div class="h10_course-content-rating">
-                                                            <ul>
-                                                                <li><i class="fa-solid fa-star"></i></li>
-                                                                <li><i class="fa-solid fa-star"></i></li>
-                                                                <li><i class="fa-solid fa-star"></i></li>
-                                                                <li><i class="fa-solid fa-star"></i></li>
-                                                                <li><i class="fa-solid fa-star"></i></li>
-                                                            </ul>
-                                                            <span>(4.8 Rating)</span>
-                                                        </div>
-                                                    </div>
-                                                    <div class="h10_course-content-info">
-                                                        <ul>
-                                                            <li><i class="fa-light fa-book-blank"></i>6 Lessons</li>
-                                                            <li><i class="fa-light fa-user-group"></i>32 Students</li>
-                                                        </ul>
-                                                    </div>
-                                                    <h5 class="h10_course-content-title"><a href="course-details.html">Physical Education Activities for Primary Schools</a></h5>
-                                                    <div class="h10_course-content-btn">
-                                                        <a href="#">View Course<i class="fa-light fa-arrow-right"></i></a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-4 col-lg-6 col-md-6">
-                                        <div class="h10_course-item mb-30">
-                                            <div class="h10_course-item-top">
-                                                <div class="h10_course-item-img">
-                                                    <a href="course-details.html"><img src="assets/img/course/10/6.jpg" alt=""></a>
-                                                </div>
-                                                <div class="h10_course-content">
-                                                    <div class="d-flex flex-wrap align-items-center gap-25 mb-3">
-                                                        <div class="h10_course-content-tag">
-                                                            <a href="#">Agricultural Science</a>
-                                                        </div>
-                                                        <div class="h10_course-content-rating">
-                                                            <ul>
-                                                                <li><i class="fa-solid fa-star"></i></li>
-                                                                <li><i class="fa-solid fa-star"></i></li>
-                                                                <li><i class="fa-solid fa-star"></i></li>
-                                                                <li><i class="fa-solid fa-star"></i></li>
-                                                                <li><i class="fa-solid fa-star"></i></li>
-                                                            </ul>
-                                                            <span>(4.8 Rating)</span>
-                                                        </div>
-                                                    </div>
-                                                    <div class="h10_course-content-info">
-                                                        <ul>
-                                                            <li><i class="fa-light fa-book-blank"></i>6 Lessons</li>
-                                                            <li><i class="fa-light fa-user-group"></i>32 Students</li>
-                                                        </ul>
-                                                    </div>
-                                                    <h5 class="h10_course-content-title"><a href="course-details.html">Introduction to Agricultural Science for Primary Schools</a></h5>
-                                                    <div class="h10_course-content-btn">
-                                                        <a href="#">View Course<i class="fa-light fa-arrow-right"></i></a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                          </div>
+                          </div>
+                          <div class="h10_course-wrap">
+                            <div class="tab-content" id="pills-tabContent">
+                              <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab" tabindex="0">
+                                <div class="row" id="primary-courses-container"></div>
+                              </div>
+                              <!-- Add other category tabs like Marketing etc. -->
                             </div>
-                            
-                            
+                          </div>
                           
-                        </div>
-                    </div>
                 </div>
             </section>
             <!-- course area end -->
@@ -551,49 +325,12 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-xl-4 col-lg-4 col-md-6">
-                            <div class="h10_event-item mb-30">
-                                <div class="h10_event-img w_img">
-                                    <a href="Quiz1/index.html"><img src="assets/img/event/10/1.jpg" alt=""></a>
-                                    <span class="h10_event-date">14th Dec 2025</span>
-                                </div>
-                                <div class="h10_event-content">
-                                    <span class="h10_event-content-meta"><i class="fa-light fa-location-dot"></i>Lagos, Nigeria</span>
-                                    <h5 class="h10_event-content-title"><a href="Quiz1/index.html">Mathematics Quiz: Mastering Primary School Math.</a></h5>
-                                    <a href="Quiz1/index.html" class="theme-btn theme-btn-10 theme-btn-medium h10_event-btn">Participate<i class="fa-light fa-arrow-right"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-4 col-lg-4 col-md-6">
-                            <div class="h10_event-item mb-30">
-                                <div class="h10_event-img w_img">
-                                    <a href="quiz_event.html"><img src="assets/img/event/10/2.jpg" alt=""></a>
-                                    <span class="h10_event-date">24th Dec 2025</span>
-                                </div>
-                                <div class="h10_event-content">
-                                    <span class="h10_event-content-meta"><i class="fa-light fa-location-dot"></i>Abuja, Nigeria</span>
-                                    <h5 class="h10_event-content-title"><a href="quiz_event.html">Science Quiz: Exploring the Wonders of the World.</a></h5>
-                                    <a href="#" class="theme-btn theme-btn-10 theme-btn-medium h10_event-btn">Participate<i class="fa-light fa-arrow-right"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-4 col-lg-4 col-md-6">
-                            <div class="h10_event-item mb-30">
-                                <div class="h10_event-img w_img">
-                                    <a href="quiz_event.html"><img src="assets/img/event/10/3.jpg" alt=""></a>
-                                    <span class="h10_event-date">08th Dec 2025</span>
-                                </div>
-                                <div class="h10_event-content">
-                                    <span class="h10_event-content-meta"><i class="fa-light fa-location-dot"></i>Port Harcourt, Nigeria</span>
-                                    <h5 class="h10_event-content-title"><a href="quiz_event.html">English Language Quiz: Sharpening Your Vocabulary.</a></h5>
-                                    <a href="#" class="theme-btn theme-btn-10 theme-btn-medium h10_event-btn">Participate<i class="fa-light fa-arrow-right"></i></a>
-                                </div>
-                            </div>
-                        </div>
+                    <div class="row" id="quiz-container">
+                        <!-- Quiz items will be dynamically inserted here -->
                     </div>
                 </div>
             </section>
+            
             
             <!-- event area end -->
 
@@ -920,15 +657,177 @@
         </footer>
         <!-- footer area end -->
         <script>
-            const userRole = localStorage.getItem('userRole');
+            const userRole = localStorage.getItem('role');
             const dashboardLink = document.getElementById('dashboard-link');
           
             if (userRole === 'secondary') {
-              dashboardLink.innerHTML = '<a href="Dashboard/dashboard/main/index9.html">Dashboard</a>';
+              dashboardLink.innerHTML = '<a href="Dashboard/dashboard/main/secondary.html">Dashboard</a>';
             } else {
-              dashboardLink.innerHTML = '<a href="Dashboard/dashboard/main/index.html">Dashboard</a>';
+              dashboardLink.innerHTML = '<a href="Dashboard/dashboard/main/primary.html">Dashboard</a>';
             }
           </script>
+
+
+
+
+
+<script>
+    // Function to redirect to course details page with course ID
+    function redirectToCourseDetails(courseId) {
+        window.location.href = `coursedetails.html?id=${courseId}`;
+    }
+
+    // Fetching all courses from the server (no limit) and slicing to only 10 courses
+    window.addEventListener('DOMContentLoaded', () => {
+        fetch('http://localhost:3000/api/offlinecourse')  // Fetching all courses
+            .then(response => response.json())
+            .then(courses => {
+                // Slice the first 10 courses
+                const firstTenCourses = courses.slice(0, 10);
+
+                // Dynamically populate the course cards on the page
+                const courseContainer = document.querySelector('.h10_course-wrap .row');
+                firstTenCourses.forEach(course => {
+                    const courseElement = document.createElement('div');
+                    courseElement.classList.add('col-xl-4', 'col-lg-6', 'col-md-6');
+                    courseElement.innerHTML = `
+                        <div class="h10_course-item mb-30">
+                            <div class="h10_course-item-top">
+                                <div class="h10_course-item-img">
+                                    <a href="#" onclick="redirectToCourseDetails('${course._id}')">
+                                        <img src="${course.courseImage}" alt="${course.title}">
+                                    </a>
+                                </div>
+                                <div class="h10_course-content">
+                                    <div class="d-flex flex-wrap align-items-center gap-25 mb-3">
+                                        <div class="h10_course-content-tag">
+                                            <a href="#">${course.subject}</a>
+                                        </div>
+                                        <div class="h10_course-content-rating">
+                                            <ul>
+                                                <li><i class="fa-solid fa-star"></i></li>
+                                                <li><i class="fa-solid fa-star"></i></li>
+                                                <li><i class="fa-solid fa-star"></i></li>
+                                                <li><i class="fa-solid fa-star"></i></li>
+                                                <li><i class="fa-solid fa-star"></i></li>
+                                            </ul>
+                                            <span>(4.8 Rating)</span>
+                                        </div>
+                                    </div>
+                                    <div class="h10_course-content-info">
+                                        <ul>
+                                            <li><i class="fa-light fa-book-blank"></i>6 Lessons</li>
+                                            <li><i class="fa-light fa-user-group"></i>32 Students</li>
+                                        </ul>
+                                    </div>
+                                    <h5 class="h10_course-content-title">${course.title}</h5>
+                                    <div class="h10_course-content-btn">
+                                        <a href="#" onclick="redirectToCourseDetails('${course._id}')">View Course<i class="fa-light fa-arrow-right"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                    courseContainer.appendChild(courseElement);
+                });
+            })
+            .catch(error => console.error('Error fetching courses:', error));
+    });
+</script>
+
+
+
+
+
+
+
+<script>
+    // Function to redirect to quiz details page with quiz ID
+    function redirectToQuizDetails(quizId) {
+        window.location.href = `Quiz5/quizdetails.html?id=${quizId}`;
+    }
+
+    // Fetch quizzes and filter by Primary category, limit to 10 items, and display them
+    window.addEventListener('DOMContentLoaded', () => {
+        fetch('http://localhost:3000/api/quiz')  // Fetch all quizzes (no filter by category on the backend)
+            .then(response => response.json())
+            .then(quizzes => {
+                console.log(quizzes)
+                // Filter quizzes by "Primary" category
+                const primaryQuizzes = quizzes.filter(quiz => quiz.category === 'Primary');
+
+                // Slice to get the first 10 quizzes
+                const limitedQuizzes = primaryQuizzes.slice(0, 10);
+
+                // Get the container where we will display the quizzes
+                const quizContainer = document.getElementById('quiz-container');
+                
+                // Dynamically create and display quizzes
+                limitedQuizzes.forEach(quiz => {
+                    const quizElement = document.createElement('div');
+                    quizElement.classList.add('col-xl-4', 'col-lg-4', 'col-md-6');
+                    quizElement.innerHTML = `
+                        <div class="h10_event-item mb-30">
+                            <div class="h10_event-img w_img">
+                                <a href="#" onclick="redirectToQuizDetails('${quiz._id}')">
+                                    <img src="assets/img/event/10/1.jpg" alt="${quiz.title}">
+                                </a>
+                                <span class="h10_event-date">Date placeholder</span> <!-- You can add a dynamic date here -->
+                            </div>
+                            <div class="h10_event-content">
+                                <span class="h10_event-content-meta">
+                                    <i class="fa-light fa-location-dot"></i>Location placeholder
+                                </span> <!-- Add location dynamically if available -->
+                                <h5 class="h10_event-content-title">
+                                    <a href="#" onclick="redirectToQuizDetails('${quiz._id}')">${quiz.title}</a>
+                                </h5>
+                                <a href="#" class="theme-btn theme-btn-10 theme-btn-medium h10_event-btn">
+                                    Participate<i class="fa-light fa-arrow-right"></i>
+                                </a>
+                            </div>
+                        </div>
+                    `;
+                    quizContainer.appendChild(quizElement);
+                });
+            })
+            .catch(error => console.error('Error fetching quizzes:', error));
+    });
+</script>
+
+
+
+<script>
+    // Check if studentId exists in localStorage
+    const studentId = localStorage.getItem('studentId');
+    const headerBtn2 = document.getElementById('header-btn2');  // The button element
+
+    // If studentId is found, change the button to "Logout"
+    if (studentId) {
+        headerBtn2.innerHTML = `
+            <svg width="14" height="16" viewBox="0 0 14 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M7.01367 8C8.94667 8 10.5137 6.433 10.5137 4.5C10.5137 2.567 8.94667 1 7.01367 1C5.08068 1 3.51367 2.567 3.51367 4.5C3.51367 6.433 5.08068 8 7.01367 8Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M13.026 14.9996C13.026 12.2906 10.331 10.0996 7.013 10.0996C3.695 10.0996 1 12.2906 1 14.9996" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg> 
+            Logout
+        `;
+        
+        // Change href to "#" as it's no longer a login page
+        headerBtn2.href = '#';
+        
+        // Add event listener for logout
+        headerBtn2.addEventListener('click', () => {
+            // Remove studentId and token from localStorage
+            localStorage.removeItem('studentId');
+            localStorage.removeItem('token');
+            
+            // Redirect to login page after logout
+            window.location.href = 'sign-in.html'; // Change this to your login page URL
+        });
+    }
+</script>
+
+
+
 		<!-- JS here -->
         <script src="assets/js/jquery.min.js"></script>
         <script src="assets/js/bootstrap.bundle.min.js"></script>

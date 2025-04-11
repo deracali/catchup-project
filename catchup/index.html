@@ -55,16 +55,16 @@
                         <div class="col-xl-7 col-lg-6 col-md-6 col-6">
                             <div class="header-left">
                                 <div class="header-logo">
-                                    <a href="index.html"><img src="assets/img/logo/logo.png" alt=""></a>
+                                    <a href="index.html"><img style="width:100px;  src="assets/img/cat2Logo.png" alt=""></a>
                                 </div>
                                 <nav class="main-menu mobile-menu d-none d-xl-block" id="mobile-menu">
                                     <ul>
                                         <li class="menu-has-child">
                                             <a href="index.html">Home</a>
                                             <ul class="submenu">
-                                                <li><a href="index.html">Education Main</a></li>
-                                                <li><a href="index-2.html">Online Education</a></li>
-                                                <li><a href="index-10.html">Preschool Program</a></li>
+                                                <li><a href="index.html">Secondary</a></li>
+                                                <li><a href="index-2.html">Adult</a></li>
+                                                <li><a href="index-10.html">Primary</a></li>
                                             </ul>
                                         </li>
                                     
@@ -85,15 +85,11 @@
                         </div>
                         <div class="col-xl-5 col-lg-6 col-md-6 col-6">
                             <div class="header-right">
-                                <div class="header-search d-none d-lg-block">
-                                    <form action="#">
-                                        <input type="text" placeholder="Search Item">
-                                        <button type="submit" class="header-search-btn"><i class="fa-thin fa-magnifying-glass"></i></button>
-                                    </form>
-                                </div>
-                                <div class="header-btn d-none d-sm-block">
-                                    <a href="sign-up.html" class="header-btn theme-btn theme-btn-medium">Enroll Now</a>
-                                </div>
+                              
+                              <div class="header-btn d-none d-sm-block">
+    <a id="header-btn" href="sign-up.html" class="header-btn theme-btn theme-btn-medium">Enroll Now</a>
+</div>
+
                                 <div class="header-menu-bar d-xl-none ml-10">
                                     <span class="header-menu-bar-icon side-toggle">
                                         <i class="fa-light fa-bars"></i>
@@ -325,7 +321,7 @@
             <!-- category area end -->
 
             <!-- course area start -->
-            <section class="course-area">
+            <!-- <section class="course-area">
                 <div class="container-fluid container-custom-1 p-0">
                     <div class="course-wrap pt-120 pb-90">
                         <div class="container">
@@ -2311,7 +2307,7 @@
                         </div>
                     </div>
                 </div>
-            </section>
+            </section> -->
             <!-- course area end -->
 
             <!-- about area start -->
@@ -2626,7 +2622,7 @@
                         <div class="col-xl-3 col-lg-7 col-md-7 col-sm-12">
                             <div class="footer-widget mb-40">
                                 <div class="footer-logo">
-                                    <a href="index.html"><img src="assets/img/logo/logo.png" alt=""></a>
+                                    <a href="index.html"><img style="width: 100px;" src="assets/img/cat2Logo.png" alt=""></a>
                                 </div>
                                 <p class="footer-widget-text mb-35">
                                     Through a combination of lectures, readings, discussions, students will gain solid foundation in educational.
@@ -2688,13 +2684,13 @@
         </footer>
         <!-- footer area end -->
         <script>
-            const userRole = localStorage.getItem('userRole');
+            const userRole = localStorage.getItem('role');
             const dashboardLink = document.getElementById('dashboard-link');
           
             if (userRole === 'secondary') {
-              dashboardLink.innerHTML = '<a href="Dashboard/dashboard/main/index9.html">Dashboard</a>';
+              dashboardLink.innerHTML = '<a href="Dashboard/dashboard/main/secondary.html">Dashboard</a>';
             } else {
-              dashboardLink.innerHTML = '<a href="Dashboard/dashboard/main/index.html">Dashboard</a>';
+              dashboardLink.innerHTML = '<a href="Dashboard/dashboard/main/primary.html">Dashboard</a>';
             }
           </script>
 
@@ -2708,23 +2704,27 @@
         const response = await fetch('http://localhost:3000/api/quiz');
         const quizzes = await response.json();
         console.log(quizzes);
+
         // Filter quizzes by category 'Secondary'
         const secondaryQuizzes = quizzes.filter(quiz => quiz.category === 'Secondary');
-        
+
+        // Limit to the first 10 quizzes
+        const limitedQuizzes = secondaryQuizzes.slice(0, 10);
+
         // Get the container where quiz items will be displayed
         const quizList = document.getElementById('quiz-list');
-        
+
         // Clear existing content (in case of page reload)
         quizList.innerHTML = '';
-        
-        // Loop through each filtered quiz and generate the HTML
-        secondaryQuizzes.forEach(quiz => {
+
+        // Loop through each filtered and sliced quiz and generate the HTML
+        limitedQuizzes.forEach(quiz => {
           // Assuming each quiz has a title and questions
           quiz.questions.forEach(question => {
             // Create a new slide for each question inside the quiz
             const slide = document.createElement('div');
             slide.classList.add('swiper-slide');
-            
+
             slide.innerHTML = `
               <div class="event-item">
                 <div class="event-img">
@@ -2744,7 +2744,7 @@
                 </div>
               </div>
             `;
-            
+
             // Append the slide to the quiz list
             quizList.appendChild(slide);
           });
@@ -2753,14 +2753,14 @@
         console.error('Error fetching quizzes:', error);
       }
     }
-  
+
     // Call the function to fetch quizzes when the page loads
     window.onload = fetchQuizzes;
-  </script>
-  
+</script>
 
 
-  <script>
+
+<script>
     // Fetch course data from the API
     fetch('http://localhost:3000/api/offlinecourse')
       .then(response => response.json())
@@ -2768,10 +2768,16 @@
         const blogRow = document.getElementById('blog-row');
         blogRow.innerHTML = ''; // Clear the existing content
     
-        // Filter courses where category is "secondary"
-        const filteredCourses = data.filter(course => course.category === "secondary");
+        // Filter courses where category is "Secondary"
+        const filteredCourses = data.filter(course => course.category === "Secondary");
 
-        filteredCourses.forEach(course => {
+        // Limit to the first 10 courses
+        const limitedCourses = filteredCourses.slice(0, 10);
+
+        console.log(limitedCourses);
+
+        // Loop through each course and display it
+        limitedCourses.forEach(course => {
             const blogItem = document.createElement('div');
             blogItem.classList.add('col-xl-4', 'col-lg-4');
     
@@ -2799,12 +2805,36 @@
         });
 
         // Show a message if no secondary courses are found
-        if (filteredCourses.length === 0) {
+        if (limitedCourses.length === 0) {
             blogRow.innerHTML = "<p>No secondary courses available.</p>";
         }
       })
       .catch(error => console.error('Error fetching data:', error));
 </script>
+
+
+
+<script>
+    // Check if studentId exists in localStorage
+    const studentId = localStorage.getItem('studentId');
+    const headerBtn = document.getElementById('header-btn');  // The button element
+
+    // If studentId is found, change the button to "Logout"
+    if (studentId) {
+        headerBtn.innerHTML = 'Logout';
+        headerBtn.href = '#';  // Make sure the link doesn't navigate anywhere
+        headerBtn.addEventListener('click', () => {
+            // Remove studentId and token from localStorage
+            localStorage.removeItem('studentId');
+            localStorage.removeItem('token');
+            
+            // Optionally, redirect to the login page or homepage after logout
+            window.location.href = 'login.html'; // Redirect to the login page
+        });
+    }
+</script>
+
+
 
 		<!-- JS here -->
         <script src="assets/js/jquery.min.js"></script>

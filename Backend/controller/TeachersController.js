@@ -104,15 +104,22 @@ export const getAllTeachers = async (req, res) => {
 // ✅ Get a single teacher by ID
 export const getTeacherById = async (req, res) => {
   try {
-    const teacher = await Teacher.findById(req.params.id);
+    const { teacherId } = req.params;
+    if (!teacherId) {
+      return res.status(400).json({ message: "Teacher ID is required" });
+    }
+
+    const teacher = await Teacher.findById(teacherId);
     if (!teacher) {
       return res.status(404).json({ message: "Teacher not found" });
     }
+
     res.status(200).json(teacher);
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
 };
+
 
 // ✅ Update teacher details
 export const updateTeacher = async (req, res) => {

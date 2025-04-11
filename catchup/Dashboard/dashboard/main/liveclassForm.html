@@ -8,7 +8,7 @@
     <meta name="author" content="">
     <link rel="icon" href="../images/favicon.ico">
 
-    <title>EduAdmin - Dashboard  Form Wizard </title>
+    <title>CatchUp - Dashboard  Form Wizard </title>
   
 	<!-- Vendors Style-->
 	<link rel="stylesheet" href="css/vendors_css.css">
@@ -32,7 +32,7 @@
 			</a>
 				
 			<!-- Logo -->
-			<a href="index.html" class="logo">
+			<a href="teacher.html" class="logo">
 			  <!-- logo-->
 			  <div class="logo-lg">
 				  <span class="light-logo"><img src="../images/logo-dark-text.png" alt="logo"></span>
@@ -45,28 +45,7 @@
 		<nav class="navbar navbar-static-top">
 		  <!-- Sidebar toggle button-->
 		  <div class="app-menu">
-			<ul class="header-megamenu nav">
-				<li class="btn-group nav-item d-md-none">
-					<a href="#" class="waves-effect waves-light nav-link push-btn" data-toggle="push-menu" role="button">
-						<i class="fas fa-bars"></i> <!-- Replaced icon-Align-left -->
-					</a>
-				</li>
-				<li class="btn-group nav-item d-none d-xl-inline-block">
-					<a href="contact_app_chat.html" class="waves-effect waves-light nav-link svg-bt-icon" title="Chat">
-						<i class="fas fa-comments"></i> <!-- Replaced icon-Chat -->
-					</a>
-				</li>
-				<li class="btn-group nav-item d-none d-xl-inline-block">
-					<a href="mailbox.html" class="waves-effect waves-light nav-link svg-bt-icon" title="Mailbox">
-						<i class="fas fa-envelope"></i> <!-- Replaced icon-Mailbox -->
-					</a>
-				</li>
-				<li class="btn-group nav-item d-none d-xl-inline-block">
-					<a href="extra_taskboard.html" class="waves-effect waves-light nav-link svg-bt-icon" title="Taskboard">
-						<i class="fas fa-clipboard-check"></i> <!-- Replaced icon-Clipboard-check -->
-					</a>
-				</li>
-			</ul>
+		
 		  </div>
 			
 		  <div class="navbar-custom-menu r-side">
@@ -83,11 +62,12 @@
 				</a>
 				<ul class="dropdown-menu animated flipInX">
 					<li class="user-body">
-						<a class="dropdown-item" href="#"><i class="fas fa-user text-muted me-2"></i> Profile</a>
+						<!-- <a class="dropdown-item" href="#"><i class="fas fa-user text-muted me-2"></i> Profile</a>
 						<a class="dropdown-item" href="#"><i class="fas fa-wallet text-muted me-2"></i> My Wallet</a>
-						<a class="dropdown-item" href="#"><i class="fas fa-cog text-muted me-2"></i> Settings</a>
+						<a class="dropdown-item" href="#"><i class="fas fa-cog text-muted me-2"></i> Settings</a> -->
 						<div class="dropdown-divider"></div>
-						<a class="dropdown-item" href="#"><i class="fas fa-lock text-muted me-2"></i> Logout</a>
+						<a class="dropdown-item" href="#" id="logoutBtn"><i class="fas fa-lock text-muted me-2"></i> Logout</a>
+
 					</li>
 				</ul>
 			</li>    
@@ -115,7 +95,7 @@
 								</span>
 							</a>
 							<ul class="treeview-menu">
-								<li><a href="index2.html"><i class="fas fa-chart-line"></i> Dashboard</a></li>
+								<li><a href="teacher.html"><i class="fas fa-chart-line"></i> Dashboard</a></li>
 							</ul>
 						</li>
 		
@@ -136,8 +116,14 @@
 										</span>
 									</a>
 									<ul class="treeview-menu">
-										<li><a href="liveclassForm.html"><i class="fas fa-plus-circle"></i> Create Offline Course</a></li>
-										
+										<li><a href="teacher.html"><i class="fas fa-code-branch"></i>Dashboard</a></li>	 	     
+										<li><a href="bookingList.html"><i class="fas fa-users"></i> Bookings</a></li>
+										<li><a href="community.html"><i class="fas fa-users"></i> Community</a></li>
+										<li>
+											<a href="liveclassForm.html">
+											  <i class="fas fa-video"></i> Create Live Class
+											</a>
+										  </li>
 									</ul>
 								</li>         
 						                
@@ -197,51 +183,60 @@
 					<!-- Course Info -->
 					<h6>Course Information</h6>
 					<section>
-					  <div class="row">
-						<div class="col-md-6">
-						  <div class="form-group">
-							<label for="courseTitle" class="form-label"> Course Title : <span class="danger">*</span> </label>
-							<input type="text" class="form-control required" id="courseTitle" name="title" required>
+						<div class="row">
+						  <div class="col-md-6">
+							<div class="form-group">
+							  <label for="courseTitle" class="form-label"> Course Title : <span class="danger">*</span> </label>
+							  <input type="text" class="form-control required" id="courseTitle" name="title" required>
+							</div>
+						  </div>
+						  <div class="col-md-6">
+							<div class="form-group">
+							  <label for="courseDate" class="form-label"> Date : <span class="danger">*</span> </label>
+							  <input type="date" class="form-control required" id="courseDate" name="date" required>
+							</div>
 						  </div>
 						</div>
-						<div class="col-md-6">
-						  <div class="form-group">
-							<label for="courseDate" class="form-label"> Date : <span class="danger">*</span> </label>
-							<input type="date" class="form-control required" id="courseDate" name="date" required>
+						<div class="row">
+						  <div class="col-md-6">
+							<div class="form-group">
+							  <label for="lessonDetails" class="form-label"> Subject : <span class="danger">*</span> </label>
+							  <input type="text" class="form-control required" id="lessonDetails" name="lessons" required>
+							</div>
+						  </div>
+						  <div class="col-md-6">
+							<div class="form-group">
+							  <label for="totalCost" class="form-label"> Total Cost : <span class="danger">*</span> </label>
+							  <input type="text" class="form-control required" id="totalCost" name="totalCost" required>
+							</div>
 						  </div>
 						</div>
-					  </div>
-					  <div class="row">
-						<div class="col-md-6">
-						  <div class="form-group">
-							<label for="lessonDetails" class="form-label"> Subject : <span class="danger">*</span> </label>
-							<input type="text" class="form-control required" id="lessonDetails" name="lessons" required>
+						<div class="row">
+						  <div class="col-md-6">
+							<div class="form-group">
+							  <label for="studentsCount" class="form-label"> Students Count : <span class="danger">*</span> </label>
+							  <input type="number" class="form-control required" id="studentsCount" name="studentsCount" required>
+							</div>
 						  </div>
 						</div>
-						<div class="col-md-6">
-						  <div class="form-group">
-							<label for="totalCost" class="form-label"> Total Cost : <span class="danger">*</span> </label>
-							<input type="text" class="form-control required" id="totalCost" name="totalCost" required>
+						<div class="row">
+						  <div class="col-md-6">
+							<div class="form-group">
+							  <label for="courseTime" class="form-label"> Time : <span class="danger">*</span> </label>
+							  <input type="time" class="form-control required" id="courseTime" name="time" required>
+							</div>
 						  </div>
 						</div>
-					  </div>
-					  <div class="row">
-						<div class="col-md-6">
-						  <div class="form-group">
-							<label for="studentsCount" class="form-label"> Students Count : <span class="danger">*</span> </label>
-							<input type="number" class="form-control required" id="studentsCount" name="studentsCount" required>
+						<div class="row">
+						  <div class="col-md-6">
+							<div class="form-group">
+							  <label for="googleMeetLink" class="form-label"> Google Meet Link: </label>
+							  <input type="url" class="form-control" id="googleMeetLink" name="googleMeetLink" placeholder="Enter Google Meet link">
+							</div>
 						  </div>
 						</div>
-					  </div>
-					  <div class="row">
-						<div class="col-md-6">
-						  <div class="form-group">
-							<label for="courseTime" class="form-label"> Time : <span class="danger">*</span> </label>
-							<input type="time" class="form-control required" id="courseTime" name="time" required>
-						  </div>
-						</div>
-					  </div>
-					</section>
+					  </section>
+					  
 				  
 					<!-- Submit Button -->
 					<div class="row">
@@ -267,269 +262,7 @@
    
 	  &copy; 2025 All Rights Reserved Catchup.
   </footer>
-  <!-- Control Sidebar -->
-  <aside class="control-sidebar">
-	  
-	<div class="rpanel-title"><span class="pull-right btn btn-circle btn-danger"><i class="ion ion-close text-white" data-toggle="control-sidebar"></i></span> </div>  <!-- Create the tabs -->
-    <ul class="nav nav-tabs control-sidebar-tabs">
-      <li class="nav-item"><a href="#control-sidebar-home-tab" data-bs-toggle="tab" class="active"><i class="mdi mdi-message-text"></i></a></li>
-      <li class="nav-item"><a href="#control-sidebar-settings-tab" data-bs-toggle="tab"><i class="mdi mdi-playlist-check"></i></a></li>
-    </ul>
-    <!-- Tab panes -->
-    <div class="tab-content">
-      <!-- Home tab content -->
-      <div class="tab-pane active" id="control-sidebar-home-tab">
-          <div class="flexbox">
-			<a href="javascript:void(0)" class="text-grey">
-				<i class="ti-more"></i>
-			</a>	
-			<p>Users</p>
-			<a href="javascript:void(0)" class="text-end text-grey"><i class="ti-plus"></i></a>
-		  </div>
-		  <div class="lookup lookup-sm lookup-right d-none d-lg-block">
-			<input type="text" name="s" placeholder="Search" class="w-p100">
-		  </div>
-          <div class="media-list media-list-hover mt-20">
-			<div class="media py-10 px-0">
-			  <a class="avatar avatar-lg status-success" href="#">
-				<img src="../images/avatar/1.jpg" alt="...">
-			  </a>
-			  <div class="media-body">
-				<p class="fs-16">
-				  <a class="hover-primary" href="#"><strong>Tyler</strong></a>
-				</p>
-				<p>Praesent tristique diam...</p>
-				  <span>Just now</span>
-			  </div>
-			</div>
 
-			<div class="media py-10 px-0">
-			  <a class="avatar avatar-lg status-danger" href="#">
-				<img src="../images/avatar/2.jpg" alt="...">
-			  </a>
-			  <div class="media-body">
-				<p class="fs-16">
-				  <a class="hover-primary" href="#"><strong>Luke</strong></a>
-				</p>
-				<p>Cras tempor diam ...</p>
-				  <span>33 min ago</span>
-			  </div>
-			</div>
-
-			<div class="media py-10 px-0">
-			  <a class="avatar avatar-lg status-warning" href="#">
-				<img src="../images/avatar/3.jpg" alt="...">
-			  </a>
-			  <div class="media-body">
-				<p class="fs-16">
-				  <a class="hover-primary" href="#"><strong>Evan</strong></a>
-				</p>
-				<p>In posuere tortor vel...</p>
-				  <span>42 min ago</span>
-			  </div>
-			</div>
-
-			<div class="media py-10 px-0">
-			  <a class="avatar avatar-lg status-primary" href="#">
-				<img src="../images/avatar/4.jpg" alt="...">
-			  </a>
-			  <div class="media-body">
-				<p class="fs-16">
-				  <a class="hover-primary" href="#"><strong>Evan</strong></a>
-				</p>
-				<p>In posuere tortor vel...</p>
-				  <span>42 min ago</span>
-			  </div>
-			</div>			
-			
-			<div class="media py-10 px-0">
-			  <a class="avatar avatar-lg status-success" href="#">
-				<img src="../images/avatar/1.jpg" alt="...">
-			  </a>
-			  <div class="media-body">
-				<p class="fs-16">
-				  <a class="hover-primary" href="#"><strong>Tyler</strong></a>
-				</p>
-				<p>Praesent tristique diam...</p>
-				  <span>Just now</span>
-			  </div>
-			</div>
-
-			<div class="media py-10 px-0">
-			  <a class="avatar avatar-lg status-danger" href="#">
-				<img src="../images/avatar/2.jpg" alt="...">
-			  </a>
-			  <div class="media-body">
-				<p class="fs-16">
-				  <a class="hover-primary" href="#"><strong>Luke</strong></a>
-				</p>
-				<p>Cras tempor diam ...</p>
-				  <span>33 min ago</span>
-			  </div>
-			</div>
-
-			<div class="media py-10 px-0">
-			  <a class="avatar avatar-lg status-warning" href="#">
-				<img src="../images/avatar/3.jpg" alt="...">
-			  </a>
-			  <div class="media-body">
-				<p class="fs-16">
-				  <a class="hover-primary" href="#"><strong>Evan</strong></a>
-				</p>
-				<p>In posuere tortor vel...</p>
-				  <span>42 min ago</span>
-			  </div>
-			</div>
-
-			<div class="media py-10 px-0">
-			  <a class="avatar avatar-lg status-primary" href="#">
-				<img src="../images/avatar/4.jpg" alt="...">
-			  </a>
-			  <div class="media-body">
-				<p class="fs-16">
-				  <a class="hover-primary" href="#"><strong>Evan</strong></a>
-				</p>
-				<p>In posuere tortor vel...</p>
-				  <span>42 min ago</span>
-			  </div>
-			</div>
-			  
-		  </div>
-
-      </div>
-      <!-- /.tab-pane -->
-      <!-- Settings tab content -->
-      <div class="tab-pane" id="control-sidebar-settings-tab">
-          <div class="flexbox">
-			<a href="javascript:void(0)" class="text-grey">
-				<i class="ti-more"></i>
-			</a>	
-			<p>Todo List</p>
-			<a href="javascript:void(0)" class="text-end text-grey"><i class="ti-plus"></i></a>
-		  </div>
-        <ul class="todo-list mt-20">
-			<li class="py-15 px-5 by-1">
-			  <!-- checkbox -->
-			  <input type="checkbox" id="basic_checkbox_1" class="filled-in">
-			  <label for="basic_checkbox_1" class="mb-0 h-15"></label>
-			  <!-- todo text -->
-			  <span class="text-line">Nulla vitae purus</span>
-			  <!-- Emphasis label -->
-			  <small class="badge bg-danger"><i class="fa fa-clock-o"></i> 2 mins</small>
-			  <!-- General tools such as edit or delete-->
-			  <div class="tools">
-				<i class="fa fa-edit"></i>
-				<i class="fa fa-trash-o"></i>
-			  </div>
-			</li>
-			<li class="py-15 px-5">
-			  <!-- checkbox -->
-			  <input type="checkbox" id="basic_checkbox_2" class="filled-in">
-			  <label for="basic_checkbox_2" class="mb-0 h-15"></label>
-			  <span class="text-line">Phasellus interdum</span>
-			  <small class="badge bg-info"><i class="fa fa-clock-o"></i> 4 hours</small>
-			  <div class="tools">
-				<i class="fa fa-edit"></i>
-				<i class="fa fa-trash-o"></i>
-			  </div>
-			</li>
-			<li class="py-15 px-5 by-1">
-			  <!-- checkbox -->
-			  <input type="checkbox" id="basic_checkbox_3" class="filled-in">
-			  <label for="basic_checkbox_3" class="mb-0 h-15"></label>
-			  <span class="text-line">Quisque sodales</span>
-			  <small class="badge bg-warning"><i class="fa fa-clock-o"></i> 1 day</small>
-			  <div class="tools">
-				<i class="fa fa-edit"></i>
-				<i class="fa fa-trash-o"></i>
-			  </div>
-			</li>
-			<li class="py-15 px-5">
-			  <!-- checkbox -->
-			  <input type="checkbox" id="basic_checkbox_4" class="filled-in">
-			  <label for="basic_checkbox_4" class="mb-0 h-15"></label>
-			  <span class="text-line">Proin nec mi porta</span>
-			  <small class="badge bg-success"><i class="fa fa-clock-o"></i> 3 days</small>
-			  <div class="tools">
-				<i class="fa fa-edit"></i>
-				<i class="fa fa-trash-o"></i>
-			  </div>
-			</li>
-			<li class="py-15 px-5 by-1">
-			  <!-- checkbox -->
-			  <input type="checkbox" id="basic_checkbox_5" class="filled-in">
-			  <label for="basic_checkbox_5" class="mb-0 h-15"></label>
-			  <span class="text-line">Maecenas scelerisque</span>
-			  <small class="badge bg-primary"><i class="fa fa-clock-o"></i> 1 week</small>
-			  <div class="tools">
-				<i class="fa fa-edit"></i>
-				<i class="fa fa-trash-o"></i>
-			  </div>
-			</li>
-			<li class="py-15 px-5">
-			  <!-- checkbox -->
-			  <input type="checkbox" id="basic_checkbox_6" class="filled-in">
-			  <label for="basic_checkbox_6" class="mb-0 h-15"></label>
-			  <span class="text-line">Vivamus nec orci</span>
-			  <small class="badge bg-info"><i class="fa fa-clock-o"></i> 1 month</small>
-			  <div class="tools">
-				<i class="fa fa-edit"></i>
-				<i class="fa fa-trash-o"></i>
-			  </div>
-			</li>
-			<li class="py-15 px-5 by-1">
-			  <!-- checkbox -->
-			  <input type="checkbox" id="basic_checkbox_7" class="filled-in">
-			  <label for="basic_checkbox_7" class="mb-0 h-15"></label>
-			  <!-- todo text -->
-			  <span class="text-line">Nulla vitae purus</span>
-			  <!-- Emphasis label -->
-			  <small class="badge bg-danger"><i class="fa fa-clock-o"></i> 2 mins</small>
-			  <!-- General tools such as edit or delete-->
-			  <div class="tools">
-				<i class="fa fa-edit"></i>
-				<i class="fa fa-trash-o"></i>
-			  </div>
-			</li>
-			<li class="py-15 px-5">
-			  <!-- checkbox -->
-			  <input type="checkbox" id="basic_checkbox_8" class="filled-in">
-			  <label for="basic_checkbox_8" class="mb-0 h-15"></label>
-			  <span class="text-line">Phasellus interdum</span>
-			  <small class="badge bg-info"><i class="fa fa-clock-o"></i> 4 hours</small>
-			  <div class="tools">
-				<i class="fa fa-edit"></i>
-				<i class="fa fa-trash-o"></i>
-			  </div>
-			</li>
-			<li class="py-15 px-5 by-1">
-			  <!-- checkbox -->
-			  <input type="checkbox" id="basic_checkbox_9" class="filled-in">
-			  <label for="basic_checkbox_9" class="mb-0 h-15"></label>
-			  <span class="text-line">Quisque sodales</span>
-			  <small class="badge bg-warning"><i class="fa fa-clock-o"></i> 1 day</small>
-			  <div class="tools">
-				<i class="fa fa-edit"></i>
-				<i class="fa fa-trash-o"></i>
-			  </div>
-			</li>
-			<li class="py-15 px-5">
-			  <!-- checkbox -->
-			  <input type="checkbox" id="basic_checkbox_10" class="filled-in">
-			  <label for="basic_checkbox_10" class="mb-0 h-15"></label>
-			  <span class="text-line">Proin nec mi porta</span>
-			  <small class="badge bg-success"><i class="fa fa-clock-o"></i> 3 days</small>
-			  <div class="tools">
-				<i class="fa fa-edit"></i>
-				<i class="fa fa-trash-o"></i>
-			  </div>
-			</li>
-		  </ul>
-      </div>
-      <!-- /.tab-pane -->
-    </div>
-  </aside>
-  <!-- /.control-sidebar -->
   
   <!-- Add the sidebar's background. This div must be placed immediately after the control sidebar -->
   <div class="control-sidebar-bg"></div>
@@ -537,54 +270,75 @@
 <!-- ./wrapper -->
 	
 	
+<script>
+	// Add event listener to the logout button
+document.getElementById('logoutBtn').addEventListener('click', function() {
+    // Remove teacherId and token from localStorage
+    localStorage.removeItem('teacherId');
+    localStorage.removeItem('token');
+    
+    // Optionally, redirect the user to the login page or home page after logout
+    window.location.href = '../../../sign-in.html'; // Change '/login' to your desired redirect URL
+});
+
+</script>
 	
 	
 	
 	<!-- Page Content overlay -->
-	<script>
-		document.querySelector('form').addEventListener('submit', async function (event) {
-		  event.preventDefault();
-	  
-		  // Get values from the form
-		  const studentsCount = document.getElementById('studentsCount').value;
-		  
-		  // Ensure studentsCount is a number (default to 0 if empty or invalid)
-		  const studentCountValue = studentsCount ? Number(studentsCount) : 0;
-	  
-		  const data = {
-			title: document.getElementById('courseTitle').value,
-			date: document.getElementById('courseDate').value,
-			lessons: document.getElementById('lessonDetails').value,
-			totalCost: document.getElementById('totalCost').value,
-			time: document.getElementById('courseTime').value,
-			lessonCount: 0, // Set lessonCount to 0 by default
-			studentsCount: studentCountValue, // Ensure it's a number
-			teacherId: "444234432232" // Manually add teacher ID
-		  };
-	  
-		  try {
-			const response = await fetch('http://localhost:3000/api/livecourses/create', {
-			  method: 'POST',
-			  headers: {
-				'Content-Type': 'application/json',
-			  },
-			  body: JSON.stringify(data), // Send as a single course object
-			});
-	  
-			const result = await response.json();
-			if(result){
-				alert(result.message || "Course created successfully");
-			}
-			else{
-				alert(error)
-			}
-		  } catch (error) {
-			console.error('Error creating course:', error);
-			alert('Error creating course');
-		  }
-		});
-	  </script>
-	  
+<script>
+	document.querySelector('form').addEventListener('submit', async function (event) {
+  event.preventDefault();
+
+  // Get the teacherId from localStorage
+  const teacherId = localStorage.getItem("teacherId");
+
+  if (!teacherId) {
+    alert("Teacher ID not found. Please log in first.");
+    return;
+  }
+  
+  // Get values from the form
+  const studentsCount = document.getElementById('studentsCount').value;
+  
+  // Ensure studentsCount is a number (default to 0 if empty or invalid)
+  const studentCountValue = studentsCount ? Number(studentsCount) : 0;
+
+  const data = {
+    title: document.getElementById('courseTitle').value,
+    date: document.getElementById('courseDate').value,
+    lessons: document.getElementById('lessonDetails').value,
+    totalCost: document.getElementById('totalCost').value,
+    time: document.getElementById('courseTime').value,
+    lessonCount: 0, // Set lessonCount to 0 by default
+    studentsCount: studentCountValue, // Ensure it's a number
+    teacherId: teacherId, // Use teacherId from localStorage
+    googleMeetLink: document.getElementById('googleMeetLink').value, // Capture Google Meet link
+  };
+
+  try {
+    const response = await fetch('http://localhost:3000/api/livecourses/create', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data), // Send as a single course object
+    });
+
+    const result = await response.json();
+    if(result){
+      alert(result.message || "Course created successfully");
+    }
+    else{
+      alert('Error creating course');
+    }
+  } catch (error) {
+    console.error('Error creating course:', error);
+    alert('Error creating course');
+  }
+});
+
+</script>
 	  
 	  
       
@@ -596,7 +350,7 @@
     <script src="../assets/vendor_components/jquery-validation-1.17.0/dist/jquery.validate.min.js"></script>
     <script src="../assets/vendor_components/sweetalert/sweetalert.min.js"></script>
 	
-	<!-- EduAdmin App -->
+	<!-- CatchUp App -->
 	<script src="js/template.js"></script>
 	
     <script src="js/pages/steps.js"></script>

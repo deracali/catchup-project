@@ -30,9 +30,10 @@ const BookingSchema = new mongoose.Schema(
     },
     status: {
       type: String,
-      enum: ["Pending", "Confirmed", "Cancelled"],
+      enum: ["Pending", "Confirmed", "Cancelled", "Accepted", "Rejected"],
       default: "Pending",
     },
+    googleMeetLink: { type: String },
   },
   { timestamps: true }
 );
