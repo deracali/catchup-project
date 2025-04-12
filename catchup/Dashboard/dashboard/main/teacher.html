@@ -124,11 +124,7 @@
 		  </div>
 		</div>
     </section>
-	<div class="sidebar-footer">
-		<a href="javascript:void(0)" class="link" data-bs-toggle="tooltip" title="Settings"><span class="icon-Settings-2"></span></a>
-		<a href="mailbox.html" class="link" data-bs-toggle="tooltip" title="Email"><span class="icon-Mail"></span></a>
-		<a href="javascript:void(0)" class="link" data-bs-toggle="tooltip" title="Logout"><span class="icon-Lock-overturning"><span class="path1"></span><span class="path2"></span></span></a>
-	</div>
+	
   </aside>
 
   <!-- Content Wrapper. Contains page content -->
@@ -139,7 +135,7 @@
 			<div class="row">
 				<div class="col-xl-4 col-lg-12 col-12 left-side-section">
 					<div class="mb-30">
-						<h1><strong>Hello,</strong> <span id="teacherName">Arka</span> <span style="font-size:40px;">&#128075;</span></h1>
+						<h1><strong>Hello,</strong> <span id="teacherName"></span> <span style="font-size:40px;">&#128075;</span></h1>
 						<p class="mb-0 fs-16 text-fade mt-25">Nice to have you back, what an exciting day!</p>
 						<p class="fs-16 text-fade">Get ready and continue  your lesson today.</p>
 					</div>
@@ -371,7 +367,7 @@ document.getElementById('logoutBtn').addEventListener('click', function() {
 <script>
 	document.addEventListener("DOMContentLoaded", async () => {
 		try {
-			const response = await fetch("https://catchup-project.onrender.com//api/livecourses/get");
+			const response = await fetch("https://catchup-project.onrender.com/api/livecourses/get");
 			const courses = await response.json();
 	
 			if (courses.length === 0) return;
@@ -443,110 +439,112 @@ document.getElementById('logoutBtn').addEventListener('click', function() {
 
 
 <script>
-    // Function to fetch data and filter by teacherId
-    async function fetchData() {
-        try {
-            const teacherId = localStorage.getItem('teacherId');
-            if (!teacherId) {
-                console.error("Teacher ID is not found.");
-                return;
-            }
-
-            // Fetch live courses for the teacher
-            const coursesRes = await fetch(`https://catchup-project.onrender.com//api/livecourses/getbyid/${teacherId}`);
-           
-            const response = await coursesRes.json();
-            console.log(response); // Check the structure of the response
-            
-            // Ensure that the response is an array
-            const courses = Array.isArray(response) ? response : response.data || [];
-            console.log('Courses:', courses); // Check the structure of courses
-
-            // Fetch bookings for the teacher
-            const bookingsRes = await fetch(`https://catchup-project.onrender.com//api/bookings/teacher/${teacherId}`);
-            if (!bookingsRes.ok) {
-                throw new Error('Failed to fetch bookings');
-            }
-            const appointments = await bookingsRes.json();
-
-            const today = new Date().toISOString().split('T')[0];
-
-            // Separate courses
-            const scienceCourses = courses.filter(course => course.title.includes("Science"));
-            const upcomingCourses = courses.filter(course => course.date > today);
-
-            // Render courses and appointments
-            document.getElementById('all-courses').innerHTML = generateCourseHTML(courses);
-            document.getElementById('live-science-courses').innerHTML = generateCourseHTML(scienceCourses);
-            document.getElementById('appointments').innerHTML = generateAppointmentHTML(appointments);
-            document.getElementById('upcoming-courses').innerHTML = generateCourseHTML(upcomingCourses);
-
-        } catch (error) {
-            console.error('Error fetching data:', error);
-        }
-    }
-
-    // Function to generate HTML for courses
-// Function to generate HTML for courses with Font Awesome icons
-function generateCourseHTML(courses) {
-    return courses.map(course => `
-        <div class="box-body bg-warning-light mb-20 px-xl-5 px-xxl-20 pull-up">
-            <div class="d-flex align-items-center ps-xl-20">
-                <div class="me-20">
-                    <div class="w-90 h-90 l-h-90 rounded b-1 bg-white text-center">
-                        <img src="../images/front-end-img/courses/cor-logo-7.png" alt="" class="align-self-end h-70 w-70">
-                    </div>
-                </div>
-                <div class="d-flex flex-column fw-500 w-75">
-                    <a href="#" class="text-dark hover-primary mb-5 fs-18">${course.title}</a>
-                    <div class="row">
-                        <div class="col-md-6 text-fade">
-                            <p class="my-10"><i class="fa fa-book-open"></i> ${course.lessonCount} lessons</p>
-                            <p><i class="fa fa-clock"></i> ${course.time} minutes</p>
-                        </div>
-                        <div class="col-md-6 text-fade">
-                            <p class="my-10"><i class="fa fa-users"></i> ${course.studentsCount} students</p>
-                            <p><i class="fa fa-tags"></i> ${course.totalCost}</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    `).join('');
-}
-
-// Function to generate HTML for appointments with Font Awesome icons
-function generateAppointmentHTML(appointments) {
-    return appointments.map(appointment => `
-        <div class="box-body bg-light mb-20 px-xl-5 px-xxl-20 pull-up">
-            <div class="d-flex align-items-center ps-xl-20">
-                <div class="me-20">
-                    <div class="w-90 h-90 l-h-90 rounded b-1 bg-white text-center">
-                        <img src="../images/front-end-img/courses/cor-logo-8.png" alt="" class="align-self-end h-70 w-70">
-                    </div>
-                </div>
-                <div class="d-flex flex-column fw-500 w-75">
-                    <a href="#" class="text-dark hover-primary mb-5 fs-18">Appointment with ${appointment.teacherName}</a>
-                    <div class="row">
-                        <div class="col-md-6 text-fade">
-                            <p class="my-10"><i class="fa fa-calendar"></i> ${appointment.date}</p>
-                            <p><i class="fa fa-clock"></i> ${appointment.time}</p>
-                        </div>
-                        <div class="col-md-6 text-fade">
-                            <p class="my-10"><i class="fa fa-info-circle"></i> ${appointment.description}</p>
-                            <p><i class="fa fa-check"></i> Status: ${appointment.status}</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    `).join('');
-}
-
-    // Call the fetchData function
-    fetchData();
-</script>
-
+	// Function to fetch data and filter by teacherId
+	async function fetchData() {
+	  try {
+		const teacherId = localStorage.getItem('teacherId');
+		if (!teacherId) {
+		  console.error("Teacher ID is not found.");
+		  return;
+		}
+  
+		// Fetch live courses for the teacher
+		const coursesRes = await fetch(`https://catchup-project.onrender.com/api/livecourses/getbyid/${teacherId}`);
+		const response = await coursesRes.json();
+		console.log(response); // Check the structure of the response
+  
+		// Ensure that the response is an array
+		const courses = Array.isArray(response) ? response : response.data || [];
+		console.log('Courses:', courses); // Check the structure of courses
+  
+		// Sort the courses by createdAt to show the most recent one at the top
+		courses.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+  
+		// Fetch bookings for the teacher
+		const bookingsRes = await fetch(`https://catchup-project.onrender.com/api/bookings/teacher/${teacherId}`);
+		if (!bookingsRes.ok) {
+		  throw new Error('Failed to fetch bookings');
+		}
+		const appointments = await bookingsRes.json();
+  
+		const today = new Date().toISOString().split('T')[0];
+  
+		// Separate courses
+		const scienceCourses = courses.filter(course => course.title.includes("Science"));
+		const upcomingCourses = courses.filter(course => course.date > today);
+  
+		// Render courses and appointments
+		document.getElementById('all-courses').innerHTML = generateCourseHTML(courses);
+		document.getElementById('live-science-courses').innerHTML = generateCourseHTML(scienceCourses);
+		document.getElementById('appointments').innerHTML = generateAppointmentHTML(appointments);
+		document.getElementById('upcoming-courses').innerHTML = generateCourseHTML(upcomingCourses);
+  
+	  } catch (error) {
+		console.error('Error fetching data:', error);
+	  }
+	}
+  
+	// Function to generate HTML for courses with Join Button and sorting by createdAt
+	function generateCourseHTML(courses) {
+	  return courses.map(course => `
+		<div class="box-body bg-warning-light mb-20 px-xl-5 px-xxl-20 pull-up">
+		  <div class="d-flex align-items-center ps-xl-20">
+			<div class="me-20">
+			  <div class="w-90 h-90 l-h-90 rounded b-1 bg-white text-center">
+				<img src="../images/front-end-img/courses/cor-logo-7.png" alt="" class="align-self-end h-70 w-70">
+			  </div>
+			</div>
+			<div class="d-flex flex-column fw-500 w-75">
+			  <a href="#" class="text-dark hover-primary mb-5 fs-18">${course.title}</a>
+			  <div class="row">
+				<div class="col-md-6 text-fade">
+				  <p class="my-10"><i class="fa fa-book-open"></i> ${course.lessonCount} lessons</p>
+				  <p><i class="fa fa-clock"></i> ${course.time} minutes</p>
+				</div>
+				<div class="col-md-6 text-fade">
+				  <p class="my-10"><i class="fa fa-users"></i> ${course.studentsCount} students</p>
+				  <p><i class="fa fa-tags"></i> ${course.totalCost}</p>
+				</div>
+			  </div>
+			  <a href="${course.googleMeetLink}" target="_blank" class="btn btn-primary mt-3">Join Now</a>
+			</div>
+		  </div>
+		</div>
+	  `).join('');
+	}
+  
+	// Function to generate HTML for appointments with Font Awesome icons
+	function generateAppointmentHTML(appointments) {
+	  return appointments.map(appointment => `
+		<div class="box-body bg-light mb-20 px-xl-5 px-xxl-20 pull-up">
+		  <div class="d-flex align-items-center ps-xl-20">
+			<div class="me-20">
+			  <div class="w-90 h-90 l-h-90 rounded b-1 bg-white text-center">
+				<img src="../images/front-end-img/courses/cor-logo-8.png" alt="" class="align-self-end h-70 w-70">
+			  </div>
+			</div>
+			<div class="d-flex flex-column fw-500 w-75">
+			  <a href="#" class="text-dark hover-primary mb-5 fs-18">Appointment with ${appointment.teacherName}</a>
+			  <div class="row">
+				<div class="col-md-6 text-fade">
+				  <p class="my-10"><i class="fa fa-calendar"></i> ${appointment.date}</p>
+				  <p><i class="fa fa-clock"></i> ${appointment.time}</p>
+				</div>
+				<div class="col-md-6 text-fade">
+				  <p class="my-10"><i class="fa fa-info-circle"></i> ${appointment.description}</p>
+				  <p><i class="fa fa-check"></i> Status: ${appointment.status}</p>
+				</div>
+			  </div>
+			</div>
+		  </div>
+		</div>
+	  `).join('');
+	}
+  
+	// Call the fetchData function
+	fetchData();
+  </script>
+  
 
 
 
@@ -566,7 +564,7 @@ function generateAppointmentHTML(appointments) {
 
 		async function fetchAppointments() {
 			try {
-				const response = await fetch(`https://catchup-project.onrender.com//api/bookings`);
+				const response = await fetch(`https://catchup-project.onrender.com/api/bookings`);
 				const allBookings = await response.json();
 
 				// Filter bookings for this teacher
@@ -600,7 +598,7 @@ function generateAppointmentHTML(appointments) {
 
 <script>
 	document.addEventListener("DOMContentLoaded", function () {
-		fetch("https://catchup-project.onrender.com//api/bookings")
+		fetch("https://catchup-project.onrender.com/api/bookings")
 			.then(response => response.json())
 			.then(data => {
 				// Process data: Count bookings per day
@@ -645,7 +643,7 @@ function generateAppointmentHTML(appointments) {
   
 	if (teacherId) {
 	  // Fetch teacher data from the API
-	  fetch(`https://catchup-project.onrender.com//api/teachers/${teacherId}`)
+	  fetch(`https://catchup-project.onrender.com/api/teachers/${teacherId}`)
 		.then((response) => response.json())
 		.then((data) => {
 		  if (data) {

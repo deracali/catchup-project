@@ -8,7 +8,7 @@
     <meta name="author" content="">
     <link rel="icon" href="../images/favicon.ico">
 
-    <title>CatchUp - Dashboard  Editable Tables </title>
+    <title>CatchUp - Dashboard  CustomTable </title>
   
 	<!-- Vendors Style-->
 	<link rel="stylesheet" href="css/vendors_css.css">
@@ -46,28 +46,7 @@
 		<nav class="navbar navbar-static-top">
 		  <!-- Sidebar toggle button-->
 		  <div class="app-menu">
-			<ul class="header-megamenu nav">
-				<li class="btn-group nav-item d-md-none">
-					<a href="#" class="waves-effect waves-light nav-link push-btn" data-toggle="push-menu" role="button">
-						<i class="fas fa-bars"></i> <!-- Replaced icon-Align-left -->
-					</a>
-				</li>
-				<li class="btn-group nav-item d-none d-xl-inline-block">
-					<a href="contact_app_chat.html" class="waves-effect waves-light nav-link svg-bt-icon" title="Chat">
-						<i class="fas fa-comments"></i> <!-- Replaced icon-Chat -->
-					</a>
-				</li>
-				<li class="btn-group nav-item d-none d-xl-inline-block">
-					<a href="mailbox.html" class="waves-effect waves-light nav-link svg-bt-icon" title="Mailbox">
-						<i class="fas fa-envelope"></i> <!-- Replaced icon-Mailbox -->
-					</a>
-				</li>
-				<li class="btn-group nav-item d-none d-xl-inline-block">
-					<a href="extra_taskboard.html" class="waves-effect waves-light nav-link svg-bt-icon" title="Taskboard">
-						<i class="fas fa-clipboard-check"></i> <!-- Replaced icon-Clipboard-check -->
-					</a>
-				</li>
-			</ul>
+		
 		  </div>
 			
 		  <div class="navbar-custom-menu r-side">
@@ -105,89 +84,22 @@
 			<div class="multinav">
 				<div class="multinav-scroll" style="height: 100%;">    
 					<!-- sidebar menu-->
-					<ul class="sidebar-menu" data-widget="tree">    
-						<li class="header">Dashboard & Apps</li>
-						<li class="treeview">
-							<a href="#">
-								<i class="fas fa-th"></i>
-								<span>Dashboard</span>
-								<span class="pull-right-container">
-									<i class="fa fa-angle-right pull-right"></i>
-								</span>
-							</a>
-							<ul class="treeview-menu">
-								<li><a href="index2.html"><i class="fas fa-chart-line"></i> Dashboard</a></li>
-							</ul>
-						</li>
-		
-						<li class="treeview">
-							<a href="#">
-								<i class="fas fa-file-alt"></i>
-								<span>Forms & Tables</span>
-								<span class="pull-right-container">
-									<i class="fa fa-angle-right pull-right"></i>
-								</span>
-							</a>                    
-							<ul class="treeview-menu">                    
-								<li class="treeview">
-									<a href="#">
-										<i class="fas fa-edit"></i> Forms
-										<span class="pull-right-container">
-											<i class="fa fa-angle-right pull-right"></i>
-										</span>
-									</a>
-									<ul class="treeview-menu">
-										<li><a href="offlinecourseform.html"><i class="fas fa-plus-circle"></i> Create Offline Course</a></li>
-										<li><a href="quizform.html"><i class="fas fa-poll"></i> Create Quiz</a></li>
-									</ul>
-								</li>         
-								<li class="treeview">
-									<a href="#">
-										<i class="fas fa-table"></i> Tables
-										<span class="pull-right-container">
-											<i class="fa fa-angle-right pull-right"></i>
-										</span>
-									</a>
-									<ul class="treeview-menu">
-										<li><a href="quizTables.html"><i class="fas fa-list"></i> Quiz List</a></li>
-										<li><a href="offlinecoursesTable.html"><i class="fas fa-book"></i> Offline Courses List</a></li>
-										<li><a href="teacherReview.html"><i class="fas fa-star"></i> Teachers Review</a></li>
-									</ul>
-								</li>                    
-							</ul>
-						</li>
+				<ul class="sidebar-menu" data-widget="tree">    
+					<li class="header">Dashboard & Apps</li>
+					<li class="treeview">	
+							<span class="pull-right-container">
 						
-						<li class="treeview">
-							<a href="#">
-								<i class="fas fa-user"></i>
-								<span>Pages</span>
-								<span class="pull-right-container">
-									<i class="fa fa-angle-right pull-right"></i>
-								</span>
-							</a>
-							<ul class="treeview-menu">
-								<li><a href="contact_userlist_grid.html"><i class="fas fa-chalkboard-teacher"></i> Teachers</a></li>
-								<li><a href="contact_userlist.html"><i class="fas fa-user-graduate"></i> Students</a></li>    
-							</ul>
-						</li>
-		
-						<li class="header">LOGIN & ERROR </li>
-						<li class="treeview">
-							<a href="#">
-								<i class="fas fa-lock"></i>
-								<span>Authentication</span>
-								<span class="pull-right-container">
-									<i class="fa fa-angle-right pull-right"></i>
-								</span>
-							</a>
-							<ul class="treeview-menu">
-								<li><a href="auth_login.html"><i class="fas fa-sign-in-alt"></i> Login</a></li>
-								<li><a href="auth_register.html"><i class="fas fa-user-plus"></i> Register</a></li>
-								<li><a href="auth_lockscreen.html"><i class="fas fa-lock"></i> Lockscreen</a></li>
-								<li><a href="auth_user_pass.html"><i class="fas fa-key"></i> Recover password</a></li>    
-							</ul>
-						</li>            
-					</ul>
+								<li><a href="index2.html"><i class="fas fa-chart-line"></i> Dashboard</a></li>
+							</span>
+							<li><a href="offlinecourseform.html"><i class="fas fa-plus-circle"></i> Create Offline Course</a></li>
+							<li><a href="quizform.html"><i class="fas fa-poll"></i> Create Quiz</a></li>
+							<li><a href="quizTables.html"><i class="fas fa-list"></i> Quiz List</a></li>
+									<li><a href="offlinecoursesTable.html"><i class="fas fa-book"></i> Offline Courses List</a></li>
+									<li><a href="teacherReview.html"><i class="fas fa-star"></i> Teachers Review</a></li>
+									<li><a href="contact_userlist_grid.html"><i class="fas fa-chalkboard-teacher"></i> Teachers</a></li>
+									<li><a href="contact_userlist.html"><i class="fas fa-user-graduate"></i> Students</a></li>    
+								</li>   
+				</ul>
 				</div>
 			</div>
 		</section>
@@ -205,13 +117,13 @@
 		<div class="content-header">
 			<div class="d-flex align-items-center">
 				<div class="me-auto">
-					<h3 class="page-title">Editable Tables</h3>
+					<h3 class="page-title">CustomTable</h3>
 					<div class="d-inline-block align-items-center">
 						<nav>
 							<ol class="breadcrumb">
 								<li class="breadcrumb-item"><a href="#"><i class="fas fa-home"></i></a></li>
 								<li class="breadcrumb-item" aria-current="page">Tables</li>
-								<li class="breadcrumb-item active" aria-current="page">Editable Tables</li>
+								<li class="breadcrumb-item active" aria-current="page">CustomTable</li>
 							</ol>
 						</nav>
 					</div>
@@ -302,7 +214,7 @@
 		  // Fetch quizzes from the server
 		  async function fetchQuizzes() {
 			try {
-			  const response = await fetch("https://catchup-project.onrender.com//api/quiz");
+			  const response = await fetch("https://catchup-project.onrender.com/api/quiz");
 			  const data = await response.json();
 			  
 			  // Now data is an array of quizzes, each containing a title and questions
@@ -359,7 +271,7 @@
 				const updatedAnswer = row.querySelector('[data-field="answer"]').textContent;
 	  
 				try {
-				  await fetch(`https://catchup-project.onrender.com//api/quiz/quizzes/${id}`, {
+				  await fetch(`https://catchup-project.onrender.com/api/quiz/quizzes/${id}`, {
 					method: "PUT",
 					headers: { "Content-Type": "application/json" },
 					body: JSON.stringify({ question: updatedQuestion, answer: updatedAnswer })
@@ -378,7 +290,7 @@
 				if (!confirm("Are you sure you want to delete this quiz?")) return;
 	  
 				try {
-				  await fetch(`https://catchup-project.onrender.com//api/quiz/delete/${id}`, { method: "DELETE" });
+				  await fetch(`https://catchup-project.onrender.com/api/quiz/delete/${id}`, { method: "DELETE" });
 				  allQuizzes = allQuizzes.filter(quiz => quiz._id !== id);
 				  renderQuizzes();
 				  alert("Quiz deleted successfully!");

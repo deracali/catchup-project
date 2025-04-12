@@ -4,8 +4,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quiz</title>
-
+    <title>School University & Online Education Template | Catchup - eLearning Education</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" type="image/x-icon" href="assets/images/logo.png">
     <!-- fonts -->
     <link rel="stylesheet" href="assets/fonts/font.css">
 
@@ -59,7 +61,7 @@
 .rating-popup {
     display: none;
     position: fixed;
-    top: 50%;
+    top: 19%;
     left: 50%;
     transform: translate(-50%, -50%);
     padding: 30px;
@@ -185,7 +187,46 @@
   box-shadow: 0 0 15px rgba(0,0,0,0.3);
   text-align: center;
 }
+.question-feedback, .detailed-answers {
+    background: #f9f9f9;
+    padding: 15px;
+    margin: 10px 0;
+    border-radius: 8px;
+    border-left: 4px solid #007BFF;
+  }
 
+  .answer-card {
+    background: #fff;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 10px;
+  }
+
+  .correct-answer {
+    color: green;
+    font-weight: bold;
+  }
+
+  .incorrect-answer {
+    color: red;
+    font-weight: bold;
+  }
+
+  .quiz-btn{
+    display: block;
+    width: 100%;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 12px;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 8px;
+    margin-top: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
     </style>
     <body>
     
@@ -195,7 +236,7 @@
                     <div class="side">
                         <div class="side_image">
                             <div class="border-up"></div>
-                            <img src="assets/images/side.jpg" alt="side">
+                            <img style="object-fit: cover;"  src="assets/images/quiz-page.jpeg" alt="side">
                             <div class="border-down"></div>
                         </div>
                         <div class="step-count">
@@ -245,53 +286,36 @@
                 </div>
             </div>
         
-            <div class="footer-line"></div>
+            <!-- <div class="footer-line"></div> -->
         
             <!-- result -->
             <div class="loadingresult">
                 <img src="assets/images/loading.gif" alt="loading">
             </div>
-            <div class="result_page" style="display:none;" id="resultPage">
-                <div class="result_inner">
-                    <div class="result_inner2">
-                        <h2>Knowledge Check</h2>
-                        <div class="u_result">
-                            <div class="u_score">Your Score: </div>
-                            <div class="u_prcnt" id="scorePercent"></div>
-                            <span id="scorePoints">0 Points</span>
-                        </div>
-                        <div class="p_result">
-                            <div class="p_score">Passing Score: </div>
-                            <div class="p_prcnt">
-                                80%
-                            </div>
-                            <span>80 Points</span>
-                        </div>
-                        <div class="line"></div>
-                        <div class="result_show">
-                            <h2>Result</h2>
-                            <div class="pass_check" id="passCheck">
-                                <i class="fa-solid fa-xmark"></i> You did not Pass
-                            </div>
-                            <div class="result_msg" id="resultMessage">
-                                Better Luck Next Time!
-                            </div>
-                            <div id="questionFeedback"></div>
-                        </div>
-                    </div>
-        
-                    <!-- rectangle -->
-                    <img class="behind_bg" src="assets/images/bh-clip.png" alt="rectangle">
-                </div>
-            </div>
+            <div class="wrapper">
+                <section id="step-section"></section>
+              </div>
+              
+              <!-- Result Page -->
+              <div id="resultPage" style="display:none;">
+                <h2 id="scorePercent"></h2>
+                <h3 id="scorePoints"></h3>
+                <div id="passCheck"></div>
+                <p id="resultMessage"></p>
+              
+                <!-- Feedback -->
+                <div id="questionFeedback"></div>
 
+                <button class="quiz-btn" id="downloadPdfBtn" style="margin-top: 20px;">Download Result as PDF</button>
+              </div>
+              
             <!-- Explanation Popup -->
 <div id="explanationPopup" class="popup-overlay" style="display: none;">
     <div class="popup-content">
       <h3>Explanation</h3>
       <p id="popupCorrectAnswer"><strong>Correct Answer:</strong> </p>
       <p id="popupExplanationText"><strong>Explanation:</strong> </p>
-      <button id="closeExplanationPopup">Close</button>
+      <button class="quiz-btn" id="closeExplanationPopup">Close</button>
     </div>
   </div>
   
@@ -325,7 +349,9 @@
         let score = 0;
         let questions = [];
         let timeLimit = 0;  // Time limit from the database
-    
+        let userAnswers = []; // Stores selected answers by question index
+
+
         // Get quizId from URL params
         const urlParams = new URLSearchParams(window.location.search);
         const quizId = urlParams.get('id');  // Assuming URL is like /quiz?id=123
@@ -416,7 +442,7 @@
         }
     
         // Function to check the selected answer
-        function checkAnswer() {
+      function checkAnswer() {
     if (questions.length === 0) return;
 
     const question = questions[currentQuestionIndex];
@@ -424,16 +450,19 @@
 
     if (selectedOption) {
         const selectedAnswer = selectedOption.value;
+        userAnswers[currentQuestionIndex] = selectedAnswer;  // Save it!
+
         const isCorrect = question.answer === selectedAnswer;
 
         if (!isCorrect) {
-            // Show explanation popup
             document.getElementById('popupCorrectAnswer').innerHTML = `<strong>Correct Answer:</strong> ${question.answer}`;
             document.getElementById('popupExplanationText').innerHTML = `<strong>Explanation:</strong> ${question.explanation || "No explanation provided."}`;
             document.getElementById('explanationPopup').style.display = 'flex';
         } else {
             score++;
         }
+    } else {
+        userAnswers[currentQuestionIndex] = null; // No answer selected
     }
 }
 
@@ -477,22 +506,21 @@
         const feedback = document.createElement('div');
         feedback.classList.add('question-feedback');
 
-        const selectedOption = document.querySelector(`input[name="op${index + 1}"]:checked`);
+        const selectedAnswer = userAnswers[index];
+let feedbackText = '';
 
-        let feedbackText = '';
-        if (selectedOption) {
-            const selectedAnswer = selectedOption.value;
-            const correctOption = question.answer;
-            const isCorrect = correctOption === selectedAnswer;
+if (selectedAnswer) {
+    const correctOption = question.answer;
+    const isCorrect = correctOption === selectedAnswer;
 
-            if (isCorrect) {
-                feedbackText = `<span class="correct-answer"><i class="fa-solid fa-check" style="color: green;"></i> Correct: ${selectedAnswer}</span>`;
-            } else {
-                feedbackText = `<span class="incorrect-answer"><i class="fa-solid fa-times" style="color: red;"></i> Incorrect: ${selectedAnswer}</span>`;
-            }
-        } else {
-            feedbackText = `<span class="incorrect-answer"><i class="fa-solid fa-times" style="color: red;"></i> No answer selected</span>`;
-        }
+    if (isCorrect) {
+        feedbackText = `<span class="correct-answer"><i class="fa-solid fa-check" style="color: green;"></i> Correct: ${selectedAnswer}</span>`;
+    } else {
+        feedbackText = `<span class="incorrect-answer"><i class="fa-solid fa-times" style="color: red;"></i> Incorrect: ${selectedAnswer}</span>`;
+    }
+} else {
+    feedbackText = `<span class="incorrect-answer"><i class="fa-solid fa-times" style="color: red;"></i> No answer selected</span>`;
+}
 
         feedback.innerHTML = `Question ${index + 1}: ${feedbackText}`;
         feedbackContainer.appendChild(feedback);
@@ -559,6 +587,7 @@ document.getElementById('closePopupBtn').addEventListener('click', () => {
     .catch(error => {
         console.error('Error saving score to the database:', error);
     });
+    document.getElementById('resultPage').scrollIntoView({ behavior: 'smooth' });
 
     // Close the popup
     scorePopup.style.display = 'none';
@@ -596,8 +625,24 @@ document.getElementById('closeExplanationPopup').addEventListener('click', () =>
     </script>
     
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+    <script>
+        document.getElementById('downloadPdfBtn').addEventListener('click', () => {
+            const resultContent = document.getElementById('resultPage');
     
- 
+            const opt = {
+                margin:       0.5,
+                filename:     `quiz_result_${quizId}.pdf`,
+                image:        { type: 'jpeg', quality: 0.98 },
+                html2canvas:  { scale: 2 },
+                jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
+            };
+    
+            html2pdf().from(resultContent).set(opt).save();
+        });
+    </script>
+    
 
     <!-- bootstrap 5 -->
     <script src="assets/js/Bootstrap/bootstrap.min.js"></script>

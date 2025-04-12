@@ -4,10 +4,10 @@ import { addQuizScore, getUserScores, getQuizScore, calculateUserTotalScore, get
 const QuizDataRoute = express.Router();
 
 QuizDataRoute.post("/", addQuizScore);
-QuizDataRoute.get("/:userId", getUserScores);
+QuizDataRoute.get("/leaderboard", getLeaderboard);
+QuizDataRoute.get("/get/:userId", getUserScores);
 QuizDataRoute.get("/:userId/:quizId", getQuizScore);
-QuizDataRoute.get("/userTotalScore/:userId", calculateUserTotalScore);
+QuizDataRoute.get("/userTotalScore/:userId/:quizId", calculateUserTotalScore);
 
 // Route to get the leaderboard (top users by total score)
-QuizDataRoute.get("/leaderboard", getLeaderboard);
 export default QuizDataRoute;

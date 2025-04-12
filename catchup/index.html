@@ -8,7 +8,7 @@
         <title>School University & Online Education Template | Catchup - eLearning Education</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-		<link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.png">
+		<link rel="shortcut icon" type="image/x-icon" href="assets/img/logo.png">
         <!-- Place favicon.ico in the root directory -->
 
 		<!-- CSS here -->
@@ -22,10 +22,83 @@
         <link rel="stylesheet" href="assets/css/swiper-bundle.min.css">
         <link rel="stylesheet" href="assets/css/main.css">
     </head>
+    <style>
+        /* Basic styling for demonstration */
+       .my-custom-component .row { display: flex; flex-wrap: wrap; gap: 20px; }
+        .my-custom-component .col-xl-4,
+    .my-custom-component .col-lg-6,
+    .my-custom-component .col-md-6 {
+      flex: 1 1 calc(25% - 20px);
+    }
+        .card { border: 1px solid #ccc; padding: 15px; border-radius: 8px; }
+        .h2_price-item-title h5 { margin: 0 0 10px; }
+        .h2_price-amount-info { margin: 10px 0; }
+        .h2_price-middle-info { margin-bottom: 20px; }
+        .flutterwave-payment { text-align: center; }
+        button { padding: 10px 20px; font-size: 16px; cursor: pointer; }
+        /* Responsive adjustments (optional) */
+        @media(max-width: 768px) {
+          .col-xl-4, .col-lg-6, .col-md-6 { flex: 1 1 100%; }
+        }
+      </style>
      <style>
-        .logo-catch{
+     .logo-catch{
             width: 100px;
         }
+
+        /* Ensuring the cards maintain equal height */
+.card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    min-height: 400px; /* Adjust this value to match your desired card height */
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    transition: all 0.3s ease-in-out;
+}
+
+.card .h2_price-item-title,
+.card .h2_price-amount,
+.card .h2_price-middle-info,
+.card .h2_price-button {
+    flex-grow: 1;
+}
+
+/* Optional: Add hover effects for interactivity */
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+
+.h2_price-item-title h5 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.h2_price-amount-info h2 {
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.h2_price-button a {
+    /* padding: 12px 25px; */
+    background-color: #1865f2;
+    color: white;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: 600;
+    text-align: center;
+    transition: background-color 0.3s ease;
+}
+
+.h2_price-button a:hover {
+    background-color: #1864f2b0;
+}
+
+     
      </style>
     <body>
        <!-- sidebar-information-area-start -->
@@ -34,7 +107,7 @@
                 <div class="row align-items-center">
                     <div class="col-xl-6 col-8">
                         <div class="sidebar-logo">
-                            <a href="index.html"><img src="assets/img/logo/logo-white.png" alt="logo-img"></a>
+                            <a href="index.html"><img src="assets/img/logo.png" alt="logo-img"></a>
                         </div>
                     </div>
                     <div class="col-xl-6 col-4">
@@ -53,47 +126,41 @@
 
         <!-- header area start -->
         <header> 
-            <div class="header-area header-sticky">
+            <div class="h2_header-area header-sticky">
                 <div class="container">
                     <div class="row align-items-center">
-                        <div class="col-xl-7 col-lg-6 col-md-6 col-6">
-                            <div class="header-left">
-                                <div class="header-logo">
-                                    <a href="index.html"><img src="assets/img/cat2Logo.png" class="logo-catch" alt=""></a>
+                        <div class="col-xl-3 col-sm-7 col-6">
+                            <div class="h2_header-left">
+                                <div class="h2_header-logo">
+                                    <a href="index.html"><img src="assets/img/logo.png" alt="logo-img"></a>
                                 </div>
-                                <nav class="main-menu mobile-menu d-none d-xl-block" id="mobile-menu">
-                                    <ul>
-                                        <li class="menu-has-child">
-                                            <a href="index.html">Home</a>
-                                            <ul class="submenu">
-                                                <li><a href="index.html">Secondary</a></li>
+                             
+                            </div>
+                        </div>
+                        <div class="col-xl-6 d-none d-xl-block">
+                            <div class="h2_header-middle">
+                                <nav class="h2_main-menu mobile-menu" id="mobile-menu">
+                                     <ul style="display: flex; align-items: center;">
+                                      <li><a href="index.html">Secondary</a></li>
                                                 <li><a href="index-2.html">Adult</a></li>
                                                 <li><a href="index-10.html">Primary</a></li>
-                                            </ul>
-                                        </li>
                                     
-                                        <li class="menu-has-child">
-                                            <a href="#">Pages</a>
-                                            <ul class="submenu">
-                                                <li><a href="about.html">About</a></li>
-                                                <li><a href="team.html">Teachers</a></li>
-                                            </ul>
-                                        </li>
+
+                                        <li><a href="about.html">About</a></li>
+                                        <li><a href="team.html">Teachers</a></li>
                                        
-                                        <li><a href="offlinecourse.html">Offline Course</a></li>
+                                        <li><a href="offlinecourse.html">Courses</a></li>
 
                                          <li id="dashboard-link"></li>
                                     </ul>
                                 </nav>
                             </div>
                         </div>
-                        <div class="col-xl-5 col-lg-6 col-md-6 col-6">
-                            <div class="header-right">
-                              
-                              <div class="header-btn d-none d-sm-block">
-    <a id="header-btn" href="sign-up.html" class="header-btn theme-btn theme-btn-medium">Enroll Now</a>
+                        <div class="col-xl-3 col-sm-5 col-6">
+                            <div class="h2_header-right">
+                               <div class="h2_header-btn d-none d-sm-block">
+    <a id="header-btn" href="#" class="header-btn theme-btn theme-btn-medium">Sign Up</a>
 </div>
-
                                 <div class="header-menu-bar d-xl-none ml-10">
                                     <span class="header-menu-bar-icon side-toggle">
                                         <i class="fa-light fa-bars"></i>
@@ -165,7 +232,7 @@
             <!-- banner area end -->
 
             <!-- brand area start -->
-            <div class="brand-area pt-115">
+            <!-- <div class="brand-area pt-115">
                 <div class="container">
                     <div class="row">
                         <div class="col-xl-12">
@@ -229,7 +296,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
             <!-- brand area end -->
 
             <!-- category area start -->
@@ -2407,11 +2474,11 @@
                                 <div class="testimonial-item">
                                     <div class="testimonial-top">
                                         <div class="testimonial-admin">
-                                            <div class="testimonial-admin-img">
+                                            <!-- <div class="testimonial-admin-img">
                                                 <img src="assets/img/testimonial/1/admin-1.jpg" alt="">
-                                            </div>
+                                            </div> -->
                                             <div class="testimonial-admin-info">
-                                                <h5>Emily Johnson</h5>
+                                                <h5>Adebayo Balogun</h5>
                                                 <span>Student</span>
                                             </div>
                                         </div>
@@ -2436,11 +2503,11 @@
                                 <div class="testimonial-item">
                                     <div class="testimonial-top">
                                         <div class="testimonial-admin">
-                                            <div class="testimonial-admin-img">
+                                            <!-- <div class="testimonial-admin-img">
                                                 <img src="assets/img/testimonial/1/admin-2.jpg" alt="">
-                                            </div>
+                                            </div> -->
                                             <div class="testimonial-admin-info">
-                                                <h5>Michael Smith</h5>
+                                                <h5>Chinedu Okafor</h5>
                                                 <span>Student</span>
                                             </div>
                                         </div>
@@ -2465,11 +2532,11 @@
                                 <div class="testimonial-item">
                                     <div class="testimonial-top">
                                         <div class="testimonial-admin">
-                                            <div class="testimonial-admin-img">
+                                            <!-- <div class="testimonial-admin-img">
                                                 <img src="assets/img/testimonial/1/admin-3.jpg" alt="">
-                                            </div>
+                                            </div> -->
                                             <div class="testimonial-admin-info">
-                                                <h5>Sarah Thompson</h5>
+                                                <h5>Temitope Akinwale</h5>
                                                 <span>Student</span>
                                             </div>
                                         </div>
@@ -2501,6 +2568,33 @@
                 </div>
             </section>
             <!-- testimonial area end -->
+
+
+
+
+                  <!-- price area start -->
+                  <section class="h2_price-area pt-110 pb-90">
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <div class="col-xl-6 col-lg-7 col-md-10">
+                                <div class="section-area-2 mb-50 text-center">
+                                    <h2 class="section-title mb-30">Examining the Costs and
+                                        Benefits of  
+                                        <span>Education <img src="assets/img/banner/2/line.png" alt=""></span></h2>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="pricingContainer"></div>
+                        
+                        
+                        
+                        
+                    </div>
+                </section>
+                <!-- price area end -->
+
+                
+
 
             <!-- counter area start -->
             <div class="counter-area">
@@ -2631,6 +2725,8 @@
                                 <p class="footer-widget-text mb-35">
                                     Through a combination of lectures, readings, discussions, students will gain solid foundation in educational.
                                 </p>
+                                <p>+1234 547 4554</p>
+                                <p>support@gmail.com</p>
                                 <div class="footer-social">
                                     <ul>
                                         <li><a href="#"><i class="fa-brands fa-twitter"></i></a></li>
@@ -2647,10 +2743,10 @@
                                     <ul>
                                         <li><a href="about.html">About Catchup</a></li>
                                         <li><a href="contact.html">Contact</a></li>
-                                        <li><a href="contact.html">Help Centre</a></li>
-                                        <li><a href="about.html">Refund</a></li>
+                                        <li><a href="team.html">Teachers</a></li>
+                                        <!-- <li><a href="about.html">Refund</a></li>
                                         <li><a href="about.html">Conditions</a></li>
-                                        <li><a href="about.html">Privacy Policy</a></li>
+                                        <li><a href="about.html">Privacy Policy</a></li> -->
                                     </ul>
                                 </div>
                             </div>
@@ -2660,12 +2756,10 @@
                                 <h5 class="footer-widget-title">Categories</h5>
                                 <div class="footer-widget-list">
                                     <ul>
-                                        <li><a href="#">Design Skills</a></li>
-                                        <li><a href="#">Development</a></li>
-                                        <li><a href="#">Marketing</a></li>
-                                        <li><a href="#">Finance & Accounting</a></li>
-                                        <li><a href="#">IT & Software</a></li>
-                                        <li><a href="#">Sales Marketing</a></li>
+                                        <li><a href="index.html">Secondary</a></li>
+                                        <li><a href="index-10.html">Primary</a></li>
+                                        <li><a href="index-2.html">Adult</a></li>
+                                       
                                     </ul>
                                 </div>
                             </div>
@@ -2687,7 +2781,7 @@
             </div>
         </footer>
         <!-- footer area end -->
-     <script>
+<script>
   const userRole = localStorage.getItem('role');
   const dashboardLink = document.getElementById('dashboard-link');
 
@@ -2695,12 +2789,57 @@
     dashboardLink.innerHTML = '<a href="Dashboard/dashboard/main/secondary.html">Dashboard</a>';
   } else if (userRole === 'primary') {
     dashboardLink.innerHTML = '<a href="Dashboard/dashboard/main/primary.html">Dashboard</a>';
+  } else if (userRole === 'adult') {
+    dashboardLink.innerHTML = '<a href="Dashboard/dashboard/main/adult.html">Dashboard</a>';
   } else {
     // Optionally hide or disable the dashboard link if there's no valid role
     dashboardLink.innerHTML = ''; // or show a login/signup prompt
   }
 </script>
 
+
+
+<div class="col-xl-3 col-sm-5 col-6">
+  <div class="h2_header-right">
+    <div class="h2_header-btn d-none d-sm-block">
+      <a id="header-btn" href="#" class="header-btn theme-btn theme-btn-medium">Sign Up</a>
+    </div>
+    <div class="header-menu-bar d-xl-none ml-10">
+      <span class="header-menu-bar-icon side-toggle">
+        <i class="fa-light fa-bars"></i>
+      </span>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const studentId = localStorage.getItem('studentId');
+    const headerBtn = document.getElementById('header-btn');
+
+    if (studentId) {
+      // Change the button to Logout if studentId exists
+      headerBtn.textContent = 'Logout';
+      headerBtn.href = '#'; // Prevent page redirection, we handle logout via JavaScript
+
+      // Add event listener to handle logout
+      headerBtn.addEventListener('click', function (event) {
+        event.preventDefault(); // Prevent the default behavior of the link
+
+        // Remove studentId and token from localStorage
+        localStorage.removeItem('studentId');
+        localStorage.removeItem('token');
+
+        // Redirect to the homepage or login page after logout
+        window.location.href = 'index.html'; // Replace with your desired redirection URL
+      });
+    } else {
+      // Keep the button as Enroll Now if no studentId is found
+      headerBtn.textContent = 'Enroll Now';
+      headerBtn.href = 'sign-up.html';
+    }
+  });
+</script>
 
 
 <script>
@@ -2762,7 +2901,8 @@
     }
 
     // Call the function to fetch quizzes when the page loads
-    window.onload = fetchQuizzes;
+    document.addEventListener('DOMContentLoaded', fetchQuizzes);
+
 </script>
 
 
@@ -2774,15 +2914,15 @@
       .then(data => {
         const blogRow = document.getElementById('blog-row');
         blogRow.innerHTML = ''; // Clear the existing content
-    
+  
         // Filter courses where category is "Secondary"
         const filteredCourses = data.filter(course => course.category === "Secondary");
-
+  
         // Limit to the first 10 courses
         const limitedCourses = filteredCourses.slice(0, 10);
-
-        console.log(limitedCourses);
-
+  
+        console.log("Filtered courses:", limitedCourses);
+  
         // Loop through each course and display it
         limitedCourses.forEach(course => {
             const blogItem = document.createElement('div');
@@ -2791,7 +2931,7 @@
             blogItem.innerHTML = `
                 <div class="blog-item blog-item-v mb-30">
                     <div class="blog-img">
-                        <a href="coursedetails.html?id=${course._id}">
+                        <a href="coursedetails.html?id=${course._id}" class="course-details-link">
                             <img src="${course.courseImage}" alt="Course Image">
                         </a>
                     </div>
@@ -2803,22 +2943,63 @@
                         <h5 class="blog-content-title">
                             <a href="blog-details.html">${course.title}</a>
                         </h5>
-                        <a href="coursedetails.html?id=${course._id}" class="theme-btn blog-btn t-theme-btn">View</a>
+                        <a href="coursedetails.html?id=${course._id}" class="theme-btn blog-btn t-theme-btn course-details-link">Study</a>
                     </div>
                 </div>
             `;
             
             blogRow.appendChild(blogItem);
         });
-
+  
         // Show a message if no secondary courses are found
         if (limitedCourses.length === 0) {
             blogRow.innerHTML = "<p>No secondary courses available.</p>";
         }
+  
+        // Attach event listener on all course details links
+        document.querySelectorAll('.course-details-link').forEach(link => {
+            link.addEventListener('click', async function(e) {
+                e.preventDefault(); // Prevent the default link action
+  
+                const targetUrl = this.getAttribute('href');
+  
+                // Get the student's ID from localStorage
+                const studentId = localStorage.getItem("studentId");
+                if (!studentId) {
+                    alert("You must be logged in to view course details.");
+                    return;
+                }
+  
+                try {
+                    // Fetch the student profile
+                    const res = await fetch(`https://catchup-project.onrender.com/api/users/profile/${studentId}`);
+                    const user = await res.json();
+                    
+                    const now = new Date();
+                    const hasSubscription = user.subscriptions &&
+                      user.subscriptions.some(sub => 
+                        (sub.plan === "Per Subject" || sub.plan === "All Subjects") &&
+                        new Date(sub.endDate) > now
+                      );
+  
+                    if (!hasSubscription) {
+                        alert("You have not subscribed to the required plan (Per Subject or All Subjects). You will now be redirected to the pricing page.");
+                        window.location.href = "price.html"; // Replace with your actual pricing page URL
+                        return;
+                    } else {
+                        // User is subscribed, so navigate to the target course details page
+                        window.location.href = targetUrl;
+                    }
+                } catch (error) {
+                    console.error("Error fetching user profile:", error);
+                    alert("An error occurred while verifying your subscription.");
+                }
+            });
+        });
       })
       .catch(error => console.error('Error fetching data:', error));
-</script>
-
+  </script>
+  
 
 
 <script>
@@ -2840,6 +3021,187 @@
         });
     }
 </script>
+
+
+
+
+
+
+<script>
+    // ======= Calculate Subscription End Date =======
+    function calculateEndDate(planTitle) {
+      const endDate = new Date();
+      if (planTitle === "Per Subject") {
+        endDate.setMonth(endDate.getMonth() + 1);
+      } else if (planTitle === "Full Access") {
+        endDate.setFullYear(endDate.getFullYear() + 1);
+      }
+      return endDate;
+    }
+  
+    // ======= Store Full Plan Details to LocalStorage =======
+    function storePlanDetails(title, price, txRef) {
+      let endDate;
+      if (title === "Per Subject") {
+        endDate = calculateEndDate("Per Subject").toISOString();
+      } else if (title === "All Subjects") {
+        endDate = calculateEndDate("Full Access").toISOString();
+      } else if (title === "Live Classes (Students & Adults)") {
+        endDate = "Monthly Subscription";
+      } else if (title === "Web App: 1-year Access") {
+        endDate = new Date(new Date().setFullYear(new Date().getFullYear() + 1)).toISOString();
+      } else {
+        endDate = "Not Applicable";
+      }
+  
+      const planDetails = {
+        title: title,
+        price: price,
+        txRef: txRef,
+        endDate: endDate
+      };
+      localStorage.setItem('pendingPlan', JSON.stringify(planDetails));
+    }
+  
+    // ======= Fetch Student Details and Build Pricing Plans =======
+    window.onload = async function () {
+      const studentId = localStorage.getItem('studentId');
+      let name = "";
+      let email = "";
+  
+      try {
+        if (studentId) {
+          const res = await fetch(`https://catchup-project.onrender.com/api/users/profile/${studentId}`);
+          const data = await res.json();
+          name = data.name || "";
+          email = data.email || "";
+        }
+  
+        const plans = [
+          {
+            title: "Per Subject",
+            price: 1000,
+            subtext: "One-time payment for each subject",
+            tx_ref: "bitethtx-019203",
+            info: "Per Subject",
+            buttonText: "Subcribe Now"
+          },
+          {
+            title: "All Subjects",
+            price: 5000,
+            subtext: "One-time payment for all subjects",
+            tx_ref: "bitethtx-019204",
+            info: "For All Subjects (Includes Offline Access!)",
+            buttonText: "Subscribe Now"
+          },
+          {
+            title: "Live Classes (Students & Adults)",
+            price: 10000,
+            subtext: ["For both students & adults", "Billed monthly"],
+            tx_ref: "bitethtx-019205",
+            info: "Per Month",
+            buttonText: "Subscribe Now",
+            popular: true
+          },
+          {
+            title: "Web App: 1-year Access",
+            price: 1000,
+            subtext: "One-time payment for full year access",
+            tx_ref: "bitethtx-019206",
+            info: "1-Year Access",
+            buttonText: "Subscribe Now"
+          }
+        ];
+  
+        let container = document.getElementById("pricingContainer");
+        if (!container) {
+          container = document.createElement("div");
+          container.id = "pricingContainer";
+          document.body.appendChild(container);
+        }
+  
+        let html = `<div class="row">`;
+        plans.forEach(plan => {
+          const isDisabled = !studentId || !name || !email;
+          html += `
+            <div class="col-xl-4 col-lg-6 col-md-6">
+              <div class="h2_price-item mb-30 card">
+                ${plan.popular ? `<div class="h2_price-popular-tag"><span>Most Popular</span></div>` : ''}
+                <div class="h2_price-item-title">
+                  <h5>${plan.title}</h5>
+                </div>
+                <div class="h2_price-amount">
+                  <div class="h2_price-amount-info">
+                    <h2>₦${plan.price.toLocaleString()}</h2>
+                    <p>${plan.info}</p>
+                  </div>
+                </div>`;
+  
+          if (Array.isArray(plan.subtext)) {
+            html += `
+                <div class="h2_price-middle-info">
+                  <p class="h2_price-middle-info-1">${plan.subtext[0]}</p>
+                  <p class="h2_price-middle-info-2">${plan.subtext[1]}</p>
+                </div>`;
+          } else {
+            html += `
+                <div class="h2_price-middle-info">
+                  <p class="h2_price-middle-info-1">${plan.subtext}</p>
+                </div>`;
+          }
+  
+          html += `
+                <div>
+                  <form method="POST" action="https://checkout.flutterwave.com/v3/hosted/pay" 
+                        class="payment-form" data-title="${plan.title}" data-price="${plan.price}" data-txref="${plan.tx_ref}">
+                    <input type="hidden" name="public_key" value="FLWPUBK-a567006323e795f4ca6ca9761cff3365-X" />
+                    <input type="hidden" name="tx_ref" value="${plan.tx_ref}" />
+                    <input type="hidden" name="amount" value="${plan.price}" />
+                    <input type="hidden" name="currency" value="NGN" />
+                    <input type="hidden" name="payment_options" value="card, ussd" />
+                    <input type="hidden" name="redirect_url" value="https://demoredirect.localhost.me/" />
+                    <input type="hidden" name="meta[token]" value="54" />
+                    <input type="hidden" name="customer[name]" class="customerName" value="${name}" />
+                    <input type="hidden" name="customer[email]" class="customerEmail" value="${email}" />
+                    <div class="flutterwave-payment" style="margin-top: 20px; text-align: center;">
+                      <button class="header-btn theme-btn theme-btn-medium" type="submit"
+                        style="padding: 10px 20px; font-size: 16px; cursor: ${isDisabled ? 'not-allowed' : 'pointer'}; opacity: ${isDisabled ? '0.6' : '1'};">
+                        ${plan.buttonText}
+                      </button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>`;
+        });
+  
+        html += `</div>`;
+        container.innerHTML = html;
+  
+        // Prevent redirect if not logged in
+        document.querySelectorAll(".payment-form").forEach(form => {
+          form.addEventListener("submit", function (e) {
+            const studentId = localStorage.getItem('studentId');
+            if (!studentId) {
+              e.preventDefault();
+              alert("⚠️ Please log in to subscribe to a plan.");
+            } else {
+              const title = this.dataset.title;
+              const price = this.dataset.price;
+              const txRef = this.dataset.txref;
+              storePlanDetails(title, price, txRef);
+            }
+          });
+        });
+      } catch (err) {
+        console.error("Error fetching student data:", err);
+        alert("Failed to fetch user details.");
+      }
+    };
+  </script>
+  
+
+
 
 
 

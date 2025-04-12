@@ -346,11 +346,7 @@ button:hover {
 		  </div>
 		</div>
     </section>
-	<div class="sidebar-footer">
-		<a href="javascript:void(0)" class="link" data-bs-toggle="tooltip" title="Settings"><span class="icon-Settings-2"></span></a>
-		<a href="mailbox.html" class="link" data-bs-toggle="tooltip" title="Email"><span class="icon-Mail"></span></a>
-		<a href="javascript:void(0)" class="link" data-bs-toggle="tooltip" title="Logout"><span class="icon-Lock-overturning"><span class="path1"></span><span class="path2"></span></span></a>
-	</div>
+	
   </aside>
 
   <!-- Content Wrapper. Contains page content -->
@@ -432,114 +428,108 @@ document.getElementById('logoutBtn').addEventListener('click', function() {
 
 
 
-<script>
+  <script>
     document.addEventListener("DOMContentLoaded", async () => {
-  // Retrieve teacherId from localStorage
-  const teacherId = localStorage.getItem("teacherId");
-
-  if (!teacherId) {
-    alert("Teacher ID not found. Please log in first.");
-    return;
-  }
-
-  // Fetch the bookings from backend
-  const response = await fetch(`https://catchup-project.onrender.com//api/bookings/teacher/${teacherId}`);
-  const bookings = await response.json();
-
-  const courseContainer = document.getElementById("course-container");
-
-  bookings.forEach(booking => {
-    // Format createdAt to real-time format
-    const formattedDate = formatDate(booking.createdAt);
-
-    // Create each booking element
-    const item = document.createElement("div");
-    item.classList.add("item");
-
-    item.innerHTML = `
-      <div class="card">
-        <div class="card-content">
-          <h3 class="title">${booking.teacherName}</h3>
-          <p class="text">Booked on: ${formattedDate}</p>
-          <p class="text">${booking.date} at ${booking.time}</p>
-          <p class="text">${booking.description}</p>
-          <p class="status">Status: ${booking.status}</p>
-          <button class="accept-button" data-id="${booking._id}">Accept</button>
-          <button class="reject-button" data-id="${booking._id}">Reject</button>
-        </div>
-      </div>
-    `;
-
-    // Add buttons event listeners
-    item.querySelector(".accept-button").addEventListener("click", () => openGoogleMeetPopup(booking._id));
-    item.querySelector(".reject-button").addEventListener("click", () => updateBookingStatus(booking._id, "Rejected"));
-
-    // Append the item to the container
-    courseContainer.appendChild(item);
-  });
-});
-
-// Function to format date to a more readable format
-function formatDate(date) {
-  const d = new Date(date);
-  return d.toLocaleString('en-US', {  // Format it according to your locale
-    weekday: 'long', // 'Monday'
-    year: 'numeric', // '2025'
-    month: 'long', // 'April'
-    day: 'numeric', // '10'
-    hour: 'numeric', // '10'
-    minute: 'numeric', // '30'
-    second: 'numeric', // '30'
-    hour12: true // 12-hour format
-  });
-}
-
-// Open popup to add Google Meet Link
-function openGoogleMeetPopup(bookingId) {
-  const popup = document.getElementById("googleMeetPopup");
-  const submitButton = document.getElementById("submitLink");
-  const closeButton = document.getElementById("closePopup");
+      const teacherId = localStorage.getItem("teacherId");
   
-  popup.style.display = 'flex';
-
-  submitButton.onclick = () => {
-    const googleMeetLink = document.getElementById("googleMeetLink").value;
-    if (googleMeetLink) {
-      updateBookingStatus(bookingId, "Accepted", googleMeetLink);
-      popup.style.display = 'none'; // Close the popup
+      if (!teacherId) {
+        alert("Teacher ID not found. Please log in first.");
+        return;
+      }
+  
+      const response = await fetch(`https://catchup-project.onrender.com/api/bookings/teacher/${teacherId}`);
+      const bookings = await response.json();
+  
+      const courseContainer = document.getElementById("course-container");
+  
+      bookings.forEach(booking => {
+        const formattedDate = formatDate(booking.createdAt);
+  
+        const item = document.createElement("div");
+        item.classList.add("item");
+  
+        item.innerHTML = `
+          <div class="card">
+            <div class="card-content">
+              <h3 class="title">${booking.teacherName}</h3>
+              <p class="text">Booked on: ${formattedDate}</p>
+              <p class="text">${booking.date} at ${booking.time}</p>
+              <p class="text">${booking.description}</p>
+              <p class="status">Status: ${booking.status}</p>
+              ${booking.status === "Accepted" && booking.googleMeetLink ? `<p class="link">Google Meet: <a href="${booking.googleMeetLink}" target="_blank">Join Link</a></p>` : ""}
+              <button class="accept-button" data-id="${booking._id}">Accept</button>
+              <button class="reject-button" data-id="${booking._id}">Reject</button>
+            </div>
+          </div>
+        `;
+  
+        item.querySelector(".accept-button").addEventListener("click", () => openGoogleMeetPopup(booking._id));
+        item.querySelector(".reject-button").addEventListener("click", () => updateBookingStatus(booking._id, "Rejected"));
+  
+        courseContainer.appendChild(item);
+      });
+    });
+  
+    function formatDate(date) {
+      const d = new Date(date);
+      return d.toLocaleString('en-US', {
+        weekday: 'long',
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+        hour: 'numeric',
+        minute: 'numeric',
+        second: 'numeric',
+        hour12: true
+      });
     }
-  };
+  
+    function openGoogleMeetPopup(bookingId) {
+      const popup = document.getElementById("googleMeetPopup");
+      const submitButton = document.getElementById("submitLink");
+      const closeButton = document.getElementById("closePopup");
+  
+      popup.style.display = 'flex';
+  
+      submitButton.onclick = () => {
+        const googleMeetLink = document.getElementById("googleMeetLink").value;
+        if (googleMeetLink) {
+          updateBookingStatus(bookingId, "Accepted", googleMeetLink);
+          popup.style.display = 'none';
+        }
+      };
+  
+      closeButton.onclick = () => {
+        popup.style.display = 'none';
+      };
+    }
+  
+    async function updateBookingStatus(bookingId, status, googleMeetLink = "") {
+      const payload = { status };
+      if (status === "Accepted") {
+        payload.googleMeetLink = googleMeetLink;
+      }
+  
+      const response = await fetch(`https://catchup-project.onrender.com/api/bookings/${bookingId}/status`, {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(payload)
+      });
+  
+      const result = await response.json();
+      if (result.status === 200) {
+        alert(result.message);
+        location.reload();
+      } else {
+        alert(result.message || result.error);
+      }
+    }
+  </script>
+  
 
-  closeButton.onclick = () => {
-    popup.style.display = 'none'; // Close the popup
-  };
-}
 
-// Update Booking Status (Accept/Reject)
-async function updateBookingStatus(bookingId, status, googleMeetLink = "") {
-  const payload = { status };
-  if (status === "Accepted") {
-    payload.googleMeetLink = googleMeetLink;
-  }
-
-  const response = await fetch(`https://catchup-project.onrender.com//api/bookings/${bookingId}/status`, {
-    method: "PATCH",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify(payload)
-  });
-
-  const result = await response.json();
-  if (result.status === 200) {
-    alert(result.message); // Success message
-    location.reload(); // Reload page to reflect changes
-  } else {
-    alert(result.message); // Error message
-  }
-}
-
-</script>
 	
 	<!-- Vendor JS -->
 	<script src="js/vendors.min.js"></script>

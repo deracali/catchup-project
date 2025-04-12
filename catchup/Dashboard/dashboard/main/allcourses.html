@@ -211,7 +211,9 @@
 			  <ul class="sidebar-menu" data-widget="tree">	
 				<li class="header">Dashboard & Apps</li>
 				
-				<li><a href="secondary.html"><i class="fas fa-code-branch"></i>Dashboard</a></li>
+        <li id="dashboard-link">
+          <!-- The link will be dynamically inserted based on the role -->
+        </li>
                 <li><a href="allcourses.html"><i class="fas fa-book-open"></i> Courses</a></li>
 				<li><a href="quiz.html"><i class="fas fa-question-circle"></i> Quiz</a></li>
         <li><a href="community.html"><i class="fas fa-users"></i> Community</a></li>
@@ -221,11 +223,7 @@
 		  </div>
 		</div>
     </section>
-	<div class="sidebar-footer">
-		<a href="javascript:void(0)" class="link" data-bs-toggle="tooltip" title="Settings"><span class="icon-Settings-2"></span></a>
-		<a href="mailbox.html" class="link" data-bs-toggle="tooltip" title="Email"><span class="icon-Mail"></span></a>
-		<a href="javascript:void(0)" class="link" data-bs-toggle="tooltip" title="Logout"><span class="icon-Lock-overturning"><span class="path1"></span><span class="path2"></span></span></a>
-	</div>
+	
   </aside>
 
   <!-- Content Wrapper. Contains page content -->
@@ -312,61 +310,126 @@
 	
 
 
-
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const userRole = localStorage.getItem('role');
+      const dashboardLink = document.getElementById('dashboard-link');
+  
+      if (userRole === 'primary') {
+        dashboardLink.innerHTML = '<a href="primary.html"><i class="fas fa-code-branch"></i>Dashboard</a>';
+      } else if (userRole === 'secondary') {
+        dashboardLink.innerHTML = '<a href="secondary.html"><i class="fas fa-code-branch"></i>Dashboard</a>';
+      } else {
+        // Optionally, you can hide or disable the dashboard link if no valid role is found
+        dashboardLink.innerHTML = '';  // Or you could show a login/signup prompt instead
+      }
+    });
+  </script>
+  
 
 
 
   <script>
-    async function fetchLatestCourses() {
-        try {
-            const response = await fetch("https://catchup-project.onrender.com/api/offlinecourse");
-            const courses = await response.json();
-
-            const role = localStorage.getItem("role");
-
-            const filteredCourses = courses.filter(course =>
-                course.category?.toLowerCase() === role?.toLowerCase()
-            );
-
-            const latestCourses = filteredCourses
-                .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
-                .slice(0, 3);
-
-            const container = document.getElementById("latestCoursesContainer");
-            container.innerHTML = "";
-
-            latestCourses.forEach(course => {
-                const courseElement = document.createElement("div");
-                courseElement.classList.add("col-lg-4", "col-md-6", "col-12");
-
-                const cardHTML = `
-                    <div class="card">
-                        <div class="strip__band">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="102" height="94" viewBox="0 0 102 94" fill="none">
-                                <path fill-rule="evenodd" clip-rule="evenodd" d="M60.5365 3.55089C59.0034 1.86163 55.7743 0 52.7935 0H0C3.12231 0.201923 5.016 1.86655 7.09131 3.69371C37.3796 31.6206 67.7854 59.614 97.9936 87.4597C99.9808 89.373 101.784 91.1214 102 94V45.3268C102 42.5786 99.9808 39.599 98.1485 38.1905C85.5738 26.5972 73.1193 15.1565 60.5365 3.55089Z" fill="#3E9ADC"/>
-                            </svg>
-                            <span>${course.category}</span>
-                        </div>
-                        <div class="p-3 text-center">
-                            <img src="${course.courseImage}" alt="Course Image" class="img-fluid mb-3" style="height: 150px; object-fit: cover; border-radius: 10px;">
-                            <h4 class="mb-2">${course.title}</h4>
-                            <a href="../../../coursedetails.html?id=${course._id}" class="btn btn-primary mt-2">View Course</a>
-                        </div>
-                    </div>
-                `;
-
-                courseElement.innerHTML = cardHTML;
-                container.appendChild(courseElement);
-            });
-
-        } catch (error) {
-            console.error("Error fetching latest courses:", error);
+    // This function handles the subscription check and then redirects
+    async function redirectToCourseDetails(courseId) {
+      // Retrieve studentId from localStorage
+      const studentId = localStorage.getItem("studentId");
+      if (!studentId) {
+        alert("You must be logged in to view course details.");
+        window.location.href = "../../../sign-in.html"; // Adjust login URL as needed
+        return;
+      }
+  
+      try {
+        // Fetch the student's profile
+        const res = await fetch(`https://catchup-project.onrender.com/api/users/profile/${studentId}`);
+        const user = await res.json();
+  
+        // Get the current time for subscription comparison
+        const now = new Date();
+  
+        // Check if the user has an active subscription with "Per Subject" or "All Subjects"
+        const hasSubscription =
+          user.subscriptions &&
+          user.subscriptions.some(sub =>
+            (sub.plan === "Per Subject" || sub.plan === "All Subjects") &&
+            new Date(sub.endDate) > now
+          );
+  
+        if (!hasSubscription) {
+          alert("You have not subscribed to the required plan (Per Subject or All Subjects). You will now be redirected to the pricing page.");
+          window.location.href = "../../../price.html"; // Change to your actual pricing page URL
+          return;
+        } else {
+          // If subscription is active, navigate to the course details page
+          window.location.href = `coursedetails.html?id=${courseId}`;
         }
+      } catch (error) {
+        console.error("Error fetching user profile:", error);
+        alert("An error occurred while verifying your subscription.");
+      }
     }
-
+  
+    // Fetch the latest courses and render the course cards
+    async function fetchLatestCourses() {
+      try {
+        const response = await fetch("https://catchup-project.onrender.com/api/offlinecourse");
+        const courses = await response.json();
+  
+        // Get the user's role from localStorage for filtering courses
+        const role = localStorage.getItem("role");
+  
+        // Filter courses where the course category matches the user's role (case insensitive)
+        const filteredCourses = courses.filter(course =>
+          course.category?.toLowerCase() === role?.toLowerCase()
+        );
+  
+        // Get the latest 3 courses
+        const latestCourses = filteredCourses
+          .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
+          .slice(0, 3);
+  
+        const container = document.getElementById("latestCoursesContainer");
+        container.innerHTML = "";
+  
+        latestCourses.forEach(course => {
+          const courseElement = document.createElement("div");
+          courseElement.classList.add("col-lg-4", "col-md-6", "col-12");
+  
+          // The View Course link calls redirectToCourseDetails() which checks subscription before redirecting.
+          const cardHTML = `
+            <div class="card">
+              <div class="strip__band">
+                <svg xmlns="http://www.w3.org/2000/svg" width="102" height="94" viewBox="0 0 102 94" fill="none">
+                  <path fill-rule="evenodd" clip-rule="evenodd" d="M60.5365 3.55089C59.0034 1.86163 55.7743 0 52.7935 0H0C3.12231 0.201923 5.016 1.86655 7.09131 3.69371C37.3796 31.6206 67.7854 59.614 97.9936 87.4597C99.9808 89.373 101.784 91.1214 102 94V45.3268C102 42.5786 99.9808 39.599 98.1485 38.1905C85.5738 26.5972 73.1193 15.1565 60.5365 3.55089Z" fill="#3E9ADC"/>
+                </svg>
+                <span>${course.category}</span>
+              </div>
+              <div class="p-3 text-center">
+                <img src="${course.courseImage}" alt="${course.title}" class="img-fluid mb-3" style="height: 150px; object-fit: cover; border-radius: 10px;">
+                <h4 class="mb-2">${course.title}</h4>
+                <a href="#" onclick="redirectToCourseDetails('${course._id}')" class="btn btn-primary mt-2">View Course</a>
+              </div>
+            </div>
+          `;
+  
+          courseElement.innerHTML = cardHTML;
+          container.appendChild(courseElement);
+        });
+  
+        // Show a message if no courses are available
+        if (latestCourses.length === 0) {
+          container.innerHTML = "<p>No courses available.</p>";
+        }
+      } catch (error) {
+        console.error("Error fetching latest courses:", error);
+      }
+    }
+  
+    // Trigger course fetch on page load
     fetchLatestCourses();
-</script>
-
+  </script>
+  
 
 
 

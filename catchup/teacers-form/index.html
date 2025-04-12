@@ -9,7 +9,7 @@
     <title>Catchup | Teacher Form</title>
 
     <!-- Favicons-->
-    <link rel="shortcut icon" href="../assets/img/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="../assets/img/logo.png" type="image/x-icon">
     <link rel="apple-touch-icon" type="image/x-icon" href="img/apple-touch-icon-57x57-precomposed.png">
     <link rel="apple-touch-icon" type="image/x-icon" sizes="72x72" href="img/apple-touch-icon-72x72-precomposed.png">
     <link rel="apple-touch-icon" type="image/x-icon" sizes="114x114" href="img/apple-touch-icon-114x114-precomposed.png">
@@ -55,7 +55,7 @@
 	    <div class="row row-height">
 	        <div class="col-xl-4 col-lg-4 content-left">
 	            <div class="content-left-wrapper">
-	                <!-- <a href="index.html" id="logo"><img src="../assets/img/cat1 (1).png" alt="" width="45" height="45"></a> -->
+	                <a href="index.html" id="logo"><img src="../assets/img/logo.png" alt="" width="45" height="45"></a>
 	                <div id="social">
 	                    <ul>
                             <li><a href="#0"><i class="bi bi-facebook"></i></a></li>
@@ -288,7 +288,7 @@
 	
 				try {
 					// Ensure the fetch request is made to the correct endpoint
-					let response = await fetch("https://catchup-project.onrender.com//api/teacher-reviews/create", {
+					let response = await fetch("https://catchup-project.onrender.com/api/teacher-reviews/create", {
 						method: "POST",
 						body: formData
 					});

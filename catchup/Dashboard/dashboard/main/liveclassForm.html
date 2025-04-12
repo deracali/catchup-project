@@ -8,7 +8,7 @@
     <meta name="author" content="">
     <link rel="icon" href="../images/favicon.ico">
 
-    <title>CatchUp - Dashboard  Form Wizard </title>
+    <title>CatchUp - Dashboard  Forms </title>
   
 	<!-- Vendors Style-->
 	<link rel="stylesheet" href="css/vendors_css.css">
@@ -151,13 +151,13 @@
 		<div class="content-header">
 			<div class="d-flex align-items-center">
 				<div class="me-auto">
-					<h3 class="page-title">Form Wizard</h3>
+					<h3 class="page-title">Forms</h3>
 					<div class="d-inline-block align-items-center">
 						<nav>
 							<ol class="breadcrumb">
 								<li class="breadcrumb-item"><a href="#"><i class="fas fa-home"></i></a></li>
 								<li class="breadcrumb-item" aria-current="page">Forms</li>
-								<li class="breadcrumb-item active" aria-current="page">Form Wizard</li>
+								<li class="breadcrumb-item active" aria-current="page">Forms</li>
 							</ol>
 						</nav>
 					</div>
@@ -317,7 +317,7 @@ document.getElementById('logoutBtn').addEventListener('click', function() {
   };
 
   try {
-    const response = await fetch('https://catchup-project.onrender.com//api/livecourses/create', {
+    const response = await fetch('https://catchup-project.onrender.com/api/livecourses/create', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

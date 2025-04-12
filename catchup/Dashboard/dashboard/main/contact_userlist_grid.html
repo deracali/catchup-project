@@ -82,89 +82,22 @@
 			<div class="multinav">
 				<div class="multinav-scroll" style="height: 100%;">    
 					<!-- sidebar menu-->
-					<ul class="sidebar-menu" data-widget="tree">    
-						<li class="header">Dashboard & Apps</li>
-						<li class="treeview">
-							<a href="#">
-								<i class="fas fa-th"></i>
-								<span>Dashboard</span>
-								<span class="pull-right-container">
-									<i class="fa fa-angle-right pull-right"></i>
-								</span>
-							</a>
-							<ul class="treeview-menu">
-								<li><a href="index2.html"><i class="fas fa-chart-line"></i> Dashboard</a></li>
-							</ul>
-						</li>
-		
-						<li class="treeview">
-							<a href="#">
-								<i class="fas fa-file-alt"></i>
-								<span>Forms & Tables</span>
-								<span class="pull-right-container">
-									<i class="fa fa-angle-right pull-right"></i>
-								</span>
-							</a>                    
-							<ul class="treeview-menu">                    
-								<li class="treeview">
-									<a href="#">
-										<i class="fas fa-edit"></i> Forms
-										<span class="pull-right-container">
-											<i class="fa fa-angle-right pull-right"></i>
-										</span>
-									</a>
-									<ul class="treeview-menu">
-										<li><a href="offlinecourseform.html"><i class="fas fa-plus-circle"></i> Create Offline Course</a></li>
-										<li><a href="quizform.html"><i class="fas fa-poll"></i> Create Quiz</a></li>
-									</ul>
-								</li>         
-								<li class="treeview">
-									<a href="#">
-										<i class="fas fa-table"></i> Tables
-										<span class="pull-right-container">
-											<i class="fa fa-angle-right pull-right"></i>
-										</span>
-									</a>
-									<ul class="treeview-menu">
-										<li><a href="quizTables.html"><i class="fas fa-list"></i> Quiz List</a></li>
-										<li><a href="offlinecoursesTable.html"><i class="fas fa-book"></i> Offline Courses List</a></li>
-										<li><a href="teacherReview.html"><i class="fas fa-star"></i> Teachers Review</a></li>
-									</ul>
-								</li>                    
-							</ul>
-						</li>
+				<ul class="sidebar-menu" data-widget="tree">    
+					<li class="header">Dashboard & Apps</li>
+					<li class="treeview">	
+							<span class="pull-right-container">
 						
-						<li class="treeview">
-							<a href="#">
-								<i class="fas fa-user"></i>
-								<span>Pages</span>
-								<span class="pull-right-container">
-									<i class="fa fa-angle-right pull-right"></i>
-								</span>
-							</a>
-							<ul class="treeview-menu">
-								<li><a href="contact_userlist_grid.html"><i class="fas fa-chalkboard-teacher"></i> Teachers</a></li>
-								<li><a href="contact_userlist.html"><i class="fas fa-user-graduate"></i> Students</a></li>    
-							</ul>
-						</li>
-		
-						<li class="header">LOGIN & ERROR </li>
-						<li class="treeview">
-							<a href="#">
-								<i class="fas fa-lock"></i>
-								<span>Authentication</span>
-								<span class="pull-right-container">
-									<i class="fa fa-angle-right pull-right"></i>
-								</span>
-							</a>
-							<ul class="treeview-menu">
-								<li><a href="auth_login.html"><i class="fas fa-sign-in-alt"></i> Login</a></li>
-								<li><a href="auth_register.html"><i class="fas fa-user-plus"></i> Register</a></li>
-								<li><a href="auth_lockscreen.html"><i class="fas fa-lock"></i> Lockscreen</a></li>
-								<li><a href="auth_user_pass.html"><i class="fas fa-key"></i> Recover password</a></li>    
-							</ul>
-						</li>            
-					</ul>
+								<li><a href="index2.html"><i class="fas fa-chart-line"></i> Dashboard</a></li>
+							</span>
+							<li><a href="offlinecourseform.html"><i class="fas fa-plus-circle"></i> Create Offline Course</a></li>
+							<li><a href="quizform.html"><i class="fas fa-poll"></i> Create Quiz</a></li>
+							<li><a href="quizTables.html"><i class="fas fa-list"></i> Quiz List</a></li>
+									<li><a href="offlinecoursesTable.html"><i class="fas fa-book"></i> Offline Courses List</a></li>
+									<li><a href="teacherReview.html"><i class="fas fa-star"></i> Teachers Review</a></li>
+									<li><a href="contact_userlist_grid.html"><i class="fas fa-chalkboard-teacher"></i> Teachers</a></li>
+									<li><a href="contact_userlist.html"><i class="fas fa-user-graduate"></i> Students</a></li>    
+								</li>   
+				</ul>
 				</div>
 			</div>
 		</section>
@@ -241,7 +174,7 @@
 	
 <script>
 	document.addEventListener("DOMContentLoaded", async () => {
-    const apiUrl = "https://catchup-project.onrender.com//api/teachers";
+    const apiUrl = "https://catchup-project.onrender.com/api/teachers";
     const teachersContainer = document.getElementById("teachers-container");
     const loadMoreBtn = document.getElementById("load-more");
 

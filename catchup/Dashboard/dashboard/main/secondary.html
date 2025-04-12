@@ -138,11 +138,7 @@
 		  </div>
 		</div>
     </section>
-	<div class="sidebar-footer">
-		<a href="javascript:void(0)" class="link" data-bs-toggle="tooltip" title="Settings"><span class="icon-Settings-2"></span></a>
-		<a href="mailbox.html" class="link" data-bs-toggle="tooltip" title="Email"><span class="icon-Mail"></span></a>
-		<a href="javascript:void(0)" class="link" data-bs-toggle="tooltip" title="Logout"><span class="icon-Lock-overturning"><span class="path1"></span><span class="path2"></span></span></a>
-	</div>
+	
   </aside>
 
   <!-- Content Wrapper. Contains page content -->
@@ -309,7 +305,7 @@
 		  localStorage.removeItem('role');
 	  
 		  // Optionally, redirect the user to the login page or homepage after logout
-		  window.location.href = 'sign-in.html'; // or '/home' depending on your application
+		  window.location.href = '../../../sign-in.html'; // or '/home' depending on your application
 		});
 	  </script>
 	
@@ -349,55 +345,85 @@
 
 
 
-	<script>
-        async function fetchCourses() {
-            try {
-                const response = await fetch("https://catchup-project.onrender.com/api/offlinecourse");
-                const courses = await response.json();
-
-                // Filter only "Secondary" category and limit to 4 courses
-                const secondaryCourses = courses
-                    .filter(course => course.category === "Secondary")
-                    .slice(0, 4);
-
-                const container = document.getElementById("coursesContainer");
-                // Inject courses dynamically
-                secondaryCourses.forEach(course => {
-					const courseElement = document.createElement("div");
-                    courseElement.classList.add("me-15", "mb-15", "mb-md-0");
-					console.log(course)
-
-                    courseElement.innerHTML = `
-                        <div class="box m-0 no-shadow">
-                            <div class="box-body">
-                                <div class="text-center mb-10">
-                                    <img src="${course.courseImage}" class="max-w-150" width="150" alt="${course.title}">
-                                </div>
-                                <h4 class="m-0 fw-500 text-truncate">${course.title}</h4>
-                                <p class="text-fade">Posted By: ${course.meta.postedBy}</p>
-                            </div>
-                        </div>
-                    `;
-
-                    container.appendChild(courseElement);
-                });
-
-            } catch (error) {
-                console.error("Error fetching courses:", error);
-            }
-        }
-
-        // Fetch courses on page load
-        fetchCourses();
-    </script>
-
+<script>
+	async function fetchCourses() {
+	  try {
+		const studentId = localStorage.getItem("studentId");
+	
+		// if (!studentId) {
+		//   alert("You must be logged in to view courses.");
+		//   window.location.href = "/login.html"; // Optional: Redirect to login
+		//   return;
+		// }
+	
+		// // Fetch user profile to check subscription
+		// const resProfile = await fetch(`https://catchup-project.onrender.com/api/users/profile/${studentId}`);
+		// const user = await resProfile.json();
+		// const now = new Date();
+	
+		// const hasSubscription =
+		//   user.subscriptions &&
+		//   user.subscriptions.some(sub =>
+		// 	(sub.plan === "Per Subject" || sub.plan === "All Subjects") && new Date(sub.endDate) > now
+		//   );
+	
+		// if (!hasSubscription) {
+		//   alert("You have not subscribed to the required plan (Per Subject or All Subjects). You will now be redirected to the pricing page.");
+		//   window.location.href = "../../../price.html"; // Your pricing page
+		//   return;
+		// }
+	
+		// Fetch courses if subscription is valid
+		const response = await fetch("https://catchup-project.onrender.com/api/offlinecourse");
+		const courses = await response.json();
+	
+		// Filter only "Secondary" category and limit to 4 courses
+		const secondaryCourses = courses
+		  .filter(course => course.category === "Secondary")
+		  .slice(0, 4);
+	
+		const container = document.getElementById("coursesContainer");
+	
+		// Clear container first
+		container.innerHTML = "";
+	
+		// Inject courses dynamically
+		secondaryCourses.forEach(course => {
+		  const courseElement = document.createElement("div");
+		  courseElement.classList.add("me-15", "mb-15", "mb-md-0");
+	
+		  courseElement.innerHTML = `
+			<div class="box m-0 no-shadow">
+			  <div class="box-body">
+				<div class="text-center mb-10">
+				  <img src="${course.courseImage}" class="max-w-150" width="150" alt="${course.title}">
+				</div>
+				<h4 class="m-0 fw-500 text-truncate">${course.title}</h4>
+				<p class="text-fade">Posted By: ${course.meta.postedBy}</p>
+			  </div>
+			</div>
+		  `;
+	
+		  container.appendChild(courseElement);
+		});
+	
+	  } catch (error) {
+		console.error("Error fetching courses:", error);
+		alert("Something went wrong fetching courses.");
+	  }
+	}
+	
+	// Fetch courses on page load
+	fetchCourses();
+	</script>
+	
 
 
 
 <script>
     async function fetchLatestCourses() {
         try {
-            const response = await fetch("https://catchup-project.onrender.com//api/offlinecourse");
+            const response = await fetch("https://catchup-project.onrender.com/api/offlinecourse");
             const courses = await response.json();
 
             const secondaryCourses = courses.filter(course => course.category === "Secondary");
@@ -462,7 +488,6 @@
 				const response = await fetch("https://catchup-project.onrender.com/api/offlinecourse");
 				const courses = await response.json();
 				displayCourses(courses);
-				
 			} catch (error) {
 				console.error("Error fetching courses:", error);
 			}
@@ -473,28 +498,76 @@
 			courseContainer.innerHTML = "";
 
 			courses.forEach((course) => {
-				const courseElement = `
-					<div class="box mb-15 pull-up">
-						<div class="box-body">
-							<div class="d-flex align-items-center justify-content-between">
-								<div class="d-flex align-items-center">
-									<div class="me-15 bg-primary-light h-50 w-50 l-h-40 rounded text-center">
-										<img src="${course.courseImage}" alt="" class="align-self-end h-50 w-50">
-									</div>
-									<div class="d-flex flex-column fw-500">
-										<a href="#" class="text-dark hover-primary mb-1 fs-16">${course.title}</a>
-										<span class="text-fade">${course.meta.postedBy}</span>
-									</div>
+				const courseElement = document.createElement("div");
+				courseElement.classList.add("box", "mb-15", "pull-up");
+				courseElement.innerHTML = `
+					<div class="box-body">
+						<div class="d-flex align-items-center justify-content-between">
+							<div class="d-flex align-items-center">
+								<div class="me-15 bg-primary-light h-50 w-50 l-h-40 rounded text-center">
+									<img src="${course.courseImage}" alt="" class="align-self-end h-50 w-50">
 								</div>
-								<div>
-									<h5 class="m-0">${course.description}</h5>
+								<div class="d-flex flex-column fw-500">
+									<a href="../../../coursedetails.html?id=${course._id}" 
+									   class="text-dark hover-primary mb-1 fs-16 course-link" 
+									   data-course-id="${course._id}">
+									   ${course.title}
+									</a>
+									<span class="text-fade">${course.meta.postedBy}</span>
 								</div>
+							</div>
+							<div>
+								<h5 class="m-0">${course.description}</h5>
 							</div>
 						</div>
 					</div>
 				`;
 
-				courseContainer.innerHTML += courseElement;
+				courseContainer.appendChild(courseElement);
+			});
+
+			attachLinkEventListeners(); // Add this after rendering courses
+		}
+
+		function attachLinkEventListeners() {
+			const links = document.querySelectorAll(".course-link");
+			links.forEach(link => {
+				link.addEventListener("click", async function (e) {
+					e.preventDefault();
+
+					const studentId = localStorage.getItem("studentId");
+					if (!studentId) {
+						alert("You must be logged in to view courses.");
+						window.location.href = "/login.html";
+						return;
+					}
+
+					try {
+						const resProfile = await fetch(`https://catchup-project.onrender.com/api/users/profile/${studentId}`);
+						const user = await resProfile.json();
+						const now = new Date();
+
+						const hasSubscription =
+							user.subscriptions &&
+							user.subscriptions.some(sub =>
+								(sub.plan === "Per Subject" || sub.plan === "All Subjects") &&
+								new Date(sub.endDate) > now
+							);
+
+						if (!hasSubscription) {
+							alert("You have not subscribed to the required plan (Per Subject or All Subjects). You will now be redirected to the pricing page.");
+							window.location.href = "../../../price.html";
+							return;
+						}
+
+						// User has valid subscription, proceed to course details
+						window.location.href = this.getAttribute("href");
+
+					} catch (err) {
+						console.error("Failed to fetch user profile:", err);
+						alert("An error occurred while checking your subscription.");
+					}
+				});
 			});
 		}
 
@@ -548,7 +621,7 @@
 								<img src="../images/front-end-img/courses/web.png" alt="" class="align-self-end h-50 w-50">
 							</div>
 							<div class="d-flex flex-column fw-500">
-								<a href="Quiz5/quizdetails?id=${quiz._id}" class="text-dark hover-primary mb-1 fs-16">
+								<a href="../../../Quiz5/quizdetails.html?id=${quiz._id}" class="text-dark hover-primary mb-1 fs-16">
 									${quiz.questions[0].subject || "Untitled"}
 								</a>
 								<span class="text-fade">${new Date(quiz.createdAt).toLocaleDateString()}</span>

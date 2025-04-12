@@ -104,7 +104,9 @@
 			  <ul class="sidebar-menu" data-widget="tree">	
 				<li class="header">Dashboard & Apps</li>
 				
-				<li><a href="secondary.html"><i class="fas fa-code-branch"></i>Dashboard</a></li>
+        <li id="dashboard-link">
+          <!-- The link will be dynamically inserted based on the role -->
+        </li>
                 <li><a href="allcourses.html"><i class="fas fa-book-open"></i> Courses</a></li>
 				<li><a href="quiz.html"><i class="fas fa-question-circle"></i> Quiz</a></li>
         <li><a href="community.html"><i class="fas fa-users"></i> Community</a></li>
@@ -114,11 +116,7 @@
 		  </div>
 		</div>
     </section>
-	<div class="sidebar-footer">
-		<a href="javascript:void(0)" class="link" data-bs-toggle="tooltip" title="Settings"><span class="icon-Settings-2"></span></a>
-		<a href="mailbox.html" class="link" data-bs-toggle="tooltip" title="Email"><span class="icon-Mail"></span></a>
-		<a href="javascript:void(0)" class="link" data-bs-toggle="tooltip" title="Logout"><span class="icon-Lock-overturning"><span class="path1"></span><span class="path2"></span></span></a>
-	</div>
+	
   </aside>
 
   <!-- Content Wrapper. Contains page content -->
@@ -166,6 +164,22 @@
 </div>
 <!-- ./wrapper -->
 	
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const userRole = localStorage.getItem('role');
+    const dashboardLink = document.getElementById('dashboard-link');
+
+    if (userRole === 'primary') {
+      dashboardLink.innerHTML = '<a href="primary.html"><i class="fas fa-code-branch"></i>Dashboard</a>';
+    } else if (userRole === 'secondary') {
+      dashboardLink.innerHTML = '<a href="secondary.html"><i class="fas fa-code-branch"></i>Dashboard</a>';
+    } else {
+      // Optionally, you can hide or disable the dashboard link if no valid role is found
+      dashboardLink.innerHTML = '';  // Or you could show a login/signup prompt instead
+    }
+  });
+</script>
 	
 <script>
 	// Add event listener to the Logout button
@@ -176,7 +190,7 @@
 	  localStorage.removeItem('role');
   
 	  // Optionally, redirect the user to the login page or homepage after logout
-	  window.location.href = 'sign-in.html'; // or '/home' depending on your application
+	  window.location.href = '../../../sign-in.html'; // or '/home' depending on your application
 	});
   </script>
 

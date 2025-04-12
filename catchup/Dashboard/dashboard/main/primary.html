@@ -104,11 +104,7 @@
 		  </div>
 		</div>
     </section>
-	<div class="sidebar-footer">
-		<a href="javascript:void(0)" class="link" data-bs-toggle="tooltip" title="Settings"><span class="icon-Settings-2"></span></a>
-		<a href="mailbox.html" class="link" data-bs-toggle="tooltip" title="Email"><span class="icon-Mail"></span></a>
-		<a href="javascript:void(0)" class="link" data-bs-toggle="tooltip" title="Logout"><span class="icon-Lock-overturning"><span class="path1"></span><span class="path2"></span></span></a>
-	</div>
+	
   </aside>
 
   <!-- Content Wrapper. Contains page content -->
@@ -346,56 +342,106 @@
 	<script>
 		async function fetchCourses() {
 			try {
-				const response = await fetch("https://catchup-project.onrender.com//api/offlinecourse");
-				const courses = await response.json();
-	
-				// Get role from localStorage (e.g., "Primary")
+				const studentId = localStorage.getItem("studentId");
 				const role = localStorage.getItem("role");
 	
-				// Filter only courses that match the role (Primary)
+				if (!studentId) {
+					alert("You must be logged in to view courses.");
+					window.location.href = "/login.html";
+					return;
+				}
+	
+				// Fetch all courses
+				const response = await fetch("https://catchup-project.onrender.com/api/offlinecourse");
+				const courses = await response.json();
+	
+				// Filter courses by role (e.g., Primary, etc.)
 				const filteredCourses = courses.filter(course =>
 					course.category?.toLowerCase() === role?.toLowerCase()
 				);
 	
-				// Limit to only 8 courses
+				// Limit to 8 courses
 				const coursesToDisplay = filteredCourses.slice(0, 8);
 	
 				const tableBody = document.getElementById("coursesTableBody");
-				tableBody.innerHTML = ""; // Clear previous content
+				tableBody.innerHTML = "";
 	
 				coursesToDisplay.forEach((course, index) => {
 					const colorClasses = ["bg-danger", "bg-info", "bg-primary", "bg-success"];
 					const color = colorClasses[index % colorClasses.length];
 	
-					const row = `
-						<tr>
-							<td>
-								<div class="${color} h-50 w-50 l-h-50 rounded text-center">
-									<p class="mb-0 fs-20 fw-600">${course.title.charAt(0)}${index + 1}</p>
-								</div>
-							</td>
-							<td class="fw-600">
-								<a href="../../../coursedetails.html?id=${course._id}" class="text-primary text-decoration-underline">
-									${course.title}
-								</a>
-							</td>
-							<td class="text-fade">${course.subject}.pdf</td>
-							<td class="fw-500"><span class="badge badge-sm badge-dot badge-warning me-10"></span>Only view</td>
-							<td class="text-fade">${course.meta.postedBy}</td>
-						</tr>
+					const row = document.createElement("tr");
+					row.innerHTML = `
+						<td>
+							<div class="${color} h-50 w-50 l-h-50 rounded text-center">
+								<p class="mb-0 fs-20 fw-600">${course.title.charAt(0)}${index + 1}</p>
+							</div>
+						</td>
+						<td class="fw-600">
+							<a href="../../../coursedetails.html?id=${course._id}" 
+							   class="text-primary text-decoration-underline course-link" 
+							   data-id="${course._id}">
+								${course.title}
+							</a>
+						</td>
+						<td class="text-fade">${course.subject}.pdf</td>
+						<td class="fw-500"><span class="badge badge-sm badge-dot badge-warning me-10"></span>Only view</td>
+						<td class="text-fade">${course.meta.postedBy}</td>
 					`;
-	
-					tableBody.innerHTML += row;
+					tableBody.appendChild(row);
 				});
+	
+				attachCourseLinkEvents();
+	
 			} catch (error) {
 				console.error("Error fetching courses:", error);
+				alert("Something went wrong fetching courses.");
 			}
 		}
 	
-		// Call the function when the page loads
+		async function attachCourseLinkEvents() {
+			const links = document.querySelectorAll(".course-link");
+			links.forEach(link => {
+				link.addEventListener("click", async function (e) {
+					e.preventDefault();
+	
+					const studentId = localStorage.getItem("studentId");
+					
+	
+					try {
+						const resProfile = await fetch(`https://catchup-project.onrender.com/api/users/profile/${studentId}`);
+						const user = await resProfile.json();
+						const now = new Date();
+	
+						const hasSubscription =
+							user.subscriptions &&
+							user.subscriptions.some(sub =>
+								(sub.plan === "Per Subject" || sub.plan === "All Subjects") &&
+								new Date(sub.endDate) > now
+							);
+	
+						if (!hasSubscription) {
+							alert("You have not subscribed to the required plan (Per Subject or All Subjects). You will now be redirected to the pricing page.");
+							window.location.href = "../../../price.html";
+							return;
+						}
+	
+						// Subscription is valid – navigate
+						window.location.href = this.getAttribute("href");
+	
+					} catch (err) {
+						console.error("Failed to verify subscription:", err);
+						alert("An error occurred while checking your subscription.");
+					}
+				});
+			});
+		}
+	
+		// Load courses on page load
 		fetchCourses();
 	</script>
 	
+		
 	
 	<!-- Vendor JS -->
 	<script src="js/vendors.min.js"></script>
@@ -417,7 +463,7 @@
 	<script>
 		async function fetchQuizzes() {
 			try {
-				const response = await fetch("https://catchup-project.onrender.com//api/quiz");
+				const response = await fetch("https://catchup-project.onrender.com/api/quiz");
 				const quizData = await response.json();
 	
 				const role = localStorage.getItem("role"); // Assume this is "Primary"
@@ -584,7 +630,7 @@
         }
 
         // Fetch student details from the backend
-        const response = await fetch(`https://catchup-project.onrender.com//api/users/profile/${studentId}`);
+        const response = await fetch(`https://catchup-project.onrender.com/api/users/profile/${studentId}`);
         const studentData = await response.json();
 
         if (!studentData) {

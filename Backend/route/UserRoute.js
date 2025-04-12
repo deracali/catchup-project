@@ -1,5 +1,5 @@
 import express from "express";
-import { signup, login, getProfile, getUsers, updateTimeSpent, getUserData, updateUser, deleteUser } from "../controller/UserController.js";
+import { signup, login, getProfile, getUsers, updateTimeSpent, getUserData, updateUser, deleteUser, createSubscription } from "../controller/UserController.js";
 
 
 const UserRouter = express.Router();
@@ -12,6 +12,7 @@ UserRouter.put("/update/:userid", updateUser);
 UserRouter.post('/update-time-spent', updateTimeSpent);
 UserRouter.get('/user-data/:userId', getUserData);
 UserRouter.delete("/delete/:userid", deleteUser);
+UserRouter.post("/subscribe/:userId", createSubscription);
 
 
 export default UserRouter;

@@ -261,7 +261,7 @@
 	  }
 	  
 	  // Fetch the user data from the server using the studentId
-	  const response = await fetch(`https://catchup-project.onrender.com//api/users/profile/${studentId}`);
+	  const response = await fetch(`https://catchup-project.onrender.com/api/users/profile/${studentId}`);
 	  const user = await response.json();
 	  
 	  // Check if the user data was successfully fetched
@@ -368,7 +368,7 @@
 		  };
 		  
 		  // Send PUT request to update the user's profile
-		  const response = await fetch(`https://catchup-project.onrender.com//api/users/update/${studentId}`, {
+		  const response = await fetch(`https://catchup-project.onrender.com/api/users/update/${studentId}`, {
 			method: 'PUT',
 			headers: {
 			  'Content-Type': 'application/json',

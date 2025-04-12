@@ -241,4 +241,45 @@ const deleteUser = async (req, res) => {
 
 
 
-export { signup, login, getProfile, getUsers, updateTimeSpent, getUserData, updateUser, deleteUser };
+
+// Create or update a user's subscription
+const createSubscription = async (req, res) => {
+  try {
+    const { userId } = req.params;
+    const { plan, startDate, endDate } = req.body;
+
+    const user = await User.findById(userId);
+    if (!user) return res.status(404).json({ message: "User not found" });
+
+    // Optional: Remove existing subscription with same plan if needed
+    const existingIndex = user.subscriptions.findIndex(
+      (sub) => sub.plan === plan
+    );
+    if (existingIndex !== -1) {
+      user.subscriptions.splice(existingIndex, 1);
+    }
+
+    // Add new subscription
+    user.subscriptions.push({ plan, startDate, endDate });
+    await user.save();
+
+    // Check if user now has a valid "Per Subject" subscription
+    const now = new Date();
+    const hasPerSubject = user.subscriptions.some(
+      (sub) => sub.plan === "Per Subject" && new Date(sub.endDate) > now
+    );
+
+    res.status(200).json({
+      message: "Subscription updated successfully",
+      subscriptions: user.subscriptions,
+      hasPerSubject,
+    });
+  } catch (error) {
+    console.error("Subscription Error:", error);
+    res.status(500).json({ message: "Failed to update subscription", error: error.message });
+  }
+};
+
+
+
+export { signup, login, getProfile, getUsers, updateTimeSpent,createSubscription, getUserData, updateUser, deleteUser };

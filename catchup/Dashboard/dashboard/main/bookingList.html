@@ -202,11 +202,7 @@
 		  </div>
 		</div>
     </section>
-	<div class="sidebar-footer">
-		<a href="javascript:void(0)" class="link" data-bs-toggle="tooltip" title="Settings"><span class="icon-Settings-2"></span></a>
-		<a href="mailbox.html" class="link" data-bs-toggle="tooltip" title="Email"><span class="icon-Mail"></span></a>
-		<a href="javascript:void(0)" class="link" data-bs-toggle="tooltip" title="Logout"><span class="icon-Lock-overturning"><span class="path1"></span><span class="path2"></span></span></a>
-	</div>
+	
   </aside>
 
   <!-- Content Wrapper. Contains page content -->
@@ -243,7 +239,7 @@
 	// Add event listener to the Logout button
 	document.getElementById('logout-button').addEventListener('click', function() {
 	  // Remove studentId, token, and role from localStorage
-	  localStorage.removeItem('studentId');
+	  localStorage.removeItem('adultId');
 	  localStorage.removeItem('token');
 	  localStorage.removeItem('role');
   
@@ -260,7 +256,7 @@
     async function fetchBookings() {
   try {
     // Fetch bookings
-    const bookingsResponse = await fetch('https://catchup-project.onrender.com//api/bookings');
+    const bookingsResponse = await fetch('https://catchup-project.onrender.com/api/bookings');
     const bookings = await bookingsResponse.json();
 
     // Loop through each booking and fetch teacher details using teacherId
@@ -269,7 +265,7 @@
       const teacherId = booking.teacherId._id;  // Getting the teacher's _id
 
       // Fetch teacher details based on teacherId
-      const teacherResponse = await fetch(`https://catchup-project.onrender.com//api/teachers/${teacherId}`);
+      const teacherResponse = await fetch(`https://catchup-project.onrender.com/api/teachers/${teacherId}`);
       const teacher = await teacherResponse.json();
 
       // Create and display the booking card

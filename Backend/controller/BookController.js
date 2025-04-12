@@ -101,7 +101,7 @@ export const deleteBooking = async (req, res) => {
 // ✅ Accept or Reject Booking
 export const updateBookingStatus = async (req, res) => {
   try {
-    const { status } = req.body; // status should be "Accepted" or "Rejected"
+    const { status, googleMeetLink } = req.body; // also get googleMeetLink
 
     if (!["Accepted", "Rejected"].includes(status)) {
       return res.status(400).json({ message: "Status must be 'Accepted' or 'Rejected'" });
@@ -113,6 +113,12 @@ export const updateBookingStatus = async (req, res) => {
     }
 
     booking.status = status;
+
+    // Update googleMeetLink only if it's provided
+    if (googleMeetLink) {
+      booking.googleMeetLink = googleMeetLink;
+    }
+
     await booking.save();
 
     res.status(200).json({
