@@ -7,7 +7,7 @@ QuizDataRoute.post("/", addQuizScore);
 QuizDataRoute.get("/leaderboard", getLeaderboard);
 QuizDataRoute.get("/get/:userId", getUserScores);
 QuizDataRoute.get("/:userId/:quizId", getQuizScore);
-QuizDataRoute.get("/userTotalScore/:userId/:quizId", calculateUserTotalScore);
+QuizDataRoute.get("/userTotalScore/:userId", calculateUserTotalScore);
 
 // Route to get the leaderboard (top users by total score)
 export default QuizDataRoute;

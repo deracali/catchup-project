@@ -1,4 +1,5 @@
 import QuizScore from "../model/QuizDataModel.js";
+import User from "../model/UserModel.js";
 
 // Add a new quiz score
 export const addQuizScore = async (req, res) => {
@@ -42,23 +43,20 @@ export const getQuizScore = async (req, res) => {
 // Calculate total score of all attempts for each user
 export const calculateUserTotalScore = async (req, res) => {
   try {
-    const { userId, quizId } = req.params;
+    const { userId } = req.params;
     
-    // Log the received userId
-    // console.log("Received userId:", userId);
-    
-    // Find all scores of the user and calculate total score
-    const userScores = await QuizScore.find({ userId, quizId })
-    
-    // Log the results of the query
-    // console.log("User Scores:", userScores);
+    // Find all scores for the given userId
+    const userScores = await QuizScore.find({ userId });
 
+    // If no scores are found, return an error
     if (!userScores || userScores.length === 0) {
       return res.status(404).json({ error: "No scores found for this user" });
     }
 
+    // Calculate the total score by summing all the individual scores
     const totalScore = userScores.reduce((acc, score) => acc + score.totalScore, 0);
 
+    // Return the total score for the user
     res.status(200).json({ userId, totalScore });
   } catch (error) {
     res.status(500).json({ error: "Failed to calculate total score" });
@@ -71,37 +69,56 @@ export const getLeaderboard = async (req, res) => {
   try {
     const maxScore = 100;
 
-    const leaderboard = await QuizScore.aggregate([
-      { $group: { _id: "$userId", totalScore: { $sum: "$totalScore" } } },
-      { $sort: { totalScore: -1 } },
-      { $limit: 10 },
-    ]);
+    // 1. Find all quiz scores
+    const scores = await QuizScore.find();
 
-    // console.log("Leaderboard aggregation result:", leaderboard); // 🔍 Debug log
-
-    if (!leaderboard || leaderboard.length === 0) {
-      console.log("No data found in leaderboard"); // 🔍 Debug log
-      return res.status(404).json({ error: "No leaderboard data available" });
+    if (!scores || scores.length === 0) {
+      return res.status(404).json({ error: "No quiz scores found" });
     }
 
-    const leaderboardWithRankAndPercentage = leaderboard.map((entry, index) => {
-      const percentage = (entry.totalScore / maxScore) * 100;
-      return {
-        rank: index + 1,
-        userId: entry._id,
-        totalScore: entry.totalScore,
-        percentage: percentage.toFixed(2),
-      };
+    // 2. Group scores by userId
+    const scoreMap = {};
+
+    scores.forEach((score) => {
+      const userId = score.userId.toString();
+      if (!scoreMap[userId]) {
+        scoreMap[userId] = 0;
+      }
+      scoreMap[userId] += score.totalScore;
     });
 
-    // console.log("Leaderboard with percentage:", leaderboardWithRankAndPercentage); // 🔍 Debug log
+    // 3. Create leaderboard array
+    let leaderboardArray = [];
 
-    res.status(200).json(leaderboardWithRankAndPercentage);
+    for (const userId in scoreMap) {
+      const user = await User.findById(userId).lean();
+      if (user) {
+        leaderboardArray.push({
+          userId,
+          name: user.name,
+          email: user.email,
+          image: user.image,
+          totalScore: scoreMap[userId],
+          percentage: ((scoreMap[userId] / maxScore) * 100).toFixed(2),
+        });
+      }
+    }
+
+    // 4. Sort leaderboard by totalScore
+    leaderboardArray.sort((a, b) => b.totalScore - a.totalScore);
+
+    // 5. Add rank
+    leaderboardArray = leaderboardArray.map((entry, index) => ({
+      rank: index + 1,
+      ...entry,
+    }));
+
+    // 6. Limit to top 10
+    const top10 = leaderboardArray.slice(0, 10);
+
+    res.status(200).json(top10);
   } catch (error) {
-    console.error("Error in getLeaderboard:", error); // 🔍 Debug log
+    console.error("Error in getLeaderboard:", error);
     res.status(500).json({ error: "Failed to generate leaderboard" });
   }
 };
-
-
-
