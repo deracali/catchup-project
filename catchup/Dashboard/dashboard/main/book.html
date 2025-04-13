@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../images/favicon.ico">
+
+    <title>CatchUp - Dashboard</title>
+    
+	<!-- Vendors Style-->
+	<link rel="stylesheet" href="css/vendors_css.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+	<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+	<!-- Style-->  
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/skin_color.css">
+	<link rel="stylesheet" type="text/css" href="css/custom-9.css">
+	<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+  </head>
+
+<style>
+    .load-more {
+    display: block;
+    width: 20%;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 12px;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 8px;
+    margin-top: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+</style>
+<body class="hold-transition light-skin sidebar-mini theme-violet fixed">
+	
+<div class="wrapper">
+  <div id="loader"></div>
+	
+  <header class="main-header">
+	<div class="d-flex align-items-center logo-box justify-content-start">
+		<a href="#" class="waves-effect waves-light nav-link d-none d-md-inline-block mx-10 push-btn bg-transparent" data-toggle="push-menu" role="button">
+			<i class="fas fa-align-left"></i>
+
+		</a>	
+		<!-- Logo -->
+        <a href="secondary.html" class="logo">
+		  <!-- logo-->
+		  <div class="logo-lg">
+			  <span class="light-logo"><img src="../images/logo-dark-text.png" alt="logo"></span>
+			  <span class="dark-logo"><img src="../images/logo-light-text.png" alt="logo"></span>
+		  </div>
+		</a>	
+	</div>  
+    <!-- Header Navbar -->
+    <nav class="navbar navbar-static-top">
+      <!-- Sidebar toggle button-->
+	  <div class="app-menu">
+		<ul class="header-megamenu nav">
+			<li class="btn-group nav-item d-md-none">
+				<a href="#" class="waves-effect waves-light nav-link push-btn" data-toggle="push-menu" role="button">
+					<i class="fas fa-align-left"></i>
+
+			    </a>
+			</li>
+		
+		</ul> 
+	  </div>
+		
+      <div class="navbar-custom-menu r-side">
+        <ul class="nav navbar-nav">	
+		
+		  
+	      <!-- User Account-->
+          <li class="dropdown user user-menu">
+            <a href="#" class="waves-effect waves-light dropdown-toggle" data-bs-toggle="dropdown" title="User">
+				<i class="fas fa-user"></i>
+            </a>
+            <ul class="dropdown-menu animated flipInX">
+<li class="user-body">
+    <a class="dropdown-item" href="extra_profile.html"><i class="fa fa-user text-muted me-2"></i> Profile</a>
+
+    <div class="dropdown-divider"></div>
+    <a class="dropdown-item" href="#" id="logout-button">
+		<i class="fa fa-lock text-muted me-2"></i> Logout
+	  </a>
+</li>
+
+            </ul>
+          </li>	
+		  
+         
+			
+        </ul>
+      </div>
+    </nav>
+  </header>
+  
+  <aside class="main-sidebar">
+    <!-- sidebar-->
+    <section class="sidebar position-relative">	
+	  	<div class="multinav">
+		  <div class="multinav-scroll" style="height: 100%;">	
+			  <!-- sidebar menu-->
+			  <ul class="sidebar-menu" data-widget="tree">	
+				<li class="header">Dashboard & Apps</li>
+				
+				<li><a href="adult.html"><i class="fas fa-code-branch"></i>Dashboard</a></li>	 	     
+			<li><a href="bookingList.html"><i class="fas fa-calendar-check"></i> Bookings</a></li>
+			<li><a href="book.html"><i class="fas fa-book"></i> Book</a></li>
+			<li><a href="community.html"><i class="fas fa-users"></i> Community</a></li>
+		
+					 	     
+			  </ul>
+		  </div>
+		</div>
+    </section>
+	
+  </aside>
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+	  <div class="container-full">
+		<!-- Main content -->
+        
+        <section class="h2_teacher-area pb-80">
+            <div class="container">
+              
+                <div class="row">
+                    <div class="col-xl-6 col-lg-8 col-md-12 mb-30">
+                        <div class="h2_teacher-section bg-default" data-background="assets/img/teacher/2/bg.jpg">
+                            <div class="section-area-2">
+                                <h2 class="section-title mb-30">Our Most <br> Experience
+                                    <span>Professor <img src="assets/img/banner/2/line.png" alt=""></span></h2>
+                            </div>
+                            <div class="h2_teacher-button">
+                                <a href="./teacers-form/index.html" class="theme-btn theme-btn-medium teacher-btn">Become An Instructor</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Subject Filter Dropdown -->
+                <div class="row" style="margin-bottom: 30px;">
+                    <div class="col-12">
+                        <select id="subject-filter" class="theme-select">
+                            <option value="">Filter by Subject</option>
+                            <!-- Options will be dynamically populated -->
+                        </select>
+                    </div>
+                </div>
+                
+                <!-- Teacher Cards Container -->
+                <div class="row" id="teacher-container">
+                    <!-- Teachers will be dynamically inserted here -->
+                </div>
+                
+                <!-- Load More Button -->
+                <div class="row">
+                    <div class="col-12 text-center">
+                        <button id="load-more-btn" class="load-more theme-btn theme-btn-medium teacher-btn">Load More</button>
+                    </div>
+                </div>
+                
+            </div>
+        </section>
+		<!-- /.content -->
+	  </div>
+  </div>
+  <!-- /.content-wrapper -->
+  <footer class="main-footer">
+   
+	  &copy; 2025 All Rights Reserved Catchup.
+  </footer>
+
+
+  
+  <!-- Add the sidebar's background. This div must be placed immediately after the control sidebar -->
+  <div class="control-sidebar-bg"></div>
+  
+</div>
+<!-- ./wrapper -->
+	
+	
+		
+<script>
+	// Add event listener to the Logout button
+	document.getElementById('logout-button').addEventListener('click', function() {
+	  // Remove studentId, token, and role from localStorage
+	  localStorage.removeItem('adultId');
+	  localStorage.removeItem('token');
+	  localStorage.removeItem('role');
+  
+	  // Optionally, redirect the user to the login page or homepage after logout
+	  window.location.href = '../../../sign-in.html'; // or '/home' depending on your application
+	});
+  </script>
+
+	
+	<!-- Page Content overlay -->
+	<script>
+        let allTeachers = [];
+        let filteredTeachers = [];
+        let currentPage = 1;
+        const teachersPerPage = 6;
+        
+        // Function to fetch teachers from the server
+        async function fetchTeachers() {
+          try {
+            const response = await fetch('https://catchup-project.onrender.com/api/teachers');
+            const data = await response.json();
+            if (data && Array.isArray(data)) {
+              allTeachers = data;
+              filteredTeachers = data;  // Initially, no filter applied
+              loadMoreTeachers();
+              populateSubjectFilter(data);
+            } else {
+              console.error("Teachers data not found:", data);
+            }
+          } catch (error) {
+            console.error('Error fetching teachers:', error);
+          }
+        }
+        
+        // Function to populate the subject filter dropdown dynamically
+        function populateSubjectFilter(teachers) {
+          const subjectSet = new Set();  // Using Set to get unique subjects
+          teachers.forEach((teacher) => {
+            teacher.courses.forEach(course => subjectSet.add(course));
+          });
+        
+          const subjectFilter = document.getElementById("subject-filter");
+          subjectSet.forEach(subject => {
+            const option = document.createElement("option");
+            option.value = subject;
+            option.textContent = subject;
+            subjectFilter.appendChild(option);
+          });
+        }
+        
+        // Function to display teachers in the UI
+        function displayTeachers(teachers) {
+          const container = document.getElementById("teacher-container");
+          container.innerHTML = ""; // Clear previous teachers
+        
+          teachers.forEach((teacher) => {
+            const teacherElement = `
+              <a href="../../../team-details.html?id=${teacher._id}">
+              <div class="col-xl-3 col-lg-4 col-sm-6">
+                <div class="h2_teacher-item mb-30">
+                  <div class="h2_teacher-img">
+                    <img src="${teacher.profileImage}" alt="${teacher.name}">
+                  </div>
+                  <div class="h2_teacher-content">
+                    <h5 style="margin-top:10px" class="h2_teacher-content-title">
+                     <a href="../../../team-details.html?id=${teacher._id}">${teacher.name.split(' ')[0]}</a>
+    
+                    </h5>
+                    <span>${teacher.designation}</span>
+                  </div>
+                </div>
+              </div>
+              </a>
+            `;
+            container.innerHTML += teacherElement;
+          });
+        }
+        
+        // Function to load more teachers
+        function loadMoreTeachers() {
+          const teachersToDisplay = filteredTeachers.slice((currentPage - 1) * teachersPerPage, currentPage * teachersPerPage);
+          displayTeachers(teachersToDisplay);
+        
+          currentPage++;
+        
+          if (currentPage * teachersPerPage > filteredTeachers.length) {
+            document.getElementById("load-more-btn").style.display = "none";
+          }
+        }
+        
+        // Filter function to update teachers based on selected subject
+        document.getElementById("subject-filter").addEventListener("change", (e) => {
+          const selectedSubject = e.target.value;
+          
+          if (selectedSubject) {
+            filteredTeachers = allTeachers.filter(teacher =>
+              teacher.courses.includes(selectedSubject)
+            );
+          } else {
+            filteredTeachers = allTeachers; // No filter applied, show all teachers
+          }
+        
+          currentPage = 1; // Reset pagination when the filter changes
+          loadMoreTeachers();
+        });
+        
+        // Fetch teachers on page load
+        fetchTeachers();
+        </script>
+    
+
+
+	
+	<!-- Vendor JS -->
+	<script src="js/vendors.min.js"></script>
+	<script src="js/pages/chat-popup.js"></script>
+    <script src="../assets/icons/feather-icons/feather.min.js"></script>	
+	
+	<script src="../assets/vendor_components/apexcharts-bundle/dist/apexcharts.js"></script>
+	<script src="../assets/vendor_components/moment/min/moment.min.js"></script>
+	<script src="../assets/vendor_components/fullcalendar/fullcalendar.js"></script>
+	<script src="../../npm/echarts%405/dist/echarts.min.js"></script>
+	<script src="../assets/vendor_components/jquery.peity/jquery.peity.js"></script>
+	
+	
+	<!-- CatchUp App -->
+	<script src="js/template.js"></script>
+	<script src="js/pages/dashboard9.js"></script>
+	<script src="js/pages/calendar.js"></script>
+	<script src="js/pages/peity.js"></script>
+	
+
+
+</body>
+</html>

@@ -43,12 +43,11 @@
       padding: 20px;
     }
     .card {
-      background: #f4f4f4;
       border-radius: 8px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
       overflow: hidden;
       display: flex;
       flex-direction: column;
+      height: 100%;
     }
     .top {
       display: flex;
@@ -193,10 +192,11 @@
 			  <ul class="sidebar-menu" data-widget="tree">	
 				<li class="header">Dashboard & Apps</li>
 				
-				<li><a href="adult.html"><i class="fas fa-code-branch"></i>Dashboard</a></li>
-                <li><a href="bookingList.html"><i class="fas fa-users"></i> Bookings</a></li>
+        <li><a href="adult.html"><i class="fas fa-code-branch"></i>Dashboard</a></li>	 	     
+        <li><a href="bookingList.html"><i class="fas fa-calendar-check"></i> Bookings</a></li>
+        <li><a href="book.html"><i class="fas fa-book"></i> Book</a></li>
         <li><a href="community.html"><i class="fas fa-users"></i> Community</a></li>
-
+      
 					 	     
 			  </ul>
 		  </div>
@@ -259,6 +259,8 @@
     const bookingsResponse = await fetch('https://catchup-project.onrender.com/api/bookings');
     const bookings = await bookingsResponse.json();
 
+
+
     // Loop through each booking and fetch teacher details using teacherId
     for (let booking of bookings) {
       // Extract teacherId from booking
@@ -299,8 +301,8 @@ function displayBookingCard(booking, teacher) {
       <div class="desc">
         ${booking.description}
       </div>
-      <div class="desc">
-        ${booking.status}
+      <div id="statusText" class="desc">
+       Status: ${booking.status}
       </div>
       <div class="buttons">
         <button class="join-button" onclick="window.location.href='${booking.googleMeetLink}'">
@@ -318,6 +320,7 @@ fetchBookings();
  </script>
 
 	
+
 	<!-- Vendor JS -->
 	<script src="js/vendors.min.js"></script>
 	<script src="js/pages/chat-popup.js"></script>
