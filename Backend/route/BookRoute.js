@@ -23,7 +23,7 @@ BookRoute.get("/bookings/:id", getBookingById);
 
 // ✅ Route to get bookings by teacher ID
 BookRoute.get("/bookings/teacher/:teacherId", getBookingsByTeacher);
-BookRoute.get("bookings/user/:userId", getBookingsByUser);
+BookRoute.get("/bookings/user/:userId", getBookingsByUser);
 
 // ✅ Route to update a booking
 BookRoute.put("/bookings/:id", updateBooking);
