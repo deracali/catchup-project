@@ -26,56 +26,76 @@ cloudinary.config({
   // ✅ Create a new teacher review
   export const createTeacher = async (req, res) => {
     try {
-        console.log("Request Body:", req.body);
-        console.log("Uploaded Files:", req.files);
-
-        const { 
-            name, email, password, phone, designation, rating, reviews, about, address, acceptedOrRejected, courses 
-        } = req.body;
-
-        let profileImage = "";
-        let cv = "";
-
-        // Upload profile image if provided
-        if (req.files?.profileImage) {
-            const imageUpload = await uploadImage(req.files.profileImage.tempFilePath);
-            profileImage = imageUpload.secure_url;
-        }
-
-        // Upload CV if provided
-        if (req.files?.cv) {
-            const cvUpload = await uploadCV(req.files.cv.tempFilePath);
-            cv = cvUpload.secure_url;
-        }
-
-        // Fix: Ensure courses is an array
-        let coursesArray = Array.isArray(courses) 
-            ? courses // If it's already an array, use it
-            : courses?.split(",").map(course => course.trim()) || []; // Otherwise, split it into an array
-
-        const newTeacher = new TeacherReview({
-            name,
-            email,
-            password,
-            phone,
-            designation,
-            profileImage,
-            cv,
-            rating,
-            reviews,
-            about,
-            address,
-            acceptedOrRejected: acceptedOrRejected || "Pending",
-            courses: coursesArray // Store as an array
-        });
-
-        await newTeacher.save();
-        res.status(201).json({ message: "Teacher review created successfully", teacher: newTeacher });
+      console.log("Request Body:", req.body);
+      console.log("Uploaded Files:", req.files);
+  
+      // Destructure using the field names 'profileImage' and 'cv' for Base64 strings, if provided.
+      const {
+        name,
+        email,
+        password,
+        phone,
+        designation,
+        rating,
+        reviews,
+        about,
+        address,
+        acceptedOrRejected,
+        courses,
+        profileImage, // could be a Base64 string if no file is uploaded
+        cv,          // could be a Base64 string if no file is uploaded
+      } = req.body;
+  
+      let uploadedProfileImage = "";
+      let uploadedCV = "";
+  
+      // Use uploaded file if available; otherwise, fall back to Base64 string from req.body.
+      if (req.files?.profileImage) {
+        const imageUpload = await uploadImage(req.files.profileImage.tempFilePath);
+        uploadedProfileImage = imageUpload.secure_url;
+      } else if (profileImage) {
+        const imageUpload = await uploadImage(profileImage);
+        uploadedProfileImage = imageUpload.secure_url;
+      }
+  
+      if (req.files?.cv) {
+        const cvUpload = await uploadCV(req.files.cv.tempFilePath);
+        uploadedCV = cvUpload.secure_url;
+      } else if (cv) {
+        const cvUpload = await uploadCV(cv);
+        uploadedCV = cvUpload.secure_url;
+      }
+  
+      // Ensure courses is an array (if provided as comma-separated string).
+      let coursesArray = Array.isArray(courses)
+        ? courses
+        : courses?.split(",").map(course => course.trim()) || [];
+  
+      // Create new teacher record, storing the final URLs under the 'profileImage' and 'cv' fields.
+      const newTeacher = new TeacherReview({
+        name,
+        email,
+        password,
+        phone,
+        designation,
+        profileImage: uploadedProfileImage,
+        cv: uploadedCV,
+        rating,
+        reviews,
+        about,
+        address,
+        acceptedOrRejected: acceptedOrRejected || "Pending",
+        courses: coursesArray,
+      });
+  
+      await newTeacher.save();
+      res.status(201).json({ message: "Teacher review created successfully", teacher: newTeacher });
     } catch (error) {
-        console.error("Error in createTeacher:", error);
-        res.status(500).json({ error: error.message });
+      console.error("Error in createTeacher:", error);
+      res.status(500).json({ error: error.message });
     }
-};
+  };
+  
 
   
   
@@ -134,4 +154,32 @@ export const deleteTeacher = async (req, res) => {
   }
 };
 
+
+
+// ✅ Update only the acceptedOrRejected status
+export const updateTeacherStatus = async (req, res) => {
+  try {
+    const { status } = req.body; // expected value: "Accepted" or "Rejected"
+    
+    // Validate input
+    if (!["Accepted", "Rejected"].includes(status)) {
+      return res.status(400).json({ message: "Invalid status. Must be 'Accepted' or 'Rejected'." });
+    }
+
+    const teacher = await TeacherReview.findByIdAndUpdate(
+      req.params.id,
+      { acceptedOrRejected: status },
+      { new: true }
+    );
+
+    if (!teacher) return res.status(404).json({ message: "Teacher not found" });
+
+    res.status(200).json({
+      message: `Teacher has been ${status.toLowerCase()}`,
+      teacher,
+    });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
 

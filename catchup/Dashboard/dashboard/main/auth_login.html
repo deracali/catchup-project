@@ -64,9 +64,7 @@
 									</div>
 								</form>
 								
-								<div class="text-center">
-									<p class="mt-15 mb-0">Don't have an account? <a href="auth_register.html" class="text-warning ms-5">Sign Up</a></p>
-								</div>	
+							
 							</div>						
 						</div>
 						<div class="text-center">
@@ -110,12 +108,12 @@
 		
 				if (response.ok) {
 					// Store token, role, and admin ID in localStorage
-					localStorage.setItem("token", data.token);
+					localStorage.setItem("Admintoken", data.token);
 					localStorage.setItem("role", data.admin.role);
 					localStorage.setItem("adminId", data.admin.id);
 		
 					alert("Login successful!");
-					window.location.href = "dashboard.html"; // Redirect to dashboard
+					window.location.href = "index-2.html"; // Redirect to dashboard
 				} else {
 					alert(data.message || "Login failed!");
 				}
@@ -149,7 +147,7 @@
 		
 		// Logout function
 		function logoutUser() {
-			localStorage.removeItem("token");
+			localStorage.removeItem("Admintoken");
 			localStorage.removeItem("role");
 			localStorage.removeItem("adminId");
 			alert("Session expired. Please log in again.");

@@ -163,7 +163,15 @@
   
 </div>
 <!-- ./wrapper -->
-	
+<script>
+  const adminToken = localStorage.getItem("adminToken");
+  const adminId = localStorage.getItem("adminId");
+
+  if (!adminToken || !adminId) {
+    window.location.href = "auth_login.html";
+  }
+</script>
+
 
 <script>
   document.addEventListener("DOMContentLoaded", function() {

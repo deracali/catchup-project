@@ -213,106 +213,119 @@
 	
 	
 	
-	
+<script>
+	const adminToken = localStorage.getItem("adminToken");
+	const adminId = localStorage.getItem("adminId");
+  
+	if (!adminToken || !adminId) {
+	  window.location.href = "auth_login.html";
+	}
+  </script>
+  
 	
 	<!-- Page Content overlay -->
-<script>
-	document.addEventListener("DOMContentLoaded", async () => {
-    const urlParams = new URLSearchParams(window.location.search);
-    const teacherId = urlParams.get("id"); // Extract ID from URL
-
-    if (!teacherId) {
-        alert("No teacher ID found in the URL.");
-        return;
-    }
-
-    try {
-        const response = await fetch(`https://catchup-project.onrender.com/api/teacher-reviews/get/${teacherId}`);
-        if (!response.ok) {
-            throw new Error("Teacher not found");
-        }
-
-        const teacher = await response.json();
-        
-        // Populate the form fields with fetched teacher data, excluding password
-        document.getElementById("teacherName").value = teacher.name;
-        document.getElementById("teacherEmail").value = teacher.email;
-        document.getElementById("teacherPhone").value = teacher.phone;
-        document.getElementById("teacherAddress").value = teacher.address;
-        document.getElementById("teacherDesignation").value = teacher.designation;
-        document.getElementById("teacherAbout").value = teacher.about;
-        
-        // Set the CV download link
-        document.getElementById("cvDownload").href = teacher.cv;
-        
-        // Populate courses
-        const courseList = document.getElementById("teacherCourses");
-        teacher.courses.forEach(course => {
-            const courseOption = document.createElement("option");
-            courseOption.value = course;
-            courseOption.textContent = course;
-            courseList.appendChild(courseOption);
-        });
-
-        // Accept button functionality
-        document.getElementById("acceptBtn").addEventListener("click", () => {
-            document.getElementById("status").value = "Accepted";
-            document.getElementById("statusText").textContent = "Sending..."; // Show sending text
-        });
-
-        // Cancel button functionality
-        document.getElementById("cancelBtn").addEventListener("click", () => {
-            document.getElementById("status").value = "Rejected";
-            document.getElementById("statusText").textContent = "Sending..."; // Show sending text
-        });
-
-        // Submit form to register teacher
-        document.getElementById("submitBtn").addEventListener("click", async () => {
-            const data = {
-                name: document.getElementById("teacherName").value,
-                email: document.getElementById("teacherEmail").value,
-                phone: document.getElementById("teacherPhone").value,
-                address: document.getElementById("teacherAddress").value,
-                designation: document.getElementById("teacherDesignation").value,
-                about: document.getElementById("teacherAbout").value,
-                acceptedOrRejected: document.getElementById("status").value,
-                cv: teacher.cv, // Include CV in the request
-                password: teacher.password, // Send the password from the response
-                profileImage: teacher.profileImage,
-                courses: teacher.courses, // Include courses
-            };
-
-            // Show sending text
-            document.getElementById("statusText").textContent = "Sending...";
-
-            try {
-                const registerResponse = await fetch("https://catchup-project.onrender.com/api/teachers/register", {
-                    method: "POST",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify(data),
-                });
-
-                if (!registerResponse.ok) {
-                    throw new Error("Failed to register teacher.");
-                }
-
-                // Show success message and redirect
-                alert("Teacher registered successfully!");
-                window.location.href = "/catchup/index2.html"; // Redirect after success (change as needed)
-            } catch (error) {
-                console.error("Error registering teacher:", error);
-                alert("Error registering teacher.");
-            }
-        });
-
-    } catch (error) {
-        console.error("Error fetching teacher details:", error);
-        alert("Error loading teacher details.");
-    }
-});
-
-</script>
-
+	<script>
+		document.addEventListener("DOMContentLoaded", async () => {
+			const urlParams = new URLSearchParams(window.location.search);
+			const teacherId = urlParams.get("id");
+		
+			if (!teacherId) {
+				alert("No teacher ID found in the URL.");
+				return;
+			}
+		
+			try {
+				const response = await fetch(`https://catchup-project.onrender.com/api/teacher-reviews/get/${teacherId}`);
+				if (!response.ok) throw new Error("Teacher not found");
+		
+				const teacher = await response.json();
+		
+				// Populate form fields
+				document.getElementById("teacherName").value = teacher.name;
+				document.getElementById("teacherEmail").value = teacher.email;
+				document.getElementById("teacherPhone").value = teacher.phone;
+				document.getElementById("teacherAddress").value = teacher.address;
+				document.getElementById("teacherDesignation").value = teacher.designation;
+				document.getElementById("teacherAbout").value = teacher.about;
+				document.getElementById("cvDownload").href = teacher.cv;
+		
+				const courseList = document.getElementById("teacherCourses");
+				teacher.courses.forEach(course => {
+					const courseOption = document.createElement("option");
+					courseOption.value = course;
+					courseOption.textContent = course;
+					courseList.appendChild(courseOption);
+				});
+		
+				// Accept or Reject buttons
+				document.getElementById("acceptBtn").addEventListener("click", () => {
+					document.getElementById("status").value = "Accepted";
+					document.getElementById("statusText").textContent = "Sending...";
+				});
+		
+				document.getElementById("cancelBtn").addEventListener("click", () => {
+					document.getElementById("status").value = "Rejected";
+					document.getElementById("statusText").textContent = "Sending...";
+				});
+		
+				// Submit form to register and update review status
+				document.getElementById("submitBtn").addEventListener("click", async () => {
+					const status = document.getElementById("status").value;
+		
+					const data = {
+						name: document.getElementById("teacherName").value,
+						email: document.getElementById("teacherEmail").value,
+						phone: document.getElementById("teacherPhone").value,
+						address: document.getElementById("teacherAddress").value,
+						designation: document.getElementById("teacherDesignation").value,
+						about: document.getElementById("teacherAbout").value,
+						acceptedOrRejected: status,
+						cv: teacher.cv,
+						password: teacher.password,
+						profileImage: teacher.profileImage,
+						courses: teacher.courses
+					};
+		
+					document.getElementById("statusText").textContent = "Sending...";
+		
+					try {
+						// 1. Register teacher
+						const registerResponse = await fetch("https://catchup-project.onrender.com/api/teachers/register", {
+							method: "POST",
+							headers: { "Content-Type": "application/json" },
+							body: JSON.stringify(data),
+						});
+		
+						if (!registerResponse.ok) {
+							throw new Error("Failed to register teacher.");
+						}
+		
+						// 2. Update teacher-review status
+						const updateStatus = await fetch(`https://catchup-project.onrender.com/api/teacher-reviews/status/${teacherId}`, {
+							method: "PATCH",
+							headers: { "Content-Type": "application/json" },
+							body: JSON.stringify({ status }),
+						});
+		
+						if (!updateStatus.ok) {
+							throw new Error("Failed to update teacher review status.");
+						}
+		
+						alert("Teacher registered and status updated successfully!");
+						window.location.href = "/catchup/index2.html";
+					} catch (error) {
+						console.error("Error:", error);
+						alert("An error occurred while processing the request.");
+					}
+				});
+		
+			} catch (error) {
+				console.error("Error fetching teacher details:", error);
+				alert("Error loading teacher details.");
+			}
+		});
+		</script>
+		
 	<!-- Vendor JS -->
 	<script src="js/vendors.min.js"></script>
 	<script src="js/pages/chat-popup.js"></script>

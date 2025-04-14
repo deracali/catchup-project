@@ -300,122 +300,128 @@
 
 	
 	<!-- Page Content overlay -->
-    <script>
-        let replyToMessageId = null; // Keeps track of reply
-      
-        async function loadMessages() {
-          try {
-            const res = await fetch('https://catchup-project.onrender.com/api/messages');
-            const data = await res.json();
-            console.log(data.data);
-            const messages = Array.isArray(data) ? data.data : (data.data || []);
-      
-            const messagesContainer = document.getElementById('messages');
-            messagesContainer.innerHTML = '';
-      
-            messages.forEach(msg => {
-  const messageDiv = document.createElement('div');
-  messageDiv.className = 'message';
-
-  const senderName = msg.sender || msg._id || 'Unknown Sender';
-  const replySender = msg.replyTo?.sender || msg.replyTo?._id || 'Unknown Sender';
-  const replyText = msg.replyTo?.text || '(No text)';
-
-  messageDiv.innerHTML = `
-    <div class="avatar">${senderName.charAt(0)}</div>
-    <div class="message-content">
-      <div class="message-header">
-        ${senderName}
-        <span style="color: gray; font-size: 12px;">
-          ${new Date(msg.timestamp).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}
-        </span>
-      </div>
-      ${msg.replyTo ? `
-        <div class="message-text blue">
-          Replying to <strong>${replySender}</strong><br>
-          ${replyText}
-        </div>
-      ` : ''}
-      <div class="message-text">
-        ${msg.text}
-      </div>
-      <button class="reply-btn" data-id="${msg._id}">Reply</button>
-    </div>
-  `;
-
-  messagesContainer.appendChild(messageDiv);
-});
-
-            // Attach event listeners to reply buttons
-            document.querySelectorAll('.reply-btn').forEach(button => {
-              button.addEventListener('click', (e) => {
-                replyToMessageId = e.target.dataset.id;
-                const messageInput = document.getElementById('messageInput');
-                messageInput.placeholder = "Replying to message ID: " + replyToMessageId;
-                showReplyPreview(replyToMessageId);
-                messageInput.focus();
-              });
-            });
-      
-          } catch (err) {
-            console.error('Error loading messages:', err);
-          }
-        }
-      
-        function showReplyPreview(messageId) {
-          const replyPreview = document.getElementById('replyPreview');
-          replyPreview.innerHTML = `
-            <div class="reply-preview">
-              <small>Replying to Message ID:</small> <br><strong>${messageId}</strong>
-              <span class="cancel-reply" onclick="cancelReply()">×</span>
+  <script>
+    let replyToMessageId = null;
+  
+    async function loadMessages() {
+      try {
+        const res = await fetch('https://catchup-project.onrender.com/api/messages');
+        const data = await res.json();
+        const messages = Array.isArray(data) ? data.data : (data.data || []);
+  
+        const messagesContainer = document.getElementById('messages');
+        messagesContainer.innerHTML = '';
+  
+        messages.forEach(msg => {
+          const messageDiv = document.createElement('div');
+          messageDiv.className = 'message';
+  
+          const senderName = msg.sender || msg._id || 'Unknown Sender';
+          const replySender = msg.replyTo?.sender || msg.replyTo?._id || 'Unknown Sender';
+          const replyText = msg.replyTo?.text || '(No text)';
+  
+          messageDiv.innerHTML = `
+            <div class="avatar">${senderName.charAt(0)}</div>
+            <div class="message-content">
+              <div class="message-header">
+                ${senderName}
+                <span style="color: gray; font-size: 12px;">
+                  ${new Date(msg.timestamp).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}
+                </span>
+              </div>
+              ${msg.replyTo ? `
+                <div class="message-text blue">
+                  Replying to <strong>${replySender}</strong><br>
+                  ${replyText}
+                </div>
+              ` : ''}
+              <div class="message-text">
+                ${msg.text}
+              </div>
+              <button class="reply-btn" data-id="${msg._id}">Reply</button>
             </div>
           `;
-        }
-      
-        function cancelReply() {
-          replyToMessageId = null;
-          document.getElementById('replyPreview').innerHTML = '';
-          document.getElementById('messageInput').placeholder = 'Type a message...';
-        }
-      
-        async function sendMessage() {
-          const messageInput = document.getElementById('messageInput');
-          const text = messageInput.value.trim();
-          if (!text) return; // prevent sending empty
-      
-          try {
-            await fetch('https://catchup-project.onrender.com/api/messages', {
-              method: 'POST',
-              headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify({
-                text: text,
-                replyTo: replyToMessageId || null
-              })
-            });
-      
-            messageInput.value = '';
-            messageInput.placeholder = 'Type a message...';
-            replyToMessageId = null;
-            document.getElementById('replyPreview').innerHTML = '';
-            loadMessages(); // reload after sending
-      
-          } catch (err) {
-            console.error('Error sending message:', err);
-          }
-        }
-      
-        document.getElementById('sendBtn').addEventListener('click', sendMessage);
-      
-        document.getElementById('messageInput').addEventListener('keydown', (e) => {
-          if (e.key === 'Enter') {
-            e.preventDefault();
-            sendMessage();
-          }
+  
+          messagesContainer.appendChild(messageDiv);
         });
-      
-        loadMessages(); // initial
-      </script>
-      
+  
+        document.querySelectorAll('.reply-btn').forEach(button => {
+          button.addEventListener('click', (e) => {
+            replyToMessageId = e.target.dataset.id;
+            const messageInput = document.getElementById('messageInput');
+            messageInput.placeholder = "Replying to message ID: " + replyToMessageId;
+            showReplyPreview(replyToMessageId);
+            messageInput.focus();
+          });
+        });
+  
+      } catch (err) {
+        console.error('Error loading messages:', err);
+      }
+    }
+  
+    function showReplyPreview(messageId) {
+      const replyPreview = document.getElementById('replyPreview');
+      replyPreview.innerHTML = `
+        <div class="reply-preview">
+          <small>Replying to Message ID:</small> <br><strong>${messageId}</strong>
+          <span class="cancel-reply" onclick="cancelReply()">×</span>
+        </div>
+      `;
+    }
+  
+    function cancelReply() {
+      replyToMessageId = null;
+      document.getElementById('replyPreview').innerHTML = '';
+      document.getElementById('messageInput').placeholder = 'Type a message...';
+    }
+  
+    async function sendMessage() {
+      const messageInput = document.getElementById('messageInput');
+      const text = messageInput.value.trim();
+      if (!text) return;
+  
+      // 🔒 Prevent links or phone numbers
+      const linkRegex = /(https?:\/\/[^\s]+|www\.[^\s]+|\S+\.(com|net|org|io|co|me|xyz))/i;
+      const phoneRegex = /(\+?\d{1,3}[-.\s]?\(?\d{1,4}\)?[-.\s]?\d{3,4}[-.\s]?\d{3,4})/;
+  
+      if (linkRegex.test(text) || phoneRegex.test(text)) {
+        alert("Sharing of links or phone numbers is not allowed.");
+        return;
+      }
+  
+      try {
+        await fetch('https://catchup-project.onrender.com/api/messages', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            text: text,
+            replyTo: replyToMessageId || null
+          })
+        });
+  
+        messageInput.value = '';
+        messageInput.placeholder = 'Type a message...';
+        replyToMessageId = null;
+        document.getElementById('replyPreview').innerHTML = '';
+        loadMessages();
+  
+      } catch (err) {
+        console.error('Error sending message:', err);
+      }
+    }
+  
+    document.getElementById('sendBtn').addEventListener('click', sendMessage);
+    document.getElementById('messageInput').addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        sendMessage();
+      }
+    });
+  
+    loadMessages();
+  </script>
+  
 	
 	<!-- Vendor JS -->
 	<script src="js/vendors.min.js"></script>

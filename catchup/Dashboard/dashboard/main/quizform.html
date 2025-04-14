@@ -178,7 +178,15 @@
 	
 	
 	<!-- Page Content overlay -->
-	
+	<script>
+		const adminToken = localStorage.getItem("adminToken");
+		const adminId = localStorage.getItem("adminId");
+	  
+		if (!adminToken || !adminId) {
+		  window.location.href = "auth_login.html";
+		}
+	  </script>
+	  
 	
 	<!-- Vendor JS -->
 	<script src="js/vendors.min.js"></script>

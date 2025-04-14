@@ -1012,41 +1012,65 @@
       
       // Event delegation for enrollment: Listen on container for clicks on Enroll buttons.
       container.addEventListener("click", async function (e) {
-        const enrollButton = e.target.closest(".btn-enroll-course");
-        if (!enrollButton) return;
-  
-        const courseId = enrollButton.getAttribute("data-course-id");
-        console.log("Enrolling in course with ID:", courseId);
-  
-        try {
-          const res = await fetch(`https://catchup-project.onrender.com/api/livecourses/${courseId}/join`, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" }
-          });
-          const data = await res.json();
-          console.log("Enrollment Response:", data);
-  
-          if (res.ok) {
-            alert("Successfully enrolled in the course!");
-            enrollButton.disabled = true;
-            enrollButton.innerText = "Enrolled";
-            // Optional: Update student count UI if element exists.
-            const parent = enrollButton.closest(".h2_course-item");
-            if (parent) {
-              const studentSpan = parent.querySelector(".student-count");
-              if (studentSpan) {
-                studentSpan.innerHTML = `<i class="fa-thin fa-user-group"></i>${data.course.studentsCount} Students`;
-              }
-            }
-          } else {
-            alert(data.message || "Failed to enroll.");
-          }
-        } catch (err) {
-          console.error("Enrollment error:", err);
-          alert("An error occurred while enrolling.");
+  const enrollButton = e.target.closest(".btn-enroll-course");
+  if (!enrollButton) return;
+
+  // ✅ Check for studentId
+  const studentId = localStorage.getItem("studentId");
+  if (!studentId) {
+    alert("You must be logged in to join a live class.");
+    return;
+  }
+
+  // ✅ Fetch student profile to check for subscription
+  try {
+    const profileRes = await fetch(`https://catchup-project.onrender.com/api/users/profile/${studentId}`);
+    const user = await profileRes.json();
+
+    const now = new Date();
+    const hasLiveClassSubscription =
+      user.subscriptions &&
+      user.subscriptions.some(sub => sub.plan === "Live Class" && new Date(sub.endDate) > now);
+
+    if (!hasLiveClassSubscription) {
+      alert("You need an active Live Class subscription to enroll. Redirecting to pricing page...");
+      window.location.href = "price.html"; // Replace with your actual pricing page URL
+      return;
+    }
+
+    // ✅ If all checks pass, proceed with enrollment
+    const courseId = enrollButton.getAttribute("data-course-id");
+    console.log("Enrolling in course with ID:", courseId);
+
+    const res = await fetch(`https://catchup-project.onrender.com/api/livecourses/${courseId}/join`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" }
+    });
+    const data = await res.json();
+    console.log("Enrollment Response:", data);
+
+    if (res.ok) {
+      alert("Successfully enrolled in the course!");
+      enrollButton.disabled = true;
+      enrollButton.innerText = "Enrolled";
+
+      // Update student count if available
+      const parent = enrollButton.closest(".h2_course-item");
+      if (parent) {
+        const studentSpan = parent.querySelector(".student-count");
+        if (studentSpan) {
+          studentSpan.innerHTML = `<i class="fa-thin fa-user-group"></i>${data.course.studentsCount} Students`;
         }
-      });
-      
+      }
+    } else {
+      alert(data.message || "Failed to enroll.");
+    }
+  } catch (err) {
+    console.error("Enrollment error:", err);
+    alert("An error occurred while enrolling.");
+  }
+});
+
       // Add click handler for Join Live Class button to check subscription
       container.addEventListener("click", async function (e) {
         const joinButton = e.target.closest(".btn-join-live");

@@ -129,3 +129,25 @@ export const updateBookingStatus = async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 };
+
+
+
+
+// ✅ Get Bookings by User ID
+export const getBookingsByUser = async (req, res) => {
+  try {
+    const { userId } = req.params;
+
+    const bookings = await Booking.find({ userId })
+      .populate("teacherId", "name email")
+      .populate("userId", "name email");
+
+    if (!bookings || bookings.length === 0) {
+      return res.status(404).json({ message: "No bookings found for this user" });
+    }
+
+    res.status(200).json(bookings);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};

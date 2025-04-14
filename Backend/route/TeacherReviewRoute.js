@@ -6,6 +6,7 @@ import {
   getTeacherById,
   updateTeacher,
   deleteTeacher,
+  updateTeacherStatus,
 } from "../controller/TeacherReview.js";
 
 const TeacherReviewRoute = express.Router();
@@ -14,6 +15,7 @@ const TeacherReviewRoute = express.Router();
 TeacherReviewRoute.use(fileUpload({ useTempFiles: true }));
 
 TeacherReviewRoute.post("/create", createTeacher);
+TeacherReviewRoute.patch("/status/:id", updateTeacherStatus);
 TeacherReviewRoute.get("/", getAllTeachers);
 TeacherReviewRoute.get("/get/:id", getTeacherById);
 TeacherReviewRoute.put("/:id", updateTeacher);

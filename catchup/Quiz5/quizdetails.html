@@ -596,20 +596,34 @@ document.getElementById('closePopupBtn').addEventListener('click', () => {
 
     
 
-function startCountdown() {
-    let timeRemaining = 40 * 60; // Set timeLimit to 40 minutes (converted to seconds)
+function startCountdown(timeLimit) {
+    // Ensure timeLimit is a valid number (in minutes)
+    if (isNaN(timeLimit) || timeLimit <= 0) {
+        console.error("Invalid timeLimit value:", timeLimit);
+        return; // Exit if timeLimit is invalid
+    }
+
+    let timeRemaining = timeLimit * 60; // Convert timeLimit (in minutes) to seconds
     const countdownTimerElement = document.getElementById('countdown-timer');
 
-    // Set the timer display once to 40:00 (no counting down)
-    const minutes = Math.floor(timeRemaining / 60);
-    const seconds = timeRemaining % 60;
-    countdownTimerElement.innerText = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+    // Update the timer every second
+    const interval = setInterval(() => {
+        const minutes = Math.floor(timeRemaining / 60); // Get the minutes
+        const seconds = timeRemaining % 60; // Get the seconds
+        countdownTimerElement.innerText = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
 
-    // Use setTimeout to trigger the result after 40 minutes
-    setTimeout(() => {
-        showResult(); // End the quiz after 40 minutes
-    }, timeRemaining * 1000); // Convert timeRemaining (in seconds) to milliseconds
+        // Decrease the time remaining by 1 second
+        timeRemaining--;
+
+        // When the timer reaches 0, stop the interval and show the result
+        if (timeRemaining < 0) {
+            clearInterval(interval);
+            showResult(); // End the quiz when time is up
+        }
+    }, 1000); // Update every second
 }
+
+
 
 // Close popup logic
 document.getElementById('closeExplanationPopup').addEventListener('click', () => {

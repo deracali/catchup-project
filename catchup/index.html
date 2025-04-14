@@ -2429,8 +2429,8 @@
                             <div class="col-xl-8 col-lg-8 col-md-8">
                                 <div class="event-section-area mb-20">
                                     <div class="section-area">
-                                        <span class="section-subtitle">Practice WAEC GCE Past Questions</span>
-                                        <h2 class="section-title mb-0">Practice Subjects</h2>
+                                        <span class="section-subtitle">Practice WAEC, GCE, JAMB, and More</span>
+                                        <h2 class="section-title mb-0">Start Practicing Quizzes by Subject</h2>
                                     </div>
                                 </div>
                             </div>
@@ -2449,6 +2449,7 @@
                     </div>
                 </div>
             </section>
+            
             
             <!-- event area end -->
 
@@ -2799,18 +2800,7 @@
 
 
 
-<div class="col-xl-3 col-sm-5 col-6">
-  <div class="h2_header-right">
-    <div class="h2_header-btn d-none d-sm-block">
-      <a id="header-btn" href="#" class="header-btn theme-btn theme-btn-medium">Sign Up</a>
-    </div>
-    <div class="header-menu-bar d-xl-none ml-10">
-      <span class="header-menu-bar-icon side-toggle">
-        <i class="fa-light fa-bars"></i>
-      </span>
-    </div>
-  </div>
-</div>
+
 
 <script>
   document.addEventListener('DOMContentLoaded', function () {
@@ -2884,7 +2874,7 @@
                     <span><i class="fa-thin fa-clock"></i>8.00 am - 6.00 pm</span>
                   </div>
                   <h5 class="event-content-title">
-                    <a href="Quiz5/quizdetails.html?id=${quiz._id}">${quiz.title} - ${question.subject} WAEC GCE Past Questions</a>
+                    <a href="Quiz5/quizdetails.html?id=${quiz._id}">${quiz.title} - ${question.subject} </a>
                   </h5>
                   <a href="Quiz5/quizdetails.html?id=${quiz._id}" class="t-theme-btn theme-btn event-btn">Practice Questions</a>
                 </div>
@@ -3002,25 +2992,6 @@
   
 
 
-<script>
-    // Check if studentId exists in localStorage
-    const studentId = localStorage.getItem('studentId');
-    const headerBtn = document.getElementById('header-btn');  // The button element
-
-    // If studentId is found, change the button to "Logout"
-    if (studentId) {
-        headerBtn.innerHTML = 'Logout';
-        headerBtn.href = '#';  // Make sure the link doesn't navigate anywhere
-        headerBtn.addEventListener('click', () => {
-            // Remove studentId and token from localStorage
-            localStorage.removeItem('studentId');
-            localStorage.removeItem('token');
-            
-            // Optionally, redirect to the login page or homepage after logout
-            window.location.href = 'login.html'; // Redirect to the login page
-        });
-    }
-</script>
 
 
 

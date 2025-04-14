@@ -84,10 +84,10 @@
 
 <style>
     /* Basic styling for demonstration */
-    .row { display: flex; flex-wrap: wrap; gap: 20px; }
-    .my-custom-component .col-xl-4,
-.my-custom-component .col-lg-6,
-.my-custom-component .col-md-6 {
+    .my-custom-component .row { display: flex; flex-wrap: wrap; gap: 20px; }
+    .my-custom-component   .col-xl-4,
+    .my-custom-component   .col-lg-6,
+    .my-custom-component   .col-md-6 {
   flex: 1 1 calc(25% - 20px);
 }
     .card { border: 1px solid #ccc; padding: 15px; border-radius: 8px; }
@@ -133,7 +133,7 @@
                         <div class="col-xl-3 col-sm-7 col-6">
                             <div class="h2_header-left">
                                 <div class="h2_header-logo">
-                                    <a href="index-10.html"><img src="assets/img/logo.png" alt="logo-img"></a>
+                                    <a href="index.html"><img src="assets/img/logo.png" alt="logo-img"></a>
                                 </div>
                              
                             </div>
@@ -157,8 +157,17 @@
                                 </nav>
                             </div>
                         </div>
-                        <div style="width: 0;" class="h2_header-btn d-none d-sm-block">
-                            <a id="header-btn" href="sign-up.html" class="header-btn theme-btn theme-btn-medium">Sign Up</a>
+                        <div class="col-xl-3 col-sm-5 col-6">
+                            <div class="h2_header-right">
+                               <div class="h2_header-btn d-none d-sm-block">
+    <a id="header-btn" href="#" class="header-btn theme-btn theme-btn-medium">Sign Up</a>
+</div>
+                                <div class="header-menu-bar d-xl-none ml-10">
+                                    <span class="header-menu-bar-icon side-toggle">
+                                        <i class="fa-light fa-bars"></i>
+                                    </span>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -174,7 +183,7 @@
                     <img src="assets/img/banner/10/shape-2.png" alt="Not Found" class="h10_banner-shape-2 d-none d-xl-block">
                     <img src="assets/img/banner/10/shape-3.png" alt="Not Found" class="h10_banner-shape-3 d-none d-xl-block">
                     <div class="container">
-                        <div class="row justify-content-between align-items-center">
+                        <div class="my-custom-component row justify-content-between align-items-center">
                             <div class="col-xxl-6 col-xl-6 col-lg-6">
                                 <div class="h10_banner-content mb-60 mb-lg-0">
                                     <h1 class="h10_banner-content-title">Fun & Educational
@@ -210,7 +219,7 @@
             <!-- about area start -->
             <section class="h10_about-area pt-120 pb-50">
                 <div class="container">
-                    <div class="row">
+                    <div class="my-custom-component row">
                         <div class="col-xl-6 col-lg-6">
                             <div class="h10_about-img mr-25">
                                 <img src="assets/img/about/10/img-shape.png" alt="" class="h10_about-img-shape d-none d-md-block">
@@ -242,14 +251,14 @@
                                 </div>
                                 <div class="h10_about-bottom">
                                     <div class="h10_about-admin">
-                                        <img src="assets/img/about/7/admin.jpg" alt="">
+                                        <!-- <img src="assets/img/about/7/admin.jpg" alt=""> -->
                                         <div class="h10_about-admin-info">
                                             <h5>Hugh Millie-Yate</h5>
                                             <span>Vice Principal</span>
                                         </div>
                                     </div>
                                     <div class="h10_about-bottom-btn">
-                                        <a href="#"><span class="inner-btn"><i class="fa-light fa-arrow-up"></i></span><span class="inner-text">More About Us</span></a>
+                                        <a href="about.html"><span class="inner-btn"><i class="fa-light fa-arrow-up"></i></span><span class="inner-text">More About Us</span></a>
                                     </div>
                                 </div>
                             </div>
@@ -271,53 +280,117 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-xl-3 col-lg-4 col-md-6">
-                            <div class="h10_category-item mb-30">
-                                <div class="h10_category-item-icon">
-                                    <svg width="52" height="52" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M13.2031 41.3752V36.2002" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                                    </svg>
-                                </div>
-                                <h4 class="h10_category-item-title"><a href="course.html">Early Learning</a></h4>
-                                <p>We provide engaging and interactive online lessons to build a strong foundation for young learners.</p>
+                        <!-- Repeat this block 8 times, each with unique content/icon -->
+                        <div class="col-xl-3 col-lg-3 col-md-6 mb-4">
+                          <div class="h10_category-item h-100 p-3 d-flex flex-column justify-content-between text-center shadow-sm rounded bg-white">
+                            <div class="h10_category-item-icon mb-3">
+                              <!-- Icon 1 -->
+                              <svg width="52" height="52" viewBox="0 0 52 52" fill="none">
+                                <circle cx="26" cy="26" r="25" stroke="currentColor" stroke-width="2"/>
+                              </svg>
                             </div>
+                            <h4 class="h10_category-item-title"><a href="course.html">Early Learning</a></h4>
+                            <p>We provide engaging and interactive online lessons to build a strong foundation for young learners.</p>
+                          </div>
                         </div>
-                        <div class="col-xl-3 col-lg-4 col-md-6">
-                            <div class="h10_category-item mb-30 h10_category_bg-2">
-                                <div class="h10_category-item-icon">
-                                    <svg width="52" height="52" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M23.2209 1.625H18.2829C5.93798 1.625 1 6.56298 1 18.9079V33.7219" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                    </svg>
-                                </div>
-                                <h4 class="h10_category-item-title"><a href="course.html">Skill Development</a></h4>
-                                <p>Our curriculum enhances creativity, problem-solving, and communication skills for children of all ages.</p>
+                      
+                        <div class="col-xl-3 col-lg-3 col-md-6 mb-4">
+                          <div class="h10_category-item h-100 p-3 d-flex flex-column justify-content-between text-center shadow-sm rounded bg-white">
+                            <div class="h10_category-item-icon mb-3">
+                              <!-- Icon 2 -->
+                              <svg width="52" height="52" viewBox="0 0 52 52" fill="none">
+                                <rect x="6" y="6" width="40" height="40" stroke="currentColor" stroke-width="2"/>
+                              </svg>
                             </div>
+                            <h4 class="h10_category-item-title"><a href="course.html">Skill Development</a></h4>
+                            <p>Our curriculum enhances creativity, problem-solving, and communication skills for children of all ages.</p>
+                          </div>
                         </div>
-                        <div class="col-xl-3 col-lg-4 col-md-6">
-                            <div class="h10_category-item mb-30 h10_category_bg-3">
-                                <div class="h10_category-item-icon">
-                                    <svg width="47" height="52" viewBox="0 0 47 52" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M46 13.5V38.5C46 46 42.25 51 33.5 51H13.5C4.75 51 1 46 1 38.5V13.5" stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
-                                    </svg>
-                                </div>
-                                <h4 class="h10_category-item-title"><a href="course.html">STEM Education</a></h4>
-                                <p>Interactive courses in science, technology, engineering, and mathematics to develop analytical thinking.</p>
+                      
+                        <div class="col-xl-3 col-lg-3 col-md-6 mb-4">
+                          <div class="h10_category-item h-100 p-3 d-flex flex-column justify-content-between text-center shadow-sm rounded bg-white">
+                            <div class="h10_category-item-icon mb-3">
+                              <!-- Icon 3 -->
+                              <svg width="52" height="52" viewBox="0 0 52 52" fill="none">
+                                <polygon points="26,5 5,47 47,47" stroke="currentColor" stroke-width="2"/>
+                              </svg>
                             </div>
+                            <h4 class="h10_category-item-title"><a href="course.html">STEM Education</a></h4>
+                            <p>Interactive courses in science, technology, engineering, and mathematics to develop analytical thinking.</p>
+                          </div>
                         </div>
-                        <div class="col-xl-3 col-lg-4 col-md-6">
-                            <div class="h10_category-item mb-30 h10_category_bg-4">
-                                <div class="h10_category-item-icon">
-                                    <svg width="55" height="52" viewBox="0 0 55 52" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M8.64699 19.7646H3.94118C2.32353 19.7646 1 21.0882 1 22.7058V48.0587C1 49.6764 2.32353 50.9999 3.94118 50.9999H8.64699" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                    </svg>
-                                </div>
-                                <h4 class="h10_category-item-title"><a href="course.html">Guided Learning</a></h4>
-                                <p>Expert teachers provide step-by-step guidance to ensure children stay on track with their learning goals.</p>
+                      
+                        <div class="col-xl-3 col-lg-3 col-md-6 mb-4">
+                          <div class="h10_category-item h-100 p-3 d-flex flex-column justify-content-between text-center shadow-sm rounded bg-white">
+                            <div class="h10_category-item-icon mb-3">
+                              <!-- Icon 4 -->
+                              <svg width="52" height="52" viewBox="0 0 52 52" fill="none">
+                                <line x1="10" y1="10" x2="42" y2="42" stroke="currentColor" stroke-width="2"/>
+                                <line x1="42" y1="10" x2="10" y2="42" stroke="currentColor" stroke-width="2"/>
+                              </svg>
                             </div>
+                            <h4 class="h10_category-item-title"><a href="course.html">Guided Learning</a></h4>
+                            <p>Expert teachers provide step-by-step guidance to ensure children stay on track with their learning goals.</p>
+                          </div>
                         </div>
-                        
-                        
-                    </div>
+                      
+                        <!-- 4 more items for the second row -->
+                        <div class="col-xl-3 col-lg-3 col-md-6 mb-4">
+                          <div class="h10_category-item h-100 p-3 d-flex flex-column justify-content-between text-center shadow-sm rounded bg-white">
+                            <div class="h10_category-item-icon mb-3">
+                              <!-- Icon 5 -->
+                              <svg width="52" height="52" viewBox="0 0 52 52" fill="none">
+                                <path d="M26 1 L51 51 H1 Z" stroke="currentColor" stroke-width="2"/>
+                              </svg>
+                            </div>
+                            <h4 class="h10_category-item-title"><a href="course.html">Language Learning</a></h4>
+                            <p>Structured language programs that boost vocabulary, grammar, and communication skills.</p>
+                          </div>
+                        </div>
+                      
+                        <div class="col-xl-3 col-lg-3 col-md-6 mb-4">
+                          <div class="h10_category-item h-100 p-3 d-flex flex-column justify-content-between text-center shadow-sm rounded bg-white">
+                            <div class="h10_category-item-icon mb-3">
+                              <!-- Icon 6 -->
+                              <svg width="52" height="52" viewBox="0 0 52 52" fill="none">
+                                <circle cx="26" cy="26" r="5" stroke="currentColor" stroke-width="2"/>
+                                <circle cx="26" cy="26" r="20" stroke="currentColor" stroke-width="2"/>
+                              </svg>
+                            </div>
+                            <h4 class="h10_category-item-title"><a href="course.html">Arts & Creativity</a></h4>
+                            <p>Encouraging creative expression through art, drawing, and imaginative activities.</p>
+                          </div>
+                        </div>
+                      
+                        <div class="col-xl-3 col-lg-3 col-md-6 mb-4">
+                          <div class="h10_category-item h-100 p-3 d-flex flex-column justify-content-between text-center shadow-sm rounded bg-white">
+                            <div class="h10_category-item-icon mb-3">
+                              <!-- Icon 7 -->
+                              <svg width="52" height="52" viewBox="0 0 52 52" fill="none">
+                                <path d="M10 26 H42" stroke="currentColor" stroke-width="2"/>
+                                <path d="M26 10 V42" stroke="currentColor" stroke-width="2"/>
+                              </svg>
+                            </div>
+                            <h4 class="h10_category-item-title"><a href="course.html">Cognitive Games</a></h4>
+                            <p>Brain-boosting games that promote memory, logic, and concentration.</p>
+                          </div>
+                        </div>
+                      
+                        <div class="col-xl-3 col-lg-3 col-md-6 mb-4">
+                          <div class="h10_category-item h-100 p-3 d-flex flex-column justify-content-between text-center shadow-sm rounded bg-white">
+                            <div class="h10_category-item-icon mb-3">
+                              <!-- Icon 8 -->
+                              <svg width="52" height="52" viewBox="0 0 52 52" fill="none">
+                                <path d="M10 10 H42 V42 H10 Z" stroke="currentColor" stroke-width="2"/>
+                                <circle cx="26" cy="26" r="6" stroke="currentColor" stroke-width="2"/>
+                              </svg>
+                            </div>
+                            <h4 class="h10_category-item-title"><a href="course.html">Personal Growth</a></h4>
+                            <p>Activities and mentorship to develop emotional intelligence and resilience in learners.</p>
+                          </div>
+                        </div>
+                      </div>
+                      
                 </div>
             </section>
             <!-- category area end -->
@@ -629,13 +702,13 @@
 
         <!-- footer area start -->
         <footer class="footer-area">
-            <div class="footer-top pt-240 pb-55">
+            <div class="footer-top pt-90 pb-55">
                 <div class="container">
                     <div class="row justify-content-between">
                         <div class="col-xl-3 col-lg-7 col-md-7 col-sm-12">
                             <div class="footer-widget mb-40">
                                 <div class="footer-logo">
-                                    <a href="index.html"><img style="width: 100px;" src="assets/img/cat2Logo.png" alt=""></a>
+                                    <a href="index.html"><img  src="assets/img/logo.png" alt=""></a>
                                 </div>
                                 <p class="footer-widget-text mb-35">
                                     Through a combination of lectures, readings, discussions, students will gain solid foundation in educational.
@@ -714,18 +787,7 @@
 </script>
 
 
-<div class="col-xl-3 col-sm-5 col-6">
-  <div class="h2_header-right">
-    <div class="h2_header-btn d-none d-sm-block">
-      <a id="header-btn" href="#" class="header-btn theme-btn theme-btn-medium">Sign Up</a>
-    </div>
-    <div class="header-menu-bar d-xl-none ml-10">
-      <span class="header-menu-bar-icon side-toggle">
-        <i class="fa-light fa-bars"></i>
-      </span>
-    </div>
-  </div>
-</div>
+
 
 <script>
   document.addEventListener('DOMContentLoaded', function () {
@@ -763,7 +825,7 @@
         // Get studentId from localStorage
         const studentId = localStorage.getItem("studentId");
         if (!studentId) {
-            alert("You must be logged in to view course details.");
+            alert("You must be logged in with a primary student account to view course details.");
             window.location.href = "sign-in.html"; // Adjust your login page URL if needed
             return;
         }
@@ -924,35 +986,6 @@
 
 
 
-<script>
-    // Check if studentId exists in localStorage
-    const studentId = localStorage.getItem('studentId');
-    const headerBtn2 = document.getElementById('header-btn2');  // The button element
-
-    // If studentId is found, change the button to "Logout"
-    if (studentId) {
-        headerBtn2.innerHTML = `
-            <svg width="14" height="16" viewBox="0 0 14 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M7.01367 8C8.94667 8 10.5137 6.433 10.5137 4.5C10.5137 2.567 8.94667 1 7.01367 1C5.08068 1 3.51367 2.567 3.51367 4.5C3.51367 6.433 5.08068 8 7.01367 8Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                <path d="M13.026 14.9996C13.026 12.2906 10.331 10.0996 7.013 10.0996C3.695 10.0996 1 12.2906 1 14.9996" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg> 
-            Logout
-        `;
-        
-        // Change href to "#" as it's no longer a login page
-        headerBtn2.href = '#';
-        
-        // Add event listener for logout
-        headerBtn2.addEventListener('click', () => {
-            // Remove studentId and token from localStorage
-            localStorage.removeItem('studentId');
-            localStorage.removeItem('token');
-            
-            // Redirect to login page after logout
-            window.location.href = 'sign-in.html'; // Change this to your login page URL
-        });
-    }
-</script>
 
 
 

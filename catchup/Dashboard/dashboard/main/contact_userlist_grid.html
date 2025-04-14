@@ -170,7 +170,17 @@
 	
 	<!-- CatchUp App -->
 	<script src="js/template.js"></script>
-	
+	<script>
+		const adminToken = localStorage.getItem("adminToken");
+		const adminId = localStorage.getItem("adminId");
+	  
+		if (!adminToken || !adminId) {
+		  window.location.href = "auth_login.html";
+		}
+	  </script>
+
+
+
 	
 <script>
 	document.addEventListener("DOMContentLoaded", async () => {
