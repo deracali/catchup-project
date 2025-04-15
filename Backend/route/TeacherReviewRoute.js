@@ -12,7 +12,12 @@ import {
 const TeacherReviewRoute = express.Router();
 
 // Use express-fileupload middleware
-TeacherReviewRoute.use(fileUpload({ useTempFiles: true }));
+TeacherReviewRoute.use(fileUpload({
+  useTempFiles: true,
+  limits: { fileSize: 50 * 1024 * 1024 } // 50MB
+}));
+
+
 
 TeacherReviewRoute.post("/create", createTeacher);
 TeacherReviewRoute.patch("/status/:id", updateTeacherStatus);

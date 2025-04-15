@@ -97,7 +97,15 @@
 .h2_price-button a:hover {
     background-color: #1864f2b0;
 }
+ul li a {
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  color: #333;
+}
 
+ul li a:hover {
+  color: #007BFF;
+}
      
      </style>
     <body>
@@ -146,12 +154,12 @@
                                                 <li><a href="index-10.html">Primary</a></li>
                                     
 
-                                        <li><a href="about.html">About</a></li>
+                                                <li id="dashboard-link"></li>
+                                        <!-- <li><a href="about.html">About</a></li> -->
                                         <li><a href="team.html">Teachers</a></li>
                                        
-                                        <li><a href="offlinecourse.html">Courses</a></li>
+                                        <!-- <li><a href="offlinecourse.html">Courses</a></li> -->
 
-                                         <li id="dashboard-link"></li>
                                     </ul>
                                 </nav>
                             </div>
@@ -2782,21 +2790,25 @@
             </div>
         </footer>
         <!-- footer area end -->
-<script>
-  const userRole = localStorage.getItem('role');
-  const dashboardLink = document.getElementById('dashboard-link');
-
-  if (userRole === 'secondary') {
-    dashboardLink.innerHTML = '<a href="Dashboard/dashboard/main/secondary.html">Dashboard</a>';
-  } else if (userRole === 'primary') {
-    dashboardLink.innerHTML = '<a href="Dashboard/dashboard/main/primary.html">Dashboard</a>';
-  } else if (userRole === 'adult') {
-    dashboardLink.innerHTML = '<a href="Dashboard/dashboard/main/adult.html">Dashboard</a>';
-  } else {
-    // Optionally hide or disable the dashboard link if there's no valid role
-    dashboardLink.innerHTML = ''; // or show a login/signup prompt
-  }
-</script>
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+              const userRole = localStorage.getItem('role');
+              const dashboardLink = document.getElementById('dashboard-link');
+          
+              if (dashboardLink) {
+                if (userRole === 'secondary') {
+                  dashboardLink.innerHTML = '<a href="Dashboard/dashboard/main/secondary.html">Dashboard</a>';
+                } else if (userRole === 'primary') {
+                  dashboardLink.innerHTML = '<a href="Dashboard/dashboard/main/primary.html">Dashboard</a>';
+                } else if (userRole === 'adult') {
+                  dashboardLink.innerHTML = '<a href="Dashboard/dashboard/main/adult.html">Dashboard</a>';
+                } else {
+                  dashboardLink.innerHTML = ''; // or display alternative content
+                }
+              }
+            });
+          </script>
+          
 
 
 
