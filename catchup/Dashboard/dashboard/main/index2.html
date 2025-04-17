@@ -384,10 +384,9 @@
 	
 	
 <script>
-	const adminToken = localStorage.getItem("adminToken");
 	const adminId = localStorage.getItem("adminId");
   
-	if (!adminToken || !adminId) {
+	if (!adminId) {
 	  window.location.href = "auth_login.html";
 	}
   </script>
