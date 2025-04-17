@@ -1017,44 +1017,55 @@
 
   // ✅ Check for studentId
   const studentId = localStorage.getItem("studentId");
-  if (!studentId) {
+  if (!studentId || studentId === "undefined" || studentId.trim() === "") {
     alert("You must be logged in to join a live class.");
     return;
   }
 
-  // ✅ Fetch student profile to check for subscription
+  // ✅ Check subscription
   try {
     const profileRes = await fetch(`https://catchup-project.onrender.com/api/users/profile/${studentId}`);
-    const user = await profileRes.json();
-
-    const now = new Date();
-    const hasLiveClassSubscription =
-      user.subscriptions &&
-      user.subscriptions.some(sub => sub.plan === "Live Class" && new Date(sub.endDate) > now);
-
-    if (!hasLiveClassSubscription) {
-      alert("You need an active Live Class subscription to enroll. Redirecting to pricing page...");
-      window.location.href = "price.html"; // Replace with your actual pricing page URL
+    if (!profileRes.ok) {
+      alert("Unable to fetch your profile. Please try again.");
       return;
     }
 
-    // ✅ If all checks pass, proceed with enrollment
-    const courseId = enrollButton.getAttribute("data-course-id");
-    console.log("Enrolling in course with ID:", courseId);
+    const user = await profileRes.json();
+    const now = new Date();
 
+    const hasLiveClassSubscription =
+      user.subscriptions &&
+      user.subscriptions.some(
+        (sub) => sub.plan === "Live Class" && new Date(sub.endDate) > now
+      );
+
+    if (!hasLiveClassSubscription) {
+      alert("You need an active Live Class subscription to enroll. Redirecting to pricing page...");
+      window.location.href = "price.html";
+      return;
+    }
+
+    // ✅ Prevent if courseId is missing
+    const courseId = enrollButton.getAttribute("data-course-id");
+    if (!courseId) {
+      alert("Course ID is missing. Cannot enroll.");
+      return;
+    }
+
+    // ✅ Proceed with enrollment
     const res = await fetch(`https://catchup-project.onrender.com/api/livecourses/${courseId}/join`, {
       method: "POST",
-      headers: { "Content-Type": "application/json" }
+      headers: { "Content-Type": "application/json" },
     });
+
     const data = await res.json();
-    console.log("Enrollment Response:", data);
 
     if (res.ok) {
       alert("Successfully enrolled in the course!");
       enrollButton.disabled = true;
       enrollButton.innerText = "Enrolled";
 
-      // Update student count if available
+      // Optional: update student count
       const parent = enrollButton.closest(".h2_course-item");
       if (parent) {
         const studentSpan = parent.querySelector(".student-count");
@@ -1070,6 +1081,7 @@
     alert("An error occurred while enrolling.");
   }
 });
+
 
       // Add click handler for Join Live Class button to check subscription
       container.addEventListener("click", async function (e) {

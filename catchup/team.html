@@ -402,13 +402,12 @@
               <div class="h2_teacher-img">
                 <img src="${teacher.profileImage}" alt="${teacher.name}">
               </div>
-              <div class="h2_teacher-content">
+              <a href="team-details.html?id=${teacher._id}" class="h2_teacher-content">
                 <h5 class="h2_teacher-content-title">
-                 <a href="team-details.html?id=${teacher._id}">${teacher.name.split(' ')[0]}</a>
-
+                ${teacher.name.split(' ')[0]}
                 </h5>
                 <span>${teacher.designation}</span>
-              </div>
+              </a>
             </div>
           </div>
         `;

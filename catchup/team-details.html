@@ -174,6 +174,7 @@ button {
                                     <span id="teacherDesignation">Designation</span>
                                 </div>
                                 <h5 class="teacher_details-title2">About Me</h5>
+                                <button style="margin-top: 17px; margin-bottom: 20px;" id="popupBtn" class="btn btn-primary">Book Teacher</button>
                                 <p id="teacherAbout" class="mb-20"></p>
                                 <h5 class="teacher_details-title2">Contact Me</h5>
                                 <div class="teacher_details-info">
@@ -189,7 +190,7 @@ button {
                                     <!-- Courses will be dynamically populated here -->
                                 </ul>
                                 
-                                <button style="margin-top: 20px;" id="popupBtn" class="btn btn-primary">Book Teacher</button>
+                               
                             </div>
                         </div>
                     </div>
@@ -407,23 +408,24 @@ button {
 </script>
 
 
-
 <script>
     document.addEventListener("DOMContentLoaded", async function () {
       const teacherId = new URLSearchParams(window.location.search).get("id");
       const studentId = localStorage.getItem("studentId");
-    
-      if (!teacherId || !studentId) {
-        // alert("Missing teacher ID or student ID");
+  
+      // Only verify teacherId is mandatory for loading teacher details
+      if (!teacherId) {
+        console.error("Missing teacher ID from URL");
         return;
       }
-    
+  
       try {
         // Fetch teacher details
         const resTeacher = await fetch(`https://catchup-project.onrender.com/api/teachers/${teacherId}`);
         const teacher = await resTeacher.json();
-    
-        // Populate teacher details
+        console.log("Teacher fetched:", teacher);
+  
+        // Populate teacher details in the DOM
         document.getElementById("teacherName").textContent = teacher.name;
         document.getElementById("teacherDesignation").textContent = teacher.designation;
         document.getElementById("teacherImage").src = teacher.profileImage;
@@ -433,8 +435,8 @@ button {
         document.getElementById("teacherEmail").textContent = teacher.email;
         document.getElementById("teacherPhone").href = `tel:${teacher.phone}`;
         document.getElementById("teacherPhone").textContent = teacher.phone;
-    
-        // Courses
+  
+        // Display teacher courses
         const coursesContainer = document.getElementById("teacherCourses");
         coursesContainer.innerHTML = "";
         teacher.courses.forEach((course) => {
@@ -442,27 +444,34 @@ button {
           li.textContent = course;
           coursesContainer.appendChild(li);
         });
-    
-        // Handle opening the popup
+  
+        // Handle opening the popup to book a session
         document.getElementById("popupBtn").addEventListener("click", async () => {
+  
+          // Check if student is logged in (i.e., studentId exists)
+          if (!studentId) {
+            alert("You must be logged in to book a session.");
+            return;
+          }
+          
           try {
-            // Fetch student profile
+            // Fetch student profile to verify subscription
             const resProfile = await fetch(`https://catchup-project.onrender.com/api/users/profile/${studentId}`);
             const user = await resProfile.json();
             const now = new Date();
-    
+  
             const hasSubscription =
               user.subscriptions &&
               user.subscriptions.some(sub =>
                 (sub.plan === "Live Class") && new Date(sub.endDate) > now
               );
-    
+  
             if (!hasSubscription) {
               alert("You have not subscribed to the required plan (Per Subject or All Subjects). You will now be redirected to the pricing page.");
-              window.location.href = "price.html"; // Redirect to your pricing page
+              window.location.href = "price.html"; // Redirect to pricing page
               return;
             }
-    
+  
             // If subscription is valid, show the popup
             document.getElementById("popupOverlay").style.display = "flex";
             document.getElementById("popupTeacherName").textContent = teacher.name;
@@ -471,16 +480,22 @@ button {
             alert("Something went wrong checking your subscription.");
           }
         });
-    
+  
         // Handle closing the popup
         document.getElementById("closePopup").addEventListener("click", () => {
           document.getElementById("popupOverlay").style.display = "none";
         });
-    
+  
         // Handle booking form submission
         document.getElementById("bookingForm").addEventListener("submit", async function (e) {
           e.preventDefault();
-    
+  
+          // Check studentId again to ensure user is logged in
+          if (!studentId) {
+            alert("You must be logged in to book a session.");
+            return;
+          }
+  
           const bookingData = {
             teacherId,
             teacherName: teacher.name,
@@ -489,32 +504,37 @@ button {
             time: document.getElementById("bookingTime").value,
             description: document.getElementById("bookingDesc").value,
           };
-    
-          const res = await fetch("https://catchup-project.onrender.com/api/book", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify(bookingData),
-          });
-    
-          if (res.ok) {
-            alert("Booking submitted!");
-            document.getElementById("popupOverlay").style.display = "none";
-            document.getElementById("bookingForm").reset();
-          } else {
-            const err = await res.json();
-            alert("Error: " + err.message);
+  
+          try {
+            const res = await fetch("https://catchup-project.onrender.com/api/book", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify(bookingData),
+            });
+  
+            if (res.ok) {
+              alert("Booking submitted!");
+              document.getElementById("popupOverlay").style.display = "none";
+              document.getElementById("bookingForm").reset();
+            } else {
+              const err = await res.json();
+              alert("Error: " + err.message);
+            }
+          } catch (err) {
+            console.error("Booking submission error:", err);
+            alert("Something went wrong while submitting your booking.");
           }
         });
-    
+  
       } catch (err) {
         console.error("Failed to fetch teacher:", err);
-        alert("Something went wrong.");
+        alert("Something went wrong while loading teacher details.");
       }
     });
-    </script>
-    
+  </script>
+  
 
 
         <!-- JS here -->
