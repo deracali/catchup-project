@@ -23,13 +23,42 @@ cloudinary.config({
     });
   };
   
+
+  // mailer.js or equivalent
+const sendTeacherRegistrationEmail = async (email, name) => {
+  const html = `
+    <div style="font-family: Arial, sans-serif; max-width: 600px; margin: auto; background-color: #f9f9f9; padding: 20px;">
+      <h2 style="color: #00a859;">Welcome to CatchUpED, ${name}!</h2>
+      <p>Thank you for registering as a teacher. Your profile is under review and we’ll get back to you once it's approved.</p>
+      <p>We’re thrilled to have passionate educators like you on board!</p>
+      <br/>
+      <p>– CatchUpED Team</p>
+    </div>
+  `;
+
+  const mailOptions = {
+    from: 'info@catchuped.com',
+    to: email,
+    subject: 'Teacher Registration Received – CatchUpED',
+    html
+  };
+
+  try {
+    await transporter.sendMail(mailOptions);
+    console.log(`✅ Teacher registration email sent to ${email}`);
+  } catch (error) {
+    console.error('❌ Teacher email error:', error);
+  }
+};
+
+
+
   // ✅ Create a new teacher review
   export const createTeacher = async (req, res) => {
     try {
       console.log("Request Body:", req.body);
       console.log("Uploaded Files:", req.files);
   
-      // Destructure using the field names 'profileImage' and 'cv' for Base64 strings, if provided.
       const {
         name,
         email,
@@ -42,14 +71,13 @@ cloudinary.config({
         address,
         acceptedOrRejected,
         courses,
-        profileImage, // could be a Base64 string if no file is uploaded
-        cv,          // could be a Base64 string if no file is uploaded
+        profileImage,
+        cv,
       } = req.body;
   
       let uploadedProfileImage = "";
       let uploadedCV = "";
   
-      // Use uploaded file if available; otherwise, fall back to Base64 string from req.body.
       if (req.files?.profileImage) {
         const imageUpload = await uploadImage(req.files.profileImage.tempFilePath);
         uploadedProfileImage = imageUpload.secure_url;
@@ -66,12 +94,10 @@ cloudinary.config({
         uploadedCV = cvUpload.secure_url;
       }
   
-      // Ensure courses is an array (if provided as comma-separated string).
       let coursesArray = Array.isArray(courses)
         ? courses
         : courses?.split(",").map(course => course.trim()) || [];
   
-      // Create new teacher record, storing the final URLs under the 'profileImage' and 'cv' fields.
       const newTeacher = new TeacherReview({
         name,
         email,
@@ -89,6 +115,10 @@ cloudinary.config({
       });
   
       await newTeacher.save();
+  
+      // ✅ Send registration confirmation email
+      await sendTeacherRegistrationEmail(email, name);
+  
       res.status(201).json({ message: "Teacher review created successfully", teacher: newTeacher });
     } catch (error) {
       console.error("Error in createTeacher:", error);

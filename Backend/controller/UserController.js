@@ -2,7 +2,7 @@ import User from "../model/UserModel.js";
 import jwt from "jsonwebtoken";
 import bcrypt from "bcryptjs";
 import dotenv from "dotenv";
-
+import nodemailer from 'nodemailer';
 dotenv.config();
 
 
@@ -14,6 +14,101 @@ const generateToken = (user) => {
     expiresIn: "7d",
   });
 };
+
+
+const transporter = nodemailer.createTransport({
+  host: 'smtp.titan.email',
+  port: 587,  // Use 465 for SSL if needed
+  secure: false, // Set to `true` if using port 465
+  auth: {
+      user: 'info@catchuped.com',  // Your Titan Mail email
+      pass: 'Studenthouse2020@' // Your Titan Mail password
+  }
+});  
+
+
+const sendEmail = async (to, subject, name) => {
+  const mailOptions = {
+    from: 'info@catchuped.com',
+    to,
+    subject,
+    html: `
+      <div style="background-color: #f5f7fa; padding: 40px; font-family: Arial, sans-serif;">
+        <table width="100%" cellpadding="0" cellspacing="0" style="max-width: 600px; margin: auto; background: white; border-radius: 8px; overflow: hidden;">
+          <tr>
+            <td style="background-color: #eaf1fb; text-align: center; padding: 30px 0;">
+              <h2 style="color: #2c5eff; margin: 0;">CatchUpED</h2>
+            </td>
+          </tr>
+          <tr>
+            <td style="padding: 30px;">
+              <h1 style="font-size: 24px; color: #333;">Welcome, ${name}!</h1>
+              <p style="font-size: 16px; color: #555;">Thanks for choosing <strong>CatchUpED</strong>! We are happy to see you on board.</p>
+              <p style="font-size: 16px; color: #555;">To get started, do this next step:</p>
+              <div style="text-align: center; margin: 30px 0;">
+                <a href="https://catchuped.com/login" style="background-color: #2c5eff; color: white; text-decoration: none; padding: 14px 28px; border-radius: 6px; display: inline-block;">Next Step</a>
+              </div>
+              <p style="font-size: 14px; color: #888;">If you didn’t sign up for this, you can ignore this email.</p>
+            </td>
+          </tr>
+        </table>
+      </div>
+    `
+  };
+
+  try {
+    await transporter.sendMail(mailOptions);
+    console.log(`Email sent to ${to}`);
+  } catch (error) {
+    console.error('Email error:', error);
+    if (error.response) {
+      console.error('SMTP response:', error.response);
+    }
+  }
+};
+
+
+const sendLoginEmail = async (to, name) => {
+  const mailOptions = {
+    from: 'info@catchuped.com',
+    to,
+    subject: 'Login Notification - CatchUpED',
+    html: `
+      <div style="background-color: #f5f7fa; padding: 40px; font-family: Arial, sans-serif;">
+        <table width="100%" cellpadding="0" cellspacing="0" style="max-width: 600px; margin: auto; background: white; border-radius: 8px; overflow: hidden;">
+          <tr>
+            <td style="background-color: #eaf1fb; text-align: center; padding: 30px 0;">
+              <h2 style="color: #2c5eff; margin: 0;">CatchUpED</h2>
+            </td>
+          </tr>
+          <tr>
+            <td style="padding: 30px;">
+              <h1 style="font-size: 22px; color: #333;">Hi ${name},</h1>
+              <p style="font-size: 16px; color: #555;">
+                A login to your <strong>CatchUpED</strong> account was just detected. If this was you, you can ignore this message.
+              </p>
+              <p style="font-size: 16px; color: #555;">
+                If this wasn't you, please reset your password immediately and contact support.
+              </p>
+              <div style="text-align: center; margin: 30px 0;">
+                <a href="https://catchuped.com/reset-password" style="background-color: #ff4f4f; color: white; text-decoration: none; padding: 14px 28px; border-radius: 6px; display: inline-block;">Reset Password</a>
+              </div>
+              <p style="font-size: 14px; color: #888;">Need help? Reach out at support@catchuped.com</p>
+            </td>
+          </tr>
+        </table>
+      </div>
+    `
+  };
+
+  try {
+    await transporter.sendMail(mailOptions);
+    console.log(`Login email sent to ${to}`);
+  } catch (error) {
+    console.error('Login Email Error:', error);
+  }
+};
+
 
 // Signup
 const signup = async (req, res) => {
@@ -29,7 +124,6 @@ const signup = async (req, res) => {
 
     if (user) return res.status(400).json({ message: "User already exists" });
 
-    // **Hash the password correctly**
     const salt = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(password, salt);
 
@@ -38,14 +132,18 @@ const signup = async (req, res) => {
     user = new User({
       name,
       email: normalizedEmail,
-      password: hashedPassword, // Save hashed password
-      role, // Assign role
+      password: hashedPassword,
+      role,
     });
 
     await user.save();
 
+    // ✅ Send welcome email
+    await sendEmail(normalizedEmail, 'Welcome to CatchUpED!', name);
+
     const token = generateToken(user);
     res.status(201).json({ user, token, role });
+
   } catch (error) {
     console.error("Signup Error:", error);
     res.status(500).json({ message: error.message });
@@ -73,15 +171,18 @@ const login = async (req, res) => {
       return res.status(400).json({ message: "Invalid credentials" });
     }
 
+    // ✅ Send login email
+    await sendLoginEmail(user.email, user.name);
+
     const token = generateToken(user);
-console.log(user.role)
-    // Ensure role is included in the response
+    console.log(user.role);
+
     res.json({
       user: {
         _id: user._id,
         name: user.name,
         email: user.email,
-        role: user.role, // Include the role in the response
+        role: user.role,
       },
       token,
     });

@@ -2,64 +2,96 @@ import Teacher from "../model/TeachersModel.js";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 
+
+// mailer.js or equivalent
+const sendTeacherAcceptedEmail = async (email, name) => {
+  const html = `
+    <div style="font-family: Arial, sans-serif; max-width: 600px; margin: auto; background-color: #f9f9f9; padding: 20px;">
+      <h2 style="color: #00a859;">Congratulations ${name} – You’re In!</h2>
+      <p>Your teacher profile has been reviewed and <strong>accepted</strong> by the CatchUpED team.</p>
+      <p>You can now log in to your dashboard and begin sharing your expertise with eager students.</p>
+      <p>We’re excited to see the impact you’ll make 🚀</p>
+      <br/>
+      <a href="https://catchuped.com/teacher-dashboard" style="display:inline-block; background-color:#00a859; color:white; padding:10px 20px; text-decoration:none; border-radius:5px;">Go to Dashboard</a>
+      <br/><br/>
+      <p>– The CatchUpED Team</p>
+    </div>
+  `;
+
+  const mailOptions = {
+    from: 'info@catchuped.com',
+    to: email,
+    subject: 'Your Teacher Profile Has Been Approved – CatchUpED',
+    html
+  };
+
+  try {
+    await transporter.sendMail(mailOptions);
+    console.log(`✅ Teacher accepted email sent to ${email}`);
+  } catch (error) {
+    console.error('❌ Teacher accepted email error:', error);
+  }
+};
+
 // ✅ Register a new teacher
 export const registerTeacher = async (req, res) => {
   try {
-      const { 
-          name, 
-          email, 
-          password, 
-          phone, 
-          designation, 
-          rating, 
-          reviews, 
-          about, 
-          address, 
-          acceptedOrRejected, 
-          profileImage, 
-          cv,
-          courses // Added courses
-      } = req.body;
+    const {
+      name,
+      email,
+      password,
+      phone,
+      designation,
+      rating,
+      reviews,
+      about,
+      address,
+      acceptedOrRejected,
+      profileImage,
+      cv,
+      courses
+    } = req.body;
 
-      console.log("Request Body:", req.body); // Log the incoming request body
+    console.log("Request Body:", req.body);
 
-      // Check if the teacher already exists
-      const existingTeacher = await Teacher.findOne({ email });
-      if (existingTeacher) {
-          console.log("Teacher already exists with email:", email); // Log if teacher already exists
-          return res.status(400).json({ message: "Email already exists" });
-      }
+    const existingTeacher = await Teacher.findOne({ email });
+    if (existingTeacher) {
+      console.log("Teacher already exists with email:", email);
+      return res.status(400).json({ message: "Email already exists" });
+    }
 
-      // Hash the password
-      const salt = await bcrypt.genSalt(10);
-      const hashedPassword = await bcrypt.hash(password, salt);
-      console.log("Password hashed successfully"); // Log when password is successfully hashed
+    const salt = await bcrypt.genSalt(10);
+    const hashedPassword = await bcrypt.hash(password, salt);
+    console.log("Password hashed successfully");
 
-      const teacher = new Teacher({
-          name,
-          email,
-          password: hashedPassword,
-          phone,
-          designation,
-          profileImage, // Accepting profileImage from body
-          cv, // Accepting CV from body
-          rating,
-          reviews,
-          about,
-          address,
-          acceptedOrRejected: acceptedOrRejected || "Pending", // Default to "Pending" if not provided
-          courses: courses || [] // Added courses
-      });
+    const teacher = new Teacher({
+      name,
+      email,
+      password: hashedPassword,
+      phone,
+      designation,
+      profileImage,
+      cv,
+      rating,
+      reviews,
+      about,
+      address,
+      acceptedOrRejected: acceptedOrRejected || "Pending",
+      courses: courses || []
+    });
 
-      console.log("Teacher object ready to be saved:", teacher); // Log the teacher object
+    console.log("Teacher object ready to be saved:", teacher);
 
-      await teacher.save();
-      console.log("Teacher saved successfully"); // Log when the teacher is successfully saved
+    await teacher.save();
+    console.log("Teacher saved successfully");
 
-      res.status(201).json({ message: "Teacher registered successfully", teacher });
+    // ✅ Send welcome email
+    await sendTeacherAcceptedEmail(email, name);
+
+    res.status(201).json({ message: "Teacher registered successfully", teacher });
   } catch (error) {
-      console.error("Error in registering teacher:", error); // Log any error that occurs
-      res.status(500).json({ error: error.message });
+    console.error("Error in registering teacher:", error);
+    res.status(500).json({ error: error.message });
   }
 };
 
