@@ -9,6 +9,10 @@ const UserSchema = new mongoose.Schema(
     about: {
       type: String,
     },
+      phone: {
+      type: String,
+      required: true,
+    },
     image: {
       type: String,
       default: "https://media.istockphoto.com/id/2149922267/vector/user-icon.webp?a=1&b=1&s=612x612&w=0&k=20&c=eftd9nEYQYSWX_yZsHtkoo47x5l_Jp_2b-J4iD1pGPY=", // Default image URL

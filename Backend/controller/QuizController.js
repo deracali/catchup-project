@@ -4,87 +4,101 @@ import Quiz from "../model/QuizModel.js";
 
 export const createQuizzes = async (req, res) => {
   try {
-    const { title, category, quizzes } = req.body;
-    console.log("Received quiz data:", { title, category, quizzes });
+    const { quizzes } = req.body;
 
-    // Validate the required fields
-    if (!title || !category || !Array.isArray(quizzes) || quizzes.length === 0) {
-      console.error("Validation Error: Quiz title, category, and questions must be provided");
+    if (!Array.isArray(quizzes) || quizzes.length === 0) {
+      console.error("Validation Error: Quizzes array is required");
       return res.status(400).json({
-        message: "Quiz title, category, and at least one question are required"
+        message: "A non-empty array of quizzes is required"
       });
     }
 
-    // Validate the category field
-    if (!["Primary", "Secondary"].includes(category)) {
-      console.error("Validation Error: Invalid category", category);
-      return res.status(400).json({
-        message: "Category must be 'Primary' or 'Secondary'"
+    const formattedQuizzes = quizzes.map((quiz) => {
+      const { title, category, questions, type } = quiz;
+
+      // Validate required fields for each quiz
+      if (!title || !category || !Array.isArray(questions) || questions.length === 0) {
+        console.error("Validation Error: Title, category, and questions are required for each quiz");
+        throw new Error("Each quiz must have a title, category, and at least one question");
+      }
+
+      // Validate category
+      if (!["Primary", "Secondary"].includes(category)) {
+        console.error("Validation Error: Invalid category", category);
+        throw new Error("Category must be 'Primary' or 'Secondary'");
+      }
+
+      // Optional: Validate type as a non-empty string if you want to enforce it
+      if (type !== undefined && typeof type !== "string") {
+        console.error("Validation Error: Invalid type", type);
+        throw new Error("Type must be a string");
+      }
+
+      // Validate and format each question
+      const validatedQuestions = questions.map((q) => {
+        const {
+          question,
+          options,
+          answer,
+          explanation = "",
+          subject,
+          timeLimit
+        } = q;
+
+        if (!question || !options || !answer || !subject || timeLimit == null) {
+          console.error("Validation Error: Missing required fields in question", q);
+          throw new Error("Each question must include question, options, answer, subject, and timeLimit");
+        }
+
+        if (!Array.isArray(options) || options.length < 2) {
+          console.error("Validation Error: Options must be an array with at least 2 items", q);
+          throw new Error("Each question must have at least two options");
+        }
+
+        if (!options.includes(answer)) {
+          console.error("Validation Error: Answer must be one of the options", answer);
+          throw new Error("Answer must be one of the provided options");
+        }
+
+        if (typeof timeLimit !== "number" || timeLimit <= 0) {
+          console.error("Validation Error: Invalid timeLimit", timeLimit);
+          throw new Error("timeLimit must be a positive number");
+        }
+
+        return {
+          question,
+          options,
+          answer,
+          explanation,
+          subject,
+          timeLimit
+        };
       });
-    }
 
-    const validatedQuestions = [];
+      return {
+        title,
+        category,
+        type, // Include type here
+        questions: validatedQuestions
+      };
+    });
 
-    for (const quiz of quizzes) {
-      const { question, options, answer, subject, timeLimit, explanation } = quiz;
+    const insertedQuizzes = await Quiz.insertMany(formattedQuizzes);
 
-      // Validate required fields
-      if (!question || !options || !answer || !subject || !timeLimit) {
-        console.error("Validation Error: Missing fields in quiz question", quiz);
-        return res.status(400).json({
-          message: "All fields (except explanation) are required for each question"
-        });
-      }
-
-      if (!Array.isArray(options) || options.length < 2) {
-        console.error("Validation Error: Options should be an array with at least 2 items");
-        return res.status(400).json({
-          message: "Each question must have at least two options"
-        });
-      }
-
-      if (!options.includes(answer)) {
-        console.error("Validation Error: Answer must be one of the options", answer);
-        return res.status(400).json({
-          message: "Answer must be one of the options"
-        });
-      }
-
-      // Build validated question object including explanation
-      validatedQuestions.push({
-        question,
-        options,
-        answer,
-        subject,
-        timeLimit,
-        explanation: explanation || "" // optional field, default to empty string if not provided
-      });
-    }
-
-    // Prepare the quiz document
-    const quizData = {
-      title,
-      category,
-      questions: validatedQuestions,
-    };
-
-    const newQuiz = new Quiz(quizData);
-    await newQuiz.save();
-
-    console.log("Inserted quiz successfully:", newQuiz);
+    console.log("Inserted quizzes successfully:", insertedQuizzes);
     res.status(201).json({
-      message: "Quiz added successfully",
-      quiz: newQuiz
+      message: "Quizzes added successfully",
+      quizzes: insertedQuizzes
     });
 
   } catch (error) {
-    console.error("Create Quiz Error:", error.message, error.stack);
+    console.error("Create Quizzes Error:", error.message, error.stack);
     res.status(500).json({
-      message: "Server error"
+      message: "Server error",
+      error: error.message
     });
   }
 };
-
 
 
 // Get all quiz questions

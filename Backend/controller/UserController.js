@@ -18,13 +18,14 @@ const generateToken = (user) => {
 
 const transporter = nodemailer.createTransport({
   host: 'smtp.titan.email',
-  port: 587,  // Use 465 for SSL if needed
-  secure: false, // Set to `true` if using port 465
+  port: 465, // SSL
+  secure: true, // true for port 465
   auth: {
-      user: 'info@catchuped.com',  // Your Titan Mail email
-      pass: 'Studenthouse2020@' // Your Titan Mail password
+    user: 'info@catchuped.com',
+    pass: 'Studenthouse2020@'
   }
-});  
+});
+ 
 
 
 const sendEmail = async (to, subject, name) => {
@@ -113,24 +114,35 @@ const sendLoginEmail = async (to, name) => {
 // Signup
 const signup = async (req, res) => {
   try {
-    const { name, email, password, role } = req.body;
+    const { name, phone, email, password, role } = req.body;
 
-    if (!name || !email || !password || !role) {
+    // Validate required fields
+    if (!name || !phone || !email || !password || !role) {
       return res.status(400).json({ message: "All fields are required" });
     }
+
+    // Optional: add phone format validation (e.g., regex)
+    // const phoneRegex = /^\+?[1-9]\d{1,14}$/;
+    // if (!phoneRegex.test(phone)) {
+    //   return res.status(400).json({ message: "Invalid phone number" });
+    // }
 
     const normalizedEmail = email.trim().toLowerCase();
     let user = await User.findOne({ email: normalizedEmail });
 
-    if (user) return res.status(400).json({ message: "User already exists" });
+    if (user) {
+      return res.status(400).json({ message: "User already exists" });
+    }
 
     const salt = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(password, salt);
 
     console.log("🔹 Hashed Password Before Saving:", hashedPassword);
 
+    // Create new user with phone
     user = new User({
       name,
+      phone,
       email: normalizedEmail,
       password: hashedPassword,
       role,
