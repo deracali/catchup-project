@@ -14,27 +14,18 @@ export const createQuizzes = async (req, res) => {
     }
 
     const formattedQuizzes = quizzes.map((quiz) => {
-      const { title, category, questions, type } = quiz;
+      const { title, category, questions } = quiz;
 
-      // Validate required fields for each quiz
       if (!title || !category || !Array.isArray(questions) || questions.length === 0) {
         console.error("Validation Error: Title, category, and questions are required for each quiz");
         throw new Error("Each quiz must have a title, category, and at least one question");
       }
 
-      // Validate category
       if (!["Primary", "Secondary"].includes(category)) {
         console.error("Validation Error: Invalid category", category);
         throw new Error("Category must be 'Primary' or 'Secondary'");
       }
 
-      // Optional: Validate type as a non-empty string if you want to enforce it
-      if (type !== undefined && typeof type !== "string") {
-        console.error("Validation Error: Invalid type", type);
-        throw new Error("Type must be a string");
-      }
-
-      // Validate and format each question
       const validatedQuestions = questions.map((q) => {
         const {
           question,
@@ -42,12 +33,13 @@ export const createQuizzes = async (req, res) => {
           answer,
           explanation = "",
           subject,
+          type,
           timeLimit
         } = q;
 
-        if (!question || !options || !answer || !subject || timeLimit == null) {
+        if (!question || !options || !answer || !subject || !type || timeLimit == null) {
           console.error("Validation Error: Missing required fields in question", q);
-          throw new Error("Each question must include question, options, answer, subject, and timeLimit");
+          throw new Error("Each question must include question, options, answer, subject, type, and timeLimit");
         }
 
         if (!Array.isArray(options) || options.length < 2) {
@@ -65,12 +57,18 @@ export const createQuizzes = async (req, res) => {
           throw new Error("timeLimit must be a positive number");
         }
 
+        if (typeof type !== "string" || type.trim() === "") {
+          console.error("Validation Error: Invalid type", type);
+          throw new Error("Each question must have a non-empty string 'type'");
+        }
+
         return {
           question,
           options,
           answer,
           explanation,
           subject,
+          type,
           timeLimit
         };
       });
@@ -78,7 +76,6 @@ export const createQuizzes = async (req, res) => {
       return {
         title,
         category,
-        type, // Include type here
         questions: validatedQuestions
       };
     });
